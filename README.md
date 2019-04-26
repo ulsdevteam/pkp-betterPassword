@@ -1,16 +1,17 @@
-# Better Password plugin for OJS
+# Better Password plugin for OJS/OMP
 
 This plugin provides additional password restriction options when users are selecting their own password.  [NIST recommends the following for passwords](https://pages.nist.gov/800-63-3/sp800-63b.html#appA):
 * Establishing a minimum length
 * Not limiting allowed characters
-* Not requiring artbitrary complexity rules
+* Not requiring arbitrary complexity rules
 * Checking passwords against known weak passwords
+* Rate limiting failed password attempts
 
 Additional arbitrary password complexity requirements are available, but not recommended.
 
 ## Requirements
 
-* OJS 3.x
+* OJS/OMP 3.1.2 or later
 
 ## Configuration
 

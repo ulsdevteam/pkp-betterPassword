@@ -40,7 +40,9 @@ class betterPasswordPlugin extends GenericPlugin {
 		if (!Config::getVar('general', 'installed') || defined('RUNNING_UPGRADE')) return true;
 		if ($success && $this->getEnabled()) {
 			// Attach hooks
-			
+			foreach (array('registrationform::validate', 'changepasswordform::validate', 'loginchangepasswordform::validate') as $hook) {
+				HookRegistry::register($hook, array(&$this, 'checkPassword'));
+			}
 		}
 		return $success;
 	}
@@ -117,6 +119,79 @@ class betterPasswordPlugin extends GenericPlugin {
 				return new JSONMessage(true, $form->fetch($request));
 		}
 		return parent::manage($args, $request);
+	}
+
+	/**
+	 * Hook callback: check a password against requirements
+	 * @see Form::validate()
+	 */
+	function checkPassword($hookName, $args) {
+		// Supported hooks must be enumerated here to identify the content to be checked and the form being used
+		$form = NULL;
+		$data = array();
+		switch ($hookName) {
+			case 'registrationform::validate':
+			case 'changepasswordform::validate':
+			case 'loginchangepasswordform::validate':
+				$form = $args[0];
+				$password = $form->getData('password');
+				$errorField = 'password';
+				break;
+			default:
+				return false;
+		}
+		if (!$password) {
+			// Let the form itself handle the core required function
+			return false;
+		}
+		if ($this->getSetting(CONTEXT_SITE, 'betterPasswordCheckBlacklist')) {
+			$badPassword = false;
+			$lowerPassword = strtolower($password);
+			$filename = $this->getPluginPath() . DIRECTORY_SEPARATOR . "badPasswords.txt";
+			/* In case of out-of-memory error, break glass
+			$passwordfile = fopen($filename, "r");
+			while (!feof($passwordfile)) {
+				$disallowed = fgets($passwordfile);
+				if ($lowerPassword === $disallowed) {
+					$badPassword = true;
+					break;
+				}
+			}
+			fclose($passwordfile);
+			 */
+			$passwordfile = file_get_contents($filename);
+			if (strpos($passwordfile, $lowerPassword) !== false) {
+				$badPassword = true;
+			}
+			if ($badPassword) {
+				$form->addError($errorField, __('plugins.generic.betterPassword.validation.betterPasswordCheckBlacklist'));
+			}
+		}
+		if ($this->getSetting(CONTEXT_SITE, 'betterPasswordCheckAlpha')) {
+			if (!PKPString::regexp_match('/[[:alpha:]]/', $password)) {
+				$form->addError($errorField, __('plugins.generic.betterPassword.validation.betterPasswordCheckAlpha'));
+			}
+		}
+		if ($this->getSetting(CONTEXT_SITE, 'betterPasswordCheckNumber')) {
+			if (!PKPString::regexp_match('/\d/', $password)) {
+				$form->addError($errorField, __('plugins.generic.betterPassword.validation.betterPasswordCheckNumber'));
+			}
+		}
+		if ($this->getSetting(CONTEXT_SITE, 'betterPasswordCheckUppercase')) {
+			if (!PKPString::regexp_match('/[[:upper:]]/', $password)) {
+				$form->addError($errorField, __('plugins.generic.betterPassword.validation.betterPasswordCheckUppercase'));
+			}
+		}
+		if ($this->getSetting(CONTEXT_SITE, 'betterPasswordCheckLowercase')) {
+			if (!PKPString::regexp_match('/[[:lower:]]/', $password)) {
+				$form->addError($errorField, __('plugins.generic.betterPassword.validation.betterPasswordCheckLowercase'));
+			}
+		}
+		if ($this->getSetting(CONTEXT_SITE, 'betterPasswordCheckSpecial')) {
+			if (!PKPString::regexp_match('/[^[:alnum:]]/', $password)) {
+				$form->addError($errorField, __('plugins.generic.betterPassword.validation.betterPasswordCheckSpecial'));
+			}
+		}
 	}
 
 }
