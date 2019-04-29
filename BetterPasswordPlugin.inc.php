@@ -36,6 +36,7 @@ class betterPasswordPlugin extends GenericPlugin {
 		'betterPasswordLockSeconds' => 'int',
 		'minPasswordLength' => 'int',
 	);
+	
 
 	/**
 	 * @copydoc Plugin::register()
@@ -48,6 +49,13 @@ class betterPasswordPlugin extends GenericPlugin {
 			foreach (array('registrationform::validate', 'changepasswordform::validate', 'loginchangepasswordform::validate') as $hook) {
 				HookRegistry::register($hook, array(&$this, 'checkPassword'));
 			}
+			if ($this->getSetting(CONTEXT_SITE, 'betterPasswordLockTries')) {
+				// Register callback to add text to registration page
+				HookRegistry::register('TemplateManager::display', array($this, 'handleTemplateDisplay'));
+				// Add a handler to hijack login requests
+				HookRegistry::register('LoadHandler', array($this, 'callbackLoadHandler'));
+			}
+			HookRegistry::register('userdao::getAdditionalFieldNames', array(&$this, 'addUserSettings'));
 		}
 		return $success;
 	}
@@ -211,4 +219,73 @@ class betterPasswordPlugin extends GenericPlugin {
 		);
 	}
 
+	/*
+	 * Hook callback: check for bad password attempts
+	 * @see TemplateManager::display()
+	 */
+	function handleTemplateDisplay($hookName, $args) {
+		$templateMgr = $args[0];
+		$template = $args[1];
+		if ($template === 'frontend/pages/userLogin.tpl') {
+			if ($templateMgr->getTemplateVars('error') === 'user.login.loginError') {
+				$username = $templateMgr->getTemplateVars('username');
+				$userDao = DAORegistry::getDAO('UserDAO');
+				$user = $userDao->getByUsername($username);
+				if (isset($user)) {
+					$count = $user->getData($this->getName()."::badPasswordCount");
+					$time = $user->getData($this->getName()."::badPasswordTime");
+					// expire old bad password attempts
+					if (($count || $time) && $time < time() - $this->getSetting(CONTEXT_SITE, 'betterPasswordLockExpires')) {
+						$count = 0;
+					}
+					// update the count and time to represent this failed attempt
+					$count++;
+					$time = time();
+					$user->setData($this->getName()."::badPasswordCount", $count);
+					$user->setData($this->getName()."::badPasswordTime", $time);
+					$userDao->updateObject($user);
+					// warn the user if count has been exceeded
+					if ($count >= $this->getSetting(CONTEXT_SITE, 'betterPasswordLockTries')) {
+						$templateMgr->assign('error', 'plugins.generic.betterPassword.validation.betterPasswordLocked');
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * @see PKPComponentRouter::route()
+	 */
+	public function callbackLoadHandler($hookName, $args) {
+		// Hijack the user's signin attempt, if frequent bad passwords are being tried
+		if ($args[0] === "login" && $args[1] === "signIn") {
+			if (isset($_POST['username'])) {
+				$userDao = DAORegistry::getDAO('UserDAO');
+				$user = $userDao->getByUsername($_POST['username']);
+				if (isset($user)) {
+					$count = $user->getData($this->getName()."::badPasswordCount");
+					$time = $user->getData($this->getName()."::badPasswordTime");
+					if ($count >= $this->getSetting(CONTEXT_SITE, 'betterPasswordLockTries') && $time > time() - $this->getSetting(CONTEXT_SITE, 'betterPasswordLockSeconds')) {
+						$_POST['password'] = '';
+					}
+				}
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Add locking information to the User DAO
+	 * @see DAO::getAddtionalFieldNames
+	 */
+	function addUserSettings($hookname, $args) {
+		$fields =& $args[1];
+		$fields = array_merge($fields, array(
+			$this->getName()."::badPasswordCount",
+			$this->getName()."::badPasswordTime",
+			)
+		);
+		return false;
+	}
 }
