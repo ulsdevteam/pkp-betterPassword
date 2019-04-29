@@ -19,6 +19,10 @@ class betterPasswordPlugin extends GenericPlugin {
 	/**
 	 * @var $settings array()
 	 *  This array associates available settings with setting types
+	 *  Name prefixes of betterPassword, betterPasswordCheck, and betterPasswordLock are magical
+	 *    "betterPassword" will trigger the setting to be saved within the plugin
+	 *    "betterPasswordCheck" will be a group of checkbox options
+	 *    "betterPasswordLock" will be a group of textfields
 	 */
 	public $settingsKeys = array(
 		'betterPasswordCheckAlpha' => 'bool',
@@ -30,6 +34,7 @@ class betterPasswordPlugin extends GenericPlugin {
 		'betterPasswordLockTries' => 'int',
 		'betterPasswordLockExpires' => 'int',
 		'betterPasswordLockSeconds' => 'int',
+		'minPasswordLength' => 'int',
 	);
 
 	/**
@@ -147,21 +152,23 @@ class betterPasswordPlugin extends GenericPlugin {
 		if ($this->getSetting(CONTEXT_SITE, 'betterPasswordCheckBlacklist')) {
 			$badPassword = false;
 			$lowerPassword = strtolower($password);
-			$filename = $this->getPluginPath() . DIRECTORY_SEPARATOR . "badPasswords.txt";
-			/* In case of out-of-memory error, break glass
-			$passwordfile = fopen($filename, "r");
-			while (!feof($passwordfile)) {
-				$disallowed = fgets($passwordfile);
-				if ($lowerPassword === $disallowed) {
+			foreach ($this->getBlacklists() as $filename) {
+				/* In case of out-of-memory error, break glass
+				$passwordfile = fopen($filename, "r");
+				while (!feof($passwordfile)) {
+					$disallowed = fgets($passwordfile);
+					if ($lowerPassword === $disallowed) {
+						$badPassword = true;
+						break;
+					}
+				}
+				fclose($passwordfile);
+				 */
+				$passwordfile = file_get_contents($filename);
+				if (strpos($passwordfile, $lowerPassword) !== false) {
 					$badPassword = true;
 					break;
 				}
-			}
-			fclose($passwordfile);
-			 */
-			$passwordfile = file_get_contents($filename);
-			if (strpos($passwordfile, $lowerPassword) !== false) {
-				$badPassword = true;
 			}
 			if ($badPassword) {
 				$form->addError($errorField, __('plugins.generic.betterPassword.validation.betterPasswordCheckBlacklist'));
@@ -192,6 +199,16 @@ class betterPasswordPlugin extends GenericPlugin {
 				$form->addError($errorField, __('plugins.generic.betterPassword.validation.betterPasswordCheckSpecial'));
 			}
 		}
+	}
+
+	/**
+	 * Get the filename(s) of password blacklists.
+	 * @return array filename strings
+	 */
+	function getBlacklists() {
+		return array(
+			$this->getPluginPath() . DIRECTORY_SEPARATOR . 'badPasswords' . DIRECTORY_SEPARATOR . 'badPasswords.txt',
+		);
 	}
 
 }

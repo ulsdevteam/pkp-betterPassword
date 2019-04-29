@@ -19,6 +19,12 @@
 
 	<div id="description">{translate key="plugins.generic.betterPassword.manager.settings.description"}</div>
 
+	{fbvFormArea id="betterPasswordSettingsFormOptions" title="admin.siteSettings"}
+		{fbvFormSection for="minPasswordLength"}
+			{fbvElement type="text" id="minPasswordLength" label="admin.settings.minPasswordLength" value="$minPasswordLength"}
+		{/fbvFormSection}
+	{/fbvFormArea}
+
 	{fbvFormArea id="betterPasswordSettingsFormOptions" title="plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"}
 		{fbvFormSection list="true" id="betterPasswordCheckboxList"}
 			{foreach from=$betterPasswordCheckboxes key="betterPasswordSetting" item="betterPasswordSettingValue"}

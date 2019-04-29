@@ -27,7 +27,7 @@
 	<message key="plugins.generic.betterPassword.manager.settings">Settings</message>
 	<message key="plugins.generic.betterPassword.manager.betterPasswordSettings">Better Password Settings</message>
 	<message key="plugins.generic.betterPassword.manager.settings.description"><![CDATA[<p>With this plugin enabled, user passwords will be checked against additional criteria to ensure better password selection.  NIST recommends checking passwords against a blacklist and using temporary account locking.  Complexity requirements of kinds of alphanumeric characters are available but not recommended.</p>]]></message>
-	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle">Passoword requirements</message>
+	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle">Password requirements</message>
 	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha">Require an alphabetic character.</message>
 	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase">Require an uppercase character.</message>
 	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase">Require an lowercase character.</message>

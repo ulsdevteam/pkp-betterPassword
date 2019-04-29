@@ -58,7 +58,13 @@ class BetterPasswordSettingsForm extends Form {
 
 		parent::initData();
 		foreach (array_keys($plugin->settingsKeys) as $k) {
-			$this->setData($k, $plugin->getSetting($contextId, $k));
+			if (strpos($k, 'betterPassword') === 0) {
+				$this->setData($k, $plugin->getSetting($contextId, $k));
+			} else {
+				$siteDao = DAORegistry::getDAO('SiteDAO');
+				$site = $siteDao->getSite();
+				$this->setData($k, $site->getMinPasswordLength());
+			}
 		}
 	}
 
@@ -74,6 +80,7 @@ class BetterPasswordSettingsForm extends Form {
 	 * @copydoc Form::fetch()
 	 */
 	function fetch($request, $template = NULL, $display = false) {
+		AppLocale::requireComponents(LOCALE_COMPONENT_PKP_ADMIN);
 		$templateMgr = TemplateManager::getManager($request);
 		$templateMgr->assign('pluginName', $this->_plugin->getName());
 		foreach (array_keys($this->_plugin->settingsKeys) as $key) {
@@ -107,7 +114,14 @@ class BetterPasswordSettingsForm extends Form {
 					$saveData = intval($saveData);
 					break;
 			}
-			$plugin->updateSetting($contextId, $k, $saveData, $saveType);
+			if (strpos($k, 'betterPassword') === 0) {
+				$plugin->updateSetting($contextId, $k, $saveData, $saveType);
+			} else {
+				$siteDao = DAORegistry::getDAO('SiteDAO');
+				$site = $siteDao->getSite();
+				$site->setMinPasswordLength(intval($saveData));
+				$siteDao->updateObject($site);
+			}
 		}
 	}
 
