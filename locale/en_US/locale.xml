@@ -14,7 +14,7 @@
 
 	<!-- Better Password -->
 	<message key="plugins.generic.betterPassword.displayName">Better Password Plugin</message>
-	<message key="plugins.generic.betterPassword.description"><![CDATA[Enable additional password requirements within PKP software.  Primarily based on NIST recommendations.]]></message>
+	<message key="plugins.generic.betterPassword.description"><![CDATA[Enable additional password requirements within PKP software.  Allows for implementation of NIST recommendations.]]></message>
 	<message key="plugins.generic.betterPassword.validation.betterPasswordCheckAlpha">Your password requires an alphabetic character.</message>
 	<message key="plugins.generic.betterPassword.validation.betterPasswordCheckUppercase">Your password requires an uppercase character.</message>
 	<message key="plugins.generic.betterPassword.validation.betterPasswordCheckLowercase">Your password requires an lowercase character.</message>
@@ -26,7 +26,7 @@
 	<!-- Better Password Settings Management -->
 	<message key="plugins.generic.betterPassword.manager.settings">Settings</message>
 	<message key="plugins.generic.betterPassword.manager.betterPasswordSettings">Better Password Settings</message>
-	<message key="plugins.generic.betterPassword.manager.settings.description"><![CDATA[<p>With this plugin enabled, user passwords will be checked against additional criteria to ensure better password selection.  NIST recommends checking passwords against a blacklist and using temporary account locking.  Complexity requirements of kinds of alphanumeric characters are available but not recommended.</p>]]></message>
+	<message key="plugins.generic.betterPassword.manager.settings.description"><![CDATA[<p>With this plugin enabled, user passwords will be checked against additional criteria to ensure better password selection.  NIST recommends checking passwords against a blacklist and using temporary account locking after repeated password failures.  Complexity requirements including specific types of alphanumeric characters are available but not recommended for UX reasons.</p>]]></message>
 	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle">Password requirements</message>
 	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha">Require an alphabetic character.</message>
 	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase">Require an uppercase character.</message>
@@ -39,4 +39,7 @@
 	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires">Number of seconds before forgetting bad login attempts.</message>
 	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds">Number of seconds to lock an account after excessive bad login attempts.</message>
 	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired">If any temporary account locking setting is entered, all temporary account locking settings are required.</message>
+	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired">Number of bad login attempts after which to lock an account must be numeric.</message>
+	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired">Number of seconds before forgetting bad login attempts must be numeric.</message>
+	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired">Number of seconds to lock an account after excessive bad login attempts must be numeric.</message>
 </locale>

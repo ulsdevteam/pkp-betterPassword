@@ -17,11 +17,14 @@ import('lib.pkp.classes.form.Form');
 
 class BetterPasswordSettingsForm extends Form {
 
-	/** @var $contextId int */
+	/** @var $_contextId int */
 	var $_contextId;
 
-	/** @var $plugin betterPasswordPlugin */
+	/** @var $_plugin betterPasswordPlugin */
 	var $_plugin;
+
+	/** @var $_dependentFieldSemaphore bool flag if the dependent field error is already set */
+	var $_dependentFieldSemaphore = false;
 
 	/**
 	 * Constructor
@@ -43,6 +46,7 @@ class BetterPasswordSettingsForm extends Form {
 
 		foreach ($lockFields as $field) {
 			$this->addCheck(new FormValidatorCustom($this, $field, FORM_VALIDATOR_OPTIONAL_VALUE, 'plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired', array(&$this, '_dependentFormFieldIsSet'), array(&$this, $lockFields)));
+			$this->addCheck(new FormValidatorCustom($this, $field, FORM_VALIDATOR_OPTIONAL_VALUE, 'plugins.generic.betterPassword.manager.settings.'.$field.'NumberRequired', create_function('$s', 'return ($s === "0" || $s > 0);')));
 		}
 
 		$this->addCheck(new FormValidatorPost($this));
@@ -133,7 +137,7 @@ class BetterPasswordSettingsForm extends Form {
 	 * @return boolean
 	 */
 	function _dependentFormFieldIsSet($fieldValue, $form, $dependentFields) {
-		if ($fieldValue) {
+		if ($fieldValue && !$this->_dependentFieldSemaphore) {
 			$dependentValues = true;
 			foreach ($dependentFields as $field) {
 				if (!$form->getData($field)) {
@@ -145,11 +149,13 @@ class BetterPasswordSettingsForm extends Form {
 				return true;
 			} else {
 				// Field was set but dependent value was missing
+				$this->_dependentFieldSemaphore = true;
 				return false;
 			}
 		} else {
 			// No value set, so no dependency
 			return true;
 		}
+		return true;
 	}
 }
