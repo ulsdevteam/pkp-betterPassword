@@ -258,8 +258,8 @@ class betterPasswordPlugin extends GenericPlugin {
 	 * @see PKPComponentRouter::route()
 	 */
 	public function callbackLoadHandler($hookName, $args) {
-		// Hijack the user's signin attempt, if frequent bad passwords are being tried
 		if ($args[0] === "login" && $args[1] === "signIn") {
+			// Hijack the user's signin attempt, if frequent bad passwords are being tried
 			if (isset($_POST['username'])) {
 				$userDao = DAORegistry::getDAO('UserDAO');
 				$user = $userDao->getByUsername($_POST['username']);
@@ -267,9 +267,25 @@ class betterPasswordPlugin extends GenericPlugin {
 					$count = $user->getData($this->getName()."::badPasswordCount");
 					$time = $user->getData($this->getName()."::badPasswordTime");
 					if ($count >= $this->getSetting(CONTEXT_SITE, 'betterPasswordLockTries') && $time > time() - $this->getSetting(CONTEXT_SITE, 'betterPasswordLockSeconds')) {
-						$_POST['password'] = '';
+						// Hijack the typical login/signIn handler to prevent login
+						define('HANDLER_CLASS', 'BetterPasswordHandler');
+						$args[0] = "plugins.generic.betterPassword.BetterPasswordHandler";
+						import($args[0]);
+						return true;
 					}
 				}
+			}
+		} elseif ($args[0] === "login" && $args[1] === "resetPassword") {
+			// Hijack the password reset request to clear bad password locks
+			$username = array_shift(PKPRequest::getRequestedArgs());
+			$queryString = PKPRequest::getQueryArray();
+			$userDao = DAORegistry::getDAO('UserDAO');
+			$confirmHash = $queryString['confirm'];
+			$user = $userDao->getByUsername($username);
+			if ($user && $confirmHash && Validation::verifyPasswordResetHash($user->getId(), $confirmHash)) {
+					$user->setData($this->getName()."::badPasswordCount", 0);
+					$user->setData($this->getName()."::badPasswordTime", 0);
+					$userDao->updateObject($user);
 			}
 		}
 		return false;
