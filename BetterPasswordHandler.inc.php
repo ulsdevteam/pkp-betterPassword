@@ -19,14 +19,14 @@ class BetterPasswordHandler extends Handler {
 	 */
 	function initialize($request, $args = null) {
 		parent::initialize($request, $args);
-		// Load local usually handled by LoginHandler
+		// Load locale usually handled by LoginHandler
 		AppLocale::requireComponents(
 			LOCALE_COMPONENT_PKP_USER
 		);
 	}
 
 	/**
-	 * Handle markAsSpam action
+	 * Handle signIn action override
 	 * @param $args array Arguments array.
 	 * @param $request PKPRequest Request object.
 	 */
