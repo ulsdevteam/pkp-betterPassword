@@ -119,7 +119,7 @@ class betterPasswordPlugin extends GenericPlugin {
 				$context = $request->getContext();
 
 				$this->import('BetterPasswordSettingsForm');
-				$form = new BetterPasswordSettingsForm($this, $context->getId());
+				$form = new BetterPasswordSettingsForm($this, $context ? $context->getId() : CONTEXT_SITE);
 				if ($request->getUserVar('save')) {
 					$form->readInputData();
 					if ($form->validate()) {
