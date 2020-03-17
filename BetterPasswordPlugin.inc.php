@@ -13,8 +13,6 @@
  */
 
 import('lib.pkp.classes.plugins.GenericPlugin');
-import('lib.pkp.classes.cache.CacheManager');
-import('lib.pkp.classes.cache.FileCache');
 
 class betterPasswordPlugin extends GenericPlugin {
 
