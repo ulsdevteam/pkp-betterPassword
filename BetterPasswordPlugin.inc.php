@@ -13,6 +13,8 @@
  */
 
 import('lib.pkp.classes.plugins.GenericPlugin');
+import('lib.pkp.classes.cache.CacheManager');
+import('lib.pkp.classes.cache.FileCache');
 
 class betterPasswordPlugin extends GenericPlugin {
 
@@ -160,24 +162,14 @@ class betterPasswordPlugin extends GenericPlugin {
 		if ($this->getSetting(CONTEXT_SITE, 'betterPasswordCheckBlacklist')) {
 			$badPassword = false;
 			$lowerPassword = strtolower($password);
-			foreach ($this->getBlacklists() as $filename) {
-				/* In case of out-of-memory error, break glass
-				$passwordfile = fopen($filename, "r");
-				while (!feof($passwordfile)) {
-					$disallowed = fgets($passwordfile);
-					if ($lowerPassword === $disallowed) {
-						$badPassword = true;
-						break;
-					}
-				}
-				fclose($passwordfile);
-				 */
-				$passwordfile = file_get_contents($filename);
-				if (strpos($passwordfile, $lowerPassword) !== false) {
+                        $password_hash = substr(sha1($lowerPassword),0,2);
+                        
+                        $cache = CacheManager::getManager()->getCache('badPasswords', $password_hash, array($this, '_PasswordCacheMiss'));
+                        
+                        $bad_password = $cache->get($password_hash);
+                        if (strpos($bad_password, sha1($lowerPassword)) !== false) {
 					$badPassword = true;
-					break;
 				}
-			}
 			if ($badPassword) {
 				$form->addError($errorField, __('plugins.generic.betterPassword.validation.betterPasswordCheckBlacklist'));
 			}
@@ -207,16 +199,6 @@ class betterPasswordPlugin extends GenericPlugin {
 				$form->addError($errorField, __('plugins.generic.betterPassword.validation.betterPasswordCheckSpecial'));
 			}
 		}
-	}
-
-	/**
-	 * Get the filename(s) of password blacklists.
-	 * @return array filename strings
-	 */
-	function getBlacklists() {
-		return array(
-			$this->getPluginPath() . DIRECTORY_SEPARATOR . 'badPasswords' . DIRECTORY_SEPARATOR . 'badPasswords.txt',
-		);
 	}
 
 	/*
@@ -303,5 +285,26 @@ class betterPasswordPlugin extends GenericPlugin {
 			)
 		);
 		return false;
+	}
+        /**
+	 * Callback to fill cache with data, if empty.
+	 * @param $cache FileCache
+	 * @param $password_hash string The leading two characters of the hash users password
+	 * @return $cache_password array The final cache of all the passwords corresponding to hash created by user password
+	 */
+	function _PasswordCacheMiss($cache, $password_hash) {
+            $cache_password = array();
+            $Passwords = fopen($this->getPluginPath() . DIRECTORY_SEPARATOR . 'badPasswords' . DIRECTORY_SEPARATOR . 'badPasswords.txt', "r");
+            while(!feof($Passwords)){
+                $sha_curr_password = sha1(fgets($Passwords));
+                if(strcmp(substr($sha_curr_password,0,2), $password_hash) == 0)
+                {
+                    $cache_password[] = $sha_curr_password;
+                }
+                
+            }
+            fclose($Passwords);
+            $cache->setEntireCache($cache_password);
+            return $cache_password;
 	}
 }
