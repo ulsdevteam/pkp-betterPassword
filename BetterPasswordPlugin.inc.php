@@ -160,14 +160,18 @@ class betterPasswordPlugin extends GenericPlugin {
 		if ($this->getSetting(CONTEXT_SITE, 'betterPasswordCheckBlacklist')) {
 			$badPassword = false;
 			$lowerPassword = strtolower($password);
+                        $sha_pass = sha1($lowerPassword);
                         $password_hash = substr(sha1($lowerPassword),0,2);
                         
                         $cache = CacheManager::getManager()->getCache('badPasswords', $password_hash, array($this, '_PasswordCacheMiss'));
-                        
                         $bad_password = $cache->get($password_hash);
-                        if (strpos($bad_password, sha1($lowerPassword)) !== false) {
+                        if (is_null($bad_password)) {
+                            $badPassword = false;
+                        }
+                        elseif (in_array($sha_pass, $bad_password)) {
 					$badPassword = true;
 				}
+                        
 			if ($badPassword) {
 				$form->addError($errorField, __('plugins.generic.betterPassword.validation.betterPasswordCheckBlacklist'));
 			}
@@ -198,7 +202,48 @@ class betterPasswordPlugin extends GenericPlugin {
 			}
 		}
 	}
-
+	/**
+	 * Create a temporary file with the data of password blacklists.
+	 * @return array temporary filename string
+	 */
+         function handleTempFile() {
+            import('lib.pkp.classes.file.PrivateFileManager');
+            $fileMgr = new PrivateFileManager();
+            $tempFileDir = realpath($fileMgr->getBasePath()) . DIRECTORY_SEPARATOR . 'passTmp';
+            if (!$fileMgr->fileExists($tempFileDir, 'dir')) {
+			$success = $fileMgr->mkdirtree($tempFileDir);
+			if (!$success) {
+				// Files directory wrong configuration?
+				assert(false);
+				return false;
+			}
+		}
+            $fpTemp = fopen($tempFileDir . DIRECTORY_SEPARATOR . 'tempPassFile', 'a');
+            foreach ($this->getBlacklists() as $filename) {
+                $fpPass = fopen($filename, "r");
+		if (flock($fpTemp, LOCK_EX)) {
+			fwrite($fpTemp, fread($fpPass,filesize($filename)));
+			flock($fpTemp, LOCK_UN);
+		} else {
+			// Couldn't lock the file.
+			assert(false);
+		}
+		fclose($fpTemp);
+            }
+            fclose($fpPass);
+            return ($tempFileDir . DIRECTORY_SEPARATOR . 'tempPassFile');
+         }
+        
+	/**
+	 * Get the filename(s) of password blacklists.
+	 * @return array filename strings
+	 */
+	function getBlacklists() {
+            return array(
+		$this->getPluginPath() . DIRECTORY_SEPARATOR . 'badPasswords' . DIRECTORY_SEPARATOR . 'badPasswords.txt',
+		);
+	}
+        
 	/*
 	 * Hook callback: check for bad password attempts
 	 * @see TemplateManager::display()
@@ -291,18 +336,22 @@ class betterPasswordPlugin extends GenericPlugin {
 	 * @return $cache_password array The final cache of all the passwords corresponding to hash created by user password
 	 */
 	function _PasswordCacheMiss($cache, $password_hash) {
-            $cache_password = array();
-            $Passwords = fopen($this->getPluginPath() . DIRECTORY_SEPARATOR . 'badPasswords' . DIRECTORY_SEPARATOR . 'badPasswords.txt', "r");
-            while(!feof($Passwords)){
-                $sha_curr_password = sha1(fgets($Passwords));
-                if(strcmp(substr($sha_curr_password,0,2), $password_hash) == 0)
-                {
-                    $cache_password[] = $sha_curr_password;
+            $check = get_class($cache->cacheMiss);
+            if ($check === 'generic_cache_miss') {
+                $cache_password = array();
+                $Passwords = fopen($this->handleTempFile(), "r");
+                while (!feof($Passwords)) {
+                    $curr_password = fgets($Passwords);
+                    if (strlen($curr_password) > $this->settingsKeys['minPasswordLength']) {
+                        $sha_curr_password = sha1($curr_password);
+                        if (strcmp(substr($sha_curr_password,0,2), $password_hash) == 0) {
+                            $cache_password[] = $sha_curr_password;
+                        }
+                    }
                 }
-                
+                fclose($Passwords);
+                $cache->setEntireCache($cache_password);
+                return $cache_password;
             }
-            fclose($Passwords);
-            $cache->setEntireCache($cache_password);
-            return $cache_password;
 	}
 }
