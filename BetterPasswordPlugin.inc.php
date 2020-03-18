@@ -209,6 +209,9 @@ class betterPasswordPlugin extends GenericPlugin {
          function handleTempFile() {
             import('lib.pkp.classes.file.PrivateFileManager');
             $fileMgr = new PrivateFileManager();
+            $siteDao = DAORegistry::getDAO('SiteDAO');
+            $site = $siteDao->getSite();
+            $minLengthPass = $site->getMinPasswordLength();
             $tempFileDir = realpath($fileMgr->getBasePath()) . DIRECTORY_SEPARATOR . 'passTmp';
             if (!$fileMgr->fileExists($tempFileDir, 'dir')) {
 			$success = $fileMgr->mkdirtree($tempFileDir);
@@ -218,20 +221,30 @@ class betterPasswordPlugin extends GenericPlugin {
 				return false;
 			}
 		}
-            $fpTemp = fopen($tempFileDir . DIRECTORY_SEPARATOR . 'tempPassFile', 'a');
-            foreach ($this->getBlacklists() as $filename) {
-                $fpPass = fopen($filename, "r");
-		if (flock($fpTemp, LOCK_EX)) {
-			fwrite($fpTemp, fread($fpPass,filesize($filename)));
+            if(!file_exists($tempFileDir . DIRECTORY_SEPARATOR . 'tempPassFile')) {
+                $fpTemp = fopen($tempFileDir . DIRECTORY_SEPARATOR . 'tempPassFile', 'a');    
+                foreach ($this->getBlacklists() as $filename) {
+                    $fpPass = fopen($filename, "r");
+                    if (flock($fpTemp, LOCK_EX)) {
+                        while (!feof($fpPass)) {
+                            $passwordLine = fgets($fpPass);
+                            if (strlen($passwordLine) > $minLengthPass) {
+                                fwrite($fpTemp, $passwordLine);
+                            }
+                        }
 			flock($fpTemp, LOCK_UN);
-		} else {
+                    } else {
 			// Couldn't lock the file.
 			assert(false);
-		}
-		fclose($fpTemp);
+                    }
+                    fclose($fpTemp);
+                }
+                fclose($fpPass);
+                return ($tempFileDir . DIRECTORY_SEPARATOR . 'tempPassFile');
             }
-            fclose($fpPass);
-            return ($tempFileDir . DIRECTORY_SEPARATOR . 'tempPassFile');
+            else {
+                return ($tempFileDir . DIRECTORY_SEPARATOR . 'tempPassFile');
+            }
          }
         
 	/**
