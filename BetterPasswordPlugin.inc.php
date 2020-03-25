@@ -158,54 +158,17 @@ class betterPasswordPlugin extends GenericPlugin {
 			return false;
 		}
 		if ($this->getSetting(CONTEXT_SITE, 'betterPasswordCheckBlacklist')) {
-			$badPassword = false;
 			$lowerPassword = strtolower($password);
                         $sha_pass = sha1($lowerPassword);
-                        $password_hash = substr(sha1($lowerPassword),0,2);
-                        $blacklistFileSetting = $this->getSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles');
-                        if (is_null($blacklistFileSetting)) {
-                            $blacklistFileSettingHash = array();
-                            foreach ($this->getBlacklists() as $filename) {
-                                $blacklistFileSettingHash[$filename] = sha1_file($filename);
-                            }
-                            $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $blacklistFileSettingHash);
+                        $password_hash = substr($sha_pass,0,2);
+                        $blacklist = $this->blacklistSetting();
+                        if ($blacklist) {
+                            $cache = CacheManager::getManager()->getCache('badPasswords', $password_hash, array($this, '_PasswordCacheMiss'));
+                            $badPassword = $cache->get($sha_pass);
                         }
                         else {
-                            $currBlacklist = array();
-                            foreach ($this->getBlacklists() as $filename) {
-                                $currBlacklist[$filename] = sha1_file($filename);
-                            }
-                            $prevBlacklist = $this->getSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles');
-                            $t = empty(array_udiff_uassoc($currBlacklist, $prevBlacklist, "strcmp", "strcmp"));
-                            $s = empty(array_udiff_uassoc($prevBlacklist, $currBlacklist, "strcmp", "strcmp"));
-                            
-                            if (!empty(array_udiff_uassoc($currBlacklist, $prevBlacklist, "strcmp", "strcmp")) || !empty(array_udiff_uassoc($prevBlacklist, $currBlacklist, "strcmp", "strcmp"))) {
-                                $tempFilename = $this->handleTempFile();
-                                $fpTemp = fopen($tempFilename, 'w');
-                                foreach ($this->getBlacklists() as $filename) {
-                                    $fpPass = fopen($filename, "r");
-                                    if (flock($fpTemp, LOCK_EX)) {
-                                        while (!feof($fpPass)) {
-                                            $passwordLine = fgets($fpPass);
-                                            if (strlen($passwordLine) >= $minLengthPass) {
-                                                fwrite($fpTemp, $passwordLine);
-                                            }
-                                        }
-                                        flock($fpTemp, LOCK_UN);
-                                    }
-                                    fclose($fpPass);
-                                }
-                                fclose($fpTemp);
-                                $flushCache = CacheManager::getManager()->flush('badPasswords');
-                                $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $currBlacklist);   
-                            }
+                            $badPassword = true;
                         }
-                        $cache = CacheManager::getManager()->getCache('badPasswords', $password_hash, array($this, '_PasswordCacheMiss'));
-                        $bad_password = $cache->get($sha_pass);
-                        if ($bad_password) {
-					$badPassword = true;
-				}
-                        
 			if ($badPassword) {
 				$form->addError($errorField, __('plugins.generic.betterPassword.validation.betterPasswordCheckBlacklist'));
 			}
@@ -236,23 +199,45 @@ class betterPasswordPlugin extends GenericPlugin {
 			}
 		}
 	}
+        /**
+	 * Check for newly added blacklists. If ran the first time creates the list of blacklists
+	 * @return 0|1|2 0 if update failed, 1 if setting is updated, 2 if new setting has been created
+	 */
+        
+        function blacklistSetting() {
+            $blacklistFileSetting = $this->getSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles');
+            if (is_null($blacklistFileSetting)) {
+                $blacklistFileSettingHash = array();
+                foreach ($this->getBlacklists() as $filename) {
+                        $blacklistFileSettingHash[$filename] = sha1_file($filename);
+                }
+                $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $blacklistFileSettingHash);
+                return true;
+            }
+            else {
+                $currBlacklist = $this->handleTempFile(false);
+                $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $currBlacklist);
+                return true;
+            }
+            return false;
+        }
 	/**
 	 * Create a temporary file with the data of password blacklists.
-	 * @return string temporary filename string
+         * @param boolean $check Default true, only false when updating temp file
+	 * @return string|boolean|null temporary filename string, or boolean or null when there is an error, when $check is false return associative array
 	 */
-         function handleTempFile() {
+         function handleTempFile($check = true) {
             import('lib.pkp.classes.file.PrivateFileManager');
             $fileMgr = new PrivateFileManager();
             $siteDao = DAORegistry::getDAO('SiteDAO');
             $site = $siteDao->getSite();
             $minLengthPass = $site->getMinPasswordLength();
-            $tempFileDir = realpath($fileMgr->getBasePath()) . DIRECTORY_SEPARATOR . 'passTmp';
+            $tempFileDir = realpath($fileMgr->getBasePath()) . DIRECTORY_SEPARATOR . 'betterPassword';
             if (!$fileMgr->fileExists($tempFileDir, 'dir')) {
 			$success = $fileMgr->mkdirtree($tempFileDir);
 			if (!$success) {
-				// Files directory wrong configuration?
-				assert(false);
-				return false;
+                            // Files directory wrong configuration?
+                            return null;
 			}
 		}
             if(!file_exists($tempFileDir . DIRECTORY_SEPARATOR . 'tempPassFile')) {
@@ -268,18 +253,42 @@ class betterPasswordPlugin extends GenericPlugin {
                         }
 			flock($fpTemp, LOCK_UN);
                     } else {
-			// Couldn't lock the file.
-			return null;
+                            return null;
                     }
                     fclose($fpPass);
                 }
                 fclose($fpTemp);
-                return ($tempFileDir . DIRECTORY_SEPARATOR . 'tempPassFile');
             }
             else {
-                
-                return ($tempFileDir . DIRECTORY_SEPARATOR . 'tempPassFile');
+                if (!$check) {
+                    $currBlacklist = array();
+                    foreach ($this->getBlacklists() as $filename) {
+                            $currBlacklist[$filename] = sha1_file($filename);
+                    }
+                    $prevBlacklist = $this->getSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles');
+                    if ($prevBlacklist != $currBlacklist) {
+                        $tempFilename = $tempFileDir . DIRECTORY_SEPARATOR . 'tempPassFile';
+                        $fpTemp = fopen($tempFilename, 'w');
+                        foreach ($this->getBlacklists() as $filename) {
+                                $fpPass = fopen($filename, "r");
+                                if (flock($fpTemp, LOCK_EX)) {
+                                    while (!feof($fpPass)) {
+                                        $passwordLine = fgets($fpPass);
+                                        if (strlen($passwordLine) >= $minLengthPass) {
+                                            fwrite($fpTemp, $passwordLine);
+                                        }
+                                    }
+                                    flock($fpTemp, LOCK_UN);
+                                }
+                                fclose($fpPass);
+                        }
+                        fclose($fpTemp);
+                        $flushCache = CacheManager::getManager()->flush('badPasswords');
+                        return $currBlacklist;
+                }
+                }
             }
+            return ($tempFileDir . DIRECTORY_SEPARATOR . 'tempPassFile');
          }
         
 	/**
@@ -379,9 +388,9 @@ class betterPasswordPlugin extends GenericPlugin {
 	}
         /**
 	 * Callback to fill cache with data, if empty.
-	 * @param $cache FileCache
-	 * @param $password_hash string The leading two characters of the hash users password
-	 * @return $cache_password array The final cache of all the passwords corresponding to hash created by user password
+	 * @param $cache Cache
+	 * @param $password_hash string The hash of the user password
+	 * @return boolean if hash of the password exists in the cache
 	 */
 	function _PasswordCacheMiss($cache, $password_hash) {
             $check = get_class($cache->cacheMiss);
