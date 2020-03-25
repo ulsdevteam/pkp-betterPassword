@@ -159,12 +159,12 @@ class betterPasswordPlugin extends GenericPlugin {
 		}
 		if ($this->getSetting(CONTEXT_SITE, 'betterPasswordCheckBlacklist')) {
 			$lowerPassword = strtolower($password);
-                        $sha_pass = sha1($lowerPassword);
-                        $password_hash = substr($sha_pass,0,2);
+                        $shaPass = sha1($lowerPassword);
+                        $passwordHash = substr($shaPass,0,2);
                         $blacklist = $this->blacklistSetting();
                         if ($blacklist) {
-                            $cache = CacheManager::getManager()->getCache('badPasswords', $password_hash, array($this, '_PasswordCacheMiss'));
-                            $badPassword = $cache->get($sha_pass);
+                            $cache = CacheManager::getManager()->getCache('badPasswords', $passwordHash, array($this, '_PasswordCacheMiss'));
+                            $badPassword = $cache->get($shaPass);
                         }
                         else {
                             $badPassword = true;
@@ -206,20 +206,21 @@ class betterPasswordPlugin extends GenericPlugin {
         
         function blacklistSetting() {
             $blacklistFileSetting = $this->getSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles');
+            $updateSettings = false;
             if (is_null($blacklistFileSetting)) {
                 $blacklistFileSettingHash = array();
                 foreach ($this->getBlacklists() as $filename) {
                         $blacklistFileSettingHash[$filename] = sha1_file($filename);
                 }
                 $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $blacklistFileSettingHash);
-                return true;
+                $updateSettings = true;
             }
             else {
                 $currBlacklist = $this->handleTempFile(false);
                 $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $currBlacklist);
-                return true;
+                $updateSettings = true;
             }
-            return false;
+            return $updateSettings;
         }
 	/**
 	 * Create a temporary file with the data of password blacklists.
@@ -392,7 +393,7 @@ class betterPasswordPlugin extends GenericPlugin {
 	 * @param $password_hash string The hash of the user password
 	 * @return boolean if hash of the password exists in the cache
 	 */
-	function _PasswordCacheMiss($cache, $password_hash) {
+	function _PasswordCacheMiss($cache, $passwordHash) {
             $check = get_class($cache->cacheMiss);
             if ($check === 'generic_cache_miss') {
                 $cache_password = array();
@@ -400,13 +401,13 @@ class betterPasswordPlugin extends GenericPlugin {
                 while (!feof($Passwords)) {
                     $curr_password = rtrim(fgets($Passwords), PHP_EOL);
                     $sha_curr_password = sha1($curr_password);
-                    if (strcmp(substr($sha_curr_password,0,2), substr($password_hash,0,2)) == 0) {
+                    if (strcmp(substr($sha_curr_password,0,2), substr($passwordHash,0,2)) == 0) {
                         $cache_password[$sha_curr_password] = $sha_curr_password;
                     }
                 }
                 fclose($Passwords);
                 $cache->setEntireCache($cache_password);
-                return in_array($password_hash, $cache_password);
+                return in_array($passwordHash, $cache_password);
             }
 	}
 }
