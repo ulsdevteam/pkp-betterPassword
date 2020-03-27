@@ -161,7 +161,7 @@ class betterPasswordPlugin extends GenericPlugin {
 			$lowerPassword = strtolower($password);
                         $shaPass = sha1($lowerPassword);
                         $passwordHash = substr($shaPass,0,2);
-                        $blacklist = $this->blacklistSetting();
+                        $blacklist = $this->generateBlacklist();
                         if ($blacklist) {
                             $cache = CacheManager::getManager()->getCache('badPasswords', $passwordHash, array($this, '_PasswordCacheMiss'));
                             $badPassword = $cache->get($shaPass);
@@ -203,7 +203,7 @@ class betterPasswordPlugin extends GenericPlugin {
 	 * @return boolean false if update failed, true if updated the setting
 	 */
         
-        function blacklistSetting() {
+        function generateBlacklist() {
             $prevBlacklist = $this->getSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles');
             $updateSettings = false;
             $newBlacklist = array();
@@ -211,7 +211,10 @@ class betterPasswordPlugin extends GenericPlugin {
                     $newBlacklist[$filename] = sha1_file($filename);
             }
             if (is_null($prevBlacklist)) {
-                $updateSettings = $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $newBlacklist);
+                $updateTempFile = $this->handleTempFile();
+                if ($updateTempFile) {
+                    $updateSettings = $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $newBlacklist);
+                }
             } else {
                 if ($prevBlacklist != $newBlacklist) {
                     $updateTempFile = $this->handleTempFile(false);
@@ -254,7 +257,7 @@ class betterPasswordPlugin extends GenericPlugin {
             $site = $siteDao->getSite();
             $minLengthPass = $site->getMinPasswordLength();
             $tempFilePath = $this->getTempFile();
-            if($trustExistingFile && !filesize($tempFilePath)) {
+            if($trustExistingFile) {
                 $fpTemp = fopen($tempFilePath, 'a');
             } else {
                 $fpTemp = fopen($tempFilePath, 'w');
@@ -380,14 +383,14 @@ class betterPasswordPlugin extends GenericPlugin {
         /**
 	 * Callback to fill cache with data, if empty.
 	 * @param $cache Cache
-	 * @param $password_hash string The hash of the user password
+	 * @param $passwordHash string The hash of the user password
 	 * @return boolean if hash of the password exists in the cache
 	 */
 	function _PasswordCacheMiss($cache, $passwordHash) {
             $check = get_class($cache->cacheMiss);
             if ($check === 'generic_cache_miss') {
                 $cache_password = array();
-                $Passwords = fopen($this->handleTempFile(), "r");
+                $Passwords = fopen($this->getTempFile(), "r");
                 while (!feof($Passwords)) {
                     $curr_password = rtrim(fgets($Passwords), PHP_EOL);
                     $sha_curr_password = sha1($curr_password);
