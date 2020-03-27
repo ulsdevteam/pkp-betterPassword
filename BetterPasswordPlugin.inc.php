@@ -165,9 +165,8 @@ class betterPasswordPlugin extends GenericPlugin {
                         if ($blacklist) {
                             $cache = CacheManager::getManager()->getCache('badPasswords', $passwordHash, array($this, '_PasswordCacheMiss'));
                             $badPassword = $cache->get($shaPass);
-                        }
-                        else {
-                            $badPassword = true;
+                        } else {
+                            $form->addError($errorField, __('plugins.generic.betterPassword.validation.betterPasswordUnexpectedError'));
                         }
 			if ($badPassword) {
 				$form->addError($errorField, __('plugins.generic.betterPassword.validation.betterPasswordCheckBlacklist'));
@@ -201,7 +200,7 @@ class betterPasswordPlugin extends GenericPlugin {
 	}
         /**
 	 * Check for newly added blacklists. If ran the first time creates the list of blacklists
-	 * @return 0|1|2 0 if update failed, 1 if setting is updated, 2 if new setting has been created
+	 * @return boolean false if update failed, true if updated the setting
 	 */
         
         function blacklistSetting() {
@@ -212,46 +211,37 @@ class betterPasswordPlugin extends GenericPlugin {
                     $newBlacklist[$filename] = sha1_file($filename);
             }
             if (is_null($prevBlacklist)) {
-                $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $newBlacklist);
-                $updateSettings = true;
-            }
-            else {
+                $updateSettings = $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $newBlacklist);
+            } else {
                 if ($prevBlacklist != $newBlacklist) {
                     $updateTempFile = $this->handleTempFile(false);
                     if($updateTempFile) {
-                        $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $blacklistFileSettingHash);
-                        $updateSettings = true;
-                    }
-                    else {
-                        return $updateSettings;
+                        $updateSettings = $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $newBlacklist);
                     }
                 }
             }
-            return $updateSettings;
+            return (boolean) $updateSettings;
         }
         
         /**
          * Creates a temporary file to aggregate all the passwords from the blacklist files if the temporary file doesn't exist
-         * @return array The file path for the temporary file
+         * @return string|null The file path for the temporary file
          */
         function getTempFile() {
             import('lib.pkp.classes.file.PrivateFileManager');
             $fileMgr = new PrivateFileManager();
             $tempFileDir = realpath($fileMgr->getBasePath()) . DIRECTORY_SEPARATOR . 'betterPassword';
             if (!$fileMgr->fileExists($tempFileDir, 'dir')) {
-			$success = $fileMgr->mkdirtree($tempFileDir);
-			if (!$success) {
-                            // Files directory wrong configuration?
+                        $success = $fileMgr->mkdirtree($tempFileDir);
+                        if (!$success) {
+                            error_log('ERROR: Unable to create directory' . $tempFileDir);// Files directory wrong configuration?
                             return null;
-			}
-		}
+                        }
+            }
             if(!file_exists($tempFileDir . DIRECTORY_SEPARATOR . 'tempPassFile')) {
                 touch($tempFileDir . DIRECTORY_SEPARATOR . 'tempPassFile');
-                return $tempFileDir . DIRECTORY_SEPARATOR . 'tempPassFile';
             }
-            else {
-                return $tempFileDir . DIRECTORY_SEPARATOR . 'tempPassFile';;
-            }
+            return $tempFileDir . DIRECTORY_SEPARATOR . 'tempPassFile';
         }
         
 	/**
@@ -266,9 +256,8 @@ class betterPasswordPlugin extends GenericPlugin {
             $tempFilePath = $this->getTempFile();
             if($trustExistingFile) {
                 $fpTemp = fopen($tempFilePath, 'a');
-            }
-            else {
-                $fpTemp = fopen($tempFilePath, 'w');;
+            } else {
+                $fpTemp = fopen($tempFilePath, 'w');
             }
             foreach ($this->getBlacklists() as $filename) {
                     $fpPass = fopen($filename, "r");
@@ -281,7 +270,8 @@ class betterPasswordPlugin extends GenericPlugin {
                         }
 			flock($fpTemp, LOCK_UN);
                     } else {
-                            return false;
+                        error_log('ERROR: Could not lock file' . $tempFilePath . 'to write contents');
+                        return false;
                     }
                     fclose($fpPass);
             }
@@ -297,8 +287,8 @@ class betterPasswordPlugin extends GenericPlugin {
 	 * @return array filename strings
 	 */
 	function getBlacklists() {
-            return array(
-		$this->getPluginPath() . DIRECTORY_SEPARATOR . 'badPasswords' . DIRECTORY_SEPARATOR . 'badPasswords.txt',
+		return array(
+			$this->getPluginPath() . DIRECTORY_SEPARATOR . 'badPasswords' . DIRECTORY_SEPARATOR . 'badPasswords.txt',
 		);
 	}
         
