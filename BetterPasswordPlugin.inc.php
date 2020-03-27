@@ -247,7 +247,7 @@ class betterPasswordPlugin extends GenericPlugin {
 	/**
 	 * Handles the temporary file with the data of password blacklists.
          * @param boolean $trustExistingFile Default true, only false when updating temp file
-	 * @return string|boolean|null temporary filename string, or boolean or null when there is an error, when $check is false return associative array
+	 * @return boolean True if operations done to the temp file succeed  
 	 */
          function handleTempFile($trustExistingFile = true) {
             $siteDao = DAORegistry::getDAO('SiteDAO');
