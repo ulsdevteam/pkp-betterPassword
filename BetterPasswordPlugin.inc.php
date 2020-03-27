@@ -254,7 +254,7 @@ class betterPasswordPlugin extends GenericPlugin {
             $site = $siteDao->getSite();
             $minLengthPass = $site->getMinPasswordLength();
             $tempFilePath = $this->getTempFile();
-            if($trustExistingFile) {
+            if($trustExistingFile && !filesize($tempFilePath)) {
                 $fpTemp = fopen($tempFilePath, 'a');
             } else {
                 $fpTemp = fopen($tempFilePath, 'w');
