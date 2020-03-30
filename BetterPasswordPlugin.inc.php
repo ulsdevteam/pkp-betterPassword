@@ -221,6 +221,8 @@ class betterPasswordPlugin extends GenericPlugin {
                     if($updateTempFile) {
                         $updateSettings = $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $newBlacklist);
                     }
+                } else {
+                    $updateSettings = true;
                 }
             }
             return (boolean) $updateSettings;
