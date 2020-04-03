@@ -74,7 +74,16 @@ class BetterPasswordHandler extends Handler {
         function deleteBlacklists($args, $request) {
             import('lib.pkp.classes.file.PrivateFileManager');
             $privateFileManager = new PrivateFileManager();
-            
-            $privateFileManager->getUploadedFilePath('uploadedFile');
+            $fileHash = $args['fileId'];
+            $plugin = PluginRegistry::getPlugin('generic', 'betterpasswordplugin');
+            $currBlacklist = $plugin->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
+            $filePath = array_search($fileHash,$currBlacklist);
+            if ($privateFileManager->deleteByPath($filePath)) {
+                unset($currBlacklist[$filePath]);
+                $plugin->updateSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles', $currBlacklist);
+            } else {
+                return false;
+            }
+            return true;
         }
 }

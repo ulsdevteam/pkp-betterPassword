@@ -84,9 +84,9 @@ class BetterPasswordSettingsForm extends Form {
 	 * @copydoc Form::fetch()
 	 */
 	function fetch($request, $template = NULL, $display = false) {
+		$router = $request->getRouter();
 		AppLocale::requireComponents(LOCALE_COMPONENT_PKP_ADMIN);
-                import('lib.pkp.classes.file.PrivateFileManager');
-                $privateFileManager = new PrivateFileManager();
+                $plugin = PluginRegistry::getPlugin('generic', 'betterpasswordplugin');
 		$templateMgr = TemplateManager::getManager($request);
 		$templateMgr->assign('pluginName', $this->_plugin->getName());
 		foreach (array_keys($this->_plugin->settingsKeys) as $key) {
@@ -97,10 +97,24 @@ class BetterPasswordSettingsForm extends Form {
 				$locking[$key] = $this->getData($key) ? $this->getData($key) : '';
 			}
 		}
-                $blacklistFiles = $privateFileManager->getBasePath() . DIRECTORY_SEPARATOR . 'betterPassword' . DIRECTORY_SEPARATOR . 'blacklists' . DIRECTORY_SEPARATOR . '*';
+                $blacklistFiles = $plugin->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
 		$templateMgr->assign('betterPasswordCheckboxes', $checkboxes);
 		$templateMgr->assign('betterPasswordLocking', $locking);
-                $templateMgr->assign('betterPasswordBlacklistFiles', glob($blacklistFiles));
+		foreach (array_keys($blacklistFiles) as $k) {
+			$blacklistFiles[$k] = new LinkAction(
+						'deleteBlacklist',
+						new RemoteActionConfirmationModal(
+							$request->getSession(),
+							__('plugins.generic.betterPassword.actions.deleteBlacklistCheck'),
+							__('plugins.generic.betterPassword.actions.deleteBlacklist'),
+							$router->url($request, null, null, 'deleteBlacklists', null, array('fileId' => $blacklistFiles[$k]))
+							),
+						__('common.delete'),
+						null,
+						__('plugins.generic.betterPassword.grid.action.deleteBlacklist')
+					);
+		}
+                $templateMgr->assign('betterPasswordBlacklistFiles', $blacklistFiles);
 		return parent::fetch($request);
 	}
 

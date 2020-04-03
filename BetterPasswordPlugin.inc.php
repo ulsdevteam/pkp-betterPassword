@@ -217,7 +217,7 @@ class betterPasswordPlugin extends GenericPlugin {
 	function getBlacklists() {
             $userBlacklists = $this->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
             $userBlacklistsFilenames = array_keys($userBlacklists);
-            $pluginBlacklistsFilenames =array ($this->getPluginPath() . DIRECTORY_SEPARATOR . 'badPasswords' . DIRECTORY_SEPARATOR . 'badPasswords.txt', );
+            $pluginBlacklistsFilenames = array ($this->getPluginPath() . DIRECTORY_SEPARATOR . 'badPasswords' . DIRECTORY_SEPARATOR . 'badPasswords.txt', );
             $blacklistFilenames = array_merge($userBlacklistsFilenames,$pluginBlacklistsFilenames);
             return $blacklistFilenames;
 	}
@@ -291,6 +291,11 @@ class betterPasswordPlugin extends GenericPlugin {
 					$userDao->updateObject($user);
 			}
 		} elseif($hookName === "LoadComponentHandler" && $args[1] === "uploadBlacklists") {
+                        define('HANDLER_CLASS', 'BetterPasswordComponentHandler');
+                        $args[0] = "plugins.generic.betterPassword.BetterPasswordHandler";
+                        $c = import($args[0]);
+                        return true;
+                } elseif($hookName === "LoadComponentHandler" && $args[1] === "deleteBlacklists") {
                         define('HANDLER_CLASS', 'BetterPasswordComponentHandler');
                         $args[0] = "plugins.generic.betterPassword.BetterPasswordHandler";
                         $c = import($args[0]);
