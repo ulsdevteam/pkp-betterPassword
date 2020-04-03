@@ -85,6 +85,8 @@ class BetterPasswordSettingsForm extends Form {
 	 */
 	function fetch($request, $template = NULL, $display = false) {
 		AppLocale::requireComponents(LOCALE_COMPONENT_PKP_ADMIN);
+                import('lib.pkp.classes.file.PrivateFileManager');
+                $privateFileManager = new PrivateFileManager();
 		$templateMgr = TemplateManager::getManager($request);
 		$templateMgr->assign('pluginName', $this->_plugin->getName());
 		foreach (array_keys($this->_plugin->settingsKeys) as $key) {
@@ -95,8 +97,10 @@ class BetterPasswordSettingsForm extends Form {
 				$locking[$key] = $this->getData($key) ? $this->getData($key) : '';
 			}
 		}
+                $blacklistFiles = $privateFileManager->getBasePath() . DIRECTORY_SEPARATOR . 'betterPassword' . DIRECTORY_SEPARATOR . 'blacklists' . DIRECTORY_SEPARATOR . '*';
 		$templateMgr->assign('betterPasswordCheckboxes', $checkboxes);
 		$templateMgr->assign('betterPasswordLocking', $locking);
+                $templateMgr->assign('betterPasswordBlacklistFiles', glob($blacklistFiles));
 		return parent::fetch($request);
 	}
 

@@ -23,6 +23,14 @@
 		{fbvFormSection for="minPasswordLength"}
 			{fbvElement type="text" id="minPasswordLength" label="admin.settings.minPasswordLength" value="$minPasswordLength"}
 		{/fbvFormSection}
+                {fbvFormSection list = true title="plugins.generic.betterPassword.manager.settings.betterPaswordExistingBlacklist"}
+		        {foreach from=$betterPasswordBlacklistFiles key="betterPasswordBlacklistSetting" item="betterPasswordSettingValue"}
+                            <p>{$betterPasswordSettingValue}</p>
+			{/foreach}
+                {/fbvFormSection}
+                {fbvFormSection title="plugins.generic.betterPassword.manager.settings.betterPasswordBlacklist"}
+                        {include file="controllers/fileUploadContainer.tpl" id="plupload"}
+                {/fbvFormSection}
 	{/fbvFormArea}
 
 	{fbvFormArea id="betterPasswordSettingsFormOptions" title="plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"}

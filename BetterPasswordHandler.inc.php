@@ -42,4 +42,39 @@ class BetterPasswordHandler extends Handler {
 		));
 		$templateMgr->display('frontend/pages/userLogin.tpl');
 	}
+        
+        /**
+        * Store the uploaded blacklists files
+        * @return boolean JSONMessage
+        */
+        function uploadBlacklists($args, $request) {
+            import('lib.pkp.classes.file.PrivateFileManager');
+            $privateFileManager = new PrivateFileManager();
+            
+            $uploadedFile = $_FILES['uploadedFile'];
+            $destFilePath = $privateFileManager->getBasePath() . DIRECTORY_SEPARATOR . 'betterPassword' . DIRECTORY_SEPARATOR . 'blacklists' . DIRECTORY_SEPARATOR . $uploadedFile['name'];
+            
+            if(!$privateFileManager->uploadFile('uploadedFile', $destFilePath)) {
+                return new JSONMessage(false, __('plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail'));
+            } else {
+                $plugin = PluginRegistry::getPlugin('generic', 'betterpasswordplugin');
+                $prevBlacklist = $plugin->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
+                if(!array_key_exists($destFilePath, $prevBlacklist)) {
+                    $prevBlacklist[$destFilePath] = sha1_file($destFilePath);
+                    $plugin->updateSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles', $prevBlacklist);
+                }
+            }
+            return new JSONMessage(true);
+        }
+
+        /**
+        * Store the uploaded blacklists files
+        * @return boolean JSONMessage
+        */
+        function deleteBlacklists($args, $request) {
+            import('lib.pkp.classes.file.PrivateFileManager');
+            $privateFileManager = new PrivateFileManager();
+            
+            $privateFileManager->getUploadedFilePath('uploadedFile');
+        }
 }

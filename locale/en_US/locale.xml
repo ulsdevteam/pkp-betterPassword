@@ -42,4 +42,5 @@
 	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired">Number of bad login attempts after which to lock an account must be numeric.</message>
 	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired">Number of seconds before forgetting bad login attempts must be numeric.</message>
 	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired">Number of seconds to lock an account after excessive bad login attempts must be numeric.</message>
+        <message key="plugins.generic.betterPassword.manager.settings.betterPaswordExistingBlacklist">Exisiting Blacklists</message>
 </locale>
