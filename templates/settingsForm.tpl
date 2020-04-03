@@ -7,10 +7,18 @@
  * Better Password plugin settings
  *
  *}
-<script>
+ <script>
 	$(function() {ldelim}
-		// Attach the form handler.
-		$('#betterPasswordSettingsForm').pkpHandler('$.pkp.controllers.form.AjaxFormHandler');
+		// Attach the upload form handler.
+		$('#betterPasswordSettingsForm').pkpHandler(
+			'$.pkp.controllers.form.FileUploadFormHandler',
+			{ldelim}
+				$uploader: $('#plupload'),
+				uploaderOptions: {ldelim}
+					uploadUrl: {url|json_encode router=$smarty.const.ROUTE_COMPONENT op="uploadBlacklists" escape=false},
+					baseUrl: {$baseUrl|json_encode}
+				{rdelim}
+			{rdelim});
 	{rdelim});
 </script>
 <form class="pkp_form" id="betterPasswordSettingsForm" method="post" action="{url router=$smarty.const.ROUTE_COMPONENT op="manage" category="generic" plugin=$pluginName verb="settings" save=true}">
@@ -23,11 +31,6 @@
 		{fbvFormSection for="minPasswordLength"}
 			{fbvElement type="text" id="minPasswordLength" label="admin.settings.minPasswordLength" value="$minPasswordLength"}
 		{/fbvFormSection}
-                {fbvFormSection list = true title="plugins.generic.betterPassword.manager.settings.betterPaswordExistingBlacklist"}
-		        {foreach from=$betterPasswordBlacklistFiles key="betterPasswordBlacklistSetting" item="betterPasswordSettingValue"}
-                            <p>{$betterPasswordSettingValue}</p>
-			{/foreach}
-                {/fbvFormSection}
                 {fbvFormSection title="plugins.generic.betterPassword.manager.settings.betterPasswordBlacklist"}
                         {include file="controllers/fileUploadContainer.tpl" id="plupload"}
                 {/fbvFormSection}

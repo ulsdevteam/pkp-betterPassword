@@ -56,6 +56,7 @@ class betterPasswordPlugin extends GenericPlugin {
 				HookRegistry::register('LoadHandler', array($this, 'callbackLoadHandler'));
 			}
 			HookRegistry::register('userdao::getAdditionalFieldNames', array(&$this, 'addUserSettings'));
+                        HookRegistry::register('LoadComponentHandler', array($this, 'callbackLoadHandler'));
 		}
 		return $success;
 	}
@@ -214,9 +215,11 @@ class betterPasswordPlugin extends GenericPlugin {
 	 * @return array filename strings
 	 */
 	function getBlacklists() {
-		return array(
-			$this->getPluginPath() . DIRECTORY_SEPARATOR . 'badPasswords' . DIRECTORY_SEPARATOR . 'badPasswords.txt',
-		);
+            $userBlacklists = $this->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
+            $userBlacklistsFilenames = array_keys($userBlacklists);
+            $pluginBlacklistsFilenames =array ($this->getPluginPath() . DIRECTORY_SEPARATOR . 'badPasswords' . DIRECTORY_SEPARATOR . 'badPasswords.txt', );
+            $blacklistFilenames = array_merge($userBlacklistsFilenames,$pluginBlacklistsFilenames);
+            return $blacklistFilenames;
 	}
 
 	/*
@@ -287,7 +290,12 @@ class betterPasswordPlugin extends GenericPlugin {
 					$user->setData($this->getName()."::badPasswordTime", 0);
 					$userDao->updateObject($user);
 			}
-		}
+		} elseif($hookName === "LoadComponentHandler" && $args[1] === "uploadBlacklists") {
+                        define('HANDLER_CLASS', 'BetterPasswordComponentHandler');
+                        $args[0] = "plugins.generic.betterPassword.BetterPasswordHandler";
+                        $c = import($args[0]);
+                        return true;
+                }
 		return false;
 	}
 
