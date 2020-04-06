@@ -7,7 +7,7 @@
  * Better Password plugin settings
  *
  *}
- <script>
+<script>
 	$(function() {ldelim}
 		// Attach the upload form handler.
 		$('#betterPasswordSettingsForm').pkpHandler(
