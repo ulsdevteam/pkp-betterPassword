@@ -46,6 +46,7 @@ class betterPasswordPlugin extends GenericPlugin {
 		if (!Config::getVar('general', 'installed') || defined('RUNNING_UPGRADE')) return true;
 		if ($success && $this->getEnabled()) {
 			// Attach hooks
+			$this->registerDAOs();
 			foreach (array('registrationform::validate', 'changepasswordform::validate', 'loginchangepasswordform::validate') as $hook) {
 				HookRegistry::register($hook, array(&$this, 'checkPassword'));
 			}
@@ -229,21 +230,18 @@ class betterPasswordPlugin extends GenericPlugin {
 		if ($template === 'frontend/pages/userLogin.tpl') {
 			if ($templateMgr->getTemplateVars('error') === 'user.login.loginError') {
 				$username = $templateMgr->getTemplateVars('username');
-				$userDao = DAORegistry::getDAO('UserDAO');
-				$user = $userDao->getByUsername($username);
-				if (isset($user)) {
-					$count = $user->getData($this->getName()."::badPasswordCount");
-					$time = $user->getData($this->getName()."::badPasswordTime");
+				$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');
+				$user = $badpwFailedLoginsDao->getByUsername($username);
+				if (!is_null($user)) {
+					$count = $user->getCount();
+					$time = strtotime($user->getFailedTime());
 					// expire old bad password attempts
 					if (($count || $time) && $time < time() - $this->getSetting(CONTEXT_SITE, 'betterPasswordLockExpires')) {
 						$count = 0;
 					}
-					// update the count and time to represent this failed attempt
+					// update the count to represent this failed attempt
 					$count++;
-					$time = time();
-					$user->setData($this->getName()."::badPasswordCount", $count);
-					$user->setData($this->getName()."::badPasswordTime", $time);
-					$userDao->updateObject($user);
+					$badpwFailedLoginsDao->incCount($user);
 					// warn the user if count has been exceeded
 					if ($count >= $this->getSetting(CONTEXT_SITE, 'betterPasswordLockTries')) {
 						$templateMgr->assign('error', 'plugins.generic.betterPassword.validation.betterPasswordLocked');
@@ -260,19 +258,17 @@ class betterPasswordPlugin extends GenericPlugin {
 	public function callbackLoadHandler($hookName, $args) {
 		if ($args[0] === "login" && $args[1] === "signIn") {
 			// Hijack the user's signin attempt, if frequent bad passwords are being tried
-			if (isset($_POST['username'])) {
-				$userDao = DAORegistry::getDAO('UserDAO');
-				$user = $userDao->getByUsername($_POST['username']);
-				if (isset($user)) {
-					$count = $user->getData($this->getName()."::badPasswordCount");
-					$time = $user->getData($this->getName()."::badPasswordTime");
-					if ($count >= $this->getSetting(CONTEXT_SITE, 'betterPasswordLockTries') && $time > time() - $this->getSetting(CONTEXT_SITE, 'betterPasswordLockSeconds')) {
-						// Hijack the typical login/signIn handler to prevent login
-						define('HANDLER_CLASS', 'BetterPasswordHandler');
-						$args[0] = "plugins.generic.betterPassword.BetterPasswordHandler";
-						import($args[0]);
-						return true;
-					}
+			$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');
+			$user = $badpwFailedLoginsDao->getByUsername($_POST['usernmae']);
+			if (!is_null($user)) {
+				$count = $user->getCount();
+				$time = strtotime($user->getFailedTime());
+				if ($count >= $this->getSetting(CONTEXT_SITE, 'betterPasswordLockTries') && $time > time() - $this->getSetting(CONTEXT_SITE, 'betterPasswordLockSeconds')) {
+					// Hijack the typical login/signIn handler to prevent login
+					define('HANDLER_CLASS', 'BetterPasswordHandler');
+					$args[0] = "plugins.generic.betterPassword.BetterPasswordHandler";
+					import($args[0]);
+					return true;
 				}
 			}
 		} elseif ($args[0] === "login" && $args[1] === "resetPassword") {
@@ -303,5 +299,22 @@ class betterPasswordPlugin extends GenericPlugin {
 			)
 		);
 		return false;
+	}
+	
+	/**
+	 * @copydoc PKPPlugin::getInstallSchemaFile()
+	 */
+	public function getInstallSchemaFile() {
+		return $this->getPluginPath() . DIRECTORY_SEPARATOR . 'xml' . DIRECTORY_SEPARATOR . 'schema.xml';
+	}
+	
+	/**
+	 * Register this plugin's DAO with the application
+	 */
+	public function registerDAOs() {
+		$this->import('classes.BadpwFailedLoginsDAO');
+		
+		$badpwFailedLoginDAO = new BadpwFailedLoginsDAO();
+		DAORegistry::registerDAO('BadpwFailedLoginsDAO', $badpwFailedLoginDAO);
 	}
 }
