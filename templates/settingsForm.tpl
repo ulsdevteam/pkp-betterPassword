@@ -38,7 +38,7 @@
                         {/foreach}
                 {/fbvFormSection}
                 {fbvFormSection title="plugins.generic.betterPassword.manager.settings.betterPasswordBlacklist"}
-                        {include file="controllers/fileUploadContainer.tpl" id="plupload"}
+                    {include file="controllers/fileUploadContainer.tpl" id="plupload"}
                 {/fbvFormSection}
 	{/fbvFormArea}
 

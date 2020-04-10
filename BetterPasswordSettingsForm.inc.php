@@ -86,7 +86,7 @@ class BetterPasswordSettingsForm extends Form {
 	function fetch($request, $template = NULL, $display = false) {
 		$router = $request->getRouter();
 		AppLocale::requireComponents(LOCALE_COMPONENT_PKP_ADMIN);
-                $plugin = PluginRegistry::getPlugin('generic', 'betterpasswordplugin');
+                $plugin = $this->_plugin;
 		$templateMgr = TemplateManager::getManager($request);
 		$templateMgr->assign('pluginName', $this->_plugin->getName());
 		foreach (array_keys($this->_plugin->settingsKeys) as $key) {
@@ -97,7 +97,7 @@ class BetterPasswordSettingsForm extends Form {
 				$locking[$key] = $this->getData($key) ? $this->getData($key) : '';
 			}
 		}
-                $blacklistFiles = $plugin->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
+		$blacklistFiles = $plugin->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
 		$templateMgr->assign('betterPasswordCheckboxes', $checkboxes);
 		$templateMgr->assign('betterPasswordLocking', $locking);
 		foreach (array_keys($blacklistFiles) as $k) {
@@ -114,7 +114,7 @@ class BetterPasswordSettingsForm extends Form {
 						__('plugins.generic.betterPassword.grid.action.deleteBlacklist')
 					);
 		}
-                $templateMgr->assign('betterPasswordBlacklistFiles', $blacklistFiles);
+		$templateMgr->assign('betterPasswordBlacklistFiles', $blacklistFiles);
 		return parent::fetch($request);
 	}
 
