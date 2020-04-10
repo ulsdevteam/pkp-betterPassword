@@ -217,14 +217,14 @@ class betterPasswordPlugin extends GenericPlugin {
 	function getBlacklists() {
 			import('lib.pkp.classes.file.PrivateFileManager');
 			$privateFileManager = new PrivateFileManager();
-            $userBlacklists = $this->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
-            $userBlacklistsFilenames = array_keys($userBlacklists);
+			$userBlacklists = $this->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
+			$userBlacklistsFilenames = array_keys($userBlacklists);
 			foreach ($userBlacklistsFilenames as $f) {
 				$userBlacklistsFilepath[] = $privateFileManager->getBasePath() . DIRECTORY_SEPARATOR . 'betterPassword' . DIRECTORY_SEPARATOR . 'blacklists' . DIRECTORY_SEPARATOR . $f;
 			}
-            $pluginBlacklistsFilenames = array ($this->getPluginPath() . DIRECTORY_SEPARATOR . 'badPasswords' . DIRECTORY_SEPARATOR . 'badPasswords.txt', );
-            $blacklistFilenames = array_merge($userBlacklistsFilepath,$pluginBlacklistsFilenames);
-            return $blacklistFilenames;
+			$pluginBlacklistsFilenames = array ($this->getPluginPath() . DIRECTORY_SEPARATOR . 'badPasswords' . DIRECTORY_SEPARATOR . 'badPasswords.txt', );
+			$blacklistFilenames = array_merge($userBlacklistsFilepath,$pluginBlacklistsFilenames);
+			return $blacklistFilenames;
 	}
 
 	/*
