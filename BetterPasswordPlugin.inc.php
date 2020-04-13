@@ -56,7 +56,7 @@ class betterPasswordPlugin extends GenericPlugin {
 				HookRegistry::register('LoadHandler', array($this, 'callbackLoadHandler'));
 			}
 			HookRegistry::register('userdao::getAdditionalFieldNames', array(&$this, 'addUserSettings'));
-                        HookRegistry::register('LoadComponentHandler', array($this, 'callbackLoadHandler'));
+			HookRegistry::register('LoadComponentHandler', array($this, 'callbackLoadHandler'));
 		}
 		return $success;
 	}
