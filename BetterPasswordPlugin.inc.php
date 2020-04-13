@@ -259,7 +259,7 @@ class betterPasswordPlugin extends GenericPlugin {
 		if ($args[0] === "login" && $args[1] === "signIn") {
 			// Hijack the user's signin attempt, if frequent bad passwords are being tried
 			$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');
-			$user = $badpwFailedLoginsDao->getByUsername($_POST['usernmae']);
+			$user = $badpwFailedLoginsDao->getByUsername($_POST['username']);
 			if (!is_null($user)) {
 				$count = $user->getCount();
 				$time = strtotime($user->getFailedTime());

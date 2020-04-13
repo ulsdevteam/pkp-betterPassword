@@ -8,6 +8,7 @@
  */
 
 import('lib.pkp.classes.db.DAO');
+import('plugins.generic.betterPassword.classes.BadpwFailedLogins');
 
 class BadpwFailedLoginsDAO extends DAO{
 	

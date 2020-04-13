@@ -8,7 +8,7 @@ betterPassword plugin schema in XML
 -->
 
 
-<schema>
+<schema version="0.2">
     <!--
     TABLE badpw_failedlogins
     -->
