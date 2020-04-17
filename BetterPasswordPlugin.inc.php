@@ -200,11 +200,11 @@ class betterPasswordPlugin extends GenericPlugin {
 	}
 	/**
 	 * Check for newly added blacklists. If ran the first time creates the list of blacklists
-	 * @return boolean false if update failed, true if updated the setting
+	 * @return boolean false if updating blacklist failed, true if updated the blacklist
 	 */	
 	function generateBlacklist() {
 		$prevBlacklist = $this->getSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles');
-		$updateSettings = false;
+		$updateBlacklist = false;
 		$newBlacklist = array();
 		foreach ($this->getBlacklists() as $filename) {
 			$newBlacklist[$filename] = sha1_file($filename);
@@ -212,19 +212,19 @@ class betterPasswordPlugin extends GenericPlugin {
 		if (is_null($prevBlacklist)) {
 			$updateTempFile = $this->handleTempFile();
 			if ($updateTempFile) {
-				$updateSettings = $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $newBlacklist);
+				$updateBacklist = $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $newBlacklist);
 			}
 		} else {
 			if ($prevBlacklist != $newBlacklist) {
 				$updateTempFile = $this->handleTempFile(false);
 				if($updateTempFile) {
-					$updateSettings = $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $newBlacklist);
+					$updateBlacklist = $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $newBlacklist);
 				}
 			} else {
-				$updateSettings = true;
+				$updateBlacklist = true;
 			}
 		}
-		return (boolean) $updateSettings;
+		return (boolean) $updateBlacklist;
 	}
         
 	/**
@@ -295,7 +295,7 @@ class betterPasswordPlugin extends GenericPlugin {
 			$this->getPluginPath() . DIRECTORY_SEPARATOR . 'badPasswords' . DIRECTORY_SEPARATOR . 'badPasswords.txt',
 		);
 	}
-        
+
 	/*
 	 * Hook callback: check for bad password attempts
 	 * @see TemplateManager::display()
@@ -383,7 +383,7 @@ class betterPasswordPlugin extends GenericPlugin {
 	}
 	/**
 	 * Callback to fill cache with data, if empty.
-	 * @param $cache Cache
+	 * @param $cache GenericCache
 	 * @param $passwordHash string The hash of the user password
 	 * @return boolean if hash of the password exists in the cache
 	 */
@@ -403,5 +403,6 @@ class betterPasswordPlugin extends GenericPlugin {
 			$cache->setEntireCache($cache_password);
 			return in_array($passwordHash, $cache_password);
 		}
+		return false;
 	}
 }
