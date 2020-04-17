@@ -209,20 +209,13 @@ class betterPasswordPlugin extends GenericPlugin {
 		foreach ($this->getBlacklists() as $filename) {
 			$newBlacklist[$filename] = sha1_file($filename);
 		}
-		if (is_null($prevBlacklist)) {
+		if (is_null($prevBlacklist) || $prevBlacklist != $newBlacklist) {
 			$updateTempFile = $this->handleTempFile();
 			if ($updateTempFile) {
 				$updateBacklist = $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $newBlacklist);
 			}
 		} else {
-			if ($prevBlacklist != $newBlacklist) {
-				$updateTempFile = $this->handleTempFile(false);
-				if($updateTempFile) {
-					$updateBlacklist = $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $newBlacklist);
-				}
-			} else {
-				$updateBlacklist = true;
-			}
+			$updateBlacklist = true;
 		}
 		return (boolean) $updateBlacklist;
 	}
@@ -250,19 +243,14 @@ class betterPasswordPlugin extends GenericPlugin {
         
 	/**
 	 * Handles the temporary file with the data of password blacklists.
-	 * @param boolean $trustExistingFile Default true, only false when updating temp file
 	 * @return boolean True if operations done to the temp file succeed  
 	 */
-	function handleTempFile($trustExistingFile = true) {
+	function handleTempFile() {
 		$siteDao = DAORegistry::getDAO('SiteDAO');
 		$site = $siteDao->getSite();
 		$minLengthPass = $site->getMinPasswordLength();
 		$tempFilePath = $this->getTempFile();
-		if($trustExistingFile) {
-			$fpTemp = fopen($tempFilePath, 'a');
-		} else {
-			$fpTemp = fopen($tempFilePath, 'w');
-		}
+		$fpTemp = fopen($tempFilePath, 'w');
 		foreach ($this->getBlacklists() as $filename) {
 			$fpPass = fopen($filename, "r");
 			if (flock($fpTemp, LOCK_EX)) {
@@ -280,9 +268,7 @@ class betterPasswordPlugin extends GenericPlugin {
 			fclose($fpPass);
 		}
 		fclose($fpTemp);
-		if (!$trustExistingFile) {
-			$flushCache = CacheManager::getManager()->flush('badPasswords');
-		}
+		$flushCache = CacheManager::getManager()->flush('badPasswords');
 		return true;
 	}
         
