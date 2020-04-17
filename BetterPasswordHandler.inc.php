@@ -47,7 +47,7 @@ class BetterPasswordHandler extends Handler {
 	 * Store the uploaded blacklists files
 	 * @param $args array Arguments array expecting user uploaded file properties
 	 * @param $request PKPRequest Request object.
-	 * @return boolean JSONMessage
+	 * @return JSONMessage True is blacklist file is uploaded properly
 	 */
 	function uploadBlacklists($args, $request) {
 		import('lib.pkp.classes.file.PrivateFileManager');
@@ -69,7 +69,7 @@ class BetterPasswordHandler extends Handler {
 	 * Delete the user uploaded blacklists files
 	 * @param $args array Arguments array expecting user uploaded file hash
 	 * @param $request PKPRequest Request object.
-	 * @return boolean JSONMessage
+	 * @return JSONMessage True if blacklist is deleted
 	 */
 	function deleteBlacklists($args, $request) {
 		import('lib.pkp.classes.file.PrivateFileManager');

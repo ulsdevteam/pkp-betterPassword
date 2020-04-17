@@ -34,7 +34,7 @@ class BetterPasswordSettingsForm extends Form {
 	function __construct($plugin, $contextId) {
 		$this->_contextId = CONTEXT_SITE;
 		$this->_plugin = $plugin;
-		
+
 		parent::__construct($plugin->getTemplateResource('settingsForm.tpl'), $this->_contextId);
 
 		$lockFields = array();
@@ -86,7 +86,7 @@ class BetterPasswordSettingsForm extends Form {
 	function fetch($request, $template = NULL, $display = false) {
 		$router = $request->getRouter();
 		AppLocale::requireComponents(LOCALE_COMPONENT_PKP_ADMIN);
-                $plugin = $this->_plugin;
+		$plugin = $this->_plugin;
 		$templateMgr = TemplateManager::getManager($request);
 		$templateMgr->assign('pluginName', $this->_plugin->getName());
 		foreach (array_keys($this->_plugin->settingsKeys) as $key) {
