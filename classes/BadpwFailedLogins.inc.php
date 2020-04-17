@@ -7,23 +7,26 @@
  * @class BadpwFailedLogins
  * @brief Container for badPassword failed logins 
  */
-class BadpwFailedLogins extends DataObject{
+class BadpwFailedLogins extends DataObject {
 	
-	public $username, $count, $lastLoginTime;	
+	private $username, $count, $lastLoginTime;	
+	
 	/**
 	 * Constructor
-	 * @return BadpwFailedLogins
+	 * @param String $username Username
+	 * @param Integer $count Number of bad password login count
+	 * @param timestamp $lastLoginTime The time of the last bad login attempt
 	 */
-	
 	public function __construct($username, $count, $lastLoginTime) {
 		parent::__construct();
-		$this->username = $username;
-		$this->count = $count;
-		$this->lastLoginTime = $lastLoginTime;
+		$this->username = filter_var($username, FILTER_SANITIZE_STRING);
+		$this->count = filter_var($count, FILTER_SANITIZE_NUMBER_INT);
+		$this->lastLoginTime = filter_var($lastLoginTime, FILTER_SANITIZE_NUMBER_INT);
 	}
 	
 	/**
 	 * Get the username
+	 * @return String The username
 	 */
 	public function getUsername() {
 		return $this->username;
@@ -31,6 +34,7 @@ class BadpwFailedLogins extends DataObject{
 	
 	/**
 	 * Get the count of bad login attempts
+	 * @return Integer Number of bad password login count
 	 */
 	public function getCount() {
 		return $this->count;
@@ -38,6 +42,7 @@ class BadpwFailedLogins extends DataObject{
 	
 	/**
 	 * Get the time of last failed login attempt
+	 * @return timestamp The time of the last bad login attempt
 	 */
 	public function getFailedTime() {
 		return $this->lastLoginTime;

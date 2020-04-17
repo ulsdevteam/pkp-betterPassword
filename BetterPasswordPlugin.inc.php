@@ -234,13 +234,12 @@ class betterPasswordPlugin extends GenericPlugin {
 				$user = $badpwFailedLoginsDao->getByUsername($username);
 				if (!is_null($user)) {
 					$count = $user->getCount();
-					$time = strtotime($user->getFailedTime());
+					$time = $user->getFailedTime();
 					// expire old bad password attempts
 					if (($count || $time) && $time < time() - $this->getSetting(CONTEXT_SITE, 'betterPasswordLockExpires')) {
-						$count = 0;
+						$badpwFailedLoginsDao->resetCount($user);
 					}
 					// update the count to represent this failed attempt
-					$count++;
 					$badpwFailedLoginsDao->incCount($user);
 					// warn the user if count has been exceeded
 					if ($count >= $this->getSetting(CONTEXT_SITE, 'betterPasswordLockTries')) {
@@ -258,17 +257,19 @@ class betterPasswordPlugin extends GenericPlugin {
 	public function callbackLoadHandler($hookName, $args) {
 		if ($args[0] === "login" && $args[1] === "signIn") {
 			// Hijack the user's signin attempt, if frequent bad passwords are being tried
-			$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');
-			$user = $badpwFailedLoginsDao->getByUsername($_POST['username']);
-			if (!is_null($user)) {
-				$count = $user->getCount();
-				$time = strtotime($user->getFailedTime());
-				if ($count >= $this->getSetting(CONTEXT_SITE, 'betterPasswordLockTries') && $time > time() - $this->getSetting(CONTEXT_SITE, 'betterPasswordLockSeconds')) {
-					// Hijack the typical login/signIn handler to prevent login
-					define('HANDLER_CLASS', 'BetterPasswordHandler');
-					$args[0] = "plugins.generic.betterPassword.BetterPasswordHandler";
-					import($args[0]);
-					return true;
+			if(isset($_POST['username'])) {
+				$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');
+				$user = $badpwFailedLoginsDao->getByUsername($_POST['username']);
+				if(isset($user)) {
+					$count = $user->getCount();
+					$time = $user->getFailedTime();
+					if($count >= $this->getSetting(CONTEXT_SITE, 'betterPasswordLockTries') && $time > time() - $this->getSetting(CONTEXT_SITE, 'betterPasswordLockSeconds')) {
+						// Hijack the typical login/signIn handler to prevent login
+						define('HANDLER_CLASS', 'BetterPasswordHandler');
+						$args[0] = "plugins.generic.betterPassword.BetterPasswordHandler";
+						import($args[0]);
+						return true;
+					}
 				}
 			}
 		} elseif ($args[0] === "login" && $args[1] === "resetPassword") {
