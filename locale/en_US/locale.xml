@@ -22,6 +22,7 @@
 	<message key="plugins.generic.betterPassword.validation.betterPasswordCheckSpecial">Your password requires an non-alphanumeric character.</message>
 	<message key="plugins.generic.betterPassword.validation.betterPasswordCheckBlacklist">Your password was found in a blacklist of known bad passwords.</message>
 	<message key="plugins.generic.betterPassword.validation.betterPasswordLocked">Your account has been temporarily locked due to bad password attempts.</message>
+	<message key="plugins.generic.betterPassword.validation.betterPasswordUnexpectedError">Your password could not be changed at this time.  Please try again later.</message>
 	
 	<!-- Better Password Settings Management -->
 	<message key="plugins.generic.betterPassword.manager.settings">Settings</message>

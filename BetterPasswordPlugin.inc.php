@@ -158,6 +158,7 @@ class betterPasswordPlugin extends GenericPlugin {
 			return false;
 		}
 		if ($this->getSetting(CONTEXT_SITE, 'betterPasswordCheckBlacklist')) {
+			$badPassword = false;
 			$lowerPassword = strtolower($password);
 			$shaPass = sha1($lowerPassword);
 			$passwordHash = substr($shaPass,0,2);
@@ -212,7 +213,7 @@ class betterPasswordPlugin extends GenericPlugin {
 		if (is_null($prevBlacklist) || $prevBlacklist != $newBlacklist) {
 			$updateTempFile = $this->handleTempFile();
 			if ($updateTempFile) {
-				$updateBacklist = $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $newBlacklist);
+				$updateBlacklist = $this->updateSetting(CONTEXT_SITE, 'betterPasswordBlacklistFiles', $newBlacklist);
 			}
 		} else {
 			$updateBlacklist = true;
