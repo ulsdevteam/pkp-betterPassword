@@ -56,6 +56,7 @@ class betterPasswordPlugin extends GenericPlugin {
 				HookRegistry::register('LoadHandler', array($this, 'callbackLoadHandler'));
 			}
 			HookRegistry::register('userdao::getAdditionalFieldNames', array(&$this, 'addUserSettings'));
+			HookRegistry::register('LoadComponentHandler', array($this, 'callbackLoadHandler'));
 		}
 		return $success;
 	}
@@ -214,9 +215,16 @@ class betterPasswordPlugin extends GenericPlugin {
 	 * @return array filename strings
 	 */
 	function getBlacklists() {
-		return array(
-			$this->getPluginPath() . DIRECTORY_SEPARATOR . 'badPasswords' . DIRECTORY_SEPARATOR . 'badPasswords.txt',
-		);
+		import('lib.pkp.classes.file.PrivateFileManager');
+		$privateFileManager = new PrivateFileManager();
+		$userBlacklists = $this->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
+		$userBlacklistsFilenames = array_keys($userBlacklists);
+		foreach ($userBlacklistsFilenames as $f) {
+			$userBlacklistsFilepath[] = $privateFileManager->getBasePath() . DIRECTORY_SEPARATOR . 'betterPassword' . DIRECTORY_SEPARATOR . 'blacklists' . DIRECTORY_SEPARATOR . $f;
+		}
+		$pluginBlacklistsFilenames = array ($this->getPluginPath() . DIRECTORY_SEPARATOR . 'badPasswords' . DIRECTORY_SEPARATOR . 'badPasswords.txt', );
+		$blacklistFilenames = array_merge($userBlacklistsFilepath,$pluginBlacklistsFilenames);
+		return $blacklistFilenames;
 	}
 
 	/*
@@ -287,6 +295,16 @@ class betterPasswordPlugin extends GenericPlugin {
 					$user->setData($this->getName()."::badPasswordTime", 0);
 					$userDao->updateObject($user);
 			}
+		} elseif($hookName === "LoadComponentHandler" && $args[1] === "uploadBlacklists") {
+			define('HANDLER_CLASS', 'BetterPasswordComponentHandler');
+			$args[0] = "plugins.generic.betterPassword.BetterPasswordHandler";
+			$c = import($args[0]);
+			return true;
+		} elseif($hookName === "LoadComponentHandler" && $args[1] === "deleteBlacklists") {
+			define('HANDLER_CLASS', 'BetterPasswordComponentHandler');
+			$args[0] = "plugins.generic.betterPassword.BetterPasswordHandler";
+			$c = import($args[0]);
+			return true;
 		}
 		return false;
 	}
