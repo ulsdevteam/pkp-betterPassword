@@ -13,8 +13,8 @@ class BadpwFailedLogins extends DataObject {
 	
 	/**
 	 * Constructor
-	 * @param String $username Username
-	 * @param Integer $count Number of bad password login count
+	 * @param string $username Username
+	 * @param int $count Number of bad password login count
 	 * @param timestamp $lastLoginTime The time of the last bad login attempt
 	 */
 	public function __construct($username, $count, $lastLoginTime) {

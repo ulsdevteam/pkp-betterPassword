@@ -232,7 +232,7 @@ class betterPasswordPlugin extends GenericPlugin {
 				$username = $templateMgr->getTemplateVars('username');
 				$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');
 				$user = $badpwFailedLoginsDao->getByUsername($username);
-				if (!is_null($user)) {
+				if (!isset($user)) {
 					$count = $user->getCount();
 					$time = $user->getFailedTime();
 					// expire old bad password attempts
@@ -257,13 +257,13 @@ class betterPasswordPlugin extends GenericPlugin {
 	public function callbackLoadHandler($hookName, $args) {
 		if ($args[0] === "login" && $args[1] === "signIn") {
 			// Hijack the user's signin attempt, if frequent bad passwords are being tried
-			if(isset($_POST['username'])) {
+			if (isset($_POST['username'])) {
 				$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');
 				$user = $badpwFailedLoginsDao->getByUsername($_POST['username']);
-				if(isset($user)) {
+				if (isset($user)) {
 					$count = $user->getCount();
 					$time = $user->getFailedTime();
-					if($count >= $this->getSetting(CONTEXT_SITE, 'betterPasswordLockTries') && $time > time() - $this->getSetting(CONTEXT_SITE, 'betterPasswordLockSeconds')) {
+					if ($count >= $this->getSetting(CONTEXT_SITE, 'betterPasswordLockTries') && $time > time() - $this->getSetting(CONTEXT_SITE, 'betterPasswordLockSeconds')) {
 						// Hijack the typical login/signIn handler to prevent login
 						define('HANDLER_CLASS', 'BetterPasswordHandler');
 						$args[0] = "plugins.generic.betterPassword.BetterPasswordHandler";
