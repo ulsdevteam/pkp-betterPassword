@@ -88,8 +88,8 @@ class BetterPasswordSettingsForm extends Form {
 		AppLocale::requireComponents(LOCALE_COMPONENT_PKP_ADMIN);
 		$plugin = $this->_plugin;
 		$templateMgr = TemplateManager::getManager($request);
-		$templateMgr->assign('pluginName', $this->_plugin->getName());
-		foreach (array_keys($this->_plugin->settingsKeys) as $key) {
+		$templateMgr->assign('pluginName', $plugin->getName());
+		foreach (array_keys($plugin->settingsKeys) as $key) {
 			if (strpos($key, 'betterPasswordCheck') === 0) {
 				$checkboxes[$key] = $this->getData($key);
 			}

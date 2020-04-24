@@ -54,7 +54,7 @@ class BetterPasswordHandler extends Handler {
 		$privateFileManager = new PrivateFileManager();
 		$uploadedFile = $_FILES['uploadedFile'];
 		$destFilePath = $privateFileManager->getBasePath() . DIRECTORY_SEPARATOR . 'betterPassword' . DIRECTORY_SEPARATOR . 'blacklists' . DIRECTORY_SEPARATOR . sha1($uploadedFile['name']);
-		if(!$privateFileManager->uploadFile('uploadedFile', $destFilePath)) {
+		if (!$privateFileManager->uploadFile('uploadedFile', $destFilePath)) {
 			return new JSONMessage(false, __('plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail'));
 		} else {
 			$plugin = PluginRegistry::getPlugin('generic', 'betterpasswordplugin');
@@ -77,7 +77,7 @@ class BetterPasswordHandler extends Handler {
 		$fileHash = $args['fileId'];
 		$plugin = PluginRegistry::getPlugin('generic', 'betterpasswordplugin');
 		$currBlacklist = $plugin->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
-		$filename = array_search($fileHash,$currBlacklist);
+		$filename = array_search($fileHash, $currBlacklist);
 		$filePath = $privateFileManager->getBasePath() . DIRECTORY_SEPARATOR . 'betterPassword' . DIRECTORY_SEPARATOR . 'blacklists' . DIRECTORY_SEPARATOR . sha1($filename);
 		if ($privateFileManager->deleteByPath($filePath)) {
 			unset($currBlacklist[$filename]);
