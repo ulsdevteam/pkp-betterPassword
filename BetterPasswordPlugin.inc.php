@@ -232,7 +232,7 @@ class betterPasswordPlugin extends GenericPlugin {
 				$username = $templateMgr->getTemplateVars('username');
 				$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');
 				$user = $badpwFailedLoginsDao->getByUsername($username);
-				if (!isset($user)) {
+				if (isset($user)) {
 					$count = $user->getCount();
 					$time = $user->getFailedTime();
 					// expire old bad password attempts

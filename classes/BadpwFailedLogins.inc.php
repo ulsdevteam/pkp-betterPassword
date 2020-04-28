@@ -15,7 +15,7 @@ class BadpwFailedLogins extends DataObject {
 	 * Constructor
 	 * @param string $username Username
 	 * @param int $count Number of bad password login count
-	 * @param timestamp $lastLoginTime The time of the last bad login attempt
+	 * @param int $lastLoginTime The time of the last bad login attempt
 	 */
 	public function __construct($username, $count, $lastLoginTime) {
 		parent::__construct();
@@ -26,7 +26,7 @@ class BadpwFailedLogins extends DataObject {
 	
 	/**
 	 * Get the username
-	 * @return String The username
+	 * @return string The username
 	 */
 	public function getUsername() {
 		return $this->username;
@@ -34,7 +34,7 @@ class BadpwFailedLogins extends DataObject {
 	
 	/**
 	 * Get the count of bad login attempts
-	 * @return Integer Number of bad password login count
+	 * @return int Number of bad password login count
 	 */
 	public function getCount() {
 		return $this->count;
@@ -42,7 +42,7 @@ class BadpwFailedLogins extends DataObject {
 	
 	/**
 	 * Get the time of last failed login attempt
-	 * @return timestamp The time of the last bad login attempt
+	 * @return int The time of the last bad login attempt
 	 */
 	public function getFailedTime() {
 		return $this->lastLoginTime;
