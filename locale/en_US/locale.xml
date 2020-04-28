@@ -22,12 +22,17 @@
 	<message key="plugins.generic.betterPassword.validation.betterPasswordCheckSpecial">Your password requires an non-alphanumeric character.</message>
 	<message key="plugins.generic.betterPassword.validation.betterPasswordCheckBlacklist">Your password was found in a blacklist of known bad passwords.</message>
 	<message key="plugins.generic.betterPassword.validation.betterPasswordLocked">Your account has been temporarily locked due to bad password attempts.</message>
+	<message key="plugins.generic.betterPassword.validation.betterPasswordUnexpectedError">Your password could not be changed at this time.  Please try again later.</message>
 	
 	<!-- Better Password Settings Management -->
 	<message key="plugins.generic.betterPassword.manager.settings">Settings</message>
+	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail">Failed to upload file</message>
+	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail">Failed to delete file</message>
 	<message key="plugins.generic.betterPassword.manager.betterPasswordSettings">Better Password Settings</message>
 	<message key="plugins.generic.betterPassword.manager.settings.description"><![CDATA[<p>With this plugin enabled, user passwords will be checked against additional criteria to ensure better password selection.  NIST recommends checking passwords against a blacklist and using temporary account locking after repeated password failures.  Complexity requirements including specific types of alphanumeric characters are available but not recommended for UX reasons.</p>]]></message>
 	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle">Password requirements</message>
+	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordBlacklist">Upload the blacklist file</message>
+	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlacklist">Existing Blacklists</message>
 	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha">Require an alphabetic character.</message>
 	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase">Require an uppercase character.</message>
 	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase">Require an lowercase character.</message>
@@ -42,4 +47,8 @@
 	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired">Number of bad login attempts after which to lock an account must be numeric.</message>
 	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired">Number of seconds before forgetting bad login attempts must be numeric.</message>
 	<message key="plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired">Number of seconds to lock an account after excessive bad login attempts must be numeric.</message>
+	
+	<!-- Better Password Actions -->
+	<message key="plugins.generic.betterPassword.actions.deleteBlacklist">Delete Existing Blacklist</message>
+	<message key="plugins.generic.betterPassword.actions.deleteBlacklistCheck">Are you sure you want to delete?</message>
 </locale>

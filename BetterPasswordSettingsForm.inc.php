@@ -34,7 +34,7 @@ class BetterPasswordSettingsForm extends Form {
 	function __construct($plugin, $contextId) {
 		$this->_contextId = CONTEXT_SITE;
 		$this->_plugin = $plugin;
-		
+
 		parent::__construct($plugin->getTemplateResource('settingsForm.tpl'), $this->_contextId);
 
 		$lockFields = array();
@@ -84,10 +84,12 @@ class BetterPasswordSettingsForm extends Form {
 	 * @copydoc Form::fetch()
 	 */
 	function fetch($request, $template = NULL, $display = false) {
+		$router = $request->getRouter();
 		AppLocale::requireComponents(LOCALE_COMPONENT_PKP_ADMIN);
+		$plugin = $this->_plugin;
 		$templateMgr = TemplateManager::getManager($request);
-		$templateMgr->assign('pluginName', $this->_plugin->getName());
-		foreach (array_keys($this->_plugin->settingsKeys) as $key) {
+		$templateMgr->assign('pluginName', $plugin->getName());
+		foreach (array_keys($plugin->settingsKeys) as $key) {
 			if (strpos($key, 'betterPasswordCheck') === 0) {
 				$checkboxes[$key] = $this->getData($key);
 			}
@@ -95,8 +97,24 @@ class BetterPasswordSettingsForm extends Form {
 				$locking[$key] = $this->getData($key) ? $this->getData($key) : '';
 			}
 		}
+		$blacklistFiles = $plugin->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
 		$templateMgr->assign('betterPasswordCheckboxes', $checkboxes);
 		$templateMgr->assign('betterPasswordLocking', $locking);
+		foreach (array_keys($blacklistFiles) as $k) {
+			$blacklistFiles[$k] = new LinkAction(
+						'deleteBlacklist',
+						new RemoteActionConfirmationModal(
+							$request->getSession(),
+							__('plugins.generic.betterPassword.actions.deleteBlacklistCheck'),
+							__('plugins.generic.betterPassword.actions.deleteBlacklist'),
+							$router->url($request, null, null, 'deleteBlacklists', null, array('fileId' => $blacklistFiles[$k]))
+							),
+						__('common.delete'),
+						null,
+						__('plugins.generic.betterPassword.grid.action.deleteBlacklist')
+					);
+		}
+		$templateMgr->assign('betterPasswordBlacklistFiles', $blacklistFiles);
 		return parent::fetch($request);
 	}
 
