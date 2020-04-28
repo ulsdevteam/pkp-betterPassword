@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema SYSTEM "../../../../lib/pkp/dtd/xmlSchema.dtd">
+
+<!--
+plugins/generic/betterPassword/xml/schema.xml
+
+betterPassword plugin schema in XML
+-->
+
+
+<schema version="0.2">
+    <!--
+    TABLE badpw_failedlogins
+    -->
+    <table name="badpw_failedlogins">
+        <field name="username" type="C2" size="32" >
+            <KEY/>
+        </field>
+        <field name="count" type="I8">
+            <NOTNULL/>
+        </field>
+        <field name="failed_login_time" type="T" >
+            <NOTNULL/>
+        </field>
+        <descr>badpw failed login attempts</descr>
+    </table>
+    
+</schema>
