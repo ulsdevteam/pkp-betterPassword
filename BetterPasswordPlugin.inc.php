@@ -399,8 +399,9 @@ class betterPasswordPlugin extends GenericPlugin {
 		
 		$badpwFailedLoginDAO = new BadpwFailedLoginsDAO();
 		DAORegistry::registerDAO('BadpwFailedLoginsDAO', $badpwFailedLoginDAO);
+	}
 
-  /**
+  	/**
 	 * Callback to fill cache with data, if empty.
 	 * @param $cache GenericCache
 	 * @param $passwordHash string The hash of the user password
