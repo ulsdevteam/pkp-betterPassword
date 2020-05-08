@@ -57,8 +57,7 @@ class BadpwFailedLoginsDAO extends DAO {
 		if($result->RowCount() !=0) {
 			$badpwObj = new BadpwFailedLogins($row['username'], $row['count'], strtotime($row['failed_login_time']));
 		} else {
-			$badpwObj = new BadpwFailedLogins($username, 0, time());
-			$this->insertObject($badpwObj);
+			$this->insertUserRecord($username, 0, time());
 		}
 		return $badpwObj;
 	}
@@ -72,5 +71,36 @@ class BadpwFailedLoginsDAO extends DAO {
 		return $this->update('UPDATE badpw_failedlogins'
 				. ' SET count=0'
 				. ' WHERE username=?', $badpwObj->getUsername());
+	}
+
+	/**
+	 * Gets the userIds of all the users that have incorrect login attempts
+	 * @return array UserIds of all the users that have bad password counts in the user table
+	 */
+	function getUserIdsBySetting() {
+		$result = $this->retrieve(
+			'SELECT u.user_id FROM users u JOIN user_settings us ON (u.user_id = us.user_id) WHERE us.setting_name = ?',
+			array('betterpasswordplugin::badPasswordCount')
+		);
+
+		$returner = null;
+		if ($result->RecordCount() != 0) {
+			
+			$returner =& $result->GetAll();
+		}
+		$result->Close();
+		return $returner;
+	}
+	
+	/*
+	 * Insert a bad login record into the DB
+	 * @param string $username Username
+	 * @param int $count Number of bad login count
+	 * @param int $time Time of last bad login attempt
+	 * @return boolean True if obejct is inserted into the DB
+	 */
+	function insertUserRecord($username, $count, $time) {
+		$badpwObj = new BadpwFailedLogins($username, $count, $time);
+		return $this->insertObject($badpwObj);
 	}
 }

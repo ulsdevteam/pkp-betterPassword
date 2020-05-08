@@ -431,11 +431,19 @@ class betterPasswordPlugin extends GenericPlugin {
 	
 	function updateSchema($hookname, $args) {
 		parent::updateSchema($hookname, $args);
-		
+		$success = false;
 		$userDao = DAORegistry::getDAO('UserDAO');
 		$versionDao = DAORegistry::getDAO('VersionDAO');
 		$historicVersions = $versionDao->getVersionHistory('plugins.generic', 'betterPassword');
 		if (count($historicVersions) > 1 && $historicVersions[1]->compare('1.1.0.0') < 0) {
+			$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');
+			$userData = $badpwFailedLoginsDao->getUserIdsBySetting();
+			foreach ($userData as $ud) {
+				$user = $userDao->getById($ud['user_id']);
+				$count = $user->getData($this->getName().'::badPasswordCount');
+				$time = $user->getData($this->getName().'::badPasswordTime');
+				$badpwFailedLoginsDao->insertUserRecord($user->getUsername(), $count, $time);
+			}
 		}
 	}
 }
