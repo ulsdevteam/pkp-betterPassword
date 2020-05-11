@@ -103,4 +103,19 @@ class BadpwFailedLoginsDAO extends DAO {
 		$badpwObj = new BadpwFailedLogins($username, $count, $time);
 		return $this->insertObject($badpwObj);
 	}
+	
+	/**
+	 * 
+	 * @param string $username Username for the user with bad login attempts
+	 * @return boolean True if a user exists in the table with that username
+	 */
+	function userExistsByUsername($username) {
+		$result = $this->retrieve(
+				'SELECT COUNT(*) FROM badpw_failedlogins WHERE username = ?',
+				$username
+				);
+		$returner = isset($result->fields[0]) && $result->fields[0] == 1 ? true : false;
+		$result->Close();
+		return $returner;
+	}
 }

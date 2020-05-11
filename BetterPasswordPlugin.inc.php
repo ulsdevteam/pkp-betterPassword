@@ -429,6 +429,11 @@ class betterPasswordPlugin extends GenericPlugin {
 		return false;
 	}
 	
+	/**
+	 * Migrates the old bad user login attempts to the new structure created to store bad login attempts 
+	 * @param string $hookname post install
+	 * @param array $args
+	 */
 	function updateSchema($hookname, $args) {
 		parent::updateSchema($hookname, $args);
 		$success = false;
@@ -442,7 +447,12 @@ class betterPasswordPlugin extends GenericPlugin {
 				$user = $userDao->getById($ud['user_id']);
 				$count = $user->getData($this->getName().'::badPasswordCount');
 				$time = $user->getData($this->getName().'::badPasswordTime');
-				$badpwFailedLoginsDao->insertUserRecord($user->getUsername(), $count, $time);
+				if ($badpwFailedLoginsDao->userExistsByUsername($ud['user_id'])) {
+					$success = $badpwFailedLoginsDao->insertUserRecord($user->getUsername(), $count, $time);
+				}
+				if ($success) {
+					$userDao->deleteUserById($ud['user_id']);
+				}
 			}
 		}
 	}
