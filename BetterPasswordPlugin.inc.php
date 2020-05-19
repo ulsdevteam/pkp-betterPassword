@@ -286,7 +286,7 @@ class betterPasswordPlugin extends GenericPlugin {
 		$userBlacklistsFilenames = is_array($userBlacklists) ? array_keys($userBlacklists) : array();
 		$userBlacklistsFilepath = array();
 		foreach ($userBlacklistsFilenames as $f) {
-			$userBlacklistsFilepath[] = $privateFileManager->getBasePath() . DIRECTORY_SEPARATOR . 'betterPassword' . DIRECTORY_SEPARATOR . 'blacklists' . DIRECTORY_SEPARATOR . $f;
+			$userBlacklistsFilepath[] = $privateFileManager->getBasePath() . DIRECTORY_SEPARATOR . 'betterPassword' . DIRECTORY_SEPARATOR . 'blacklists' . DIRECTORY_SEPARATOR . sha1($f);
 		}
 		$pluginBlacklistsFilenames = array ($this->getPluginPath() . DIRECTORY_SEPARATOR . 'badPasswords' . DIRECTORY_SEPARATOR . 'badPasswords.txt', );
 		$blacklistFilenames = array_merge($userBlacklistsFilepath, $pluginBlacklistsFilenames);
