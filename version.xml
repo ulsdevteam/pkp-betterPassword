@@ -12,8 +12,8 @@
 <version>
 	<application>betterPassword</application>
 	<type>plugins.generic</type>
-	<release>1.0.0.1</release>
-	<date>2019-05-10</date>
+	<release>1.0.0.2</release>
+	<date>2021-01-02</date>
 	<lazy-load>1</lazy-load>
 	<sitewide>1</sitewide>
 	<class>betterPasswordPlugin</class>

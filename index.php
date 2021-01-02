@@ -3,7 +3,7 @@
 /**
  * @defgroup plugins_generic_betterPassword
  */
- 
+
 /**
  * @file plugins/generic/betterPassword/index.php
  *
@@ -15,6 +15,6 @@
  *
  */
 
-require_once('BetterPasswordPlugin.inc.php');
+require_once 'BetterPasswordPlugin.inc.php';
 
 return new BetterPasswordPlugin();

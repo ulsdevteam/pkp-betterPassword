@@ -32,14 +32,14 @@ class BetterPasswordHandler extends Handler {
 	 */
 	function signIn($args, $request) {
 		$templateMgr = TemplateManager::getManager($request);
-		$templateMgr->assign(array(
+		$templateMgr->assign([
 			'username' => $request->getUserVar('username'),
 			'remember' => $request->getUserVar('remember'),
 			'source' => $request->getUserVar('source'),
 			'showRemember' => Config::getVar('general', 'session_lifetime') > 0,
 			'error' => 'user.login.loginError',
 			'reason' => null,
-		));
+		]);
 		$templateMgr->display('frontend/pages/userLogin.tpl');
 	}
         
@@ -53,13 +53,14 @@ class BetterPasswordHandler extends Handler {
 		import('lib.pkp.classes.file.PrivateFileManager');
 		$privateFileManager = new PrivateFileManager();
 		$uploadedFile = $_FILES['uploadedFile'];
-		$destFilePath = $privateFileManager->getBasePath() . DIRECTORY_SEPARATOR . 'betterPassword' . DIRECTORY_SEPARATOR . 'blacklists' . DIRECTORY_SEPARATOR . sha1($uploadedFile['name']);
+		$hash = sha1_file($_FILES['uploadedFile']['tmp_name']);
+		$destFilePath = $privateFileManager->getBasePath() . DIRECTORY_SEPARATOR . 'betterPassword' . DIRECTORY_SEPARATOR . 'blacklists' . DIRECTORY_SEPARATOR . $hash;
 		if (!$privateFileManager->uploadFile('uploadedFile', $destFilePath)) {
 			return new JSONMessage(false, __('plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail'));
 		} else {
 			$plugin = PluginRegistry::getPlugin('generic', 'betterpasswordplugin');
 			$prevBlacklist = $plugin->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
-			$prevBlacklist[$uploadedFile['name']] = sha1_file($destFilePath);
+			$prevBlacklist[$uploadedFile['name']] = $hash;
 			$plugin->updateSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles', $prevBlacklist);
 		}
 		return new JSONMessage(true);
@@ -78,12 +79,12 @@ class BetterPasswordHandler extends Handler {
 		$plugin = PluginRegistry::getPlugin('generic', 'betterpasswordplugin');
 		$currBlacklist = $plugin->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
 		$filename = array_search($fileHash, $currBlacklist);
-		$filePath = $privateFileManager->getBasePath() . DIRECTORY_SEPARATOR . 'betterPassword' . DIRECTORY_SEPARATOR . 'blacklists' . DIRECTORY_SEPARATOR . sha1($filename);
+		$filePath = $privateFileManager->getBasePath() . DIRECTORY_SEPARATOR . 'betterPassword' . DIRECTORY_SEPARATOR . 'blacklists' . DIRECTORY_SEPARATOR . $fileHash;
 		if ($privateFileManager->deleteByPath($filePath)) {
 			unset($currBlacklist[$filename]);
 			$plugin->updateSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles', $currBlacklist);
 		} else {
-			return new JSONMessage(false, __('plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail'));;
+			return new JSONMessage(false, __('plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail'));
 		}
 		return new JSONMessage(true);
 	}

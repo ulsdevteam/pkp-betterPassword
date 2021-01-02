@@ -35,6 +35,9 @@
 			{foreach from=$betterPasswordBlacklistFiles key="betterPasswordFile" item="betterPasswordSettingValue"}
 				<p>{$betterPasswordFile} {include file="linkAction/linkAction.tpl" action=$betterPasswordSettingValue}</p>
 			{/foreach}
+			{if !$betterPasswordBlacklistFiles}
+				{translate key="common.none"}
+			{/if}
 		{/fbvFormSection}
 		{fbvFormSection title="plugins.generic.betterPassword.manager.settings.betterPasswordBlacklist"}
 			{include file="controllers/fileUploadContainer.tpl" id="plupload"}
@@ -51,6 +54,14 @@
 
 	{fbvFormArea id="betterPasswordSettingsFormLocking" title="plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"}
 		{foreach from=$betterPasswordLocking key="betterPasswordSetting" item="betterPasswordSettingValue"}
+			{fbvFormSection for="$betterPasswordSetting" description="plugins.generic.betterPassword.manager.settings."|cat:$betterPasswordSetting id=$betterPasswordSetting|cat:"Section"}
+				{fbvElement type="text" id=$betterPasswordSetting value=$betterPasswordSettingValue inline=true size=$fbvStyles.size.MEDIUM}
+			{/fbvFormSection}
+		{/foreach}
+	{/fbvFormArea}
+
+	{fbvFormArea id="betterPasswordSettingsFormInvalidation" title="plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"}
+		{foreach from=$betterPasswordInvalidation key="betterPasswordSetting" item="betterPasswordSettingValue"}
 			{fbvFormSection for="$betterPasswordSetting" description="plugins.generic.betterPassword.manager.settings."|cat:$betterPasswordSetting id=$betterPasswordSetting|cat:"Section"}
 				{fbvElement type="text" id=$betterPasswordSetting value=$betterPasswordSettingValue inline=true size=$fbvStyles.size.MEDIUM}
 			{/fbvFormSection}

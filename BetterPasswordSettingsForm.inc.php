@@ -37,16 +37,26 @@ class BetterPasswordSettingsForm extends Form {
 
 		parent::__construct($plugin->getTemplateResource('settingsForm.tpl'), $this->_contextId);
 
-		$lockFields = array();
+		$lockFields = [];
+		$invalidationFields = [];
 		foreach (array_keys($this->_plugin->settingsKeys) as $key) {
 			if (strpos($key, 'betterPasswordLock') === 0) {
 				$lockFields[] = $key;
+			} elseif (strpos($key, 'betterPasswordInvalidation') === 0) {
+				$invalidationFields[] = $key;
 			}
 		}
-
+ __('plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired');
+		$isPositiveInteger = function ($value) {
+			return is_numeric($value) && is_int(+$value) && +$value > 0;
+		};
 		foreach ($lockFields as $field) {
-			$this->addCheck(new FormValidatorCustom($this, $field, FORM_VALIDATOR_OPTIONAL_VALUE, 'plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired', array(&$this, '_dependentFormFieldIsSet'), array(&$this, $lockFields)));
-			$this->addCheck(new FormValidatorCustom($this, $field, FORM_VALIDATOR_OPTIONAL_VALUE, 'plugins.generic.betterPassword.manager.settings.'.$field.'NumberRequired', create_function('$s', 'return ($s === "0" || $s > 0);')));
+			$this->addCheck(new FormValidatorCustom($this, $field, FORM_VALIDATOR_OPTIONAL_VALUE, 'plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired', [&$this, '_dependentFormFieldIsSet'], [&$this, $lockFields]));
+			$this->addCheck(new FormValidatorCustom($this, $field, FORM_VALIDATOR_OPTIONAL_VALUE, 'plugins.generic.betterPassword.manager.settings.'.$field.'NumberRequired', $isPositiveInteger));
+		}
+
+		foreach ($invalidationFields as $field) {
+			$this->addCheck(new FormValidatorCustom($this, $field, FORM_VALIDATOR_OPTIONAL_VALUE, 'plugins.generic.betterPassword.manager.settings.'.$field.'NumberRequired', $isPositiveInteger));
 		}
 
 		$this->addCheck(new FormValidatorPost($this));
@@ -83,36 +93,39 @@ class BetterPasswordSettingsForm extends Form {
 	 * Fetch the form.
 	 * @copydoc Form::fetch()
 	 */
-	function fetch($request, $template = NULL, $display = false) {
+	function fetch($request, $template = null, $display = false) {
 		$router = $request->getRouter();
 		AppLocale::requireComponents(LOCALE_COMPONENT_PKP_ADMIN);
 		$plugin = $this->_plugin;
 		$templateMgr = TemplateManager::getManager($request);
 		$templateMgr->assign('pluginName', $plugin->getName());
+		$checkboxes = $locking = $invalidation = [];
 		foreach (array_keys($plugin->settingsKeys) as $key) {
 			if (strpos($key, 'betterPasswordCheck') === 0) {
 				$checkboxes[$key] = $this->getData($key);
-			}
-			if (strpos($key, 'betterPasswordLock') === 0) {
-				$locking[$key] = $this->getData($key) ? $this->getData($key) : '';
+			} elseif (strpos($key, 'betterPasswordLock') === 0) {
+				$locking[$key] = $this->getData($key) ?: '';
+			} elseif (strpos($key, 'betterPasswordInvalidation') === 0) {
+				$invalidation[$key] = $this->getData($key) ?: '';
 			}
 		}
 		$blacklistFiles = $plugin->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
 		$templateMgr->assign('betterPasswordCheckboxes', $checkboxes);
 		$templateMgr->assign('betterPasswordLocking', $locking);
+		$templateMgr->assign('betterPasswordInvalidation', $invalidation);
 		foreach (array_keys($blacklistFiles) as $k) {
 			$blacklistFiles[$k] = new LinkAction(
-						'deleteBlacklist',
-						new RemoteActionConfirmationModal(
-							$request->getSession(),
-							__('plugins.generic.betterPassword.actions.deleteBlacklistCheck'),
-							__('plugins.generic.betterPassword.actions.deleteBlacklist'),
-							$router->url($request, null, null, 'deleteBlacklists', null, array('fileId' => $blacklistFiles[$k]))
-							),
-						__('common.delete'),
-						null,
-						__('plugins.generic.betterPassword.grid.action.deleteBlacklist')
-					);
+				'deleteBlacklist',
+				new RemoteActionConfirmationModal(
+					$request->getSession(),
+					__('plugins.generic.betterPassword.actions.deleteBlacklistCheck'),
+					__('plugins.generic.betterPassword.actions.deleteBlacklist'),
+					$router->url($request, null, null, 'deleteBlacklists', null, ['fileId' => $blacklistFiles[$k]])
+					),
+				__('common.delete'),
+				null,
+				__('plugins.generic.betterPassword.actions.deleteBlacklist')
+			);
 		}
 		$templateMgr->assign('betterPasswordBlacklistFiles', $blacklistFiles);
 		return parent::fetch($request);
@@ -121,7 +134,7 @@ class BetterPasswordSettingsForm extends Form {
 	/**
 	 * Save settings.
 	 */
-	function execute() {
+	function execute(...$functionArgs) {
 		$plugin =& $this->_plugin;
 		$contextId = $this->_contextId;
 
