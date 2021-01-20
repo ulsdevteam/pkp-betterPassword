@@ -346,8 +346,14 @@ class betterPasswordPlugin extends GenericPlugin {
 			}
 		} elseif ($args[0] === "login" && $args[1] === "resetPassword") {
 			// Hijack the password reset request to clear bad password locks
-			$username = array_shift(PKPRequest::getRequestedArgs());
-			$queryString = PKPRequest::getQueryArray();
+			if (method_exists('Application', 'get')) {
+				$request = Application::get()->getRequest();
+			} else {
+				// Legacy 3.1.x: remove when support is dropped
+				$request = Application::getApplication()->getRequest();
+			}
+			$username = array_shift($request->getRequestedArgs());
+			$queryString = $request->getQueryArray();
 			$userDao = DAORegistry::getDAO('UserDAO');
 			$confirmHash = $queryString['confirm'];
 			$user = $userDao->getByUsername($username);
