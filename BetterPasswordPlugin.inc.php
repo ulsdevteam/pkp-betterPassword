@@ -43,7 +43,10 @@ class betterPasswordPlugin extends GenericPlugin {
 	 */
 	function register($category, $path, $mainContextId = null) {
 		$success = parent::register($category, $path, $mainContextId);
-		if (!Config::getVar('general', 'installed') || defined('RUNNING_UPGRADE')) return true;
+		if (!Config::getVar('general', 'installed') || defined('RUNNING_UPGRADE')) {
+				$this->registerDAOs();
+				return true;
+	}
 		if ($success && $this->getEnabled()) {
 			// Attach hooks
 			$this->registerDAOs();
@@ -357,10 +360,10 @@ class betterPasswordPlugin extends GenericPlugin {
 			$userDao = DAORegistry::getDAO('UserDAO');
 			$confirmHash = $queryString['confirm'];
 			$user = $userDao->getByUsername($username);
+			$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');
+			$betterPasswordUser = $badpwFailedLoginsDao->getByUsername($username);
 			if ($user && $confirmHash && Validation::verifyPasswordResetHash($user->getId(), $confirmHash)) {
-					$user->setData($this->getName()."::badPasswordCount", 0);
-					$user->setData($this->getName()."::badPasswordTime", 0);
-					$userDao->updateObject($user);
+					$badpwFailedLoginsDao->resetCount($betterPasswordUser);
 			}
 		} elseif($hookName === "LoadComponentHandler" && $args[1] === "uploadBlacklists") {
 			define('HANDLER_CLASS', 'BetterPasswordComponentHandler');
@@ -430,5 +433,33 @@ class betterPasswordPlugin extends GenericPlugin {
 			return in_array($passwordHash, $cache_password);
 		}
 		return false;
+	}
+	
+	/**
+	 * Migrates the old bad user login attempts to the new structure created to store bad login attempts 
+	 * @param string $hookname post install
+	 * @param array $args
+	 */
+	function updateSchema($hookname, $args) {
+		parent::updateSchema($hookname, $args);
+		$success = false;
+		$userDao = DAORegistry::getDAO('UserDAO');
+		$versionDao = DAORegistry::getDAO('VersionDAO');
+		$historicVersions = $versionDao->getVersionHistory('plugins.generic', 'betterPassword');
+		if (count($historicVersions) > 1 && $historicVersions[1]->compare('1.1.0.0') < 0) {
+			$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');
+			$userData = $badpwFailedLoginsDao->getUserIdsBySetting();
+			foreach ($userData as $ud) {
+				$user = $userDao->getById($ud['user_id']);
+				$count = $user->getData($this->getName().'::badPasswordCount');
+				$time = $user->getData($this->getName().'::badPasswordTime');
+				if ($badpwFailedLoginsDao->userExistsByUsername($ud['user_id'])) {
+					$success = $badpwFailedLoginsDao->insertUserRecord($user->getUsername(), $count, $time);
+				}
+				if ($success) {
+					$userDao->deleteUserById($ud['user_id']);
+				}
+			}
+		}
 	}
 }
