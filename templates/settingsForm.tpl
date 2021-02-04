@@ -1,7 +1,7 @@
 {**
  * plugins/generic/betterPassword/settingsForm.tpl
  *
- * Copyright (c) 2019 University of Pittsburgh
+ * Copyright (c) 2021 University of Pittsburgh
  * Distributed under the GNU GPL v2 or later. For full terms see the file docs/COPYING.
  *
  * Better Password plugin settings
@@ -15,7 +15,7 @@
 			{ldelim}
 				$uploader: $('#plupload'),
 				uploaderOptions: {ldelim}
-					uploadUrl: {url|json_encode router=$smarty.const.ROUTE_COMPONENT op="uploadBlacklists" escape=false},
+					uploadUrl: {url|json_encode router=$smarty.const.ROUTE_COMPONENT op="uploadBlocklist" escape=false},
 					baseUrl: {$baseUrl|json_encode}
 				{rdelim}
 			{rdelim});
@@ -31,15 +31,14 @@
 		{fbvFormSection for="minPasswordLength"}
 			{fbvElement type="text" id="minPasswordLength" label="admin.settings.minPasswordLength" value="$minPasswordLength"}
 		{/fbvFormSection}
-		{fbvFormSection title="plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlacklist"}
-			{foreach from=$betterPasswordBlacklistFiles key="betterPasswordFile" item="betterPasswordSettingValue"}
+		{if $betterPasswordBlocklistFiles}
+		{fbvFormSection title="plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"}
+			{foreach from=$betterPasswordBlocklistFiles key="betterPasswordFile" item="betterPasswordSettingValue"}
 				<p>{$betterPasswordFile} {include file="linkAction/linkAction.tpl" action=$betterPasswordSettingValue}</p>
 			{/foreach}
-			{if !$betterPasswordBlacklistFiles}
-				{translate key="common.none"}
-			{/if}
 		{/fbvFormSection}
-		{fbvFormSection title="plugins.generic.betterPassword.manager.settings.betterPasswordBlacklist"}
+		{/if}
+		{fbvFormSection title="plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"}
 			{include file="controllers/fileUploadContainer.tpl" id="plupload"}
 		{/fbvFormSection}
 	{/fbvFormArea}

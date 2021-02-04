@@ -33,8 +33,8 @@ msgstr "Your password requires an numeric character."
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
 msgstr "Your password requires an non-alphanumeric character."
 
-msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlacklist"
-msgstr "Your password was found in a blacklist of known bad passwords."
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr "Your password was found in a blocklist of known bad passwords."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
 msgstr "Your account has been temporarily locked due to bad password attempts."
@@ -58,16 +58,16 @@ msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
 msgstr "Better Password Settings"
 
 msgid "plugins.generic.betterPassword.manager.settings.description"
-msgstr "<p>With this plugin enabled, user passwords will be checked against additional criteria to ensure better password selection.  NIST recommends checking passwords against a blacklist and using temporary account locking after repeated password failures.  Complexity requirements including specific types of alphanumeric characters are available but not recommended for UX reasons.</p>"
+msgstr "<p>With this plugin enabled, user passwords will be checked against additional criteria to ensure better password selection.  NIST recommends checking passwords against a blocklist and using temporary account locking after repeated password failures.  Complexity requirements including specific types of alphanumeric characters are available but not recommended for UX reasons.</p>"
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
 msgstr "Password requirements"
 
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordBlacklist"
-msgstr "Upload the blacklist file"
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Upload the blocklist file"
 
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlacklist"
-msgstr "Existing Blacklists"
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Uploaded Blocklists"
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
 msgstr "Require an alphabetic character."
@@ -85,7 +85,7 @@ msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecia
 msgstr "Require an non-alphanumeric character."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
-msgstr "Check any user-requested passwords against a blacklist of known bad passwords."
+msgstr "Check any user-requested passwords against a blocklist of known bad passwords."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
 msgstr "Temporary account locking"
@@ -114,20 +114,32 @@ msgstr "Number of seconds to lock an account after excessive bad login attempts 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
 msgstr "Password invalidation"
 
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationSeconds"
-msgstr "Number of seconds before forcing the user to update the password."
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Number of days a user can stay without updating the password."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr "Number of days, before the expiration, to start warning the user daily about the password expiration."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
 msgstr "Number of last passwords that should be blocked for reuse."
 
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationSecondsNumberRequired"
-msgstr "Number of seconds before forcing the user to update the password must be numeric."
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Number of days a user can stay without updating the password must be numeric."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
 msgstr "Number of last passwords that should be blocked for reuse must be numeric."
 
-msgid "plugins.generic.betterPassword.actions.deleteBlacklist"
-msgstr "Delete Existing Blacklist"
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr "Number of last passwords that should be blocked for reuse must be numeric."
 
-msgid "plugins.generic.betterPassword.actions.deleteBlacklistCheck"
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr "Number of days, before the expiration, to start warning the user daily about the password expiration must be numeric."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Your password is going to expire in {$days} day(s)."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Delete Existing Blocklist"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
 msgstr "Are you sure you want to delete?"

@@ -1,37 +1,34 @@
 <?php
 
 /**
- * @file plugins/generic/betterPassword/betterPasswordSettingsForm.inc.php
+ * @file plugins/generic/betterPassword/BetterPasswordSettingsForm.inc.php
  *
- * Copyright (c) 2019 University of Pittsburgh
+ * Copyright (c) 2021 University of Pittsburgh
  * Distributed under the GNU GPL v2 or later. For full terms see the file docs/COPYING.
  *
- * @class betterPasswordSettingsForm
+ * @class BetterPasswordSettingsForm
  * @ingroup plugins_generic_betterPassword
  *
  * @brief Form for administrators to modify Better Password plugin settings
  */
 
-
 import('lib.pkp.classes.form.Form');
 
 class BetterPasswordSettingsForm extends Form {
-
 	/** @var $_contextId int */
-	var $_contextId;
+	private $_contextId;
 
-	/** @var $_plugin betterPasswordPlugin */
-	var $_plugin;
+	/** @var $_plugin BetterPasswordPlugin */
+	private $_plugin;
 
-	/** @var $_dependentFieldSemaphore bool flag if the dependent field error is already set */
-	var $_dependentFieldSemaphore = false;
+	/** @var $isDependentFieldSet bool If the dependent field error is already set */
+	private $_isDependentFieldSet = false;
 
 	/**
 	 * Constructor
 	 * @param $plugin BetterPasswordPlugin
-	 * @param $contextId int (not used)
 	 */
-	function __construct($plugin, $contextId) {
+	public function __construct(BetterPasswordPlugin $plugin) {
 		$this->_contextId = CONTEXT_SITE;
 		$this->_plugin = $plugin;
 
@@ -39,24 +36,42 @@ class BetterPasswordSettingsForm extends Form {
 
 		$lockFields = [];
 		$invalidationFields = [];
-		foreach (array_keys($this->_plugin->settingsKeys) as $key) {
-			if (strpos($key, 'betterPasswordLock') === 0) {
-				$lockFields[] = $key;
-			} elseif (strpos($key, 'betterPasswordInvalidation') === 0) {
-				$invalidationFields[] = $key;
+		foreach (array_keys($this->_plugin->getSettings()) as $setting) {
+			if (strpos($setting, 'betterPasswordLock') === 0) {
+				$lockFields[] = $setting;
+			} elseif (strpos($setting, 'betterPasswordInvalidation') === 0) {
+				$invalidationFields[] = $setting;
 			}
 		}
- __('plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired');
-		$isPositiveInteger = function ($value) {
-			return is_numeric($value) && is_int(+$value) && +$value > 0;
-		};
+
 		foreach ($lockFields as $field) {
-			$this->addCheck(new FormValidatorCustom($this, $field, FORM_VALIDATOR_OPTIONAL_VALUE, 'plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired', [&$this, '_dependentFormFieldIsSet'], [&$this, $lockFields]));
-			$this->addCheck(new FormValidatorCustom($this, $field, FORM_VALIDATOR_OPTIONAL_VALUE, 'plugins.generic.betterPassword.manager.settings.'.$field.'NumberRequired', $isPositiveInteger));
+			$this->addCheck(new FormValidatorCustom(
+				$this, $field, FORM_VALIDATOR_OPTIONAL_VALUE,
+				'plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired',
+				function ($value) use ($lockFields) {
+					// Only check for dependencies if the field has a value
+					if ($value && !$this->_isDependentFieldSet) {
+						foreach ($lockFields as $field) {
+							if (!$this->getData($field)) {
+								// Field was set but dependent value was missing
+								$this->_isDependentFieldSet = true;
+								return false;
+							}
+						}
+					}
+					return true;
+				}
+			));
 		}
 
-		foreach ($invalidationFields as $field) {
-			$this->addCheck(new FormValidatorCustom($this, $field, FORM_VALIDATOR_OPTIONAL_VALUE, 'plugins.generic.betterPassword.manager.settings.'.$field.'NumberRequired', $isPositiveInteger));
+		foreach (array_merge($invalidationFields, $lockFields) as $field) {
+			$this->addCheck(new FormValidatorCustom(
+				$this, $field, FORM_VALIDATOR_OPTIONAL_VALUE,
+				"plugins.generic.betterPassword.manager.settings.{$field}NumberRequired",
+				function ($value) {
+					return is_numeric($value) && is_int(+$value) && +$value > 0;
+				}
+			));
 		}
 
 		$this->addCheck(new FormValidatorPost($this));
@@ -66,18 +81,17 @@ class BetterPasswordSettingsForm extends Form {
 	/**
 	 * Initialize form data.
 	 */
-	function initData() {
-		$contextId = $this->_contextId;
-		$plugin =& $this->_plugin;
-
+	public function initData() : void {
 		parent::initData();
-		foreach (array_keys($plugin->settingsKeys) as $k) {
-			if (strpos($k, 'betterPassword') === 0) {
-				$this->setData($k, $plugin->getSetting($contextId, $k));
-			} else {
+
+		$plugin = $this->_plugin;
+		foreach (array_keys($plugin->getSettings()) as $setting) {
+			if (strpos($setting, 'betterPassword') === 0) {
+				$this->setData($setting, $plugin->getSetting($this->_contextId, $setting));
+			} elseif ($setting == 'minPasswordLength') {
 				$siteDao = DAORegistry::getDAO('SiteDAO');
 				$site = $siteDao->getSite();
-				$this->setData($k, $site->getMinPasswordLength());
+				$this->setData($setting, $site->getMinPasswordLength());
 			}
 		}
 	}
@@ -85,108 +99,73 @@ class BetterPasswordSettingsForm extends Form {
 	/**
 	 * Assign form data to user-submitted data.
 	 */
-	function readInputData() {
-		$this->readUserVars(array_keys($this->_plugin->settingsKeys));
+	public function readInputData() : void {
+		$this->readUserVars(array_keys($this->_plugin->getSettings()));
 	}
 
 	/**
 	 * Fetch the form.
 	 * @copydoc Form::fetch()
 	 */
-	function fetch($request, $template = null, $display = false) {
-		$router = $request->getRouter();
+	public function fetch($request, $template = null, $display = false) : string {
 		AppLocale::requireComponents(LOCALE_COMPONENT_PKP_ADMIN);
 		$plugin = $this->_plugin;
-		$templateMgr = TemplateManager::getManager($request);
-		$templateMgr->assign('pluginName', $plugin->getName());
+
 		$checkboxes = $locking = $invalidation = [];
-		foreach (array_keys($plugin->settingsKeys) as $key) {
-			if (strpos($key, 'betterPasswordCheck') === 0) {
-				$checkboxes[$key] = $this->getData($key);
-			} elseif (strpos($key, 'betterPasswordLock') === 0) {
-				$locking[$key] = $this->getData($key) ?: '';
-			} elseif (strpos($key, 'betterPasswordInvalidation') === 0) {
-				$invalidation[$key] = $this->getData($key) ?: '';
+		foreach (array_keys($plugin->getSettings()) as $setting) {
+			if (strpos($setting, 'betterPasswordCheck') === 0) {
+				$checkboxes[$setting] = $this->getData($setting);
+			} elseif (strpos($setting, 'betterPasswordLock') === 0) {
+				$locking[$setting] = $this->getData($setting) ?: '';
+			} elseif (strpos($setting, 'betterPasswordInvalidation') === 0) {
+				$invalidation[$setting] = $this->getData($setting) ?: '';
 			}
 		}
-		$blacklistFiles = $plugin->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
-		$templateMgr->assign('betterPasswordCheckboxes', $checkboxes);
-		$templateMgr->assign('betterPasswordLocking', $locking);
-		$templateMgr->assign('betterPasswordInvalidation', $invalidation);
-		foreach (array_keys($blacklistFiles) as $k) {
-			$blacklistFiles[$k] = new LinkAction(
-				'deleteBlacklist',
+
+		$blocklistFiles = [];
+		foreach ($plugin->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles') as $hash => $name) {
+			$blocklistFiles[$name] = new LinkAction(
+				'deleteBlocklist',
 				new RemoteActionConfirmationModal(
 					$request->getSession(),
-					__('plugins.generic.betterPassword.actions.deleteBlacklistCheck'),
-					__('plugins.generic.betterPassword.actions.deleteBlacklist'),
-					$router->url($request, null, null, 'deleteBlacklists', null, ['fileId' => $blacklistFiles[$k]])
-					),
+					__('plugins.generic.betterPassword.actions.deleteBlocklistCheck'),
+					__('plugins.generic.betterPassword.actions.deleteBlocklist'),
+					$request->getRouter()->url($request, null, null, 'deleteBlocklist', null, ['file' => $hash])
+				),
 				__('common.delete'),
 				null,
-				__('plugins.generic.betterPassword.actions.deleteBlacklist')
+				__('plugins.generic.betterPassword.actions.deleteBlocklist')
 			);
 		}
-		$templateMgr->assign('betterPasswordBlacklistFiles', $blacklistFiles);
+		TemplateManager::getManager($request)->assign([
+			'pluginName' => $plugin->getName(),
+			'betterPasswordCheckboxes' => $checkboxes,
+			'betterPasswordLocking' => $locking,
+			'betterPasswordInvalidation' => $invalidation,
+			'betterPasswordBlocklistFiles' => $blocklistFiles
+		]);
 		return parent::fetch($request);
 	}
 
 	/**
 	 * Save settings.
 	 */
-	function execute(...$functionArgs) {
-		$plugin =& $this->_plugin;
-		$contextId = $this->_contextId;
-
-		foreach ($plugin->settingsKeys as $k => $v) {
-			$saveData = $this->getData($k);
-			$saveType = $v;
-			switch ($v) {
-				case 'bool':
-					$saveData = boolval($saveData);
-					break;
-				case 'int':
-					$saveData = intval($saveData);
-					break;
-			}
-			if (strpos($k, 'betterPassword') === 0) {
-				$plugin->updateSetting($contextId, $k, $saveData, $saveType);
-			} else {
+	public function execute(...$functionArgs) : void {
+		$plugin = $this->_plugin;
+		foreach ($plugin->getSettings() as $setting => $type) {
+			$value = $this->getData($setting);
+			settype($value, $type);
+			if (strpos($setting, 'betterPassword') === 0) {
+				$plugin->updateSetting($this->_contextId, $setting, $value, $type);
+			} elseif ($setting == 'minPasswordLength') {
 				$siteDao = DAORegistry::getDAO('SiteDAO');
 				$site = $siteDao->getSite();
-				$site->setMinPasswordLength(intval($saveData));
-				$siteDao->updateObject($site);
-			}
-		}
-	}
-
-	/**
-	 * Check for the presence of dependent fields if a field value is set
-	 * @param $fieldValue mixed the value of the field being checked
-	 * @param $form object a reference to this form
-	 * @param $dependentFields array a list of dependent field names
-	 * @return boolean
-	 */
-	function _dependentFormFieldIsSet($fieldValue, $form, $dependentFields) {
-		if ($fieldValue && !$this->_dependentFieldSemaphore) {
-			$dependentValues = true;
-			foreach ($dependentFields as $field) {
-				if (!$form->getData($field)) {
-					$dependentValues = false;
+				if ($site->getMinPasswordLength() !== $value) {
+					$site->setMinPasswordLength($value);
+					$siteDao->updateObject($site);
+					Blocklist::clearCache();
 				}
 			}
-			if ($dependentValues) {
-				// Field was set and dependent values are present
-				return true;
-			} else {
-				// Field was set but dependent value was missing
-				$this->_dependentFieldSemaphore = true;
-				return false;
-			}
-		} else {
-			// No value set, so no dependency
-			return true;
 		}
-		return true;
 	}
 }
