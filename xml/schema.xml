@@ -22,7 +22,6 @@ betterPassword plugin schema in XML
         <field name="failed_login_time" type="T" >
             <NOTNULL/>
         </field>
-        <descr>badpw failed login attempts</descr>
+        <descr>Bad Password failed login attempts</descr>
     </table>
-    
 </schema>

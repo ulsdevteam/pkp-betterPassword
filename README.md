@@ -9,9 +9,13 @@ This plugin provides additional password restriction options when users are sele
 
 Additional arbitrary password complexity requirements are available, but not recommended.
 
+The plugin also provides the following features:
+* Force users to renew their passwords after a given time
+* Disallow reusing the last N passwords
+
 ## Requirements
 
-* OJS/OMP 3.1.2 or later
+* OJS/OMP 3.2.1 or later
 
 ## Configuration
 

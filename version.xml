@@ -4,7 +4,7 @@
 <!--
   * plugins/generic/betterPassword/version.xml
   *
-  * Copyright (c) 2019 University of Pittsburgh
+  * Copyright (c) 2021 University of Pittsburgh
   * Distributed under the GNU GPL v2 or later. For full terms see the file docs/COPYING.
   *
   * Plugin version information.
@@ -12,9 +12,9 @@
 <version>
 	<application>betterPassword</application>
 	<type>plugins.generic</type>
-	<release>1.0.0.1</release>
-	<date>2019-05-10</date>
+	<release>1.1.0.0</release>
+	<date>2021-02-01</date>
 	<lazy-load>1</lazy-load>
 	<sitewide>1</sitewide>
-	<class>betterPasswordPlugin</class>
+	<class>BetterPasswordPlugin</class>
 </version>
