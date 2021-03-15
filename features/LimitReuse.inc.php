@@ -47,8 +47,13 @@ class LimitReuse {
 				[$form] = $args;
 				$form->addCheck(new FormValidatorCustom(
 					$form, 'password', 'required', 'plugins.generic.betterPassword.validation.betterPasswordPasswordReused',
-					function ($password) {
+					function ($password) use ($form) {
 						$user = Application::get()->getRequest()->getUser();
+						if (!$user) {
+							/** @var UserDAO */
+							$userDao = DAORegistry::getDAO('UserDAO');
+							$user = $userDao->getByUsername($form->getData('username'));
+						}
 						foreach ($this->_getPasswords($user) as $previousPassword) {
 							// Check if an old password matches with the new
 							if (Validation::verifyPassword($user->getUsername(), $password, $previousPassword, $rehash)) {
