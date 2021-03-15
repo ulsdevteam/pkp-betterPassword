@@ -52,9 +52,9 @@ class ForceExpiration {
 				$this->_isProcessed = true;
 				$user = Application::get()->getRequest()->getUser();
 				$username = $_POST['username'] ?? null;
+				/** @var UserDAO */
+				$userDao = DAORegistry::getDAO('UserDAO');
 				if (!$user && $username) {
-					/** @var UserDAO */
-					$userDao = DAORegistry::getDAO('UserDAO');
 					$user = $userDao->getByUsername($username);
 				}
 				if (!$user) {
