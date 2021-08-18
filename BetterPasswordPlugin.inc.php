@@ -55,32 +55,31 @@ class BetterPasswordPlugin extends GenericPlugin {
 	 * @copydoc Plugin::register()
 	 */
 	public function register($category, $path, $mainContextId = null) : bool {
-		if (!Config::getVar('general', 'installed') || defined('RUNNING_UPGRADE') || !parent::register($category, $path, $mainContextId)) {
-			return false;
-		}
-		if (!$this->getEnabled()) {
+		$success = parent::register($category, $path, $mainContextId);
+		if (!Config::getVar('general', 'installed') || defined('RUNNING_UPGRADE')) {
 			return true;
 		}
+		if ($success && $this->getEnabled()) {
+			$this->_registerDAOs();
+			$this->_addUserSettings();
 
-		$this->_registerDAOs();
-		$this->_addUserSettings();
+			$this->import('features.LimitRetry');
+			new LimitRetry($this);
 
-		$this->import('features.LimitRetry');
-		new LimitRetry($this);
+			$this->import('features.LimitReuse');
+			new LimitReuse($this);
 
-		$this->import('features.LimitReuse');
-		new LimitReuse($this);
+			$this->import('features.Blocklist');
+			new Blocklist($this);
 
-		$this->import('features.Blocklist');
-		new Blocklist($this);
+			$this->import('features.SecurityRules');
+			new SecurityRules($this);
 
-		$this->import('features.SecurityRules');
-		new SecurityRules($this);
+			$this->import('features.ForceExpiration');
+			new ForceExpiration($this);
+		}
 
-		$this->import('features.ForceExpiration');
-		new ForceExpiration($this);
-
-		return true;
+		return $success;
 	}
 
 	/**

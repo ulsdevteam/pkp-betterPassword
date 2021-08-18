@@ -19,7 +19,9 @@ The plugin also provides the following features:
 
 ## Configuration
 
-Install this as a "generic" plugin in OJS.  The preferred installation method is through the Plugin Gallery.  To install manually via the filesystem, extract the contents of this archive to a "betterPassword" directory under "plugins/generic" in your OJS root.  To install via Git submodule, target that same directory path: `git submodule add https://github.com/ulsdevteam/pkp-betterPassword plugins/generic/betterPassword` and `git submodule update --init --recursive plugins/generic/betterPassword`.  Run the upgrade script to register this plugin, e.g.: `php tools/upgrade.php upgrade`
+Install this as a "generic" plugin in OJS.  The preferred installation method is through the Plugin Gallery.
+
+To install manually via the filesystem, extract the contents of this archive to a "betterPassword" directory under "plugins/generic" in your OJS root.  To install via Git submodule, target that same directory path: `git submodule add https://github.com/ulsdevteam/pkp-betterPassword plugins/generic/betterPassword`.  Run the installation script to register this plugin, e.g.: `php lib/pkp/tools/installPluginVersion.php plugins/generic/betterPassword/version.xml`
 
 Login as a Site Administrator and navigate to any context.  Enable the plugin via Login -> Settings -> Website -> Plugins -> Better Password -> Enable.
 
