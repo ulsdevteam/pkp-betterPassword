@@ -17,10 +17,11 @@ class BadpwFailedLoginsDAO extends DAO {
 	 * @return boolean true if successfully inserted into DB
 	 */
 	private function _insertObject(BadpwFailedLogins $badpwObj) : bool {
+		$type = 'date';
 		return $this->update('
 			INSERT INTO badpw_failedlogins (username, count, failed_login_time)
 			VALUES (?, ?, ?)
-		', [$badpwObj->getUsername(), $badpwObj->getCount(), $this->convertToDB($badpwObj->getFailedTime(), 'date')]);
+		', [$badpwObj->getUsername(), $badpwObj->getCount(), $this->convertToDB($badpwObj->getFailedTime(), $type)]);
 	}
 
 	/**
