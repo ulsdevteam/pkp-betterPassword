@@ -60,8 +60,12 @@ class LimitRetry {
 			$time = $user->getFailedTime();
 
 			// Discard old bad password attempts
+			// When the memory has expired
 			if ($count && $time < time() - $this->_lockExpiresSeconds) {
-				$badpwFailedLoginsDao->resetCount($user);
+				// And the user is not currently locked
+				if ($user->getCount() < $this->_maxRetries || $user->getFailedTime() <= time() - $this->_lockSeconds) {
+					$badpwFailedLoginsDao->resetCount($user);
+				}
 			}
 
 			// Update the count to represent this failed attempt
