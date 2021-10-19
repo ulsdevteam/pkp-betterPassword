@@ -107,10 +107,11 @@ class BetterPasswordPlugin extends GenericPlugin {
 	}
 
 	/**
-	 * @copydoc PKPPlugin::getInstallSchemaFile()
-	 */
-	public function getInstallSchemaFile() {
-		return $this->getPluginPath() . DIRECTORY_SEPARATOR . 'xml' . DIRECTORY_SEPARATOR . 'schema.xml';
+	* @copydoc Plugin::getInstallMigration()
+	*/
+	function getInstallMigration() {
+		$this->import('BetterPasswordSchemaMigration');
+		return new BetterPasswordSchemaMigration();
 	}
 
 	/**
