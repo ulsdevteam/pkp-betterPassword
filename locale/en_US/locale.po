@@ -76,13 +76,13 @@ msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckUpperc
 msgstr "Require an uppercase character."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
-msgstr "Require an lowercase character."
+msgstr "Require a lowercase character."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
-msgstr "Require an numeric character."
+msgstr "Require a numeric character."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
-msgstr "Require an non-alphanumeric character."
+msgstr "Require a non-alphanumeric character."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
 msgstr "Check any user-requested passwords against a blocklist of known bad passwords."

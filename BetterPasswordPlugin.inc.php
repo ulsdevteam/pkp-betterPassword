@@ -107,8 +107,8 @@ class BetterPasswordPlugin extends GenericPlugin {
 	}
 
 	/**
-	* @copydoc Plugin::getInstallMigration()
-	*/
+	 * @copydoc Plugin::getInstallMigration()
+	 */
 	function getInstallMigration() {
 		$this->import('BetterPasswordSchemaMigration');
 		return new BetterPasswordSchemaMigration();
