@@ -115,7 +115,7 @@ msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidatio
 msgstr "Password invalidation"
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
-msgstr "Number of days a user can stay without updating the password."
+msgstr "Number of days before passwords expire."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
 msgstr "Number of days, before the expiration, to start warning the user daily about the password expiration."
@@ -124,7 +124,7 @@ msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidatio
 msgstr "Number of last passwords that should be blocked for reuse."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
-msgstr "Number of days a user can stay without updating the password must be numeric."
+msgstr "Number of days before passwords expire must be numeric."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
 msgstr "Number of last passwords that should be blocked for reuse must be numeric."

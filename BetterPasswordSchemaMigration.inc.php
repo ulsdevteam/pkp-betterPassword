@@ -21,7 +21,7 @@ class BetterPasswordSchemaMigration extends Migration {
 		 * Run the migrations.
 		 * @return void
 		 */
-        public function up() {
+		public function up() {
 		// Bad Password failed login attempts
 		Capsule::schema()->create('badpw_failedlogins', function (Blueprint $table) {
 			$table->string('username', 32);

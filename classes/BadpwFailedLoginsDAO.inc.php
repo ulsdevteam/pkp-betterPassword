@@ -61,19 +61,19 @@ class BadpwFailedLoginsDAO extends DAO {
 			SELECT *
 			FROM badpw_failedlogins
 			WHERE username = ?
-		', [(string)$username]);
-                
-                $row = (array)$result->current();
+		', (string)$username);
 
-                //User already in database
+		$row = (array)$result->current();
+
+		//User already in database
 		if (count($row)>0) {
 			return new BadpwFailedLogins((string)$row['username'], (int)$row['count'], (int)strtotime($row['failed_login_time']));
 		}
-                
-                //Unknown user, add to db before returning object
-                $badpwObj = new BadpwFailedLogins($username, 0, time());
-                $this->_insertObject($badpwObj);
-                return $badpwObj;
+
+		//Unknown user, add to db before returning object
+		$badpwObj = new BadpwFailedLogins($username, 0, time());
+		$this->_insertObject($badpwObj);
+		return $badpwObj;
 	}
 
 	/**
