@@ -23,9 +23,9 @@ class BadpwFailedLogins extends DataObject {
 	 */
 	public function __construct(string $username, int $count, int $lastLoginTime) {
 		parent::__construct();
-		$this->_username = filter_var($username, FILTER_SANITIZE_STRING);
-		$this->_count = filter_var($count, FILTER_SANITIZE_NUMBER_INT);
-		$this->_lastLoginTime = filter_var($lastLoginTime, FILTER_SANITIZE_NUMBER_INT);
+		$this->_username = $username;
+		$this->_count = $count;
+		$this->_lastLoginTime = $lastLoginTime;
 	}
 
 	/**

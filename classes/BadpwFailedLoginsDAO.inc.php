@@ -6,7 +6,6 @@
  * @class BadpwFailedLoginsDAO
  * @brief Database operations with the BadpwFailedLogins
  */
-
 import('lib.pkp.classes.db.DAO');
 import('plugins.generic.betterPassword.classes.BadpwFailedLogins');
 
@@ -36,7 +35,7 @@ class BadpwFailedLoginsDAO extends DAO {
 				count = count + 1,
 				failed_login_time = CURRENT_TIMESTAMP
 			WHERE username = ?
-		', $badpwObj->getUsername());
+		', [$badpwObj->getUsername()]);
 	}
 
 	/**
@@ -48,7 +47,7 @@ class BadpwFailedLoginsDAO extends DAO {
 		return $this->update('
 			DELETE FROM badpw_failedlogins
 			WHERE username = ?
-		', $badpwObj->getUsername());
+		', [$badpwObj->getUsername()]);
 	}
 
 	/**
@@ -61,19 +60,19 @@ class BadpwFailedLoginsDAO extends DAO {
 			SELECT *
 			FROM badpw_failedlogins
 			WHERE username = ?
-		', $username);
-		$row = $result->GetRowAssoc(false);
-		if ($result->RowCount()) {
-			return new BadpwFailedLogins($row['username'], $row['count'], strtotime($row['failed_login_time']));
+		', [(string)$username]);
+
+		$row = (array)$result->current();
+
+		//User already in database
+		if (count($row)>0) {
+			return new BadpwFailedLogins((string)$row['username'], (int)$row['count'], (int)strtotime($row['failed_login_time']));
 		}
-		/** @var UserDao */
-		$userDao = DAORegistry::getDAO('UserDAO');
-		$user = $userDao->getByUsername($username);
-		if ($user) {
-			$badpwObj = new BadpwFailedLogins($username, 0, time());
-			$this->_insertObject($badpwObj);
-			return $badpwObj;
-		}
+
+		//Unknown user, add to db before returning object
+		$badpwObj = new BadpwFailedLogins($username, 0, time());
+		$this->_insertObject($badpwObj);
+		return $badpwObj;
 	}
 
 	/**
@@ -86,6 +85,6 @@ class BadpwFailedLoginsDAO extends DAO {
 			UPDATE badpw_failedlogins
 			SET count = 0
 			WHERE username = ?
-		', $badpwObj->getUsername());
+		', [$badpwObj->getUsername()]);
 	}
 }
