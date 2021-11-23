@@ -7,7 +7,6 @@
  * @brief Database operations with the BadpwFailedLogins
  */
 import('lib.pkp.classes.db.DAO');
-import('lib.pkp.classes.db.DAOResultFactory');
 import('plugins.generic.betterPassword.classes.BadpwFailedLogins');
 
 class BadpwFailedLoginsDAO extends DAO {
@@ -61,7 +60,7 @@ class BadpwFailedLoginsDAO extends DAO {
 			SELECT *
 			FROM badpw_failedlogins
 			WHERE username = ?
-		', (string)$username);
+		', [(string)$username]);
 
 		$row = (array)$result->current();
 
