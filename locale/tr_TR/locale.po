@@ -1,0 +1,148 @@
+msgid ""
+msgstr ""
+
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: Kerim Sarıgül <kerim@kerimsarigul.com>\n"
+"Language-Team: \n"
+"tr_TR/>\n"
+"Language: tr_TR\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2022-02-18 16:38+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Daha İyi Şifre Eklentisi"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr "ADS yazılımı içinde ek şifre gereksinimlerini etkinleştirin. Bu eklenti NIST tavsiyelerinin uygulanmasına izin verir."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Parolanız alfabetik bir karakter gerektiriyor."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Parolanız büyük harfli bir karakter gerektiriyor."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Parolanız küçük harfli bir karakter gerektiriyor."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Parolanız sayısal bir karakter gerektiriyor."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Parolanız alfasayısal olmayan bir karakter gerektiriyor."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr "Parolanız, bilinen kötü parolaların engellendiği listede bulundu."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "Riskli şifre denemeleri nedeniyle hesabınız geçici olarak kilitlendi."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr "Şifreniz şu anda değiştirilemedi. Lütfen daha sonra tekrar deneyiniz."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "Bu şifreyi tekrar kullanamazsınız, lütfen başka bir şifre belirleyin."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Ayarlar"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Dosya yüklenemedi"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Dosya silinemedi"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Daha İyi Şifre Ayarları"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr "<p>Bu eklenti etkinleştirildiğinde, daha iyi şifre seçimi sağlamak için kullanıcı şifreleri ek kriterlere göre kontrol edilecektir. NIST, şifreleri bir engellenenler listesine göre kontrol etmenizi ve tekrarlanan şifre hatalarından sonra geçici hesap kilitlemeyi kullanmanızı önerir. Belirli alfasayısal karakter türleri de dahil olmak üzere karmaşıklık gereksinimleri mevcuttur ancak UX nedenleriyle önerilmez.</p>"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Parola gereksinimleri"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Engellenenler listesi dosyasını yükleyin"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Yüklenen Engellenenler Listesi"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Alfabetik karakter gerektirir."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Büyük harfli bir karakter gerektirir."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Küçük harfli bir karakter gerektirir."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Sayısal bir karakter gerektirir."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Alfasayısal olmayan bir karakter gerektirir."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr "Kullanıcı tarafından belirlenen parolaları, bilinen hatalı parolaların engellenenler listesiyle karşılaştırın."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Geçici hesap kilitleme"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Bir hesabı kilitlemek için yapılan hatalı giriş denemelerinin sayısı."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Kötü oturum açma girişimlerini unutmadan önceki saniye sayısı.
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr "Aşırı hatalı giriş denemelerinden sonra bir hesabı kilitlemek için geçen saniye sayısı."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr "Herhangi bir geçici hesap kilitleme ayarı girilirse, tüm geçici hesap kilitleme ayarları gereklidir."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr "Bir hesabı kilitlemek için yapılan hatalı giriş denemelerinin sayısı sayısal olmalıdır."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr "Hatalı oturum açma girişimlerinin unutulmadan önceki saniye sayısı sayısal olmalıdır."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr "Aşırı hatalı giriş denemelerinden sonra bir hesabı kilitlemek için geçen saniye sayısı sayısal olmalıdır."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Şifre geçersiz kılma"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Parolaların süresinin dolmasına kadar geçen gün sayısı."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr "Kullanıcıyı parolanın süresinin dolmasıyla ilgili  günlük olarak uyarmaya başlamak için sona erme tarihinden önceki gün sayısı."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr "Yeniden kullanım için engellenmesi gereken son parola sayısı."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Parolaların süresinin dolmasına kadar geçen gün sayısı sayısal olmalıdır."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr "Yeniden kullanım için bloke edilmesi gereken son parola sayısı sayısal olmalıdır."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr "Son kullanma tarihinden önceki gün sayısı, kullanıcıyı parola son kullanma tarihi hakkında günlük olarak uyarmaya başlamak için sayısal olmalıdır."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "{$days} gün içinde şifrenizin süresi dolacak."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Mevcut Engellenenler Listesini Sil"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Silmek istediğinden emin misin?"
