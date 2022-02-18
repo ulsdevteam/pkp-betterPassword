@@ -66,14 +66,10 @@ class BadpwFailedLoginsDAO extends DAO {
 		if ($result->RowCount()) {
 			return new BadpwFailedLogins($row['username'], $row['count'], strtotime($row['failed_login_time']));
 		}
-		/** @var UserDao */
-		$userDao = DAORegistry::getDAO('UserDAO');
-		$user = $userDao->getByUsername($username);
-		if ($user) {
-			$badpwObj = new BadpwFailedLogins($username, 0, time());
-			$this->_insertObject($badpwObj);
-			return $badpwObj;
-		}
+		//Unknown user, add to db before returning object
+		$badpwObj = new BadpwFailedLogins($username, 0, time());
+		$this->_insertObject($badpwObj);
+		return $badpwObj;
 	}
 
 	/**
