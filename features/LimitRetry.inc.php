@@ -50,6 +50,9 @@ class LimitRetry {
 				return;
 			}
 			$username = $templateManager->getTemplateVars('username');
+			if (!$username) {
+				return;
+			}
 			/** @var BadpwFailedLoginsDAO */
 			$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');
 			$user = $badpwFailedLoginsDao->getByUsername($username);
