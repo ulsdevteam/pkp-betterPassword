@@ -104,7 +104,9 @@ class ForceExpiration {
 			/* @var $notificationDao NotificationDAO */
 			$notificationDao = DAORegistry::getDAO('NotificationDAO');
 			$notification = $notificationDao->getById($lastNotification->id, $user->getId());
-			$notificationDao->deleteObject($notification);
+			if ($notification) {
+				$notificationDao->deleteObject($notification);
+			}
 		}
 
 		$notification = $notificationManager->createTrivialNotification($user->getId(), NOTIFICATION_TYPE_WARNING, array('contents' => __('plugins.generic.betterPassword.message.yourPasswordWillExpire', ['days' => $diffInDays])));
