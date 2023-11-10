@@ -10,12 +10,13 @@
 <script>
 	$(function() {ldelim}
 		// Attach the upload form handler.
+		{*debug*}
 		$('#betterPasswordSettingsForm').pkpHandler(
 			'$.pkp.controllers.form.FileUploadFormHandler',
 			{ldelim}
 				$uploader: $('#plupload'),
 				uploaderOptions: {ldelim}
-					uploadUrl: {url|json_encode router=$smarty.const.ROUTE_COMPONENT op="uploadBlocklist" escape=false},
+					uploadUrl: {url|json_encode router=$smarty.const.ROUTE_COMPONENT component="plugins.generic.betterpassword.handler.BlocklistHandler" op="uploadBlocklist" category="generic" plugin=$pluginName escape=false},
 					baseUrl: {$baseUrl|json_encode}
 				{rdelim}
 			{rdelim});

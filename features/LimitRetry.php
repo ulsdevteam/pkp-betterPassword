@@ -11,6 +11,15 @@
  *
  * @brief Implements the feature to limit retries and lock the account
  */
+namespace APP\plugins\generic\betterPassword\features;
+
+use PKP\plugins\Hook;
+use PKP\core\PKPApplication;
+use PKP\db\DAORegistry;
+use APP\plugins\generic\betterPassword\BetterPasswordPlugin;
+use APP\facades\Repo;
+use APP\plugins\generic\betterPassword\classes\BadpwFailedLoginsDAO;
+use APP\plugins\generic\betterPassword\handlers\DisabledLoginHandler;
 
 class LimitRetry {
 	/** @var int Max amount of retries */
@@ -27,12 +36,12 @@ class LimitRetry {
 	 * @param BetterPasswordPlugin $plugin
 	 */
 	public function __construct(BetterPasswordPlugin $plugin) {
-		$this->_maxRetries = $plugin->getSetting(CONTEXT_SITE, 'betterPasswordLockTries');
+		$this->_maxRetries = $plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordLockTries');
 		if (!$this->_maxRetries) {
 			return;
 		}
-		$this->_lockSeconds = $plugin->getSetting(CONTEXT_SITE, 'betterPasswordLockSeconds');
-		$this->_lockExpiresSeconds = $plugin->getSetting(CONTEXT_SITE, 'betterPasswordLockExpires');
+		$this->_lockSeconds = $plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordLockSeconds');
+		$this->_lockExpiresSeconds = $plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordLockExpires');
 
 		$this->_handleTemplateDisplay();
 		$this->_addFailedLoginLogger();
@@ -43,7 +52,7 @@ class LimitRetry {
 	 * Register callback to add text to registration page
 	 */
 	private function _handleTemplateDisplay() : void {
-		HookRegistry::register('TemplateManager::display', function ($hook, $args) {
+		Hook::add('TemplateManager::display', function ($hook, $args) {
 			/** @var TemplateManager $templateManager */
 			[$templateManager, $template] = $args;
 			if ($template !== 'frontend/pages/userLogin.tpl' || $templateManager->getTemplateVars('error') !== 'user.login.loginError') {
@@ -85,7 +94,7 @@ class LimitRetry {
 	 * Register a hook to handle failed login attempts
 	 */
 	private function _addFailedLoginLogger() : void {
-		HookRegistry::register('LoadHandler', function ($hook, $args) {
+		Hook::add('LoadHandler', function ($hook, $args) {
 			$page = &$args[0];
 			$operation = $args[1];
 			$username = $_POST['username'] ?? null;
@@ -102,8 +111,8 @@ class LimitRetry {
 
 			// Replace the login/signIn handler to prevent login
 			define('HANDLER_CLASS', 'DisabledLoginHandler');
-			$page = 'plugins.generic.betterPassword.handlers.DisabledLoginHandler';
-			import($page);
+			//$page = 'plugins.generic.betterPassword.handlers.DisabledLoginHandler';
+			//import($page);
 			return true;
 		});
 	}
@@ -112,7 +121,7 @@ class LimitRetry {
 	 * Register a hook to reset the retry count after resetting the password
 	 */
 	private function _addResetPasswordReset() : void {
-		HookRegistry::register('LoadHandler', function ($hook, $args) {
+		Hook::add('LoadHandler', function ($hook, $args) {
 			$page = &$args[0];
 			$operation = $args[1];
 			if ([$page, $operation] !== ['login', 'resetPassword']) {
@@ -123,8 +132,10 @@ class LimitRetry {
 			$username = array_shift($request->getRequestedArgs());
 			$confirmHash = $request->getQueryArray()['confirm'] ?? null;
 			/** @var UserDAO */
-			$userDao = DAORegistry::getDAO('UserDAO');
-			$user = $userDao->getByUsername($username);
+			//$userDao = DAORegistry::getDAO('UserDAO');
+			//$user = $userDao->getByUsername($username);
+			$user = Repo::user()->getByUsername($username);
+			
 			if ($user && $confirmHash && Validation::verifyPasswordResetHash($user->getId(), $confirmHash)) {
 				/** @var BadpwFailedLoginsDAO */
 				$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');

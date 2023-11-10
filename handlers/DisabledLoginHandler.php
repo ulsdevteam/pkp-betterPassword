@@ -12,7 +12,8 @@
  * @brief Handles controller requests for the login page, it's used to temporarily disable the logon.
  */
 
-import('classes.handler.Handler');
+//import('classes.handler.Handler');
+use APP\handler\Handler;
 
 class DisabledLoginHandler extends Handler {
 	/**
@@ -21,7 +22,7 @@ class DisabledLoginHandler extends Handler {
 	public function initialize($request) : void {
 		parent::initialize($request);
 		// Load locale usually handled by LoginHandler
-		AppLocale::requireComponents(LOCALE_COMPONENT_PKP_USER);
+		//AppLocale::requireComponents(LOCALE_COMPONENT_PKP_USER); //needs changed
 	}
 
 	/**

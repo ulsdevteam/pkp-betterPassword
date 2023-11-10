@@ -11,8 +11,26 @@
  *
  * @brief Better Password plugin class
  */
+namespace APP\plugins\generic\betterPassword;
 
-import('lib.pkp.classes.plugins.GenericPlugin');
+use APP\facades\Repo;
+use APP\template\TemplateManager;
+use APP\plugins\generic\betterPassword\features\Blocklist as Blocklist;
+use APP\plugins\generic\betterPassword\features\ForceExpiration as ForceExpiration;
+use APP\plugins\generic\betterPassword\features\LimitRetry as LimitRetry;
+use APP\plugins\generic\betterPassword\features\LimitReuse as LimitReuse;
+use APP\plugins\generic\betterPassword\features\SecurityRules as SecurityRules;
+use APP\plugins\generic\betterPassword\BetterPasswordSettingsForm as BetterPasswordSettingsForm;
+use APP\plugins\generic\betterPassword\BetterPasswordSchemaMigration as BetterPasswordSchemaMigration;
+use APP\plugins\generic\betterPassword\classes\BadpwFailedLoginsDAO;
+use PKP\plugins\GenericPlugin;
+use PKP\db\DAORegistry;
+use PKP\plugins\Hook;
+use PKP\linkAction\request\AjaxModal;
+use PKP\config\Config;
+use PKP\linkAction\LinkAction;
+use PKP\core\PKPApplication; //may be unneeded
+use PKP\core\JSONMessage;
 
 class BetterPasswordPlugin extends GenericPlugin {
 	/**
@@ -59,26 +77,26 @@ class BetterPasswordPlugin extends GenericPlugin {
 		if (!Config::getVar('general', 'installed') || defined('RUNNING_UPGRADE')) {
 			return true;
 		}
+		$testing = $this->getEnabled();
 		if ($success && $this->getEnabled()) {
 			$this->_registerDAOs();
 			$this->_addUserSettings();
 
-			$this->import('features.LimitRetry');
+			//$this->import('features.LimitRetry');
 			new LimitRetry($this);
 
-			$this->import('features.LimitReuse');
+			//$this->import('features.LimitReuse');
 			new LimitReuse($this);
 
-			$this->import('features.Blocklist');
+			//$this->import('features.Blocklist');
 			new Blocklist($this);
 
-			$this->import('features.SecurityRules');
+			//$this->import('features.SecurityRules');
 			new SecurityRules($this);
 
-			$this->import('features.ForceExpiration');
+			//$this->import('features.ForceExpiration');
 			new ForceExpiration($this);
 		}
-
 		return $success;
 	}
 
@@ -86,7 +104,7 @@ class BetterPasswordPlugin extends GenericPlugin {
 	 * Register this plugin's DAO with the application
 	 */
 	private function _registerDAOs() : void {
-		$this->import('classes.BadpwFailedLoginsDAO');
+		//$this->import('classes.BadpwFailedLoginsDAO');
 
 		$badpwFailedLoginDAO = new BadpwFailedLoginsDAO();
 		DAORegistry::registerDAO('BadpwFailedLoginsDAO', $badpwFailedLoginDAO);
@@ -97,9 +115,9 @@ class BetterPasswordPlugin extends GenericPlugin {
 	 * @see DAO::getAddtionalFieldNames
 	 */
 	private function _addUserSettings() : void {
-		HookRegistry::register('userdao::getAdditionalFieldNames', function ($hook, $args) {
+		Hook::add('userdao::getAdditionalFieldNames', function ($hook, $args) {
 			$fields = &$args[1];
-			$prefix = "{$this->getName()}::";
+			$prefix = "{$this->getSettingsName()}::";
 			foreach (['lastPasswords', 'lastPasswordUpdate', 'lastPasswordNotification'] as $field) {
 				$fields[] = $prefix . $field;
 			}
@@ -109,9 +127,11 @@ class BetterPasswordPlugin extends GenericPlugin {
 	/**
 	 * @copydoc Plugin::getInstallMigration()
 	 */
-	function getInstallMigration() {
-		$this->import('BetterPasswordSchemaMigration');
-		return new BetterPasswordSchemaMigration();
+	public function getInstallMigration() {
+		//$this->import('BetterPasswordSchemaMigration');
+		$schemaMigration = new BetterPasswordSchemaMigration();
+		return $schemaMigration;
+		//return new BetterPasswordSchemaMigration();
 	}
 
 	/**
@@ -122,7 +142,7 @@ class BetterPasswordPlugin extends GenericPlugin {
 		if (!$this->getEnabled()) {
 			return $actions;
 		}
-		import('lib.pkp.classes.linkAction.request.AjaxModal');
+		//import('lib.pkp.classes.linkAction.request.AjaxModal');
 		return array_merge(
 			[
 				new LinkAction(
@@ -144,9 +164,9 @@ class BetterPasswordPlugin extends GenericPlugin {
 	public function manage($args, $request) : ?JSONMessage {
 		$verb = $request->getUserVar('verb');
 		if ($verb == 'settings') {
-			$templateManager = TemplateManager::getManager();
-			$templateManager->register_function('plugin_url', [$this, 'smartyPluginUrl']);
-			$this->import('BetterPasswordSettingsForm');
+			$templateManager = TemplateManager::getManager($request);
+			$templateManager->registerPlugin('function', 'plugin_url', [$this, 'smartyPluginUrl']); //new
+			//$this->import('BetterPasswordSettingsForm');
 			$form = new BetterPasswordSettingsForm($this);
 			if ($request->getUserVar('save')) {
 				$form->readInputData();
@@ -186,7 +206,19 @@ class BetterPasswordPlugin extends GenericPlugin {
 	/**
 	 * @copydoc Plugin::getName()
 	 */
-	public function getName() : string {
-		return __CLASS__;
+	//public function getName() : string {
+		//return;
+	//}
+
+	/**
+	 * 
+	 */
+	public function getSettingsName() : string {
+		$fullCLassName = explode('\\', get_class($this));
+		return end($fullCLassName);
 	}
+}
+
+if (!PKP_STRICT_MODE) {
+    class_alias('APP\plugins\generic\betterPassword\BetterPasswordPlugin', '\BetterPasswordPlugin');
 }

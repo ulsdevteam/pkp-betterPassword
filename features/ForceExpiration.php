@@ -11,6 +11,12 @@
  *
  * @brief Implements the feature to force the expiration of passwords
  */
+namespace APP\plugins\generic\betterPassword\features;
+
+use PKP\plugins\Hook;
+use PKP\core\PKPApplication;
+use APP\plugins\generic\betterPassword\BetterPasswordPlugin;
+use APP\facades\Repo;
 
 class ForceExpiration {
 	/** @var BetterPasswordPlugin */
@@ -31,8 +37,8 @@ class ForceExpiration {
 	 */
 	public function __construct(BetterPasswordPlugin $plugin) {
 		$this->_plugin = $plugin;
-		$this->_passwordLifetime = (int) $plugin->getSetting(CONTEXT_SITE, 'betterPasswordInvalidationDays');
-		$this->_warningDays = (int) $plugin->getSetting(CONTEXT_SITE, 'betterPasswordInvalidationMininumWarningDays');
+		$this->_passwordLifetime = (int) $plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordInvalidationDays');
+		$this->_warningDays = (int) $plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordInvalidationMininumWarningDays');
 		if (!$this->_passwordLifetime) {
 			return;
 		}
@@ -45,7 +51,7 @@ class ForceExpiration {
 	 */
 	private function _addPasswordExpirationCheck() : void {
 		foreach (['LoadHandler', 'LoadComponentHandler', 'TemplateManager::display'] as $hook) {
-			HookRegistry::register('LoadHandler', function ($hook, $args) {
+			Hook::add('LoadHandler', function ($hook, $args) {
 				if ($this->_isProcessed) {
 					return;
 				}
@@ -53,8 +59,10 @@ class ForceExpiration {
 				$user = Application::get()->getRequest()->getUser();
 				$username = $_POST['username'] ?? null;
 				/** @var UserDAO */
-				$userDao = DAORegistry::getDAO('UserDAO');
+				//$userDao = DAORegistry::getDAO('UserDAO');
+				$userDao = Repo::user()->dao;
 				if (!$user && $username) {
+					//$user = $userDao->getByUsername($username);
 					$user = $userDao->getByUsername($username);
 				}
 				if (!$user) {
@@ -68,7 +76,8 @@ class ForceExpiration {
 
 				if (!$user->getMustChangePassword()) {
 					$user->setMustChangePassword(true);
-					$userDao->updateObject($user);
+					//$userDao->updateObject($user);
+					$userDao->edit($user);
 				}
 			});
 		}
@@ -80,7 +89,7 @@ class ForceExpiration {
 	 * @return DateTime
 	 */
 	private function _getExpirationDate(User $user) : DateTime {
-		$expirationDate = new DateTime($user->getData("{$this->_plugin->getName()}::lastPasswordUpdate") ?: $user->getDateRegistered());
+		$expirationDate = new DateTime($user->getData("{$this->_plugin->getSettingsName()}::lastPasswordUpdate") ?: $user->getDateRegistered());
 		$expirationDate->modify("{$this->_passwordLifetime} day");
 		return $expirationDate;
 	}
@@ -105,7 +114,7 @@ class ForceExpiration {
 			$notificationDao = DAORegistry::getDAO('NotificationDAO');
 			$notification = $notificationDao->getById($lastNotification->id, $user->getId());
 			if ($notification) {
-				$notificationDao->deleteObject($notification);
+				$notificationDao->delete($notification);
 			}
 		}
 
@@ -114,8 +123,11 @@ class ForceExpiration {
 		
 		$this->_setLastNotification($user, $lastNotification);
 		/** @var UserDAO */
-		$userDao = DAORegistry::getDAO('UserDAO');
-		$userDao->updateObject($user);
+		//$userDao = DAORegistry::getDAO('UserDAO');
+		//$userDao->updateObject($user);
+		$userDao = Repo::user()->dao;
+		$userDao->edit($user);
+		
 	}
 
 	/**
@@ -133,7 +145,7 @@ class ForceExpiration {
 	 * @return ?string
 	 */
 	private function _getLastNotification(User $user) : ?object {
-		return json_decode($user->getData("{$this->_plugin->getName()}::lastPasswordNotification"), false);
+		return json_decode($user->getData("{$this->_plugin->getSettingsName()}::lastPasswordNotification"), false);
 	}
 	
 	/**
@@ -142,6 +154,6 @@ class ForceExpiration {
 	 * @param string $password
 	 */
 	private function _setLastNotification(User $user, ?object $notification) : void {
-		$user->setData("{$this->_plugin->getName()}::lastPasswordNotification", json_encode($notification));
+		$user->setData("{$this->_plugin->getSettingsName()}::lastPasswordNotification", json_encode($notification));
 	}
 }

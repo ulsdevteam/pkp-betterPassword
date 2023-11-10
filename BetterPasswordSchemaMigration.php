@@ -10,23 +10,31 @@
  * @class BetterPasswordSchemaMigration
  * @brief Describe database table structures.
  */
+namespace APP\plugins\generic\betterPassword;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Builder;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Capsule\Manager as Capsule;
+//use Illuminate\Database\Capsule\Manager as Capsule;
+//use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class BetterPasswordSchemaMigration extends Migration {
 		/**
 		 * Run the migrations.
 		 * @return void
 		 */
-		public function up() {
+	public function up() {
 		// Bad Password failed login attempts
-		Capsule::schema()->create('badpw_failedlogins', function (Blueprint $table) {
+		//Capsule::schema()->create('badpw_failedlogins', function (Blueprint $table) {
+		Schema::create('badpw_failedlogins', function (Blueprint $table) {
 			$table->string('username', 32);
 			$table->bigInteger('count');
 			$table->datetime('failed_login_time');
 		});
+	}
+
+	public function down(): void {
+		Schema::drop('badpw_failedlogins');
 	}
 }

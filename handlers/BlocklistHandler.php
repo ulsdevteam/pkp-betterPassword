@@ -12,7 +12,20 @@
  * @brief Handles controller requests to upload/remove blocklists.
  */
 
-import('classes.handler.Handler');
+//import('classes.handler.Handler');
+//import('lib.pkp.classes.file.PrivateFileManager');
+namespace APP\plugins\generic\betterPassword\handlers;
+
+use APP\handler\Handler;
+//use APP\i18n\AppLocale;
+use APP\plugins\generic\betterPassword\BetterPasswordPlugin;
+use APP\plugins\generic\betterPassword\features\Blocklist;
+use PKP\file\PrivateFileManager;
+use PKP\core\PKPApplication;
+use PKP\core\PKPRequest;
+use PKP\plugins\PluginRegistry;
+use PKP\core\JSONMessage;
+
 
 class BlocklistHandler extends Handler {
 	/** @var PrivateFileManager */
@@ -27,11 +40,15 @@ class BlocklistHandler extends Handler {
 	public function initialize($request) : void {
 		parent::initialize($request);
 		// Load locale usually handled by LoginHandler
-		AppLocale::requireComponents(LOCALE_COMPONENT_PKP_USER);
+		//AppLocale::requireComponents(LOCALE_COMPONENT_PKP_USER); //needs changed
 
-		import('lib.pkp.classes.file.PrivateFileManager');
+		//import('lib.pkp.classes.file.PrivateFileManager');
 		$this->_privateFileManager = new PrivateFileManager();
-		$this->_plugin = PluginRegistry::getPlugin('generic', BetterPasswordPlugin::class);
+		$pluginClass = BetterPasswordPlugin::class;
+		$plugin = explode ("\\" , $pluginClass);
+		$plugin = array_pop($plugin);
+		$plugin = strtolower($plugin);
+		$this->_plugin = PluginRegistry::getPlugin('generic', $plugin);
 	}
 
 	/**
@@ -93,7 +110,7 @@ class BlocklistHandler extends Handler {
 	 * @return array
 	 */
 	private function _getBlocklists() : array {
-		return $this->_plugin->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles') ?? [];
+		return $this->_plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordUserBlacklistFiles') ?? [];
 	}
 
 	/**
@@ -102,6 +119,7 @@ class BlocklistHandler extends Handler {
 	 * @return string
 	 */
 	private function _setBlockLists(array $blocklists) : void {
+		//deprecated ask about replacement
 		$this->_plugin->updateSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles', $blocklists);
 	}
 }

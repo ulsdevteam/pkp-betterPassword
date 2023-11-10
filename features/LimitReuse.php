@@ -11,6 +11,12 @@
  *
  * @brief Implements the feature to disable reusing old passwords
  */
+namespace APP\plugins\generic\betterPassword\features;
+
+use PKP\plugins\Hook;
+use PKP\core\PKPApplication;
+use APP\plugins\generic\betterPassword\BetterPasswordPlugin;
+use APP\facades\Repo;
 
 class LimitReuse {
 	/** @var BetterPasswordPlugin */
@@ -28,7 +34,7 @@ class LimitReuse {
 	 */
 	public function __construct(BetterPasswordPlugin $plugin) {
 		$this->_plugin = $plugin;
-		$this->_maxReusablePasswords = (int) $plugin->getSetting(CONTEXT_SITE, 'betterPasswordInvalidationPasswords');
+		$this->_maxReusablePasswords = (int) $plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordInvalidationPasswords');
 		if (!$this->_maxReusablePasswords) {
 			return;
 		}
@@ -42,7 +48,7 @@ class LimitReuse {
 	 */
 	private function _addPasswordChangeValidation() : void {
 		foreach(['loginchangepasswordform::Constructor', 'changepasswordform::Constructor'] as $hook) {
-			HookRegistry::register($hook, function ($hook, $args) {
+			Hook::add($hook, function ($hook, $args) {
 				/** @var Form $form */
 				[$form] = $args;
 				$form->addCheck(new FormValidatorCustom(
@@ -51,8 +57,10 @@ class LimitReuse {
 						$user = Application::get()->getRequest()->getUser();
 						if (!$user) {
 							/** @var UserDAO */
-							$userDao = DAORegistry::getDAO('UserDAO');
-							$user = $userDao->getByUsername($form->getData('username'));
+							//$userDao = DAORegistry::getDAO('UserDAO');
+							//$user = $userDao->getByUsername($form->getData('username'));
+							$temp = $form->getData('username'); //remove
+							$user = Repo::user()->getByUsername($form->getData('username'));
 						}
 						foreach ($this->_getPasswords($user) as $previousPassword) {
 							// Check if an old password matches with the new
@@ -76,22 +84,25 @@ class LimitReuse {
 			if (!in_array($page, ['tab.user.ProfileTabHandler', 'login']) || $operation !== 'savePassword') {
 				return;
 			}
-			HookRegistry::register('userdao::_updateobject', function ($hook, $args) {
+			Hook::add('userdao::_updateobject', function ($hook, $args) {
 				// Avoid an infinite loop after updating itself
 				if ($this->_handledPasswordUpdate) {
 					return;
 				}
 				[, [$username, $password]] = $args;
 				/** @var UserDao */
-				$userDao = DAORegistry::getDAO('UserDAO');
+				//$userDao = DAORegistry::getDAO('UserDAO');
+				//$user = $userDao->getByUsername($username);
+				$userDao = Repo::user()->dao;
 				$user = $userDao->getByUsername($username);
 				$this->_addPassword($user, $password);
 				$this->_handledPasswordUpdate = true;
-				$userDao->updateObject($user);
+				//$userDao->updateObject($user);
+				$userDao->edit($user); 
 			});
 		};
-		HookRegistry::register('LoadComponentHandler', $handler);
-		HookRegistry::register('LoadHandler', $handler);
+		Hook::add('LoadComponentHandler', $handler);
+		Hook::add('LoadHandler', $handler);
 	}
 
 	/**
@@ -100,7 +111,7 @@ class LimitReuse {
 	 * @return ?string
 	 */
 	private function _getPasswords(User $user) : array {
-		$passwords = json_decode($user->getData("{$this->_plugin->getName()}::lastPasswords")) ?? [];
+		$passwords = json_decode($user->getData("{$this->_plugin->getSettingsName()}::lastPasswords")) ?? [];
 		return array_slice($passwords, 0, $this->_maxReusablePasswords);
 	}
 
@@ -113,7 +124,7 @@ class LimitReuse {
 		$passwords = $this->_getPasswords($user);
 		array_unshift($passwords, $password);
 		$passwords = array_slice($passwords, 0, $this->_maxReusablePasswords);
-		$user->setData("{$this->_plugin->getName()}::lastPasswords", json_encode($passwords));
-		$user->setData("{$this->_plugin->getName()}::lastPasswordUpdate", (new DateTime())->format('c'));
+		$user->setData("{$this->_plugin->getSettingsName()}::lastPasswords", json_encode($passwords));
+		$user->setData("{$this->_plugin->getSettingsName()}::lastPasswordUpdate", (new DateTime())->format('c'));
 	}
 }

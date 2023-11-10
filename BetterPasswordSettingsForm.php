@@ -12,7 +12,24 @@
  * @brief Form for administrators to modify Better Password plugin settings
  */
 
-import('lib.pkp.classes.form.Form');
+//import('lib.pkp.classes.form.Form');
+namespace APP\plugins\generic\betterPassword;
+
+//use APP\i18n\AppLocale;
+use APP\template\TemplateManager;
+use APP\plugins\generic\betterPassword\features\Blocklist;
+use APP\facades\Repo;
+use PKP\form\Form;
+use PKP\form\validation\FormValidatorCustom;
+use PKP\form\validation\FormValidatorForm;
+use PKP\form\validation\FormValidatorPost;
+use PKP\form\validation\FormValidatorCSRF;
+use PKP\db\DAORegistry;
+use PKP\core\PKPApplication;
+use PKP\plugins\Plugin;
+use PKP\linkAction\LinkAction;
+use PKP\linkAction\request\RemoteActionConfirmationModal;
+
 
 class BetterPasswordSettingsForm extends Form {
 	/** @var $_contextId int */
@@ -29,7 +46,7 @@ class BetterPasswordSettingsForm extends Form {
 	 * @param $plugin BetterPasswordPlugin
 	 */
 	public function __construct(BetterPasswordPlugin $plugin) {
-		$this->_contextId = CONTEXT_SITE;
+		$this->_contextId = PKPApplication::CONTEXT_SITE;  //may need changed
 		$this->_plugin = $plugin;
 
 		parent::__construct($plugin->getTemplateResource('settingsForm.tpl'), $this->_contextId);
@@ -108,7 +125,7 @@ class BetterPasswordSettingsForm extends Form {
 	 * @copydoc Form::fetch()
 	 */
 	public function fetch($request, $template = null, $display = false) : string {
-		AppLocale::requireComponents(LOCALE_COMPONENT_PKP_ADMIN);
+		//AppLocale::requireComponents(LOCALE_COMPONENT_PKP_ADMIN); //needs changed
 		$plugin = $this->_plugin;
 
 		$checkboxes = $locking = $invalidation = [];
@@ -123,19 +140,23 @@ class BetterPasswordSettingsForm extends Form {
 		}
 
 		$blocklistFiles = [];
-		foreach ($plugin->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles') as $hash => $name) {
-			$blocklistFiles[$name] = new LinkAction(
-				'deleteBlocklist',
-				new RemoteActionConfirmationModal(
-					$request->getSession(),
-					__('plugins.generic.betterPassword.actions.deleteBlocklistCheck'),
-					__('plugins.generic.betterPassword.actions.deleteBlocklist'),
-					$request->getRouter()->url($request, null, null, 'deleteBlocklist', null, ['file' => $hash])
-				),
-				__('common.delete'),
-				null,
-				__('plugins.generic.betterPassword.actions.deleteBlocklist')
-			);
+		$temp = $plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
+		if ($temp != null) {
+			foreach ($temp as $hash => $name) {
+				$blocklistFiles[$name] = new LinkAction(
+					'deleteBlocklist',
+					new RemoteActionConfirmationModal(
+						$request->getSession(),
+						__('plugins.generic.betterPassword.actions.deleteBlocklistCheck'),
+						__('plugins.generic.betterPassword.actions.deleteBlocklist'),
+						$request->getRouter()->url($request, null, 'plugins.generic.betterpassword.handler.BlocklistHandler', 'deleteBlocklist', null, ['file' => $hash])
+					),
+					__('common.delete'),
+					null,
+					__('plugins.generic.betterPassword.actions.deleteBlocklist')
+				);
+			}
+			//TODO need to iclude a JSON function to refresh the page to properly display changes immediately
 		}
 		TemplateManager::getManager($request)->assign([
 			'pluginName' => $plugin->getName(),
