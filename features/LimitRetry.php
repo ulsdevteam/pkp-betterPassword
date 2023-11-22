@@ -44,7 +44,8 @@ class LimitRetry {
 		$this->_lockExpiresSeconds = $plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordLockExpires');
 
 		$this->_handleTemplateDisplay();
-		$this->_addFailedLoginLogger();
+		//$this->_addFailedLoginLogger();
+		$this->registerLoadHandler();
 		$this->_addResetPasswordReset();
 	}
 
@@ -93,6 +94,7 @@ class LimitRetry {
 	/**
 	 * Register a hook to handle failed login attempts
 	 */
+	/* 
 	private function _addFailedLoginLogger() : void {
 		Hook::add('LoadHandler', function ($hook, $args) {
 			$page = &$args[0];
@@ -101,9 +103,9 @@ class LimitRetry {
 			if ([$page, $operation] !== ['login', 'signIn'] || !$username) {
 				return;
 			}
-
+	*/
 			/** @var BadpwFailedLoginsDAO */
-			$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');
+	/*		$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');
 			$user = $badpwFailedLoginsDao->getByUsername($username);
 			if (!$user || $user->getCount() < $this->_maxRetries || $user->getFailedTime() <= time() - $this->_lockSeconds) {
 				return;
@@ -115,7 +117,31 @@ class LimitRetry {
 			//import($page);
 			return true;
 		});
+	}*/
+
+	public function registerLoadHandler() { //new
+		Hook::add('LoadHandler', [$this, 'setLoadHandler']);
 	}
+
+	public function setLoadHandler(string $hookname, array $args): bool { //new
+		$page = &$args[0];
+		$operation = $args[1];
+		$handler =& $args[3];
+		$username = $_POST['username'] ?? null;
+		if ([$page, $operation] !== ['login', 'signIn'] || !$username) {
+			return false;
+		}
+	
+		/** @var BadpwFailedLoginsDAO */
+		$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');
+		$user = $badpwFailedLoginsDao->getByUsername($username);
+		if (!$user || $user->getCount() < $this->_maxRetries || $user->getFailedTime() <= time() - $this->_lockSeconds) {
+			return false;
+		}
+		$handler = new DisabledLoginHandler();
+		return true;
+	}
+	
 
 	/**
 	 * Register a hook to reset the retry count after resetting the password

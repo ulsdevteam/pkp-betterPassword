@@ -15,6 +15,11 @@ namespace APP\plugins\generic\betterPassword\features;
 
 use PKP\plugins\Hook;
 use PKP\core\PKPApplication;
+use PKP\form\validation\FormValidatorCustom;
+use PKP\security\Validation;
+use PKP\user\User;
+use PKP\user\Repository;
+use APP\core\Application;
 use APP\plugins\generic\betterPassword\BetterPasswordPlugin;
 use APP\facades\Repo;
 
@@ -39,30 +44,37 @@ class LimitReuse {
 			return;
 		}
 
-		$this->_saveUserPasswords();
-		$this->_addPasswordChangeValidation();
+		Hook::add('Schema::get::user', [$this, 'addToSchema']);
+		Hook::add('changepasswordform::execute', [$this, 'rememberPasswords']); //new methods
+		
+		Hook::add('loginchangepasswordform::Constructor', [$this, 'passwordChangeValidation']);
+		Hook::add('changepasswordform::Constructor', [$this, 'passwordChangeValidation']);
+
+		//$this->_saveUserPasswords(); //replace these with our hooks
+		//$this->_addPasswordChangeValidation();
 	}
 
 	/**
 	 * Register a hook to validate reused passwords
 	 */
 	private function _addPasswordChangeValidation() : void {
-		foreach(['loginchangepasswordform::Constructor', 'changepasswordform::Constructor'] as $hook) {
+		/*foreach(['loginchangepasswordform::Constructor', 'changepasswordform::Constructor'] as $hook) {
 			Hook::add($hook, function ($hook, $args) {
-				/** @var Form $form */
+				//debug_to_console('test1');
+				/** @var Form $form 
 				[$form] = $args;
 				$form->addCheck(new FormValidatorCustom(
 					$form, 'password', 'required', 'plugins.generic.betterPassword.validation.betterPasswordPasswordReused',
 					function ($password) use ($form) {
 						$user = Application::get()->getRequest()->getUser();
 						if (!$user) {
-							/** @var UserDAO */
+							/** @var UserDAO 
 							//$userDao = DAORegistry::getDAO('UserDAO');
 							//$user = $userDao->getByUsername($form->getData('username'));
-							$temp = $form->getData('username'); //remove
+							//$temp = $form->getData('username'); //remove
 							$user = Repo::user()->getByUsername($form->getData('username'));
 						}
-						foreach ($this->_getPasswords($user) as $previousPassword) {
+						foreach ($this->_getPasswords($user) as $previousPassword) { //coming up empty, not saving previous passwords
 							// Check if an old password matches with the new
 							if (Validation::verifyPassword($user->getUsername(), $password, $previousPassword, $rehash)) {
 								return false;
@@ -72,37 +84,98 @@ class LimitReuse {
 					}
 				));
 			});
-		}
+		}*/
 	}
 
 	/**
 	 * Register a hook to save new passwords
 	 */
-	private function _saveUserPasswords() : void {
-		$handler = function ($hook, $args) {
+	private function _saveUserPasswords() : void { //note this section is suplurfluous, and working to remove it
+			/*$handler = function ($hook, $args) {
 			[$page, $operation] = $args;
 			if (!in_array($page, ['tab.user.ProfileTabHandler', 'login']) || $operation !== 'savePassword') {
 				return;
 			}
-			Hook::add('userdao::_updateobject', function ($hook, $args) {
+			Hook::add('User::edit', function ($hook, $args) {
+				//debug_to_console('test2');
 				// Avoid an infinite loop after updating itself
 				if ($this->_handledPasswordUpdate) {
+					$user = $args[0];
+					$hold = $user->getAllData();
 					return;
 				}
-				[, [$username, $password]] = $args;
-				/** @var UserDao */
+				//[, [$username, $password]] = $args;
+				//echo(var_export($args));
+				/** @var UserDao 
 				//$userDao = DAORegistry::getDAO('UserDAO');
 				//$user = $userDao->getByUsername($username);
-				$userDao = Repo::user()->dao;
-				$user = $userDao->getByUsername($username);
-				$this->_addPassword($user, $password);
+				$user = $args[0];
+				$currentPassword = $user->getPassword();
+				//$userName = $args[0]->getUsername();
+				//$user = Repo::user()->getByUsername($username);
+				$user = $this->_addPassword($user, $currentPassword);
 				$this->_handledPasswordUpdate = true;
 				//$userDao->updateObject($user);
-				$userDao->edit($user); 
+				Repo::user()->edit($user);
 			});
-		};
-		Hook::add('LoadComponentHandler', $handler);
-		Hook::add('LoadHandler', $handler);
+		}; 
+		
+		//Hook::add('changepasswordform::execute', [$this, 'rememberPasswords']);
+		Hook::add('changepasswordform::execute', [$this, 'rememberPasswords']);
+		//Hook::add('LoadComponentHandler', $handler);
+		//Hook::add('LoadHandler', $handler);*/
+	}
+
+	public function addToSchema($hook, $args) {
+		$user = $args[0];
+
+		$user->properties->previousPasswords = (object) [
+			'type' => 'string',
+			'apiSummary' => false,
+			//'multilingual' => false,
+			'validation' => ['nullable']
+		];
+
+		$user->properties->previousPasswordsUpdate = (object) [
+			'type' => 'string',
+			'apiSummary' => false,
+			//'multilingual' => false,
+			'validation' => ['nullable', 'date:Y-m-d H:i:s']
+		];
+
+		return false;
+	}
+
+	public function rememberPasswords($hook, $args) {
+		if ($hook == 'changepasswordform::execute' && get_class($args[0]) == 'PKP\user\form\ChangePasswordForm') {
+			$user = $args[0]->getUser();
+			$password = $args[0]->getData('oldPassword');
+			$user = $this->_addPassword($user, $password);
+			//Repo::user()->edit($user);
+			Repo::user()->edit($user);
+			//put assignment of objects here
+		}
+		return false;
+	}
+
+	public function passwordChangeValidation($hook, $args) {
+		$form = $args[0];
+		$newCheck = new FormValidatorCustom($form, 'password', 'required', 'plugins.generic.betterPassword.validation.betterPasswordPasswordReused', $this->passwordCompare($password, $form));
+		$form->addCheck($newCheck);
+		return false;
+	}
+
+	public function passwordCompare($password, $form) {
+		$user = Application::get()->getRequest()->getUser();
+		if (!$user) {
+			$user = Repo::user()->getByUsername($form->getData('username'));
+		}
+		foreach ($this->_getPasswords($user) as $previousPassword) {
+			if (Validation::verifyPassword($user->getUsername(), $password, $previousPassword, $rehash)) { //ask about rehash, only instance of it
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -111,7 +184,12 @@ class LimitReuse {
 	 * @return ?string
 	 */
 	private function _getPasswords(User $user) : array {
-		$passwords = json_decode($user->getData("{$this->_plugin->getSettingsName()}::lastPasswords")) ?? [];
+		//$passwords = json_decode($user->getData("{$this->_plugin->getSettingsName()}::lastPasswords")) ?? [];
+		$hold = $this->_plugin->getSettingsName();
+		$hold2 = $user->getData("{$hold}::lastPasswords");
+		$hold3 = json_decode($hold2);
+		$hold4 = $user->getAllData();
+		$passwords = $hold3 ??  [];
 		return array_slice($passwords, 0, $this->_maxReusablePasswords);
 	}
 
@@ -120,11 +198,13 @@ class LimitReuse {
 	 * @param User $user
 	 * @param string $password
 	 */
-	private function _addPassword(User $user, string $password) : void {
+	private function _addPassword(User $user, string $password) : User {
 		$passwords = $this->_getPasswords($user);
 		array_unshift($passwords, $password);
 		$passwords = array_slice($passwords, 0, $this->_maxReusablePasswords);
-		$user->setData("{$this->_plugin->getSettingsName()}::lastPasswords", json_encode($passwords));
-		$user->setData("{$this->_plugin->getSettingsName()}::lastPasswordUpdate", (new DateTime())->format('c'));
+		$user->setData("previousPasswords", json_encode($passwords));
+		$hold = $user->getAllData();
+		$user->setData("{$this->_plugin->getSettingsName()}::lastPasswordUpdate", (new \DateTime())->format('c'));
+		return $user;
 	}
 }

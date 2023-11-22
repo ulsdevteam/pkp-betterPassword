@@ -11,9 +11,13 @@
  * 
  * @brief Handles controller requests for the login page, it's used to temporarily disable the logon.
  */
+namespace APP\plugins\generic\betterPassword\handlers;
 
 //import('classes.handler.Handler');
 use APP\handler\Handler;
+use APP\template\TemplateManager;
+use PKP\core\PKPRequest;
+use PKP\config\Config;
 
 class DisabledLoginHandler extends Handler {
 	/**
