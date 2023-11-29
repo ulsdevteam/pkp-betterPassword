@@ -15,6 +15,7 @@ namespace APP\plugins\generic\betterPassword\features;
 
 use PKP\plugins\Hook;
 use PKP\core\PKPApplication;
+use APP\core\Application;
 use APP\plugins\generic\betterPassword\BetterPasswordPlugin;
 use APP\facades\Repo;
 
@@ -60,11 +61,6 @@ class ForceExpiration {
 				$username = $_POST['username'] ?? null;
 				/** @var UserDAO */
 				//$userDao = DAORegistry::getDAO('UserDAO');
-				$userDao = Repo::user()->dao;
-				if (!$user && $username) {
-					//$user = $userDao->getByUsername($username);
-					$user = $userDao->getByUsername($username);
-				}
 				if (!$user) {
 					return;
 				}
@@ -77,7 +73,7 @@ class ForceExpiration {
 				if (!$user->getMustChangePassword()) {
 					$user->setMustChangePassword(true);
 					//$userDao->updateObject($user);
-					$userDao->edit($user);
+					Repo::user()->edit($user);
 				}
 			});
 		}
@@ -125,8 +121,7 @@ class ForceExpiration {
 		/** @var UserDAO */
 		//$userDao = DAORegistry::getDAO('UserDAO');
 		//$userDao->updateObject($user);
-		$userDao = Repo::user()->dao;
-		$userDao->edit($user);
+		$user = Repo::user()->edit($user);
 		
 	}
 
@@ -135,8 +130,9 @@ class ForceExpiration {
 	 * @param User $user
 	 * @return bool
 	 */
-	private function _isPasswordExpired(User $user) : bool {
-		return $this->_getExpirationDate($user)->getTimestamp() <= time();
+	private function _isPasswordExpired(\User $user) : bool {
+		//return $this->_getExpirationDate($user)->getTimestamp() <= time();
+		return true;
 	}
 
 	/**
@@ -144,7 +140,7 @@ class ForceExpiration {
 	 * @param User $user
 	 * @return ?string
 	 */
-	private function _getLastNotification(User $user) : ?object {
+	private function _getLastNotification(\User $user) : ?object {
 		return json_decode($user->getData("{$this->_plugin->getSettingsName()}::lastPasswordNotification"), false);
 	}
 	

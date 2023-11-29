@@ -32,9 +32,17 @@ class BetterPasswordSchemaMigration extends Migration {
 			$table->bigInteger('count');
 			$table->datetime('failed_login_time');
 		});
+
+		Schema::create('stored_passwords', function (Blueprint $table) {
+			$table->integer('user_id');
+			$table->string('password', ); //find password length in mysql, include 2 new files in classes like failed logins. Make a seperate branch off of 3.4_Updates
+			$table->datetime('last_change_time');
+		});
 	}
 
 	public function down(): void {
 		Schema::drop('badpw_failedlogins');
+		Schema::drop('stored_passwords');
+		//add drop for new schema
 	}
 }

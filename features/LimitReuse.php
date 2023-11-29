@@ -19,6 +19,7 @@ use PKP\form\validation\FormValidatorCustom;
 use PKP\security\Validation;
 use PKP\user\User;
 use PKP\user\Repository;
+use PKP\db\DAORegistry;
 use APP\core\Application;
 use APP\plugins\generic\betterPassword\BetterPasswordPlugin;
 use APP\facades\Repo;
@@ -44,7 +45,11 @@ class LimitReuse {
 			return;
 		}
 
-		Hook::add('Schema::get::user', [$this, 'addToSchema']);
+		//Hook::add('Schema::get::' . $dao->schema, $this->addToSchema(...));
+		$userDao = Repo::user()->dao;
+
+		//Hook::add('Schema::get::user', [$this, 'addToSchema']);
+		Hook::add('Schema::get::' . $userDao->schema, [$this, 'addToSchema'], Hook::SEQUENCE_CORE);
 		Hook::add('changepasswordform::execute', [$this, 'rememberPasswords']); //new methods
 		
 		Hook::add('loginchangepasswordform::Constructor', [$this, 'passwordChangeValidation']);
@@ -129,14 +134,14 @@ class LimitReuse {
 	public function addToSchema($hook, $args) {
 		$user = $args[0];
 
-		$user->properties->previousPasswords = (object) [
+		$user->properties->{$this->_plugin->getSettingsName()."::lastPasswords"} = (object) [
 			'type' => 'string',
 			'apiSummary' => false,
 			//'multilingual' => false,
 			'validation' => ['nullable']
 		];
 
-		$user->properties->previousPasswordsUpdate = (object) [
+		$user->properties->{$this->_plugin->getSettingsName()."::lastPasswordsUpdate"} = (object) [
 			'type' => 'string',
 			'apiSummary' => false,
 			//'multilingual' => false,
@@ -160,7 +165,9 @@ class LimitReuse {
 
 	public function passwordChangeValidation($hook, $args) {
 		$form = $args[0];
-		$newCheck = new FormValidatorCustom($form, 'password', 'required', 'plugins.generic.betterPassword.validation.betterPasswordPasswordReused', $this->passwordCompare($password, $form));
+		$newCheck = new FormValidatorCustom($form, 'password', 'required', 'plugins.generic.betterPassword.validation.betterPasswordPasswordReused', function ($password) use ($form) {
+			 return $this->passwordCompare($password, $form);
+		}); //$this->passwordCompare());
 		$form->addCheck($newCheck);
 		return false;
 	}
@@ -199,6 +206,7 @@ class LimitReuse {
 	 * @param string $password
 	 */
 	private function _addPassword(User $user, string $password) : User {
+		$newUser = Repo::user()->get($user->getId());
 		$passwords = $this->_getPasswords($user);
 		array_unshift($passwords, $password);
 		$passwords = array_slice($passwords, 0, $this->_maxReusablePasswords);
