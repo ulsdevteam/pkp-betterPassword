@@ -7,12 +7,12 @@
   * Copyright (c) 2021 University of Pittsburgh
   * Distributed under the GNU GPL v2 or later. For full terms see the file docs/COPYING.
   *
-  * Plugin version information.
+  * Plugin version information. 1.2.0.2 original version
   -->
 <version>
 	<application>betterPassword</application>
 	<type>plugins.generic</type>
-	<release>1.2.0.2</release>
+	<release>1.2.0.3</release>
 	<date>2023-02-16</date>
 	<lazy-load>1</lazy-load>
 	<sitewide>1</sitewide>

@@ -49,7 +49,8 @@ class LimitReuse {
 		$userDao = Repo::user()->dao;
 
 		//Hook::add('Schema::get::user', [$this, 'addToSchema']);
-		Hook::add('Schema::get::' . $userDao->schema, [$this, 'addToSchema'], Hook::SEQUENCE_CORE);
+		Hook::add('Schema::get::' . $userDao->schema, [$this, 'addToSchema'], Hook::SEQUENCE_CORE); //user may be needed, check
+		Hook::add('Schema::get::storedPassword', [$this, 'setStoredPasswordSchema']);
 		Hook::add('changepasswordform::execute', [$this, 'rememberPasswords']); //new methods
 		
 		Hook::add('loginchangepasswordform::Constructor', [$this, 'passwordChangeValidation']);
@@ -150,19 +151,30 @@ class LimitReuse {
 
 		return false;
 	}
-
+	//takes in a user and a password in order to change the user, calling _addPassword
 	public function rememberPasswords($hook, $args) {
 		if ($hook == 'changepasswordform::execute' && get_class($args[0]) == 'PKP\user\form\ChangePasswordForm') {
 			$user = $args[0]->getUser();
-			$password = $args[0]->getData('oldPassword');
+			$password = $user->getData('password'); //this should be the hashed password
+			//hash tests
+			//$test = Validation::encryptCredentials($user->getUsername(), '123456');
+			//$testPassword = Validation::encryptCredentials($user->getUsername(), 'password');
+			//$test654321= Validation::encryptCredentials($user->getUsername(), '654321');
+			//$rehash = null;
+			//$test = Validation::verifyPassword($user->getData('userName'), 'password', '$2y$10$k6aIod/hEcY.lp8AVgH3HeAIpJVVlTs51iFBe.lfq/VR0cbtEQqi2', $rehash);
+			//$test2 = Validation::verifyPassword($user->getData('userName'), 'password', '$2y$10$wBThl3/VznrITyZgNTKr8eVbXYppliK3ruNr7LDyxK1RR2f7Ywp1C', $rehash);
+			//$test3 = Validation::verifyPassword($user->getData('userName'), 'password', '$2y$10$C1WYUTshxNW9FjdYfemug.JpnMUIImp6UHR4fORXPwQtpATdD7gDW', $rehash);
+
 			$user = $this->_addPassword($user, $password);
+
 			//Repo::user()->edit($user);
-			Repo::user()->edit($user);
-			//put assignment of objects here
+			//Repo::user()->edit($user);
+			//below is new, check if above lines are neccesary
+
 		}
 		return false;
 	}
-
+	//check logic flow of forms, at what point must each method be called, validator looks at past passwords to compare, then the execution method calls the data change events to store password history
 	public function passwordChangeValidation($hook, $args) {
 		$form = $args[0];
 		$newCheck = new FormValidatorCustom($form, 'password', 'required', 'plugins.generic.betterPassword.validation.betterPasswordPasswordReused', function ($password) use ($form) {
@@ -205,14 +217,65 @@ class LimitReuse {
 	 * @param User $user
 	 * @param string $password
 	 */
-	private function _addPassword(User $user, string $password) : User {
+	private function _addPassword(User $user, string $password) : array { //password here needs to be a hash
+		//@var $storedPasswordsDao StoredPasswordsDAO
+		/*
+		$storedPasswordsDao = DAORegistry::getDAO('StoredPasswordsDAO');
+		$storedPasswords = $storedPasswordsDao->placeholder($user->getId(), $user->getPassword());
+		$mostRecentPasswords = $storedPasswordsDao->getMostRecentPasswords($storedPasswords);
+		//$countingValue = count($ourArray);
+		if (count($mostRecentPasswords) <= $this->_maxReusablePasswords) {
+			//$mostRecentPasswords = implode();
+			$storedPasswordsDao->updatePasswords($storedPasswords);
+		}
+		else {
+
+		}
+		*/
+
+		$storedPasswordsDao = DAORegistry::getDAO('StoredPasswordsDAO');
+		$storedPasswords = $storedPasswordsDao->placeholder($user->getId(), $user->getPassword());
+		$totalPasswords = $storedPasswords->getPasswords();
+		if (count($totalPasswords) < $this->_maxReusablePasswords) {
+			array_push($totalPasswords, $password);
+			$storedPasswords->setPasswords($totalPasswords);
+			$storedPasswordsDao->updateObject($storedPasswords);
+		}
+		else {
+			array_shift($totalPasswords);
+			array_push($totalPasswords, $password);
+			$storedPasswords->setPasswords($totalPasswords);
+			$storedPasswordsDao->updateObject($storedPasswords);
+		}
+		return $totalPasswords;
+		/*
 		$newUser = Repo::user()->get($user->getId());
 		$passwords = $this->_getPasswords($user);
 		array_unshift($passwords, $password);
 		$passwords = array_slice($passwords, 0, $this->_maxReusablePasswords);
-		$user->setData("previousPasswords", json_encode($passwords));
+		$user->setData("previousPasswords", json_encode($passwords)); //check here, passwords being decoded but we want them to remain as hashes, need to keep conversions of json and such in mind for future use
 		$hold = $user->getAllData();
-		$user->setData("{$this->_plugin->getSettingsName()}::lastPasswordUpdate", (new \DateTime())->format('c'));
+		//$user->setData("{$this->_plugin->getSettingsName()}::lastPasswordUpdate", (new \DateTime())->format('c')); maybe not needed here, only in Force Expiration
 		return $user;
+		*/
+	}
+
+	public function setStoredPasswordSchema ($hook, $args) {
+		$schema = $args[0];
+		$schemaFile = sprintf('%s/plugins/generic/betterPassword/schemas/storedPassword.json', BASE_SYS_DIR);
+        if (file_exists($schemaFile)) {
+            $temp = json_decode(file_get_contents($schemaFile));
+			foreach ($temp as $key => $value) {
+				$schema->$key = $value;
+			}
+			//$schema->test=true;
+            if (!$schema) {
+                throw new Exception('Schema failed to decode. This usually means it is invalid JSON. Requested: ' . $schemaFile . '. Last JSON error: ' . json_last_error());
+            }
+        } else {
+            // allow plugins to create a custom schema and load it via hook
+            $schema = new \stdClass();
+        }
+		return false;
 	}
 }

@@ -23,6 +23,7 @@ use APP\plugins\generic\betterPassword\features\SecurityRules as SecurityRules;
 use APP\plugins\generic\betterPassword\BetterPasswordSettingsForm as BetterPasswordSettingsForm;
 use APP\plugins\generic\betterPassword\BetterPasswordSchemaMigration as BetterPasswordSchemaMigration;
 use APP\plugins\generic\betterPassword\classes\BadpwFailedLoginsDAO;
+use APP\plugins\generic\betterPassword\classes\StoredPasswordsDAO;
 use PKP\plugins\GenericPlugin;
 use PKP\db\DAORegistry;
 use PKP\plugins\Hook;
@@ -108,6 +109,8 @@ class BetterPasswordPlugin extends GenericPlugin {
 
 		$badpwFailedLoginDAO = new BadpwFailedLoginsDAO();
 		DAORegistry::registerDAO('BadpwFailedLoginsDAO', $badpwFailedLoginDAO);
+		$storedPasswords = new StoredPasswordsDAO();
+		DAORegistry::registerDAO('StoredPasswordsDAO', $storedPasswords);
 	}
 
 	/**
