@@ -12,63 +12,81 @@ use PKP\core\DataObject;
 
 class StoredPasswords extends DataObject {
 		/** @var int UserId */
-        private $_userId;
-        /** @var string Password */
-        private $_password;
-        /** @var \DateTime Timestamp of last login */
-        private $_lastChangeTime;
-
-        	/**
-	 * Constructor
-	 * @param string $username Username
-	 * @param int $count Number of bad password login count
-	 * @param int $lastLoginTime The time of the last bad login attempt
-	 */
-	public function __construct(int $userId, string $password, \DateTime $lastChangeTime) {
-		parent::__construct();
-		$this->_data["id"] = $userId;
-		$this->_data["password"] = $password;
-		$timeString = $lastChangeTime->format("Y-m-d H:i:s");
-		$this->_data["lastChangeTime"] = $timeString;
-	}
+		private $_userId;
+		/** @var string Password */
+		private $_password;
+		/** @var \DateTime Timestamp of last login */
+		private $_lastChangeTime;
 
 	/**
 	 * Get the user Id
-	 * @return int The user Id
+	 * @return int The user's Id
 	 */
-	public function getUserId() : int {
-		return $this->_data["id"];
+	public function getUserId() : ?int {
+		return $this->_data["user_id"];
 	}
 
 	/**
-	 * Get the password
-	 * @return string The users password
+	 * Set the user Id
+	 * @param int $user_id The user's id
+	 */
+	public function setUserId(int $user_id) : void{
+		$this->_data["user_id"] = $user_id;
+	}
+
+	/**
+	 * Get the user's password list
+	 * @return string The users password list
 	 */
 	public function getPassword() : string {
 		return $this->_data["password"];
 	}
 
 	/**
-	 * Get the time of last password change
-	 * @return int The time of the last password change
+	 * Set the user's password list
+	 * @param string $password The user's password list
+	 * @param bool $updateTime Whether the user should update their lastChangeTime
+	 */
+	public function setPassword(string $password, $updateTime = false) : void{
+		$this->_data["password"] = $password;
+		if ($updateTime) {
+			$this->setChangeTime(new \DateTime ('now'));
+		}
+	}
+
+	/**
+	 * Get the time of user's last password change
+	 * @return \DateTime The time of the last password change
 	 */
 	public function getChangeTime() : \DateTime {
 		$tempDateTime = new \DateTime($this->_data["lastChangeTime"]);
 		return $tempDateTime;
 	}
 
+	/**
+	 * Set the time of user's last password change
+	 * @param \DateTime $lastChangeTime Time of last password change
+	 */
 	public function setChangeTime(\DateTime $lastChangeTime) : void{
 		$timeString = $lastChangeTime->format("Y-m-d H:i:s");
 		$this->_data["lastChangeTime"] = $timeString;
 	}
 
+	/**
+	 * Get an array of the user's passwords seperated by a comma
+	 * @return array Array of user's passwords
+	 */
 	public function getPasswords() : array{
-		$allPasswords = explode(',', $this->_data["password"]);
-		return $allPasswords;
+		return explode(',', $this->getPassword());
 	}
 
-	public function setPasswords($passwords) : void{
-		$this->_data["password"] = implode(',', $passwords);
+	/**
+	 * Set the user's list of passwords as a string
+	 * @param array $passwords The user's password list in an array
+	 * @param bool $updateTime Whether the user should update their lastChangeTime
+	 */
+	public function setPasswords($passwords, $updateTime = false) : void{
+		$this->setPassword(implode(',', $passwords), $updateTime);
 	}
 }
 

@@ -15,18 +15,14 @@ namespace APP\plugins\generic\betterPassword;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Builder;
 use Illuminate\Database\Schema\Blueprint;
-//use Illuminate\Database\Capsule\Manager as Capsule;
-//use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class BetterPasswordSchemaMigration extends Migration {
-		/**
-		 * Run the migrations.
-		 * @return void
-		 */
+	/**
+	 * Run the migrations.
+	 * @return void
+	 */
 	public function up() {
-		// Bad Password failed login attempts
-		//Capsule::schema()->create('badpw_failedlogins', function (Blueprint $table) {
 		Schema::create('badpw_failedlogins', function (Blueprint $table) {
 			$table->string('username', 32);
 			$table->bigInteger('count');
@@ -34,17 +30,11 @@ class BetterPasswordSchemaMigration extends Migration {
 		});
 
 		Schema::create('stored_passwords', function (Blueprint $table) {
+			$table->bigIncrements('id');
 			$table->integer('user_id');
-			$table->string('password', 255);
+			$table->text('password');
 			$table->datetime('last_change_time');
 		});
-
-		//new migration lines for json conversions
-		//$rows = DB::table($this->stored_passwords() . ' as js')->get();
-		//foreach ($rows as $row) {
-		//$locales = $row->locales;
-		//$locales = json_decode($locales, true);
-		//}
 	}
 
 	public function down(): void {

@@ -19,12 +19,12 @@ use PKP\cache\GenericCache;
 use PKP\cache\FileCache;
 use PKP\file\PrivateFileManager;
 use PKP\core\PKPApplication;
-use PKP\core\PKPRequest; //added for request
-use PKP\plugins\GenericPlugin; //may need removed if register doesn't work
-use PKP\db\DAORegistry; //may need changed
+use PKP\core\PKPRequest;
+use PKP\plugins\GenericPlugin;
+use PKP\db\DAORegistry;
 use SplFileObject;
 use APP\plugins\generic\betterPassword\BetterPasswordPlugin;
-use APP\plugins\generic\betterPassword\badPasswords\badPasswords; //may need removed
+use APP\plugins\generic\betterPassword\badPasswords\badPasswords;
 use APP\plugins\generic\betterPassword\handlers\BlocklistHandler;
 use APP\facades\Repo;
 
@@ -42,7 +42,7 @@ class Blocklist {
 	public function __construct(BetterPasswordPlugin $plugin) {
 		$this->_plugin = $plugin;
 		// Enable the file handler to be used by the settings form
-		$this->register(); //added args may need changed
+		$this->register();
 		$contextSite = PKPApplication::CONTEXT_SITE;
 		if (!(bool) $plugin->getSetting($contextSite, 'betterPasswordCheckBlacklist')) {
 			return;
@@ -86,7 +86,6 @@ class Blocklist {
 					)
 					->get($passwordHash);
 				if ($isBlockedPassword instanceof Exception) {
-				//if (get_class($isBlockedPassword) == "PKP\vendor\doctrine\dbal\src\Exception") {
 					$form->addError($passwordField, __('plugins.generic.betterPassword.validation.betterPasswordUnexpectedError'));
 				} elseif ($isBlockedPassword) {
 					$form->addError($passwordField, __('plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist'));
@@ -101,7 +100,6 @@ class Blocklist {
 	 */
 	private function _regenerateCache() : bool {
 		$pkpApplication = PKPApplication::get();
-		//$minLengthPass = DAORegistry::getDAO('SiteDAO')
 		$minLengthPass = $pkpApplication->getRequest()
 			->getSite()
 			->getMinPasswordLength();
@@ -142,7 +140,6 @@ class Blocklist {
 	 * @return int|Exception 1 if the hash exists or an Exception if something failed
 	 */
 	private function _passwordCacheMiss(GenericCache $cache, string $passwordHash) : bool {
-		//if (!($cache->cacheMiss instanceof PKP\cache\generic_cache_miss)) {
 		if (!(get_class($cache->cacheMiss) == "PKP\cache\generic_cache_miss")) {
 			return false;
 		}
@@ -161,7 +158,6 @@ class Blocklist {
 	 * @return array a list of paths
 	 */
 	private function _getBlocklists() : array {
-		//import('lib.pkp.classes.file.PrivateFileManager');
 		$privateFileManager = new PrivateFileManager();
 		//check directory separator location
 		$paths = [implode(DIRECTORY_SEPARATOR, [$this->_plugin->getPluginPath(), 'badPasswords', 'badPasswords.txt'])];
@@ -173,35 +169,22 @@ class Blocklist {
 	}
 
 	/**
-	 * Register a hook to handle the upload/removal of blocklists
-	 * @see PKPComponentRouter::route()
+	 * Register a hook for LoadComponentHandler
 	 */
-	/*
-	private function _registerBlocklistFileHandler() : void {
-		Hook::add('LoadComponentHandler', function ($hook, $args) {
-			$component = &$args[0];
-			$operation = $args[1];
-			if (!in_array($operation, ['deleteBlocklist', 'uploadBlocklist'])) {
-				return;
-			}
-
-			define('HANDLER_CLASS', 'BlocklistHandler');
-			$component = 'plugins.generic.betterPassword.handlers.BlocklistHandler';
-			import($component);
-			return true;
-		});
-	}
-	*/
 	public function register() {
-		//$success = parent::register($category, $path, $mainContextId);
 		Hook::add('LoadComponentHandler', [$this, 'setComponentHandler']);
 	}
 
+	/**
+	 * Create a new BlocklistHandler
+	 * @param string $hookname The hook name
+	 * @param array $args Arguments of the hook
+	 * @return bool true if Blocklist handler successfully created
+	 */
 	public function setComponentHandler(string $hookname, array $args): bool{
 		$component =& $args[0];
 		$op =& $args[1];
 		$handler =& $args[2];
-		//if ($component == "grid.settings.plugins.SettingsPluginGridHandler") {
 		if ($component == "plugins.generic.betterpassword.handler.BlocklistHandler") {
 			if ($op == "uploadBlocklist" || $op == "deleteBlocklist") {
 			$handler = new BlocklistHandler($this);

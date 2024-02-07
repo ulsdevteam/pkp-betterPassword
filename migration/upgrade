@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE install SYSTEM "../../../lib/pkp/dtd/install.dtd">
 <!--
-  *
-  -->
+plugins/generic/betterPassword/migration/upgrade
+-->
 
 <install version="1.2.0.0">
 	<upgrade>

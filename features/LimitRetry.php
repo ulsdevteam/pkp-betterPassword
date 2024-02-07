@@ -40,11 +40,10 @@ class LimitRetry {
 		if (!$this->_maxRetries) {
 			return;
 		}
+
 		$this->_lockSeconds = $plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordLockSeconds');
 		$this->_lockExpiresSeconds = $plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordLockExpires');
-
 		$this->_handleTemplateDisplay();
-		//$this->_addFailedLoginLogger();
 		$this->registerLoadHandler();
 		$this->_addResetPasswordReset();
 	}
@@ -92,38 +91,19 @@ class LimitRetry {
 	}
 
 	/**
-	 * Register a hook to handle failed login attempts
+	 * Register a hook for LoadHandler
 	 */
-	/* 
-	private function _addFailedLoginLogger() : void {
-		Hook::add('LoadHandler', function ($hook, $args) {
-			$page = &$args[0];
-			$operation = $args[1];
-			$username = $_POST['username'] ?? null;
-			if ([$page, $operation] !== ['login', 'signIn'] || !$username) {
-				return;
-			}
-	*/
-			/** @var BadpwFailedLoginsDAO */
-	/*		$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');
-			$user = $badpwFailedLoginsDao->getByUsername($username);
-			if (!$user || $user->getCount() < $this->_maxRetries || $user->getFailedTime() <= time() - $this->_lockSeconds) {
-				return;
-			}
-
-			// Replace the login/signIn handler to prevent login
-			define('HANDLER_CLASS', 'DisabledLoginHandler');
-			//$page = 'plugins.generic.betterPassword.handlers.DisabledLoginHandler';
-			//import($page);
-			return true;
-		});
-	}*/
-
-	public function registerLoadHandler() { //new
+	public function registerLoadHandler() {
 		Hook::add('LoadHandler', [$this, 'setLoadHandler']);
 	}
 
-	public function setLoadHandler(string $hookname, array $args): bool { //new
+	/**
+	 * Create a new DisabledLoginHandler
+	 * @param string $hookname The hook name
+	 * @param array $args Arguments of the hook
+	 * @return bool true if DiasabledLogin handler successfully created
+	 */
+	public function setLoadHandler(string $hookname, array $args): bool {
 		$page = &$args[0];
 		$operation = $args[1];
 		$handler =& $args[3];
@@ -138,6 +118,7 @@ class LimitRetry {
 		if (!$user || $user->getCount() < $this->_maxRetries || $user->getFailedTime() <= time() - $this->_lockSeconds) {
 			return false;
 		}
+
 		$handler = new DisabledLoginHandler();
 		return true;
 	}
@@ -157,11 +138,7 @@ class LimitRetry {
 			$request = Application::get()->getRequest();
 			$username = array_shift($request->getRequestedArgs());
 			$confirmHash = $request->getQueryArray()['confirm'] ?? null;
-			/** @var UserDAO */
-			//$userDao = DAORegistry::getDAO('UserDAO');
-			//$user = $userDao->getByUsername($username);
 			$user = Repo::user()->getByUsername($username);
-			
 			if ($user && $confirmHash && Validation::verifyPasswordResetHash($user->getId(), $confirmHash)) {
 				/** @var BadpwFailedLoginsDAO */
 				$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');
