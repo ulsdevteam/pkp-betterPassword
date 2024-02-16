@@ -53,14 +53,14 @@ class StoredPasswordsDAO extends EntityDAO {
 	/**
 	 * Create a new Stored Passwords object
 	 * @param int $user_id The user's user id
-	 * @param string $password The user's password list
+	 * @param array $password The user's password list
 	 * @param \DateTime $last_change_time Time of the last password change
 	 * @return StoredPasswords New StoredPasswords object
 	 */
-	public function newDataObjects (int $user_id, string $password = '', \DateTime $last_change_time = new \DateTime ('now')) : ?StoredPasswords {
+	public function newDataObjects (int $user_id, array $password = array(''), \DateTime $last_change_time = new \DateTime ('now')) : ?StoredPasswords {
 		$storedPasswords = $this->newDataObject();
 		$storedPasswords->setUserId($user_id);
-		$storedPasswords->setPassword($password);
+		$storedPasswords->setPasswords($password);
 		$storedPasswords->setChangeTime($last_change_time);
 		return $storedPasswords;
 	}
@@ -86,38 +86,6 @@ class StoredPasswordsDAO extends EntityDAO {
 	/** @copydoc EntityDAO::_update */
 	public function update($object) {
 		$this->_update($object);
-	}
-	
-	/**
-	 * Gets the most recent time a user's password was changed from the database
-	 * @param StoredPasswords $storedPasswords StoredPasswords object
-	 * @return string $mostRecent['MAX(last_change_time)'] Time of last password change
-	 */
-	public function getMostRecent(StoredPasswords $storedPasswords) {
-		$result = $this->retrieve('
-			SELECT MAX(last_change_time)
-			FROM stored_passwords
-			WHERE user_id = ?
-		', [$storedPasswords->getUserId()]);
-		$mostRecent = (array) $result->current();
-		return $mostRecent['MAX(last_change_time)'];
-	}
-
-	/** @copydoc DAO::_retrieve */
-	public function retrieve($sql, $params = [], $callHooks = true)
-	{
-		if ($callHooks === true) {
-			$trace = debug_backtrace();
-			// Call hooks based on the calling entity, assuming
-			// this method is only called by a subclass. Results
-			// in hook calls named e.g. "sessiondao::_getsession"
-			// (always lower case).
-			$value = null;
-			if (Hook::run(strtolower_codesafe($trace[1]['class'] . '::_' . $trace[1]['function']), [&$sql, &$params, &$value])) {
-				return $value;
-			}
-		}
-		return DB::cursor(DB::raw($sql)->getValue(), $params);
 	}
 
 }

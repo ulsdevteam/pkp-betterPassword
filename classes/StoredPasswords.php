@@ -11,13 +11,6 @@ namespace APP\plugins\generic\betterPassword\classes;
 use PKP\core\DataObject;
 
 class StoredPasswords extends DataObject {
-		/** @var int UserId */
-		private $_userId;
-		/** @var string Password */
-		private $_password;
-		/** @var \DateTime Timestamp of last login */
-		private $_lastChangeTime;
-
 	/**
 	 * Get the user Id
 	 * @return int The user's Id
@@ -32,26 +25,6 @@ class StoredPasswords extends DataObject {
 	 */
 	public function setUserId(int $user_id) : void{
 		$this->_data["user_id"] = $user_id;
-	}
-
-	/**
-	 * Get the user's password list
-	 * @return string The users password list
-	 */
-	public function getPassword() : string {
-		return $this->_data["password"];
-	}
-
-	/**
-	 * Set the user's password list
-	 * @param string $password The user's password list
-	 * @param bool $updateTime Whether the user should update their lastChangeTime
-	 */
-	public function setPassword(string $password, $updateTime = false) : void{
-		$this->_data["password"] = $password;
-		if ($updateTime) {
-			$this->setChangeTime(new \DateTime ('now'));
-		}
 	}
 
 	/**
@@ -73,11 +46,11 @@ class StoredPasswords extends DataObject {
 	}
 
 	/**
-	 * Get an array of the user's passwords seperated by a comma
-	 * @return array Array of user's passwords
+	 * Get an array of the user's hashed passwords
+	 * @return array Array of user's hashed passwords
 	 */
 	public function getPasswords() : array{
-		return explode(',', $this->getPassword());
+		return explode(',', $this->_data["password"]);
 	}
 
 	/**
@@ -86,7 +59,10 @@ class StoredPasswords extends DataObject {
 	 * @param bool $updateTime Whether the user should update their lastChangeTime
 	 */
 	public function setPasswords($passwords, $updateTime = false) : void{
-		$this->setPassword(implode(',', $passwords), $updateTime);
+		$this->_data["password"] = implode(',', $passwords);
+		if ($updateTime) {
+			$this->setChangeTime(new \DateTime ('now'));
+		}
 	}
 }
 

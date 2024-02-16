@@ -179,7 +179,7 @@ class Blocklist {
 	 * Create a new BlocklistHandler
 	 * @param string $hookname The hook name
 	 * @param array $args Arguments of the hook
-	 * @return bool true if Blocklist handler successfully created
+	 * @return bool true if the plugin is the final handler for the hook and false if other hooks need to intervene
 	 */
 	public function setComponentHandler(string $hookname, array $args): bool{
 		$component =& $args[0];

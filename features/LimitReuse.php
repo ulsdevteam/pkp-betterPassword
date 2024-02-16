@@ -46,35 +46,10 @@ class LimitReuse {
 		}
 
 		$userDao = Repo::user()->dao;
-		Hook::add('Schema::get::' . $userDao->schema, [$this, 'addToSchema'], Hook::SEQUENCE_CORE);
 		Hook::add('changepasswordform::execute', [$this, 'rememberPasswords']);
 		Hook::add('loginchangepasswordform::execute', [$this, 'rememberPasswords']);
 		Hook::add('loginchangepasswordform::Constructor', [$this, 'passwordChangeValidation']);
 		Hook::add('changepasswordform::Constructor', [$this, 'passwordChangeValidation']);
-	}
-
-	/**
-	 * Adds new properties to our Schema
-	 * @param string $hookname The hook name
-	 * @param array $args Arguments of the hook
-	 * @return bool false if process completes
-	 */
-	public function addToSchema($hook, $args) {
-		$user = $args[0];
-
-		$user->properties->{$this->_plugin->getSettingsName()."::lastPasswords"} = (object) [
-			'type' => 'string',
-			'apiSummary' => false,
-			'validation' => ['nullable']
-		];
-
-		$user->properties->{$this->_plugin->getSettingsName()."::lastPasswordsUpdate"} = (object) [
-			'type' => 'string',
-			'apiSummary' => false,
-			'validation' => ['nullable', 'date:Y-m-d H:i:s']
-		];
-
-		return false;
 	}
 
 	/**
@@ -106,13 +81,13 @@ class LimitReuse {
 		$form = $args[0];
 		$newCheck = new FormValidatorCustom($form, 'password', 'required', 'plugins.generic.betterPassword.validation.betterPasswordPasswordReused', function ($password) use ($form) {
 			 return $this->passwordCompare($password, $form);
-		}); //$this->passwordCompare());
+		});
 		$form->addCheck($newCheck);
 		return false;
 	}
 
 	/**
-	 * Updates the time of the users last password change
+	 * Compares the user's password to prior passwords
 	 * @param string $password The user's given password
 	 * @param ChangePasswordForm $form The form for changing passwords
 	 * @return bool false if the user's password has been reused and true if it has not
@@ -141,20 +116,6 @@ class LimitReuse {
 	}
 
 	/**
-	 * Retrieve the hashed user passwords
-	 * @param User $user The given user
-	 * @return ?string The list of passwords
-	 */
-	private function _getPasswords(User $user) : array {
-		$hold = $this->_plugin->getSettingsName();
-		$hold2 = $user->getData("{$hold}::lastPasswords");
-		$hold3 = json_decode($hold2);
-		$hold4 = $user->getAllData();
-		$passwords = $hold3 ??  [];
-		return array_slice($passwords, 0, $this->_maxReusablePasswords);
-	}
-
-	/**
 	 * Add a user password to the list of blocked passwords and refresh the last updated timestamp
 	 * @param User $user The given user
 	 * @param string $password The given password
@@ -178,7 +139,9 @@ class LimitReuse {
 			}
 		}
 		else {
-			$storedPasswords = $storedPasswordsDao->newDataObjects($user->getId(), $user->getPassword());
+			$storedPasswords = $storedPasswordsDao->newDataObject();
+			$storedPasswords->setUserId($user->getId());
+			$storedPasswords->setPasswords($password, true);
 			$totalPasswords = $storedPasswords->getPasswords();
 			$storedPasswords->setPasswords($totalPasswords, true);
 			$storedPasswordsDao->insert($storedPasswords);

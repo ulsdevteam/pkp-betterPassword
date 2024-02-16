@@ -35,6 +35,10 @@ class BetterPasswordSchemaMigration extends Migration {
 			$table->text('password');
 			$table->datetime('last_change_time');
 		});
+
+		$selectUserMetrics = DB::table('users as u')
+			->select(DB::raw("u.user_id, u.password, u.date_last_login"));
+		DB::table('stored_passwords')->insertUsing(['user_id', 'password', 'last_change_time'], $selectUserMetrics);
 	}
 
 	public function down(): void {

@@ -81,7 +81,6 @@ class BetterPasswordPlugin extends GenericPlugin {
 		$testing = $this->getEnabled();
 		if ($success && $this->getEnabled()) {
 			$this->_registerDAOs();
-			$this->_addUserSettings();
 
 			new LimitRetry($this);
 
@@ -105,20 +104,6 @@ class BetterPasswordPlugin extends GenericPlugin {
 		$storedPasswords = new StoredPasswordsDAO();
 		DAORegistry::registerDAO('StoredPasswordsDAO', $storedPasswords);
 		Hook::add('Schema::get::storedPassword', [$this, 'setStoredPasswordSchema']);
-	}
-
-	/**
-	 * Add the required user settings
-	 * @see DAO::getAddtionalFieldNames
-	 */
-	private function _addUserSettings() : void {
-		Hook::add('userdao::getAdditionalFieldNames', function ($hook, $args) {
-			$fields = &$args[1];
-			$prefix = "{$this->getSettingsName()}::";
-			foreach (['lastPasswords', 'lastPasswordUpdate', 'lastPasswordNotification'] as $field) {
-				$fields[] = $prefix . $field;
-			}
-		});
 	}
 
 	/**
@@ -197,15 +182,6 @@ class BetterPasswordPlugin extends GenericPlugin {
 	}
 
 	/**
-	 * Get the full class name
-	 * @return string String of the full class name
-	 */
-	public function getSettingsName() : string {
-		$fullClassName = explode('\\', get_class($this));
-		return end($fullClassName);
-	}
-
-	/**
 	 * Sets the schema for our StoredPasswords 
 	 * @param string $hook The hook name
 	 * @param array $args Arguments of the hook
@@ -224,8 +200,7 @@ class BetterPasswordPlugin extends GenericPlugin {
 				throw new Exception('Schema failed to decode. This usually means it is invalid JSON. Requested: ' . $schemaFile . '. Last JSON error: ' . json_last_error());
 			}
 		} else {
-			// allow plugins to create a custom schema and load it via hook
-			$schema = new \stdClass();
+			throw new Exception('Schema file does not exist at location: ' . $schemaFile);
 		}
 
 		return false;
