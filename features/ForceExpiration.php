@@ -56,17 +56,18 @@ class ForceExpiration {
 	 */
 	private function _addPasswordExpirationCheck() : void {
 		$user = Application::get()->getRequest()->getUser();
-		if (!$user) {
-			return;
-		}
-
 		$sessionManager = SessionManager::getManager();
 		$session = $sessionManager->getUserSession();
 		$user = $session->getUser();
 		if ($user) {
 			if (!$this->_isPasswordExpired($user)) {
-				$session->setSessionVar('betterPassword::lastNotification', true);
-				$this->_handleNotification($user, $session);
+				if ($this->_isPasswordExpiring($user)) {
+					if (!$session->getSessionVar('betterPassword::showedLastNotification')) {
+						$notificationManager = new NotificationManager();
+						$notification = $notificationManager->createTrivialNotification($user->getId(), \PKP\notification\PKPNotification::NOTIFICATION_TYPE_WARNING, array('contents' => __('plugins.generic.betterPassword.message.yourPasswordWillExpire', ['days' => $diffInDays])));
+						$session->setSessionVar('betterPassword::showedLastNotification', true);
+					}
+				}
 				return;
 			}
 			else {
@@ -75,8 +76,23 @@ class ForceExpiration {
 			}
 		}
 		else {
+			$session->unsetSessionVar('betterPassword::showedLastNotification');
 			return;
 		}
+	}
+
+	public function _isPasswordExpiring(\PKP\user\User $user): bool {
+		$expirationDate = $this->_getExpirationDate($user);
+		if (!$this->_warningDays || $expirationDate->getTimestamp() <= time()) {
+			return false;
+		}
+
+		$diffInDays = ceil(($expirationDate->getTimestamp() - time()) / 60 / 60 / 24);
+		if ($diffInDays > $this->_warningDays) {
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -88,11 +104,6 @@ class ForceExpiration {
 		/* @var $storedPasswordsDao StoredPasswordsDAO */
 		$storedPasswordsDao = DAORegistry::getDAO('StoredPasswordsDAO');
 		$storedPasswords = $storedPasswordsDao->getByUserId($user->getId());
-		if (empty($storedPasswords)) {
-			$storedPasswords = $storedPasswordsDao->newDataObject();
-			$storedPasswords->setUserId($user->getId());
-			$storedPasswords->setChangeTime(now());
-		}
 
 		$mostRecent = $storedPasswords->getChangeTime();
 		if (!$mostRecent) {
@@ -134,28 +145,6 @@ class ForceExpiration {
 			}
 		}
 		return false;
-	}
-
-	/**
-	 * Checks the expiration date for a users password and creates a notification for them to change it if expired
-	 * @param User $user Given user
-	 */
-	private function _handleNotification(\PKP\user\User $user, \PKP\session\Session $session) : void {
-		$expirationDate = $this->_getExpirationDate($user);
-		if (!$this->_warningDays || $expirationDate->getTimestamp() <= time()) {
-			return;
-		}
-
-		$diffInDays = ceil(($expirationDate->getTimestamp() - time()) / 60 / 60 / 24);
-		if ($diffInDays > $this->_warningDays) {
-			return;
-		}
-
-		if (!$session->getSessionVar('betterPassword::showedLastNotification')) {
-			$notificationManager = new NotificationManager();
-			$notification = $notificationManager->createTrivialNotification($user->getId(), \PKP\notification\PKPNotification::NOTIFICATION_TYPE_WARNING, array('contents' => __('plugins.generic.betterPassword.message.yourPasswordWillExpire', ['days' => $diffInDays])));
-			$session->setSessionVar('betterPassword::showedLastNotification', true);
-		}
 	}
 
 	/**

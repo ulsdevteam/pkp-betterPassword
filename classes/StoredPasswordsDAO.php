@@ -51,21 +51,6 @@ class StoredPasswordsDAO extends EntityDAO {
 	}
 
 	/**
-	 * Create a new Stored Passwords object
-	 * @param int $user_id The user's user id
-	 * @param array $password The user's password list
-	 * @param \DateTime $last_change_time Time of the last password change
-	 * @return StoredPasswords New StoredPasswords object
-	 */
-	public function newDataObjects (int $user_id, array $password = array(''), \DateTime $last_change_time = new \DateTime ('now')) : ?StoredPasswords {
-		$storedPasswords = $this->newDataObject();
-		$storedPasswords->setUserId($user_id);
-		$storedPasswords->setPasswords($password);
-		$storedPasswords->setChangeTime($last_change_time);
-		return $storedPasswords;
-	}
-
-	/**
 	 * Get a StoredPasswords object based on user id
 	 * @param int $user_id The user's user id
 	 * @return StoredPasswords StoredPasswords object
