@@ -6,8 +6,10 @@
  * @class BadpwFailedLoginsDAO
  * @brief Database operations with the BadpwFailedLogins
  */
-import('lib.pkp.classes.db.DAO');
-import('plugins.generic.betterPassword.classes.BadpwFailedLogins');
+namespace APP\plugins\generic\betterPassword\classes;
+
+use PKP\db\DAO;
+use APP\plugins\generic\betterPassword\classes\BadpwFailedLogins as BadpwFailedLogins;
 
 class BadpwFailedLoginsDAO extends DAO {
 	/**

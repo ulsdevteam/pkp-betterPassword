@@ -7,6 +7,9 @@
  * @class BadpwFailedLogins
  * @brief Container for badPassword failed logins
  */
+namespace APP\plugins\generic\betterPassword\classes;
+use PKP\core\DataObject;
+
 class BadpwFailedLogins extends DataObject {
 	/** @var string Username */
 	private $_username;

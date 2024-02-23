@@ -11,6 +11,22 @@
  *
  * @brief Implements the blocklist feature
  */
+namespace APP\plugins\generic\betterPassword\features;
+
+use PKP\plugins\Hook;
+use PKP\cache\CacheManager;
+use PKP\cache\GenericCache;
+use PKP\cache\FileCache;
+use PKP\file\PrivateFileManager;
+use PKP\core\PKPApplication;
+use PKP\core\PKPRequest;
+use PKP\plugins\GenericPlugin;
+use PKP\db\DAORegistry;
+use SplFileObject;
+use APP\plugins\generic\betterPassword\BetterPasswordPlugin;
+use APP\plugins\generic\betterPassword\badPasswords\badPasswords;
+use APP\plugins\generic\betterPassword\handlers\BlocklistHandler;
+use APP\facades\Repo;
 
 class Blocklist {
 	/** @var BetterPasswordPlugin */
@@ -26,8 +42,9 @@ class Blocklist {
 	public function __construct(BetterPasswordPlugin $plugin) {
 		$this->_plugin = $plugin;
 		// Enable the file handler to be used by the settings form
-		$this->_registerBlocklistFileHandler();
-		if (!(bool) $plugin->getSetting(CONTEXT_SITE, 'betterPasswordCheckBlacklist')) {
+		$this->register();
+		$contextSite = PKPApplication::CONTEXT_SITE;
+		if (!(bool) $plugin->getSetting($contextSite, 'betterPasswordCheckBlacklist')) {
 			return;
 		}
 
@@ -47,7 +64,7 @@ class Blocklist {
 	private function _addPasswordValidation() : void {
 		// Register callback to validate new passwords
 		foreach (['registrationform::validate', 'changepasswordform::validate', 'loginchangepasswordform::validate'] as $hook) {
-			HookRegistry::register($hook, function ($hook, $args) {
+			Hook::add($hook, function ($hook, $args) {
 				/** @var Form $form */
 				[$form] = $args;
 				$passwordField = 'password';
@@ -68,7 +85,6 @@ class Blocklist {
 						}
 					)
 					->get($passwordHash);
-	
 				if ($isBlockedPassword instanceof Exception) {
 					$form->addError($passwordField, __('plugins.generic.betterPassword.validation.betterPasswordUnexpectedError'));
 				} elseif ($isBlockedPassword) {
@@ -83,7 +99,8 @@ class Blocklist {
 	 * @return bool True on success, false if an error happens while generating the cache
 	 */
 	private function _regenerateCache() : bool {
-		$minLengthPass = DAORegistry::getDAO('SiteDAO')
+		$pkpApplication = PKPApplication::get();
+		$minLengthPass = $pkpApplication->getRequest()
 			->getSite()
 			->getMinPasswordLength();
 		$callback = function (){};
@@ -123,7 +140,7 @@ class Blocklist {
 	 * @return int|Exception 1 if the hash exists or an Exception if something failed
 	 */
 	private function _passwordCacheMiss(GenericCache $cache, string $passwordHash) : bool {
-		if (!($cache->cacheMiss instanceof generic_cache_miss)) {
+		if (!(get_class($cache->cacheMiss) == "PKP\cache\generic_cache_miss")) {
 			return false;
 		}
 		// Retrieves an Exception if the regeneration failed
@@ -141,10 +158,10 @@ class Blocklist {
 	 * @return array a list of paths
 	 */
 	private function _getBlocklists() : array {
-		import('lib.pkp.classes.file.PrivateFileManager');
 		$privateFileManager = new PrivateFileManager();
+		//check directory separator location
 		$paths = [implode(DIRECTORY_SEPARATOR, [$this->_plugin->getPluginPath(), 'badPasswords', 'badPasswords.txt'])];
-		$userLists = $this->_plugin->getSetting(CONTEXT_SITE, 'betterPasswordUserBlacklistFiles') ?? [];
+		$userLists = $this->_plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordUserBlacklistFiles') ?? [];
 		foreach (array_keys($userLists) as $hash) {
 			$paths[] = implode(DIRECTORY_SEPARATOR, [$privateFileManager->getBasePath(), 'betterPassword', 'blocklists', $hash]);
 		}
@@ -152,21 +169,28 @@ class Blocklist {
 	}
 
 	/**
-	 * Register a hook to handle the upload/removal of blocklists
-	 * @see PKPComponentRouter::route()
+	 * Register a hook for LoadComponentHandler
 	 */
-	private function _registerBlocklistFileHandler() : void {
-		HookRegistry::register('LoadComponentHandler', function ($hook, $args) {
-			$component = &$args[0];
-			$operation = $args[1];
-			if (!in_array($operation, ['deleteBlocklist', 'uploadBlocklist'])) {
-				return;
-			}
+	public function register() {
+		Hook::add('LoadComponentHandler', [$this, 'setComponentHandler']);
+	}
 
-			define('HANDLER_CLASS', 'BlocklistHandler');
-			$component = 'plugins.generic.betterPassword.handlers.BlocklistHandler';
-			import($component);
+	/**
+	 * Create a new BlocklistHandler
+	 * @param string $hookname The hook name
+	 * @param array $args Arguments of the hook
+	 * @return bool true if the plugin is the final handler for the hook and false if other hooks need to intervene
+	 */
+	public function setComponentHandler(string $hookname, array $args): bool{
+		$component =& $args[0];
+		$op =& $args[1];
+		$handler =& $args[2];
+		if ($component == "plugins.generic.betterpassword.handler.BlocklistHandler") {
+			if ($op == "uploadBlocklist" || $op == "deleteBlocklist") {
+			$handler = new BlocklistHandler($this);
 			return true;
-		});
+			}
+		}
+		return false;
 	}
 }

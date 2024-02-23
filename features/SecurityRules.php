@@ -11,6 +11,12 @@
  *
  * @brief Implements the feature to force the password to follow some security rules
  */
+namespace APP\plugins\generic\betterPassword\features;
+
+use PKP\plugins\Hook;
+use PKP\core\PKPString;
+use PKP\core\PKPApplication;
+use APP\plugins\generic\betterPassword\BetterPasswordPlugin;
 
 class SecurityRules {
 	/** @var BetterPasswordPlugin */
@@ -33,7 +39,7 @@ class SecurityRules {
 		$this->_plugin = $plugin;
 		$hasAny = false;
 		foreach (self::VALIDATIONS as [$setting]) {
-			if ($plugin->getSetting(CONTEXT_SITE, $setting)) {
+			if ($plugin->getSetting(PKPApplication::CONTEXT_SITE, $setting)) {
 				$hasAny = true;
 				break;
 			}
@@ -52,7 +58,7 @@ class SecurityRules {
 	private function _addPasswordValidation() : void {
 		// Register callback to validate new passwords
 		foreach (['registrationform::validate', 'changepasswordform::validate', 'loginchangepasswordform::validate'] as $hook) {
-			HookRegistry::register($hook, function ($hook, $args) {
+			Hook::add($hook, function ($hook, $args) {
 				/** @var Form $form */
 				[$form] = $args;
 				$passwordField = 'password';
@@ -63,7 +69,7 @@ class SecurityRules {
 				}
 
 				foreach (self::VALIDATIONS as [$setting, $rule]) {
-					if ($this->_plugin->getSetting(CONTEXT_SITE, $setting) && !PKPString::regexp_match($rule, $password)) {
+					if ($this->_plugin->getSetting(PKPApplication::CONTEXT_SITE, $setting) && !PKPString::regexp_match($rule, $password)) {
 						$form->addError($passwordField, __("plugins.generic.betterPassword.validation.{$setting}"));
 					}
 				}
