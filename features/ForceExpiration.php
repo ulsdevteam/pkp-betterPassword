@@ -15,6 +15,10 @@ namespace APP\plugins\generic\betterPassword\features;
 
 use PKP\plugins\Hook;
 use PKP\core\PKPApplication;
+use PKP\db\DAORegistry;
+use PKP\session\SessionManager;
+use APP\notification\NotificationManager;
+use APP\core\Application;
 use APP\plugins\generic\betterPassword\BetterPasswordPlugin;
 use APP\facades\Repo;
 
@@ -42,7 +46,8 @@ class ForceExpiration {
 		if (!$this->_passwordLifetime) {
 			return;
 		}
-
+		Hook::add('changepasswordform::execute', [$this, 'rememberPasswordDate']);
+		Hook::add('loginchangepasswordform::execute', [$this, 'rememberPasswordDate']);
 		$this->_addPasswordExpirationCheck();
 	}
 
@@ -50,84 +55,96 @@ class ForceExpiration {
 	 * Register callback to detect if the user password has expired
 	 */
 	private function _addPasswordExpirationCheck() : void {
-		foreach (['LoadHandler', 'LoadComponentHandler', 'TemplateManager::display'] as $hook) {
-			Hook::add('LoadHandler', function ($hook, $args) {
-				if ($this->_isProcessed) {
-					return;
+		$user = Application::get()->getRequest()->getUser();
+		$sessionManager = SessionManager::getManager();
+		$session = $sessionManager->getUserSession();
+		$user = $session->getUser();
+		if ($user) {
+			if (!$this->_isPasswordExpired($user)) {
+				if ($this->_isPasswordExpiring($user)) {
+					if (!$session->getSessionVar('betterPassword::showedLastNotification')) {
+						$notificationManager = new NotificationManager();
+						$notification = $notificationManager->createTrivialNotification($user->getId(), \PKP\notification\PKPNotification::NOTIFICATION_TYPE_WARNING, array('contents' => __('plugins.generic.betterPassword.message.yourPasswordWillExpire', ['days' => $diffInDays])));
+						$session->setSessionVar('betterPassword::showedLastNotification', true);
+					}
 				}
-				$this->_isProcessed = true;
-				$user = Application::get()->getRequest()->getUser();
-				$username = $_POST['username'] ?? null;
-				/** @var UserDAO */
-				//$userDao = DAORegistry::getDAO('UserDAO');
-				$userDao = Repo::user()->dao;
-				if (!$user && $username) {
-					//$user = $userDao->getByUsername($username);
-					$user = $userDao->getByUsername($username);
-				}
-				if (!$user) {
-					return;
-				}
-
-				if (!$this->_isPasswordExpired($user)) {
-					$this->_handleNotification($user);
-					return;
-				} 
-
-				if (!$user->getMustChangePassword()) {
-					$user->setMustChangePassword(true);
-					//$userDao->updateObject($user);
-					$userDao->edit($user);
-				}
-			});
+				return;
+			}
+			else {
+				$user->setMustChangePassword(true);
+				Repo::user()->edit($user);
+			}
 		}
+		else {
+			$session->unsetSessionVar('betterPassword::showedLastNotification');
+			return;
+		}
+	}
+
+	public function _isPasswordExpiring(\PKP\user\User $user): bool {
+		$expirationDate = $this->_getExpirationDate($user);
+		if (!$this->_warningDays || $expirationDate->getTimestamp() <= time()) {
+			return false;
+		}
+
+		$diffInDays = ceil(($expirationDate->getTimestamp() - time()) / 60 / 60 / 24);
+		if ($diffInDays > $this->_warningDays) {
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
 	 * Retrieve the password expiration date
 	 * @param User $user
-	 * @return DateTime
+	 * @return DateTime Expiration date
 	 */
-	private function _getExpirationDate(User $user) : DateTime {
-		$expirationDate = new DateTime($user->getData("{$this->_plugin->getSettingsName()}::lastPasswordUpdate") ?: $user->getDateRegistered());
-		$expirationDate->modify("{$this->_passwordLifetime} day");
-		return $expirationDate;
+	private function _getExpirationDate(\PKP\user\User $user) : \DateTime {
+		/* @var $storedPasswordsDao StoredPasswordsDAO */
+		$storedPasswordsDao = DAORegistry::getDAO('StoredPasswordsDAO');
+		$storedPasswords = $storedPasswordsDao->getByUserId($user->getId());
+
+		$mostRecent = $storedPasswords->getChangeTime();
+		if (!$mostRecent) {
+			$mostRecent = new \DateTime ($user->getDateRegistered());
+		}
+
+		$mostRecent->modify("{$this->_passwordLifetime} day");
+		return $mostRecent;
 	}
 
-	private function _handleNotification(User $user) : void {
-		$expirationDate = $this->_getExpirationDate($user);
-		if (!$this->_warningDays || $expirationDate->getTimestamp() <= time()) {
-			return;
+	/**
+	 * Updates the time of the users last password change
+	 * @param string $hook The hook name
+	 * @param array $args Arguments of the hook
+	 * @return bool false if process completes
+	 */
+	public function rememberPasswordDate($hook, $args) {
+		if ($hook == 'changepasswordform::execute' && get_class($args[0]) == 'PKP\user\form\ChangePasswordForm') {
+			$user = $args[0]->getUser();
 		}
-		$diffInDays = ceil(($expirationDate->getTimestamp() - time()) / 60 / 60 / 24);
-		if ($diffInDays > $this->_warningDays) {
-			return;
+		elseif ($hook == 'loginchangepasswordform::execute' && get_class($args[0]) == 'PKP\user\form\LoginChangePasswordForm') {
+			$user = Repo::user()->getByUsername($args[0]->getData('username'), false);
 		}
-		$notificationManager = new NotificationManager();
-		$lastNotification = $this->_getLastNotification($user);
-		if ($lastNotification) {
-			if ($lastNotification->days == $diffInDays) {
-				return;
-			}
-			
-			/* @var $notificationDao NotificationDAO */
-			$notificationDao = DAORegistry::getDAO('NotificationDAO');
-			$notification = $notificationDao->getById($lastNotification->id, $user->getId());
-			if ($notification) {
-				$notificationDao->delete($notification);
-			}
+		else {
 		}
 
-		$notification = $notificationManager->createTrivialNotification($user->getId(), NOTIFICATION_TYPE_WARNING, array('contents' => __('plugins.generic.betterPassword.message.yourPasswordWillExpire', ['days' => $diffInDays])));
-		$lastNotification = (object) ['id' => $notification->getId(), 'days' => $diffInDays];
-		
-		$this->_setLastNotification($user, $lastNotification);
-		/** @var UserDAO */
-		//$userDao = DAORegistry::getDAO('UserDAO');
-		//$userDao->updateObject($user);
-		$userDao = Repo::user()->dao;
-		$userDao->edit($user);
-		
+		$storedPasswordsDao = DAORegistry::getDAO('StoredPasswordsDAO');
+		if ($user) {
+			$storedPasswords = $storedPasswordsDao->getByUserId($user->getId());
+			if ($storedPasswords) {
+				$storedPasswords->setChangeTime(new \DateTime ('now'));
+				$storedPasswordsDao->update($storedPasswords);
+			}
+			else {
+				$storedPasswords = $storedPasswordsDao->newDataObject();
+				$storedPasswords->setUserId($user->getId());
+				$storedPasswords->setChangeTime(now());
+				$storedPasswordsDao->insert($storedPasswords);
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -135,25 +152,7 @@ class ForceExpiration {
 	 * @param User $user
 	 * @return bool
 	 */
-	private function _isPasswordExpired(User $user) : bool {
+	private function _isPasswordExpired(\PKP\user\User $user) : bool {
 		return $this->_getExpirationDate($user)->getTimestamp() <= time();
-	}
-
-	/**
-	 * Retrieve the last notification
-	 * @param User $user
-	 * @return ?string
-	 */
-	private function _getLastNotification(User $user) : ?object {
-		return json_decode($user->getData("{$this->_plugin->getSettingsName()}::lastPasswordNotification"), false);
-	}
-	
-	/**
-	 * Set last notification
-	 * @param User $user
-	 * @param string $password
-	 */
-	private function _setLastNotification(User $user, ?object $notification) : void {
-		$user->setData("{$this->_plugin->getSettingsName()}::lastPasswordNotification", json_encode($notification));
 	}
 }

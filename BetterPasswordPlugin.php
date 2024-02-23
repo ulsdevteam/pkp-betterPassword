@@ -23,13 +23,14 @@ use APP\plugins\generic\betterPassword\features\SecurityRules as SecurityRules;
 use APP\plugins\generic\betterPassword\BetterPasswordSettingsForm as BetterPasswordSettingsForm;
 use APP\plugins\generic\betterPassword\BetterPasswordSchemaMigration as BetterPasswordSchemaMigration;
 use APP\plugins\generic\betterPassword\classes\BadpwFailedLoginsDAO;
+use APP\plugins\generic\betterPassword\classes\StoredPasswordsDAO;
 use PKP\plugins\GenericPlugin;
 use PKP\db\DAORegistry;
 use PKP\plugins\Hook;
 use PKP\linkAction\request\AjaxModal;
 use PKP\config\Config;
 use PKP\linkAction\LinkAction;
-use PKP\core\PKPApplication; //may be unneeded
+use PKP\core\PKPApplication;
 use PKP\core\JSONMessage;
 
 class BetterPasswordPlugin extends GenericPlugin {
@@ -80,21 +81,15 @@ class BetterPasswordPlugin extends GenericPlugin {
 		$testing = $this->getEnabled();
 		if ($success && $this->getEnabled()) {
 			$this->_registerDAOs();
-			$this->_addUserSettings();
 
-			//$this->import('features.LimitRetry');
 			new LimitRetry($this);
 
-			//$this->import('features.LimitReuse');
 			new LimitReuse($this);
 
-			//$this->import('features.Blocklist');
 			new Blocklist($this);
 
-			//$this->import('features.SecurityRules');
 			new SecurityRules($this);
 
-			//$this->import('features.ForceExpiration');
 			new ForceExpiration($this);
 		}
 		return $success;
@@ -104,34 +99,19 @@ class BetterPasswordPlugin extends GenericPlugin {
 	 * Register this plugin's DAO with the application
 	 */
 	private function _registerDAOs() : void {
-		//$this->import('classes.BadpwFailedLoginsDAO');
-
 		$badpwFailedLoginDAO = new BadpwFailedLoginsDAO();
 		DAORegistry::registerDAO('BadpwFailedLoginsDAO', $badpwFailedLoginDAO);
-	}
-
-	/**
-	 * Add the required user settings
-	 * @see DAO::getAddtionalFieldNames
-	 */
-	private function _addUserSettings() : void {
-		Hook::add('userdao::getAdditionalFieldNames', function ($hook, $args) {
-			$fields = &$args[1];
-			$prefix = "{$this->getSettingsName()}::";
-			foreach (['lastPasswords', 'lastPasswordUpdate', 'lastPasswordNotification'] as $field) {
-				$fields[] = $prefix . $field;
-			}
-		});
+		$storedPasswords = new StoredPasswordsDAO();
+		DAORegistry::registerDAO('StoredPasswordsDAO', $storedPasswords);
+		Hook::add('Schema::get::storedPassword', [$this, 'setStoredPasswordSchema']);
 	}
 
 	/**
 	 * @copydoc Plugin::getInstallMigration()
 	 */
 	public function getInstallMigration() {
-		//$this->import('BetterPasswordSchemaMigration');
 		$schemaMigration = new BetterPasswordSchemaMigration();
 		return $schemaMigration;
-		//return new BetterPasswordSchemaMigration();
 	}
 
 	/**
@@ -142,7 +122,6 @@ class BetterPasswordPlugin extends GenericPlugin {
 		if (!$this->getEnabled()) {
 			return $actions;
 		}
-		//import('lib.pkp.classes.linkAction.request.AjaxModal');
 		return array_merge(
 			[
 				new LinkAction(
@@ -165,8 +144,7 @@ class BetterPasswordPlugin extends GenericPlugin {
 		$verb = $request->getUserVar('verb');
 		if ($verb == 'settings') {
 			$templateManager = TemplateManager::getManager($request);
-			$templateManager->registerPlugin('function', 'plugin_url', [$this, 'smartyPluginUrl']); //new
-			//$this->import('BetterPasswordSettingsForm');
+			$templateManager->registerPlugin('function', 'plugin_url', [$this, 'smartyPluginUrl']);
 			$form = new BetterPasswordSettingsForm($this);
 			if ($request->getUserVar('save')) {
 				$form->readInputData();
@@ -204,18 +182,28 @@ class BetterPasswordPlugin extends GenericPlugin {
 	}
 
 	/**
-	 * @copydoc Plugin::getName()
+	 * Sets the schema for our StoredPasswords 
+	 * @param string $hook The hook name
+	 * @param array $args Arguments of the hook
+	 * @return bool false if process completes
 	 */
-	//public function getName() : string {
-		//return;
-	//}
+	public function setStoredPasswordSchema ($hook, $args) {
+		$schema =& $args[0];
+		$schemaFile = sprintf('%s/plugins/generic/betterPassword/schemas/storedPassword.json', BASE_SYS_DIR);
+		if (file_exists($schemaFile)) {
+			$temp = json_decode(file_get_contents($schemaFile));
+			foreach ($temp as $key => $value) {
+				$schema->$key = $value;
+			}
 
-	/**
-	 * 
-	 */
-	public function getSettingsName() : string {
-		$fullCLassName = explode('\\', get_class($this));
-		return end($fullCLassName);
+			if (!$schema) {
+				throw new Exception('Schema failed to decode. This usually means it is invalid JSON. Requested: ' . $schemaFile . '. Last JSON error: ' . json_last_error());
+			}
+		} else {
+			throw new Exception('Schema file does not exist at location: ' . $schemaFile);
+		}
+
+		return false;
 	}
 }
 

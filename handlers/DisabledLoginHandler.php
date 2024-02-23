@@ -13,7 +13,6 @@
  */
 namespace APP\plugins\generic\betterPassword\handlers;
 
-//import('classes.handler.Handler');
 use APP\handler\Handler;
 use APP\template\TemplateManager;
 use PKP\core\PKPRequest;
@@ -25,14 +24,12 @@ class DisabledLoginHandler extends Handler {
 	 */
 	public function initialize($request) : void {
 		parent::initialize($request);
-		// Load locale usually handled by LoginHandler
-		//AppLocale::requireComponents(LOCALE_COMPONENT_PKP_USER); //needs changed
 	}
 
 	/**
 	 * Handle signIn action override
-	 * @param $args array Arguments array.
-	 * @param $request PKPRequest Request object.
+	 * @param array $args Arguments array.
+	 * @param PKPRequest $request Request object.
 	 */
 	public function signIn(array $args, PKPRequest $request) : void {
 		$templateMgr = TemplateManager::getManager($request);

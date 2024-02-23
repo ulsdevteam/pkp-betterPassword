@@ -10,7 +10,6 @@
 <script>
 	$(function() {ldelim}
 		// Attach the upload form handler.
-		{*debug*}
 		$('#betterPasswordSettingsForm').pkpHandler(
 			'$.pkp.controllers.form.FileUploadFormHandler',
 			{ldelim}

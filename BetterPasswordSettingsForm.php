@@ -11,15 +11,13 @@
  *
  * @brief Form for administrators to modify Better Password plugin settings
  */
-
-//import('lib.pkp.classes.form.Form');
 namespace APP\plugins\generic\betterPassword;
 
-//use APP\i18n\AppLocale;
 use APP\template\TemplateManager;
 use APP\plugins\generic\betterPassword\features\Blocklist;
 use APP\facades\Repo;
 use PKP\form\Form;
+use PKP\form\validation\FormValidator;
 use PKP\form\validation\FormValidatorCustom;
 use PKP\form\validation\FormValidatorForm;
 use PKP\form\validation\FormValidatorPost;
@@ -63,7 +61,7 @@ class BetterPasswordSettingsForm extends Form {
 
 		foreach ($lockFields as $field) {
 			$this->addCheck(new FormValidatorCustom(
-				$this, $field, FORM_VALIDATOR_OPTIONAL_VALUE,
+				$this, $field, FormValidator::FORM_VALIDATOR_OPTIONAL_VALUE,
 				'plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired',
 				function ($value) use ($lockFields) {
 					// Only check for dependencies if the field has a value
@@ -83,7 +81,7 @@ class BetterPasswordSettingsForm extends Form {
 
 		foreach (array_merge($invalidationFields, $lockFields) as $field) {
 			$this->addCheck(new FormValidatorCustom(
-				$this, $field, FORM_VALIDATOR_OPTIONAL_VALUE,
+				$this, $field, FormValidator::FORM_VALIDATOR_OPTIONAL_VALUE,
 				"plugins.generic.betterPassword.manager.settings.{$field}NumberRequired",
 				function ($value) {
 					return is_numeric($value) && is_int(+$value) && +$value > 0;
@@ -125,7 +123,6 @@ class BetterPasswordSettingsForm extends Form {
 	 * @copydoc Form::fetch()
 	 */
 	public function fetch($request, $template = null, $display = false) : string {
-		//AppLocale::requireComponents(LOCALE_COMPONENT_PKP_ADMIN); //needs changed
 		$plugin = $this->_plugin;
 
 		$checkboxes = $locking = $invalidation = [];
