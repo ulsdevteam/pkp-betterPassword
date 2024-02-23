@@ -15,7 +15,7 @@ The plugin also provides the following features:
 
 ## Requirements
 
-* OJS/OMP 3.2.1 or later
+* OJS/OMP 3.4 or later
 
 ## Configuration
 
@@ -29,6 +29,6 @@ To configure the plugin, you will need to select what types of restrictions you 
 
 ## Author / License
 
-Written by Clinton Graham for the [University of Pittsburgh](http://www.pitt.edu).  Copyright (c) University of Pittsburgh.
+Written by Clinton Graham and Tazio Polanco for the [University of Pittsburgh](http://www.pitt.edu).  Copyright (c) University of Pittsburgh.
 
 Released under a license of GPL v2 or later.
