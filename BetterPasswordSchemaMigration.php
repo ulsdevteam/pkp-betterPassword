@@ -18,6 +18,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Query\JoinClause;
+use PKP\security\Validation;
 
 class BetterPasswordSchemaMigration extends Migration {
 	/**
@@ -48,7 +49,7 @@ class BetterPasswordSchemaMigration extends Migration {
 		$userSettingsJoined->orderBy('user_id')->lazy()->each(function ($item, $key) {
 			$passwords = json_decode($item->password);
 			foreach ($passwords as &$password) {
-				$password = password_hash($password, PASSWORD_BCRYPT);
+				$password = Validation::encryptCredentials($item->user_id, $item->password);
 			}
 			$item->password = implode(',', $passwords);
 			DB::table('stored_passwords')->insertOrIgnore([
