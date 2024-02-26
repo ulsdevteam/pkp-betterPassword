@@ -78,7 +78,6 @@ class BetterPasswordPlugin extends GenericPlugin {
 		if (!Config::getVar('general', 'installed') || defined('RUNNING_UPGRADE')) {
 			return true;
 		}
-		$testing = $this->getEnabled();
 		if ($success && $this->getEnabled()) {
 			$this->_registerDAOs();
 

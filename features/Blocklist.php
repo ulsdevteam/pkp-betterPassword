@@ -159,7 +159,6 @@ class Blocklist {
 	 */
 	private function _getBlocklists() : array {
 		$privateFileManager = new PrivateFileManager();
-		//check directory separator location
 		$paths = [implode(DIRECTORY_SEPARATOR, [$this->_plugin->getPluginPath(), 'badPasswords', 'badPasswords.txt'])];
 		$userLists = $this->_plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordUserBlacklistFiles') ?? [];
 		foreach (array_keys($userLists) as $hash) {

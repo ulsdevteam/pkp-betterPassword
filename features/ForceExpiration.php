@@ -68,16 +68,12 @@ class ForceExpiration {
 						$session->setSessionVar('betterPassword::showedLastNotification', true);
 					}
 				}
-				return;
-			}
-			else {
+			} else {
 				$user->setMustChangePassword(true);
 				Repo::user()->edit($user);
 			}
-		}
-		else {
+		} else {
 			$session->unsetSessionVar('betterPassword::showedLastNotification');
-			return;
 		}
 	}
 
@@ -123,11 +119,9 @@ class ForceExpiration {
 	public function rememberPasswordDate($hook, $args) {
 		if ($hook == 'changepasswordform::execute' && get_class($args[0]) == 'PKP\user\form\ChangePasswordForm') {
 			$user = $args[0]->getUser();
-		}
-		elseif ($hook == 'loginchangepasswordform::execute' && get_class($args[0]) == 'PKP\user\form\LoginChangePasswordForm') {
+		} elseif ($hook == 'loginchangepasswordform::execute' && get_class($args[0]) == 'PKP\user\form\LoginChangePasswordForm') {
 			$user = Repo::user()->getByUsername($args[0]->getData('username'), false);
-		}
-		else {
+		} else {
 		}
 
 		$storedPasswordsDao = DAORegistry::getDAO('StoredPasswordsDAO');
@@ -136,8 +130,7 @@ class ForceExpiration {
 			if ($storedPasswords) {
 				$storedPasswords->setChangeTime(new \DateTime ('now'));
 				$storedPasswordsDao->update($storedPasswords);
-			}
-			else {
+			} else {
 				$storedPasswords = $storedPasswordsDao->newDataObject();
 				$storedPasswords->setUserId($user->getId());
 				$storedPasswords->setChangeTime(now());

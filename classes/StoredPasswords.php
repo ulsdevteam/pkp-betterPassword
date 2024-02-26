@@ -47,10 +47,17 @@ class StoredPasswords extends DataObject {
 
 	/**
 	 * Get an array of the user's hashed passwords
+	 * @param int Max number of passwords to fetch
 	 * @return array Array of user's hashed passwords
 	 */
-	public function getPasswords() : array{
-		return explode(',', $this->_data["password"]);
+	public function getPasswords(?int $maxNumberOfPasswords = null) : array{
+		if ($maxNumberOfPasswords = null) {
+			return explode(',', $this->_data["password"]);
+		} else {
+			$passwords = explode(',', $this->_data["password"]);
+			$passwords = array_slice($passwords, -$maxNumberOfPasswords);
+			return $passwords;
+		}
 	}
 
 	/**
@@ -58,7 +65,7 @@ class StoredPasswords extends DataObject {
 	 * @param array $passwords The user's password list in an array
 	 * @param bool $updateTime Whether the user should update their lastChangeTime
 	 */
-	public function setPasswords($passwords, $updateTime = false) : void{
+	public function setPasswords(array $passwords, bool $updateTime = false) : void{
 		$this->_data["password"] = implode(',', $passwords);
 		if ($updateTime) {
 			$this->setChangeTime(new \DateTime ('now'));

@@ -44,7 +44,7 @@ class BetterPasswordSettingsForm extends Form {
 	 * @param $plugin BetterPasswordPlugin
 	 */
 	public function __construct(BetterPasswordPlugin $plugin) {
-		$this->_contextId = PKPApplication::CONTEXT_SITE;  //may need changed
+		$this->_contextId = PKPApplication::CONTEXT_SITE;
 		$this->_plugin = $plugin;
 
 		parent::__construct($plugin->getTemplateResource('settingsForm.tpl'), $this->_contextId);

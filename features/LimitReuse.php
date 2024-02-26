@@ -61,8 +61,7 @@ class LimitReuse {
 	public function rememberPasswords($hook, $args) {
 		if ($hook == 'changepasswordform::execute' && get_class($args[0]) == 'PKP\user\form\ChangePasswordForm') {
 			$user = $args[0]->getUser();
-		}
-		else if ($hook == 'loginchangepasswordform::execute' && get_class($args[0]) == 'PKP\user\form\LoginChangePasswordForm'){
+		} else if ($hook == 'loginchangepasswordform::execute' && get_class($args[0]) == 'PKP\user\form\LoginChangePasswordForm'){
 			$user = Repo::user()->getByUsername($args[0]->getData('username'), false);
 		}
 
@@ -97,8 +96,7 @@ class LimitReuse {
 		$storedPasswordsDao = DAORegistry::getDAO('StoredPasswordsDAO');
 		if ($user) {
 			$storedPasswords = $storedPasswordsDao->getByUserId($user->getId());
-		}
-		else {
+		} else {
 			$storedPasswords = null;
 		}
 
@@ -106,7 +104,7 @@ class LimitReuse {
 			if (!$user) {
 				$user = Repo::user()->getByUsername($form->getData('username'));
 			}
-			foreach ($storedPasswords->getPasswords() as $previousPassword) {
+			foreach ($storedPasswords->getPasswords($this->_maxReusablePasswords) as $previousPassword) {
 				if (Validation::verifyPassword($user->getUsername(), $password, $previousPassword, $rehash)) {
 					return false;
 				}
@@ -119,34 +117,28 @@ class LimitReuse {
 	 * Add a user password to the list of blocked passwords and refresh the last updated timestamp
 	 * @param User $user The given user
 	 * @param string $password The given password
-	 * @return array $totalPasswords An array containing all of a user's blocked passwords
 	 */
-	private function _addPassword(User $user, string $password) : array {
+	private function _addPassword(User $user, string $password) : void{
 		$storedPasswordsDao = DAORegistry::getDAO('StoredPasswordsDAO');
 		$storedPasswords = $storedPasswordsDao->getByUserId($user->getId());
 		if ($storedPasswords) {
-			$totalPasswords = $storedPasswords->getPasswords();
+			$totalPasswords = $storedPasswords->getPasswords($this->_maxReusablePasswords);
 			if (count($totalPasswords) < $this->_maxReusablePasswords) {
 				array_push($totalPasswords, $password);
 				$storedPasswords->setPasswords($totalPasswords, true);
 				$storedPasswordsDao->update($storedPasswords);
-			}
-			else {
+			} else {
 				array_shift($totalPasswords);
 				array_push($totalPasswords, $password);
 				$storedPasswords->setPasswords($totalPasswords, true);
 				$storedPasswordsDao->update($storedPasswords);
 			}
-		}
-		else {
+		} else {
 			$storedPasswords = $storedPasswordsDao->newDataObject();
 			$storedPasswords->setUserId($user->getId());
-			$storedPasswords->setPasswords($password, true);
-			$totalPasswords = $storedPasswords->getPasswords();
+			$totalPasswords = [$password];
 			$storedPasswords->setPasswords($totalPasswords, true);
 			$storedPasswordsDao->insert($storedPasswords);
 		}
-
-		return $totalPasswords;
 	}
 }
