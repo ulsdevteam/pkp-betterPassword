@@ -48,9 +48,6 @@ class BetterPasswordSchemaMigration extends Migration {
 
 		$userSettingsJoined->orderBy('user_id')->lazy()->each(function ($item, $key) {
 			$passwords = json_decode($item->password);
-			foreach ($passwords as &$password) {
-				$password = Validation::encryptCredentials($item->user_id, $item->password);
-			}
 			$item->password = implode(',', $passwords);
 			DB::table('stored_passwords')->insertOrIgnore([
 				'user_id' => $item->user_id, 
