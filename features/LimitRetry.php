@@ -16,6 +16,8 @@ namespace APP\plugins\generic\betterPassword\features;
 use PKP\plugins\Hook;
 use PKP\core\PKPApplication;
 use PKP\db\DAORegistry;
+use PKP\security\Validation;
+use APP\core\Application;
 use APP\plugins\generic\betterPassword\BetterPasswordPlugin;
 use APP\facades\Repo;
 use APP\plugins\generic\betterPassword\classes\BadpwFailedLoginsDAO;
