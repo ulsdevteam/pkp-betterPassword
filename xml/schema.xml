@@ -13,7 +13,7 @@ betterPassword plugin schema in XML
     TABLE badpw_failedlogins
     -->
     <table name="badpw_failedlogins">
-        <field name="username" type="C2" size="32" >
+        <field name="username" type="C2" size="255" >
             <KEY/>
         </field>
         <field name="count" type="I8">

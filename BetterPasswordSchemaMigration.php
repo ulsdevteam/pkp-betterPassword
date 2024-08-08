@@ -27,7 +27,7 @@ class BetterPasswordSchemaMigration extends Migration {
 	 */
 	public function up() {
 		Schema::create('badpw_failedlogins', function (Blueprint $table) {
-			$table->string('username', 32);
+			$table->string('username', 255);
 			$table->bigInteger('count');
 			$table->datetime('failed_login_time');
 		});
