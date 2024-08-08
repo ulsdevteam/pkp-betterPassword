@@ -58,6 +58,7 @@ class BadpwFailedLoginsDAO extends DAO {
 	 * @return BadpwFailedLogins object Object matching the username
 	 */
 	public function getByUsername(string $username) : ?BadpwFailedLogins {
+		$username = substr($username, 0, 255); // Avoid database error
 		$result = $this->retrieve('
 			SELECT *
 			FROM badpw_failedlogins
