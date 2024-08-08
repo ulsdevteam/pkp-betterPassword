@@ -10,6 +10,7 @@ namespace APP\plugins\generic\betterPassword\classes;
 
 use PKP\db\DAO;
 use APP\plugins\generic\betterPassword\classes\BadpwFailedLogins as BadpwFailedLogins;
+use APP\facades\Repo;
 
 class BadpwFailedLoginsDAO extends DAO {
 	/**
