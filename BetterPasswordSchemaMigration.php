@@ -26,6 +26,18 @@ class BetterPasswordSchemaMigration extends Migration {
 	 * @return void
 	 */
 	public function up() {
+		$con = DB::connection();
+		try {
+			$column = $con->getDoctrineColumn('badpw_failedlogins', 'username');
+			$userNameLength = $column->getLength();
+			if ($userNameLength < 255) {
+				Schema::table('badpw_failedlogins', function (Blueprint $table) {
+					$table->string('username', 255)->change();
+				});
+			}
+		} catch(\Doctrine\DBAL\Schema\Exception\ColumnDoesNotExist $e) {
+		}
+
 		Schema::create('badpw_failedlogins', function (Blueprint $table) {
 			$table->string('username', 255);
 			$table->bigInteger('count');
