@@ -75,9 +75,15 @@ class BetterPasswordPlugin extends GenericPlugin {
 	 */
 	public function register($category, $path, $mainContextId = null) : bool {
 		$success = parent::register($category, $path, $mainContextId);
-		if (!Config::getVar('general', 'installed') || defined('RUNNING_UPGRADE')) {
+		if (!Config::getVar('general', 'installed')) {
 			return true;
 		}
+
+		if (defined('RUNNING_UPGRADE')) {
+			Hook::add('Installer::postInstall', [$this, 'updateSchema']);
+			return true;
+		}
+
 		if ($success && $this->getEnabled()) {
 			$this->_registerDAOs();
 
@@ -103,6 +109,7 @@ class BetterPasswordPlugin extends GenericPlugin {
 		$storedPasswords = new StoredPasswordsDAO();
 		DAORegistry::registerDAO('StoredPasswordsDAO', $storedPasswords);
 		Hook::add('Schema::get::storedPassword', [$this, 'setStoredPasswordSchema']);
+		Hook::add('Installer::postInstall', [$this, 'updateSchema']);
 	}
 
 	/**
