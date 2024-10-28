@@ -13,6 +13,7 @@
  */
 namespace APP\plugins\generic\betterPassword\features;
 
+use Exception;
 use PKP\plugins\Hook;
 use PKP\cache\CacheManager;
 use PKP\cache\GenericCache;
