@@ -59,6 +59,7 @@ class BadpwFailedLoginsDAO extends DAO {
 	 * @return BadpwFailedLogins object Object matching the username
 	 */
 	public function getByUsername(string $username) : ?BadpwFailedLogins {
+		$username = substr($username, 0, 255); // Avoid database error
 		// Verify if the username is an email
 		if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
 			$user = Repo::user()->getByEmail($username);
@@ -66,7 +67,7 @@ class BadpwFailedLoginsDAO extends DAO {
 				return null;
 			}
 			$username = $user->getData('userName');
-		} elseif (strlen($username) > 32) { // Invalid username length
+		} elseif (strlen($username) > 255) { // Invalid username length
 			return null;
 		}
 

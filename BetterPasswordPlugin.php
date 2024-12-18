@@ -109,6 +109,7 @@ class BetterPasswordPlugin extends GenericPlugin {
 		$storedPasswords = new StoredPasswordsDAO();
 		DAORegistry::registerDAO('StoredPasswordsDAO', $storedPasswords);
 		Hook::add('Schema::get::storedPassword', [$this, 'setStoredPasswordSchema']);
+		Hook::add('Installer::postInstall', [$this, 'updateSchema']);
 	}
 
 	/**
