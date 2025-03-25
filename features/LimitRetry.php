@@ -113,7 +113,7 @@ class LimitRetry {
 		if ([$page, $operation] !== ['login', 'signIn'] || !$username) {
 			return false;
 		}
-	
+
 		/** @var BadpwFailedLoginsDAO */
 		$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');
 		$user = $badpwFailedLoginsDao->getByUsername($username);
@@ -124,7 +124,7 @@ class LimitRetry {
 		$handler = new DisabledLoginHandler();
 		return true;
 	}
-	
+
 
 	/**
 	 * Register a hook to reset the retry count after resetting the password
@@ -139,7 +139,7 @@ class LimitRetry {
 
 			$request = Application::get()->getRequest();
 			$username = array_shift($request->getRequestedArgs());
-			$confirmHash = $request->getQueryArray()['confirm'] ?? null;
+			$confirmHash = $request->getUserVar('confirm');
 			$user = Repo::user()->getByUsername($username);
 			if ($user && $confirmHash && Validation::verifyPasswordResetHash($user->getId(), $confirmHash)) {
 				/** @var BadpwFailedLoginsDAO */
