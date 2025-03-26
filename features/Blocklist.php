@@ -196,7 +196,7 @@ class Blocklist
         $handler = & $args[2];
         if ($component == 'plugins.generic.betterpassword.handler.BlocklistHandler') {
             if ($op == 'uploadBlocklist' || $op == 'deleteBlocklist') {
-                $handler = new BlocklistHandler($this);
+                $handler = new BlocklistHandler();
                 return true;
             }
         }
