@@ -68,7 +68,7 @@ class Blocklist {
 						}
 					)
 					->get($passwordHash);
-	
+
 				if ($isBlockedPassword instanceof Exception) {
 					$form->addError($passwordField, __('plugins.generic.betterPassword.validation.betterPasswordUnexpectedError'));
 				} elseif ($isBlockedPassword) {
@@ -118,11 +118,11 @@ class Blocklist {
 
 	/**
 	 * Callback to handle cache misses
-	 * @param GenericCache $cache 
+	 * @param GenericCache $cache
 	 * @param string $passwordHash The hash of the user password
 	 * @return int|Exception 1 if the hash exists or an Exception if something failed
 	 */
-	private function _passwordCacheMiss(GenericCache $cache, string $passwordHash) : bool {
+	private function _passwordCacheMiss(GenericCache $cache, string $passwordHash) {
 		if (!($cache->cacheMiss instanceof generic_cache_miss)) {
 			return false;
 		}
