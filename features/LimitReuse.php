@@ -96,13 +96,14 @@ class LimitReuse
      * Compares the user's password to prior passwords
      *
      * @param string $password The user's given password
-     * @param ChangePasswordForm $form The form for changing passwords
+     * @param \PKP\user\form\ChangePasswordForm $form The form for changing passwords
      *
      * @return bool false if the user's password has been reused and true if it has not
      */
     public function passwordCompare($password, $form)
     {
         $user = $form->_user;
+        /** @var \APP\plugins\generic\betterPassword\classes\StoredPasswordsDAO $storedPasswordsDao */
         $storedPasswordsDao = DAORegistry::getDAO('StoredPasswordsDAO');
         if ($user) {
             $storedPasswords = $storedPasswordsDao->getByUserId($user->getId());
@@ -131,6 +132,7 @@ class LimitReuse
      */
     private function _addPassword(User $user, string $password): void
     {
+        /** @var \APP\plugins\generic\betterPassword\classes\StoredPasswordsDAO $storedPasswordsDao */
         $storedPasswordsDao = DAORegistry::getDAO('StoredPasswordsDAO');
         $storedPasswords = $storedPasswordsDao->getByUserId($user->getId());
         if ($storedPasswords) {

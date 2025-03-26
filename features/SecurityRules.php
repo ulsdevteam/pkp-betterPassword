@@ -63,7 +63,7 @@ class SecurityRules
         // Register callback to validate new passwords
         foreach (['registrationform::validate', 'changepasswordform::validate', 'loginchangepasswordform::validate'] as $hook) {
             Hook::add($hook, function ($hook, $args) {
-                /** @var Form $form */
+                /** @var \PKP\form\Form $form */
                 [$form] = $args;
                 $passwordField = 'password';
                 $password = $form->getData($passwordField);

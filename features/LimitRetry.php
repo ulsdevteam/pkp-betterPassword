@@ -59,7 +59,7 @@ class LimitRetry
     private function _handleTemplateDisplay(): void
     {
         Hook::add('TemplateManager::display', function ($hook, $args) {
-            /** @var TemplateManager $templateManager */
+            /** @var \APP\template\TemplateManager $templateManager */
             [$templateManager, $template] = $args;
             if ($template !== 'frontend/pages/userLogin.tpl' || $templateManager->getTemplateVars('error') !== 'user.login.loginError') {
                 return;

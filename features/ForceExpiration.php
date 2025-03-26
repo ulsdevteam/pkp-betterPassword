@@ -101,13 +101,11 @@ class ForceExpiration
     /**
      * Retrieve the password expiration date
      *
-     * @param User $user
-     *
-     * @return DateTime Expiration date
+     * @return \DateTime Expiration date
      */
     private function _getExpirationDate(\PKP\user\User $user): \DateTime
     {
-        /* @var $storedPasswordsDao StoredPasswordsDAO */
+        /** @var \APP\plugins\generic\betterPassword\classes\StoredPasswordsDAO $storedPasswordsDao  */
         $storedPasswordsDao = DAORegistry::getDAO('StoredPasswordsDAO');
         $storedPasswords = $storedPasswordsDao->getByUserId($user->getId());
 
@@ -137,6 +135,7 @@ class ForceExpiration
         } else {
         }
 
+        /** @var \APP\plugins\generic\betterPassword\classes\StoredPasswordsDAO $storedPasswordsDao  */
         $storedPasswordsDao = DAORegistry::getDAO('StoredPasswordsDAO');
         if ($user) {
             $storedPasswords = $storedPasswordsDao->getByUserId($user->getId());
@@ -155,8 +154,6 @@ class ForceExpiration
 
     /**
      * Retrieve if the password is expired
-     *
-     * @param User $user
      */
     private function _isPasswordExpired(\PKP\user\User $user): bool
     {
