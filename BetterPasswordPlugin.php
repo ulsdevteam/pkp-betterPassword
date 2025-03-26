@@ -25,6 +25,7 @@ use APP\plugins\generic\betterPassword\features\LimitRetry as LimitRetry;
 use APP\plugins\generic\betterPassword\features\LimitReuse as LimitReuse;
 use APP\plugins\generic\betterPassword\features\SecurityRules as SecurityRules;
 use APP\template\TemplateManager;
+use Exception;
 use PKP\config\Config;
 use PKP\core\JSONMessage;
 use PKP\db\DAORegistry;
