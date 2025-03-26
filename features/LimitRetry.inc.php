@@ -120,7 +120,7 @@ class LimitRetry {
 			}
 
 			$request = Application::get()->getRequest();
-			$username = array_shift($request->getRequestedArgs());
+			$username = $request->getRequestedArgs()[0] ?? null;
 			$confirmHash = $request->getUserVar('confirm');
 			/** @var UserDAO */
 			$userDao = DAORegistry::getDAO('UserDAO');
