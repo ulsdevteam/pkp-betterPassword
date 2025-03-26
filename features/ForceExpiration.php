@@ -68,7 +68,9 @@ class ForceExpiration
                 if ($this->_isPasswordExpiring($user)) {
                     if (!$session->getSessionVar('betterPassword::showedLastNotification')) {
                         $notificationManager = new NotificationManager();
-                        $notification = $notificationManager->createTrivialNotification($user->getId(), \PKP\notification\PKPNotification::NOTIFICATION_TYPE_WARNING, ['contents' => __('plugins.generic.betterPassword.message.yourPasswordWillExpire', ['days' => $diffInDays])]);
+                        $expirationDate = $this->_getExpirationDate($user);
+                        $diffInDays = ceil(($expirationDate->getTimestamp() - time()) / 60 / 60 / 24);
+                        $notificationManager->createTrivialNotification($user->getId(), \PKP\notification\PKPNotification::NOTIFICATION_TYPE_WARNING, ['contents' => __('plugins.generic.betterPassword.message.yourPasswordWillExpire', ['days' => $diffInDays])]);
                         $session->setSessionVar('betterPassword::showedLastNotification', true);
                     }
                 }
