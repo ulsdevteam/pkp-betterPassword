@@ -147,7 +147,7 @@ class LimitRetry
             }
 
             $request = Application::get()->getRequest();
-            $username = array_shift($request->getRequestedArgs());
+            $username = $request->getRequestedArgs()[0] ?? null;
             $confirmHash = $request->getUserVar('confirm');
             $user = Repo::user()->getByUsername($username);
             if ($user && $confirmHash && Validation::verifyPasswordResetHash($user->getId(), $confirmHash)) {
