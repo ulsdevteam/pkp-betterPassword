@@ -142,7 +142,7 @@ class Blocklist
      *
      * @return int|Exception 1 if the hash exists or an Exception if something failed
      */
-    private function _passwordCacheMiss(GenericCache $cache, string $passwordHash): bool|Exception
+    private function _passwordCacheMiss(GenericCache $cache, string $passwordHash): bool|Exception|null
     {
         if (!(get_class($cache->cacheMiss) == "PKP\cache\generic_cache_miss")) {
             return false;
