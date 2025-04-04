@@ -1,6 +1,5 @@
 msgid ""
 msgstr ""
-
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: Luis Leal <luisfelipe@lepidus.com.br> \n"
