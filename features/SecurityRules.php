@@ -19,6 +19,7 @@ use APP\plugins\generic\betterPassword\BetterPasswordPlugin;
 use PKP\core\PKPApplication;
 use PKP\core\PKPString;
 use PKP\plugins\Hook;
+use Illuminate\Support\Str;
 
 class SecurityRules
 {
@@ -73,7 +74,7 @@ class SecurityRules
                 }
 
                 foreach (self::VALIDATIONS as [$setting, $rule]) {
-                    if ($this->_plugin->getSetting(PKPApplication::CONTEXT_SITE, $setting) && !PKPString::regexp_match($rule, $password)) {
+                    if ($this->_plugin->getSetting(PKPApplication::CONTEXT_SITE, $setting) && !Str::of($password)->isMatch($rule)) {
                         $form->addError($passwordField, __("plugins.generic.betterPassword.validation.{$setting}"));
                     }
                 }
