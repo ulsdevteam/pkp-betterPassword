@@ -17,7 +17,6 @@ namespace APP\plugins\generic\betterPassword\features;
 
 use APP\plugins\generic\betterPassword\BetterPasswordPlugin;
 use PKP\core\PKPApplication;
-use PKP\core\PKPString;
 use PKP\plugins\Hook;
 use Illuminate\Support\Str;
 
