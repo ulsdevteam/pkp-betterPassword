@@ -13,12 +13,11 @@
  */
 
 namespace APP\plugins\generic\betterPassword;
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Schema as Schema;
 
 class BetterPasswordSchemaMigration extends Migration
 {
@@ -27,23 +26,32 @@ class BetterPasswordSchemaMigration extends Migration
      */
     public function up()
     {
-        $con = DB::connection();
-        try {
-            $column = $con->getDoctrineColumn('badpw_failedlogins', 'username');
-            $userNameLength = $column->getLength();
-            if ($userNameLength < 255) {
+        if (Schema::hasColumn('badpw_failedlogins', 'username')) {
+            $usernameCol = Schema::getColumnType('badpw_failedlogins','username',true);
+            //No way to retrieve column length by itself, so pull out the numerical value from getColumnType() output like varchar(255)
+            preg_match('/([0-9])+/', $usernameCol, $usernameColLen);
+            //preg_match automatically sets $usernameColLen above
+            if ($usernameColLen[0] < 255){
+                //We want to ensure username column can accept up to 255 characters
                 Schema::table('badpw_failedlogins', function (Blueprint $table) {
                     $table->string('username', 255)->change();
                 });
             }
-        } catch (\Doctrine\DBAL\Schema\Exception\ColumnDoesNotExist $e) {
+        }
+        else {
+            //If the table doesn't exist, create it
+            Schema::create('badpw_failedlogins', function (Blueprint $table) {
+                $table->string('username', 255);
+                $table->bigInteger('count');
+                $table->datetime('failed_login_time');
+            });
         }
 
-        Schema::create('badpw_failedlogins', function (Blueprint $table) {
-            $table->string('username', 255);
-            $table->bigInteger('count');
-            $table->datetime('failed_login_time');
+        //Create a table to store passwords we don't want users to be able to set for their accounts
+        Schema::create('bpw_blocklist_items', function (Blueprint $table) { 
+            $table->string('blocklist_item', 255)->unique();
         });
+
 
         Schema::create('stored_passwords', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -77,5 +85,6 @@ class BetterPasswordSchemaMigration extends Migration
     {
         Schema::drop('badpw_failedlogins');
         Schema::drop('stored_passwords');
+        Schema::drop('badpw_blocklist_items');
     }
 }

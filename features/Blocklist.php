@@ -18,12 +18,12 @@ namespace APP\plugins\generic\betterPassword\features;
 use APP\plugins\generic\betterPassword\BetterPasswordPlugin;
 use APP\plugins\generic\betterPassword\handlers\BlocklistHandler;
 use Exception;
-use PKP\cache\CacheManager;
-use PKP\cache\GenericCache;
 use PKP\core\PKPApplication;
 use PKP\file\PrivateFileManager;
 use PKP\plugins\Hook;
 use SplFileObject;
+use Illuminate\Support\Facades\DB;
+use APP\plugins\generic\betterPassword\Models\BpwBlocklistItem;
 
 class Blocklist
 {
@@ -52,9 +52,11 @@ class Blocklist
     /**
      * Clear the password cache
      */
-    public static function clearCache(): void
-    {
-        CacheManager::getManager()->flush(self::CACHE_CONTEXT);
+    public static function clearCache() {
+        return DB::table('bpw_blocklist_items')->delete();
+    }
+    public function regenerateCache() {
+        return $this->_regenerateCache();
     }
 
     /**
@@ -73,21 +75,14 @@ class Blocklist
                 if (!$password) {
                     return;
                 }
-
-                $passwordHash = sha1(strtolower($password));
-                $hashGroup = substr($passwordHash, 0, 2);
-                $isBlockedPassword = CacheManager::getManager()
-                    ->getCache(
-                        self::CACHE_CONTEXT,
-                        $hashGroup,
-                        function (...$args) {
-                            return $this->_passwordCacheMiss(...$args);
-                        }
-                    )
-                    ->get($passwordHash);
+                //Check the DB for a match. Returns the value of the first matching row.
+                $isBlockedPassword= BpwBlocklistItem::where('blocklist_item', $password)->value('blocklist_item');
+                //If something went wrong before being able to make a decision about the password
                 if ($isBlockedPassword instanceof Exception) {
                     $form->addError($passwordField, __('plugins.generic.betterPassword.validation.betterPasswordUnexpectedError'));
+                //Password blocked
                 } elseif ($isBlockedPassword) {
+                    //notify the user onscreen
                     $form->addError($passwordField, __('plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist'));
                 }
             });
@@ -106,17 +101,19 @@ class Blocklist
             ->getSite()
             ->getMinPasswordLength();
         $callback = function () {};
-        $hashedPasswords = [];
+        //retrieve all available blocklist files
         foreach ($this->_getBlocklists() as $path) {
             try {
                 $file = new SplFileObject($path);
+                $blocklistItems=[];
                 try {
                     while (!$file->eof()) {
+                        //strip line endings and make lowercase for comparison
                         $password = rtrim(strtolower($file->fgets()), "\n\r");
+                        //don't bother storing banned passwords that are already disallowed by the minimum length feature
                         if (strlen($password) >= $minLengthPass) {
-                            $hash = sha1($password);
-                            $hashGroup = substr($hash, 0, 2);
-                            $hashedPasswords[$hashGroup][$hash] = true;
+                            //build an array we'll use to insert the values into the DB
+                            $blocklistItems[]= ["blocklist_item" => $password ];
                         }
                     }
                 } finally {
@@ -127,34 +124,14 @@ class Blocklist
                 return false;
             }
         }
-        foreach ($hashedPasswords as $hashGroup => $hashes) {
-            CacheManager::getManager()
-                ->getCache(self::CACHE_CONTEXT, $hashGroup, $callback)
-                ->setEntireCache($hashes);
-        }
+        try {
+            //try to insert the passwords into the DB
+            $this->_insertBlocklistItems($blocklistItems);
+            } catch (Exception $e) {
+                error_log('ERROR: Could not save blocklist items to db ');
+                return false;
+            }
         return true;
-    }
-
-    /**
-     * Callback to handle cache misses
-     *
-     * @param string $passwordHash The hash of the user password
-     *
-     * @return int|Exception 1 if the hash exists or an Exception if something failed
-     */
-    private function _passwordCacheMiss(GenericCache $cache, string $passwordHash): bool|Exception|null
-    {
-        if (!(get_class($cache->cacheMiss) == "PKP\cache\generic_cache_miss")) {
-            return false;
-        }
-        // Retrieves an Exception if the regeneration failed
-        if (!$this->_regenerateCache()) {
-            return new Exception('Failed to regenerate the cache');
-        }
-        $hashGroup = substr($passwordHash, 0, 2);
-        return CacheManager::getManager()
-            ->getCache(self::CACHE_CONTEXT, $hashGroup, function () { return false; })
-            ->get($passwordHash);
     }
 
     /**
@@ -201,5 +178,20 @@ class Blocklist
             }
         }
         return false;
+    }
+    
+        /**
+     * Insert a Blocklist array into DB
+     *
+     * @param array $blocklistItems
+     *
+     * @return boolean true if successfully inserted into DB
+     */
+    private function _insertBlocklistItems(array $blocklistItems): bool
+    {
+        //Call query builder batch insert method via the model
+        //no fillAndInsert() until Laravel 12.x
+        $model = new BpwBlocklistItem;
+        return $model->insert($blocklistItems);
     }
 }

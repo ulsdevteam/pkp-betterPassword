@@ -15,7 +15,7 @@
 
 namespace APP\plugins\generic\betterPassword;
 
-use APP\plugins\generic\betterPassword\features\Blocklist;
+use APP\plugins\generic\betterPassword\features\Blocklist as Blocklist;
 use APP\template\TemplateManager;
 use PKP\core\PKPApplication;
 use PKP\db\DAORegistry;
@@ -186,6 +186,14 @@ class BetterPasswordSettingsForm extends Form
         foreach ($plugin->getSettings() as $setting => $type) {
             $value = $this->getData($setting);
             settype($value, $type);
+            $blocklistEnabled=$plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordCheckBlacklist');
+            //target cases where the blocklist feature is enabled and being turned from 'off' to 'on'
+            if ($setting === 'betterPasswordCheckBlacklist' && $value === true && $blocklistEnabled===false){
+                $blocklist = new Blocklist($plugin);
+                //Delete any stored blocklist items from the database and start fresh
+                $blocklist->clearCache();
+                $blocklist->regenerateCache();
+            }
             if (strpos($setting, 'betterPassword') === 0) {
                 $plugin->updateSetting($this->_contextId, $setting, $value, $type);
             } elseif ($setting == 'minPasswordLength') {
