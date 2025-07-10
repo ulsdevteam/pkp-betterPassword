@@ -17,7 +17,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema as Schema;
+use Illuminate\Support\Facades\Schema;
 
 class BetterPasswordSchemaMigration extends Migration
 {
@@ -25,17 +25,19 @@ class BetterPasswordSchemaMigration extends Migration
      * Run the migrations.
      */
     public function up()
-    {
-        if (Schema::hasColumn('badpw_failedlogins', 'username')) {
-            $usernameCol = Schema::getColumnType('badpw_failedlogins','username',true);
-            //No way to retrieve column length by itself, so pull out the numerical value from getColumnType() output like varchar(255)
-            preg_match('/([0-9])+/', $usernameCol, $usernameColLen);
-            //preg_match automatically sets $usernameColLen above
-            if ($usernameColLen[0] < 255){
-                //We want to ensure username column can accept up to 255 characters
-                Schema::table('badpw_failedlogins', function (Blueprint $table) {
-                    $table->string('username', 255)->change();
-                });
+    {   
+        if (Schema::hasTable('badpw_failedlogins')) {
+            if (Schema::hasColumn('badpw_failedlogins', 'username')) {
+                $usernameCol = Schema::getColumnType('badpw_failedlogins','username',true);
+                //No way to retrieve column length by itself, so pull out the numerical value from getColumnType() output like varchar(255)
+                preg_match('/[0-9]+/', $usernameCol, $usernameColLen);
+                //preg_match automatically sets $usernameColLen above
+                if ($usernameColLen[0] < 255){
+                    //We want to ensure username column can accept up to 255 characters
+                    Schema::table('badpw_failedlogins', function (Blueprint $table) {
+                        $table->string('username', 255)->change();
+                    });
+                }
             }
         }
         else {
@@ -48,18 +50,21 @@ class BetterPasswordSchemaMigration extends Migration
         }
 
         //Create a table to store passwords we don't want users to be able to set for their accounts
-        Schema::create('bpw_blocklist_items', function (Blueprint $table) { 
-            $table->string('blocklist_item', 255)->unique();
-        });
+        if (!Schema::hasTable('bpw_blocklist_items')) {
+            Schema::create('bpw_blocklist_items', function (Blueprint $table) { 
+                $table->string('blocklist_item', 255)->unique();
+            });
+        }
 
-
-        Schema::create('stored_passwords', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('user_id');
-            $table->text('password');
-            $table->datetime('last_change_time');
-        });
-
+        if (!Schema::hasTable('stored_passwords')) {
+            Schema::create('stored_passwords', function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->integer('user_id');
+                $table->text('password');
+                $table->datetime('last_change_time');
+            });
+        }
+        
         $userSettings = DB::table('user_settings')
             ->where('setting_name', 'betterPasswordPlugin::lastPasswords');
 
