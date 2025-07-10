@@ -35,9 +35,9 @@ class BlocklistHandler extends Handler
     /**
      * @copydoc PKPHandler::initialize()
      */
-    public function initialize($request): void
+    public function initialize($request, $args = null): void
     {
-        parent::initialize($request);
+        parent::initialize($request, $args = null);
         // Load locale usually handled by LoginHandler
         $this->_privateFileManager = new PrivateFileManager();
         $pluginClass = BetterPasswordPlugin::class;
@@ -48,7 +48,7 @@ class BlocklistHandler extends Handler
     }
 
     /**
-     * Save an user blocklist
+     * Save a user blocklist
      *
      * @param array $args Arguments array expecting user uploaded file properties
      * @param  PKPRequest $request Request object.
@@ -72,11 +72,13 @@ class BlocklistHandler extends Handler
         $blocklists[$hash] = $this->_privateFileManager->getUploadedFileName($fieldName);
         $this->_setBlockLists($blocklists);
         Blocklist::clearCache();
+        $blocklist = new Blocklist($this->_plugin);
+        $blocklist->regenerateCache();
         return new JSONMessage(true);
     }
 
     /**
-     * Delete an user blocklist
+     * Delete a user blocklist
      *
      * @param array $args Arguments array expecting user uploaded file hash
      * @param PKPRequest $request Request object.

@@ -96,25 +96,19 @@ class Blocklist
      */
     private function _regenerateCache(): bool
     {
-        $pkpApplication = PKPApplication::get();
-        $minLengthPass = $pkpApplication->getRequest()
-            ->getSite()
-            ->getMinPasswordLength();
         $callback = function () {};
+        //one array to hold passwords from all blocklists
+        $blocklistItems=[];
         //retrieve all available blocklist files
         foreach ($this->_getBlocklists() as $path) {
             try {
                 $file = new SplFileObject($path);
-                $blocklistItems=[];
                 try {
                     while (!$file->eof()) {
-                        //strip line endings and make lowercase for comparison
+                        //strip line endings and make all lowercase for easy comparison later
                         $password = rtrim(strtolower($file->fgets()), "\n\r");
-                        //don't bother storing banned passwords that are already disallowed by the minimum length feature
-                        if (strlen($password) >= $minLengthPass) {
-                            //build an array we'll use to insert the values into the DB
-                            $blocklistItems[]= ["blocklist_item" => $password ];
-                        }
+                        //build the array one password at a time. we'll use it to insert the values into the DB
+                        $blocklistItems[]= ["blocklist_item" => $password ];
                     }
                 } finally {
                     $file = null;
@@ -192,6 +186,6 @@ class Blocklist
         //Call query builder batch insert method via the model
         //no fillAndInsert() until Laravel 12.x
         $model = new BpwBlocklistItem;
-        return $model->insert($blocklistItems);
+        return $model->insertOrIgnore($blocklistItems);
     }
 }

@@ -15,7 +15,7 @@
 
 namespace APP\plugins\generic\betterPassword;
 
-use APP\plugins\generic\betterPassword\features\Blocklist as Blocklist;
+use APP\plugins\generic\betterPassword\features\Blocklist;
 use APP\template\TemplateManager;
 use PKP\core\PKPApplication;
 use PKP\db\DAORegistry;
@@ -50,7 +50,7 @@ class BetterPasswordSettingsForm extends Form
         $this->_plugin = $plugin;
 
         parent::__construct($plugin->getTemplateResource('settingsForm.tpl'), $this->_contextId);
-
+        $this->_existingBlocklists = $plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
         $lockFields = [];
         $invalidationFields = [];
         foreach (array_keys($this->_plugin->getSettings()) as $setting) {
@@ -183,6 +183,7 @@ class BetterPasswordSettingsForm extends Form
     public function execute(...$functionArgs): void
     {
         $plugin = $this->_plugin;
+        //Compare existing plugin settings to the changes proposed in the form
         foreach ($plugin->getSettings() as $setting => $type) {
             $value = $this->getData($setting);
             settype($value, $type);
@@ -191,18 +192,19 @@ class BetterPasswordSettingsForm extends Form
             if ($setting === 'betterPasswordCheckBlacklist' && $value === true && $blocklistEnabled===false){
                 $blocklist = new Blocklist($plugin);
                 //Delete any stored blocklist items from the database and start fresh
-                $blocklist->clearCache();
+                Blocklist::clearCache();
                 $blocklist->regenerateCache();
             }
             if (strpos($setting, 'betterPassword') === 0) {
                 $plugin->updateSetting($this->_contextId, $setting, $value, $type);
+            //min password length is a site-level setting set at install and only configurable in the UI on multi-journal sites
+            //BetterPassword exposes this setting in its plugin settings form, but implements any changes at the site level
             } elseif ($setting == 'minPasswordLength') {
                 $siteDao = DAORegistry::getDAO('SiteDAO');
                 $site = $siteDao->getSite();
                 if ($site->getMinPasswordLength() !== $value) {
                     $site->setMinPasswordLength($value);
                     $siteDao->updateObject($site);
-                    Blocklist::clearCache();
                 }
             }
         }
