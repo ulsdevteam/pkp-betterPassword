@@ -127,6 +127,36 @@ class BetterPasswordSettingsForm extends Form
     }
 
     /**
+     * Get user-submitted blocklists.
+     *
+     @param PKPRequest $request
+     *
+     */
+    public function listBlocklists($request)
+    {
+        $plugin = $this->_plugin;
+        $blocklistFiles = [];
+        $temp = $plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
+        if ($temp != null) {
+            foreach ($temp as $hash => $name) {
+                $blocklistFiles[$name] = new LinkAction(
+                    'deleteBlocklist',
+                    new RemoteActionConfirmationModal(
+                        $request->getSession(),
+                        __('plugins.generic.betterPassword.actions.deleteBlocklistCheck'),
+                        __('plugins.generic.betterPassword.actions.deleteBlocklist'),
+                        $request->getRouter()->url($request, null, 'plugins.generic.betterpassword.handler.BlocklistHandler', 'deleteBlocklist', null, ['file' => $hash])
+                    ),
+                    __('common.delete'),
+                    null,
+                    __('plugins.generic.betterPassword.actions.deleteBlocklist')
+                );
+            }
+            return $blocklistFiles;
+        }
+    }
+
+    /**
      * Fetch the form.
      *
      * @copydoc Form::fetch()
@@ -148,26 +178,10 @@ class BetterPasswordSettingsForm extends Form
             }
         }
 
-        $blocklistFiles = [];
-        $temp = $plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
-        if ($temp != null) {
-            foreach ($temp as $hash => $name) {
-                $blocklistFiles[$name] = new LinkAction(
-                    'deleteBlocklist',
-                    new RemoteActionConfirmationModal(
-                        $request->getSession(),
-                        __('plugins.generic.betterPassword.actions.deleteBlocklistCheck'),
-                        __('plugins.generic.betterPassword.actions.deleteBlocklist'),
-                        $request->getRouter()->url($request, null, 'plugins.generic.betterpassword.handler.BlocklistHandler', 'deleteBlocklist', null, ['file' => $hash])
-                    ),
-                    __('common.delete'),
-                    null,
-                    __('plugins.generic.betterPassword.actions.deleteBlocklist')
-                );
-            }
-            //TODO need to iclude a JSON function to refresh the page to properly display changes immediately
-        }
+        //list any user uploaded blocklist files
+        $blocklistFiles = $this->listBlocklists($request);
         TemplateManager::getManager($request)->assign([
+            'plugin' => $plugin,
             'pluginName' => $plugin->getName(),
             'betterPasswordCheckboxes' => $checkboxes,
             'betterPasswordLocking' => $locking,
