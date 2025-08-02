@@ -105,8 +105,8 @@ class Blocklist
                 $file = new SplFileObject($path);
                 try {
                     while (!$file->eof()) {
-                        //strip line endings and make all lowercase for easy comparison later
-                        $password = rtrim(strtolower($file->fgets()), "\n\r");
+                        //strip line endings
+                        $password = rtrim($file->fgets(), "\n\r");
                         //build the array one password at a time. we'll use it to insert the values into the DB
                         $blocklistItems[]= ["blocklist_item" => $password ];
                     }
