@@ -24,13 +24,13 @@ msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
 msgstr "Your password requires an uppercase character."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
-msgstr "Your password requires an lowercase character."
+msgstr "Your password requires a lowercase character."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
-msgstr "Your password requires an numeric character."
+msgstr "Your password requires a numeric character."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
-msgstr "Your password requires an non-alphanumeric character."
+msgstr "Your password requires a non-alphanumeric character."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
 msgstr "Your password was found in a blocklist of known bad passwords."
