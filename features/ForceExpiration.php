@@ -22,7 +22,7 @@ use APP\plugins\generic\betterPassword\BetterPasswordPlugin;
 use PKP\core\PKPApplication;
 use PKP\db\DAORegistry;
 use PKP\plugins\Hook;
-use PKP\session\SessionManager;
+use PKP\notification\Notification;
 
 class ForceExpiration
 {
@@ -60,18 +60,16 @@ class ForceExpiration
     private function _addPasswordExpirationCheck(): void
     {
         $user = Application::get()->getRequest()->getUser();
-        $sessionManager = SessionManager::getManager();
-        $session = $sessionManager->getUserSession();
-        $user = $session->getUser();
+        $session = Application::get()->getRequest()->getSession();
         if ($user) {
             if (!$this->_isPasswordExpired($user)) {
                 if ($this->_isPasswordExpiring($user)) {
-                    if (!$session->getSessionVar('betterPassword::showedLastNotification')) {
+                    if (!$session->get('betterPassword::showedLastNotification')) {
                         $notificationManager = new NotificationManager();
                         $expirationDate = $this->_getExpirationDate($user);
                         $diffInDays = ceil(($expirationDate->getTimestamp() - time()) / 60 / 60 / 24);
-                        $notificationManager->createTrivialNotification($user->getId(), \PKP\notification\PKPNotification::NOTIFICATION_TYPE_WARNING, ['contents' => __('plugins.generic.betterPassword.message.yourPasswordWillExpire', ['days' => $diffInDays])]);
-                        $session->setSessionVar('betterPassword::showedLastNotification', true);
+                        $notificationManager->createTrivialNotification($user->getId(), Notification::NOTIFICATION_TYPE_WARNING, ['contents' => __('plugins.generic.betterPassword.message.yourPasswordWillExpire', ['days' => $diffInDays])]);
+                        $session->put('betterPassword::showedLastNotification', true);
                     }
                 }
             } else {
@@ -79,7 +77,8 @@ class ForceExpiration
                 Repo::user()->edit($user);
             }
         } else {
-            $session->unsetSessionVar('betterPassword::showedLastNotification');
+            //happens on logout
+            $session->remove('betterPassword::showedLastNotification');
         }
     }
 
