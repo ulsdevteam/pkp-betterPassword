@@ -49,8 +49,10 @@ class LimitReuse
         $userDao = Repo::user()->dao;
         Hook::add('changepasswordform::execute', [$this, 'rememberPasswords']);
         Hook::add('loginchangepasswordform::execute', [$this, 'rememberPasswords']);
+        Hook::add('resetpasswordform::execute', [$this, 'rememberPasswords']);
         Hook::add('loginchangepasswordform::Constructor', [$this, 'passwordChangeValidation']);
         Hook::add('changepasswordform::Constructor', [$this, 'passwordChangeValidation']);
+        Hook::add('resetpasswordform::Constructor', [$this, 'passwordChangeValidation']);
     }
 
     /**
@@ -63,12 +65,13 @@ class LimitReuse
      */
     public function rememberPasswords($hook, $args)
     {
-        if ($hook == 'changepasswordform::execute' && get_class($args[0]) == 'PKP\user\form\ChangePasswordForm') {
-            $user = $args[0]->getUser();
-        } elseif ($hook == 'loginchangepasswordform::execute' && get_class($args[0]) == 'PKP\user\form\LoginChangePasswordForm') {
+        //user is considered authenticated for all reset forms except when password has been marked expired by this plugin or manually by an admin
+        if ($hook == 'loginchangepasswordform::execute' && get_class($args[0]) == 'PKP\user\form\LoginChangePasswordForm') {
             $user = Repo::user()->getByUsername($args[0]->getData('username'), false);
         }
-
+        else {
+            $user = $args[0]->getUser();
+        }
         $password = $user->getData('password');
         $this->_addPassword($user, $password);
         return false;
@@ -102,7 +105,14 @@ class LimitReuse
      */
     public function passwordCompare($password, $form)
     {
+        $formClassName = get_class($form);
+        //ResetPasswordForm has a protected user property and provides an accessor method
+        if ($formClassName === 'PKP\user\form\ResetPasswordForm') {
+            $user = $form->getUser();
+        }
+        else {
         $user = $form->_user;
+        }
         /** @var \APP\plugins\generic\betterPassword\classes\StoredPasswordsDAO $storedPasswordsDao */
         $storedPasswordsDao = DAORegistry::getDAO('StoredPasswordsDAO');
         if ($user) {
