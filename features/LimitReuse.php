@@ -106,13 +106,18 @@ class LimitReuse
     public function passwordCompare($password, $form)
     {
         $formClassName = get_class($form);
-        //ResetPasswordForm has a protected user property and provides an accessor method
-        if ($formClassName === 'PKP\user\form\ResetPasswordForm') {
-            $user = $form->getUser();
+        switch ($formClassName) {
+            case $formClassName === 'PKP\user\form\ResetPasswordForm':
+                $user = $form->getUser();
+                break;
+            case $formClassName === 'PKP\user\form\LoginChangePasswordForm':
+                $user = Repo::user()->getByUsername($form->getData('username'));
+                break;
+            case $formClassName === 'PKP\user\form\ChangePasswordForm':
+                $user = $form->_user;
+                break;
         }
-        else {
-        $user = $form->_user;
-        }
+
         /** @var \APP\plugins\generic\betterPassword\classes\StoredPasswordsDAO $storedPasswordsDao */
         $storedPasswordsDao = DAORegistry::getDAO('StoredPasswordsDAO');
         if ($user) {
@@ -122,10 +127,8 @@ class LimitReuse
         }
 
         if ($storedPasswords) {
-            if (!$user) {
-                $user = Repo::user()->getByUsername($form->getData('username'));
-            }
             foreach ($storedPasswords->getPasswords($this->_maxReusablePasswords) as $previousPassword) {
+                //if $password matches the hash of a previously-used password we've stored, return false
                 if (Validation::verifyPassword($user->getUsername(), $password, $previousPassword, $rehash)) {
                     return false;
                 }
