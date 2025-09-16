@@ -114,7 +114,7 @@ class LimitReuse
                 $user = Repo::user()->getByUsername($form->getData('username'));
                 break;
             case $formClassName === 'PKP\user\form\ChangePasswordForm':
-                $user = $form->_user;
+                $user = $form->getUser();
                 break;
         }
 
