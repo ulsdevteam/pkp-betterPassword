@@ -127,6 +127,7 @@ class LimitReuse
         }
 
         if ($storedPasswords) {
+            $rehash = false;
             foreach ($storedPasswords->getPasswords($this->_maxReusablePasswords) as $previousPassword) {
                 //if $password matches the hash of a previously-used password we've stored, return false
                 if (Validation::verifyPassword($user->getUsername(), $password, $previousPassword, $rehash)) {
