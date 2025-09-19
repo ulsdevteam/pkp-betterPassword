@@ -108,14 +108,11 @@ class ForceExpiration
         /** @var \APP\plugins\generic\betterPassword\classes\StoredPasswordsDAO $storedPasswordsDao  */
         $storedPasswordsDao = DAORegistry::getDAO('StoredPasswordsDAO');
         $storedPasswords = $storedPasswordsDao->getByUserId($user->getId());
-
-        $mostRecent = $storedPasswords->getChangeTime();
-        if (!$mostRecent) {
-            $mostRecent = new \DateTime($user->getDateRegistered());
-        }
-
-        $mostRecent->modify("{$this->_passwordLifetime} day");
-        return $mostRecent;
+        //If there aren't any stored passwords for the user, use their registration date instead
+        $mostRecent = $storedPasswords ? $storedPasswords->getChangeTime() : new \DateTime($user->getDateRegistered());
+        //Add whatever length of time was specified in plugin settings
+        $expirationDate = $mostRecent->modify("{$this->_passwordLifetime} day");
+        return $expirationDate;
     }
 
     /**
