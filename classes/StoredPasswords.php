@@ -65,7 +65,8 @@ class StoredPasswords extends DataObject
      */
     public function getPasswords(?int $maxNumberOfPasswords = null): array
     {
-        if ($maxNumberOfPasswords = null) {
+        //if pw reuse is unrestricted
+        if ($maxNumberOfPasswords === null) {
             return explode(',', $this->_data['password']);
         } else {
             $passwords = explode(',', $this->_data['password']);
