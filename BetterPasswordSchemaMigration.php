@@ -48,7 +48,7 @@ class BetterPasswordSchemaMigration extends Migration
         Schema::create('stored_passwords', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
-            $table->text('password');
+            $table->text('password')->nullable();
             $table->datetime('last_change_time');
         });
 

@@ -65,6 +65,10 @@ class StoredPasswords extends DataObject
      */
     public function getPasswords(?int $maxNumberOfPasswords = null): array
     {
+        //password field is null if stored_password entries are saved while Force Expiration is enabled without limiting reuse. 
+        if ($this->_data['password'] === null) {
+            return [];
+        }
         //if pw reuse is unrestricted
         if ($maxNumberOfPasswords === null) {
             return explode(',', $this->_data['password']);
