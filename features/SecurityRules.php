@@ -61,7 +61,7 @@ class SecurityRules
     private function _addPasswordValidation(): void
     {
         // Register callback to validate new passwords
-        foreach (['registrationform::validate', 'changepasswordform::validate', 'loginchangepasswordform::validate'] as $hook) {
+        foreach (['registrationform::validate', 'changepasswordform::validate', 'loginchangepasswordform::validate', 'resetpasswordform::validate'] as $hook) {
             Hook::add($hook, function ($hook, $args) {
                 /** @var \PKP\form\Form $form */
                 [$form] = $args;
