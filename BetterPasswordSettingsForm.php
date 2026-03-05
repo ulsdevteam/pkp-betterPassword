@@ -202,11 +202,11 @@ class BetterPasswordSettingsForm extends Form
             $value = $this->getData($setting);
             settype($value, $type);
             $blocklistEnabled=$plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordCheckBlacklist');
-            //target cases where the blocklist feature is enabled and being turned from 'off' to 'on'
-            if ($setting === 'betterPasswordCheckBlacklist' && $value === true && $blocklistEnabled===false){
+            if ($setting === 'betterPasswordCheckBlacklist' && $value === true){
                 $blocklist = new Blocklist($plugin);
-                //Delete any stored blocklist items from the database and start fresh
+                //Delete any user-supplied blocklist items from the database
                 Blocklist::clearCache();
+                //Add user-supplied blocklist items from the files being submitted with the settings form
                 $blocklist->regenerateCache();
             }
             if (strpos($setting, 'betterPassword') === 0) {

@@ -136,7 +136,9 @@ class Blocklist
     private function _getBlocklists(): array
     {
         $privateFileManager = new PrivateFileManager();
+        //Retrieve the default list of 10000 common passwords that comes prepackaged with plugin
         $paths = [implode(DIRECTORY_SEPARATOR, [$this->_plugin->getPluginPath(), 'badPasswords', 'badPasswords.txt'])];
+        //Get any custom blocklists uploaded by the user in the settings form
         $userLists = $this->_plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordUserBlacklistFiles') ?? [];
         foreach (array_keys($userLists) as $hash) {
             $paths[] = implode(DIRECTORY_SEPARATOR, [$privateFileManager->getBasePath(), 'betterPassword', 'blocklists', $hash]);
