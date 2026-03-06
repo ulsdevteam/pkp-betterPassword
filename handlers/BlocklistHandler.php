@@ -51,12 +51,10 @@ class BlocklistHandler extends Handler
     }
 
     /**
-     * *
      * Save a user blocklist
      * @param $args array Arguments array expecting user uploaded file properties
      * @param $request PKPRequest Request object.
      * @return JSONMessage True blocklist file is uploaded properly
-     * *
      */
     public function uploadBlocklist(array $args, PKPRequest $request): JSONMessage
     {

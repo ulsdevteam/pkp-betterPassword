@@ -68,8 +68,8 @@ class BetterPasswordSchemaMigration extends Migration
         Schema::table('stored_passwords', function (Blueprint $table) {
             $table->text('password')->nullable()->change();
         });
-        
-	$userSettings = DB::table('user_settings')
+
+        $userSettings = DB::table('user_settings')
             ->where('setting_name', 'betterPasswordPlugin::lastPasswords');
 
         $userSettingsJoined = DB::table('user_settings as u')->where('u.setting_name', 'betterPasswordPlugin::lastPasswordUpdate')->joinSub($userSettings, 'user_settings', function (JoinClause $join) {

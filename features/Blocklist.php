@@ -176,7 +176,7 @@ class Blocklist
         return false;
     }
     
-        /**
+    /**
      * Insert a Blocklist array into DB
      *
      * @param array $blocklistItems
