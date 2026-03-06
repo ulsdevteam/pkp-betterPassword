@@ -25,7 +25,7 @@ class DisabledLoginHandler extends Handler
     /**
      * @copydoc PKPHandler::initialize()
      */
-    public function initialize($request): void
+    public function initialize($request, $args = null): void
     {
         parent::initialize($request);
     }
