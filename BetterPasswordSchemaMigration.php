@@ -13,7 +13,6 @@
  */
 
 namespace APP\plugins\generic\betterPassword;
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Database\Schema\Blueprint;
@@ -26,34 +25,46 @@ class BetterPasswordSchemaMigration extends Migration
      * Run the migrations.
      */
     public function up()
-    {
-        $con = DB::connection();
-        try {
-            $column = $con->getDoctrineColumn('badpw_failedlogins', 'username');
-            $userNameLength = $column->getLength();
-            if ($userNameLength < 255) {
-                Schema::table('badpw_failedlogins', function (Blueprint $table) {
-                    $table->string('username', 255)->change();
-                });
+    {   
+        if (Schema::hasTable('badpw_failedlogins')) {
+            if (Schema::hasColumn('badpw_failedlogins', 'username')) {
+                $usernameCol = Schema::getColumnType('badpw_failedlogins','username',true);
+                //No way to retrieve column length by itself, so pull out the numerical value from getColumnType() output like varchar(255)
+                preg_match('/[0-9]+/', $usernameCol, $usernameColLen);
+                //preg_match automatically sets $usernameColLen above
+                if ($usernameColLen[0] < 255){
+                    //We want to ensure username column can accept up to 255 characters
+                    Schema::table('badpw_failedlogins', function (Blueprint $table) {
+                        $table->string('username', 255)->change();
+                    });
+                }
             }
-        } catch (\Doctrine\DBAL\Schema\Exception\ColumnDoesNotExist $e) {
         }
-if (!Schema::hasTable('badpw_failedlogins')) {
-        Schema::create('badpw_failedlogins', function (Blueprint $table) {
-            $table->string('username', 255);
-            $table->bigInteger('count');
-            $table->datetime('failed_login_time');
-        });
-}
+        else {
+            //If the table doesn't exist, create it
+            Schema::create('badpw_failedlogins', function (Blueprint $table) {
+                $table->string('username', 255);
+                $table->bigInteger('count');
+                $table->datetime('failed_login_time');
+            });
+        }
 
-if (!Schema::hasTable('stored_passwords')) {
-        Schema::create('stored_passwords', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('user_id');
-            $table->text('password')->nullable();
-            $table->datetime('last_change_time');
+        //Create a table to store passwords we don't want users to be able to set for their accounts
+        if (!Schema::hasTable('bpw_blocklist_items')) {
+            Schema::create('bpw_blocklist_items', function (Blueprint $table) { 
+                $table->string('blocklist_item', 255)->unique();
+            });
+        }
+	
+	if (!Schema::hasTable('stored_passwords')) {
+            Schema::create('stored_passwords', function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->integer('user_id');
+                $table->text('password')->nullable();
+                $table->datetime('last_change_time');
         });
-}
+	}
+
         Schema::table('stored_passwords', function (Blueprint $table) {
             $table->text('password')->nullable()->change();
         });
@@ -83,5 +94,6 @@ if (!Schema::hasTable('stored_passwords')) {
     {
         Schema::drop('badpw_failedlogins');
         Schema::drop('stored_passwords');
+        Schema::drop('bpw_blocklist_items');
     }
 }
