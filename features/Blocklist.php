@@ -55,9 +55,6 @@ class Blocklist
     public static function clearCache() {
         return DB::table('bpw_blocklist_items')->delete();
     }
-    public function regenerateCache() {
-        return $this->_regenerateCache();
-    }
 
     /**
      * Register a hook to validate passwords against a blocked list
@@ -94,7 +91,7 @@ class Blocklist
      *
      * @return bool True on success, false if an error happens while generating the cache
      */
-    private function _regenerateCache(): bool
+    public function regenerateCache(): bool
     {
         $callback = function () {};
         //one array to hold passwords from all blocklists

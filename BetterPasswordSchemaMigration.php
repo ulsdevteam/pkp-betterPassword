@@ -94,6 +94,6 @@ class BetterPasswordSchemaMigration extends Migration
     {
         Schema::drop('badpw_failedlogins');
         Schema::drop('stored_passwords');
-        Schema::drop('badpw_blocklist_items');
+        Schema::drop('bpw_blocklist_items');
     }
 }
