@@ -50,7 +50,6 @@ class BetterPasswordSettingsForm extends Form
         $this->_plugin = $plugin;
 
         parent::__construct($plugin->getTemplateResource('settingsForm.tpl'), $this->_contextId);
-        $this->_existingBlocklists = $plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
         $lockFields = [];
         $invalidationFields = [];
         foreach (array_keys($this->_plugin->getSettings()) as $setting) {
