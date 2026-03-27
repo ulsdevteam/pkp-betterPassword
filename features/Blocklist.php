@@ -119,7 +119,7 @@ class Blocklist
             //try to insert the passwords into the DB
             $this->_insertBlocklistItems($blocklistItems);
             } catch (Exception $e) {
-                error_log('ERROR: Could not save blocklist items to db ');
+                error_log('ERROR: Could not save blocklist items to db. ' . $e->getMessage());
                 return false;
             }
         return true;
