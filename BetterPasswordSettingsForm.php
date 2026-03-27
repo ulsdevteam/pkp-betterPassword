@@ -50,7 +50,6 @@ class BetterPasswordSettingsForm extends Form
         $this->_plugin = $plugin;
 
         parent::__construct($plugin->getTemplateResource('settingsForm.tpl'), $this->_contextId);
-
         $lockFields = [];
         $invalidationFields = [];
         foreach (array_keys($this->_plugin->getSettings()) as $setting) {
@@ -127,6 +126,36 @@ class BetterPasswordSettingsForm extends Form
     }
 
     /**
+     * Get user-submitted blocklists.
+     *
+     @param PKPRequest $request
+     *
+     */
+    public function listBlocklists($request)
+    {
+        $plugin = $this->_plugin;
+        $blocklistFiles = [];
+        $temp = $plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
+        if ($temp != null) {
+            foreach ($temp as $hash => $name) {
+                $blocklistFiles[$name] = new LinkAction(
+                    'deleteBlocklist',
+                    new RemoteActionConfirmationModal(
+                        $request->getSession(),
+                        __('plugins.generic.betterPassword.actions.deleteBlocklistCheck'),
+                        __('plugins.generic.betterPassword.actions.deleteBlocklist'),
+                        $request->getRouter()->url($request, null, 'plugins.generic.betterpassword.handler.BlocklistHandler', 'deleteBlocklist', null, ['file' => $hash])
+                    ),
+                    __('common.delete'),
+                    null,
+                    __('plugins.generic.betterPassword.actions.deleteBlocklist')
+                );
+            }
+            return $blocklistFiles;
+        }
+    }
+
+    /**
      * Fetch the form.
      *
      * @copydoc Form::fetch()
@@ -148,26 +177,10 @@ class BetterPasswordSettingsForm extends Form
             }
         }
 
-        $blocklistFiles = [];
-        $temp = $plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordUserBlacklistFiles');
-        if ($temp != null) {
-            foreach ($temp as $hash => $name) {
-                $blocklistFiles[$name] = new LinkAction(
-                    'deleteBlocklist',
-                    new RemoteActionConfirmationModal(
-                        $request->getSession(),
-                        __('plugins.generic.betterPassword.actions.deleteBlocklistCheck'),
-                        __('plugins.generic.betterPassword.actions.deleteBlocklist'),
-                        $request->getRouter()->url($request, null, 'plugins.generic.betterpassword.handler.BlocklistHandler', 'deleteBlocklist', null, ['file' => $hash])
-                    ),
-                    __('common.delete'),
-                    null,
-                    __('plugins.generic.betterPassword.actions.deleteBlocklist')
-                );
-            }
-            //TODO need to iclude a JSON function to refresh the page to properly display changes immediately
-        }
+        //list any user uploaded blocklist files
+        $blocklistFiles = $this->listBlocklists($request);
         TemplateManager::getManager($request)->assign([
+            'plugin' => $plugin,
             'pluginName' => $plugin->getName(),
             'betterPasswordCheckboxes' => $checkboxes,
             'betterPasswordLocking' => $locking,
@@ -183,18 +196,28 @@ class BetterPasswordSettingsForm extends Form
     public function execute(...$functionArgs): void
     {
         $plugin = $this->_plugin;
+        //Compare existing plugin settings to the changes proposed in the form
         foreach ($plugin->getSettings() as $setting => $type) {
             $value = $this->getData($setting);
             settype($value, $type);
+            $blocklistEnabled=$plugin->getSetting(PKPApplication::CONTEXT_SITE, 'betterPasswordCheckBlacklist');
+            if ($setting === 'betterPasswordCheckBlacklist' && $value === true){
+                $blocklist = new Blocklist($plugin);
+                //Delete any user-supplied blocklist items from the database
+                Blocklist::clearCache();
+                //Add user-supplied blocklist items from the files being submitted with the settings form
+                $blocklist->regenerateCache();
+            }
             if (strpos($setting, 'betterPassword') === 0) {
                 $plugin->updateSetting($this->_contextId, $setting, $value, $type);
+            //min password length is a site-level setting set at install and only configurable in the UI on multi-journal sites
+            //BetterPassword exposes this setting in its plugin settings form, but implements any changes at the site level
             } elseif ($setting == 'minPasswordLength') {
                 $siteDao = DAORegistry::getDAO('SiteDAO');
                 $site = $siteDao->getSite();
                 if ($site->getMinPasswordLength() !== $value) {
                     $site->setMinPasswordLength($value);
                     $siteDao->updateObject($site);
-                    Blocklist::clearCache();
                 }
             }
         }

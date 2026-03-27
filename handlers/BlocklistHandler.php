@@ -18,11 +18,14 @@ namespace APP\plugins\generic\betterPassword\handlers;
 use APP\handler\Handler;
 use APP\plugins\generic\betterPassword\BetterPasswordPlugin;
 use APP\plugins\generic\betterPassword\features\Blocklist;
+use APP\plugins\generic\betterPassword\BetterPasswordSettingsForm;
 use PKP\core\JSONMessage;
 use PKP\core\PKPApplication;
 use PKP\core\PKPRequest;
 use PKP\file\PrivateFileManager;
 use PKP\plugins\PluginRegistry;
+use APP\template\TemplateManager;
+
 
 class BlocklistHandler extends Handler
 {
@@ -35,9 +38,9 @@ class BlocklistHandler extends Handler
     /**
      * @copydoc PKPHandler::initialize()
      */
-    public function initialize($request): void
+    public function initialize($request, $args = null): void
     {
-        parent::initialize($request);
+        parent::initialize($request, $args = null);
         // Load locale usually handled by LoginHandler
         $this->_privateFileManager = new PrivateFileManager();
         $pluginClass = BetterPasswordPlugin::class;
@@ -48,12 +51,10 @@ class BlocklistHandler extends Handler
     }
 
     /**
-     * Save an user blocklist
-     *
-     * @param array $args Arguments array expecting user uploaded file properties
-     * @param  PKPRequest $request Request object.
-     *
-     * @return JSONMessage True is blocklist file is uploaded properly
+     * Save a user blocklist
+     * @param $args array Arguments array expecting user uploaded file properties
+     * @param $request PKPRequest Request object.
+     * @return JSONMessage True blocklist file is uploaded properly
      */
     public function uploadBlocklist(array $args, PKPRequest $request): JSONMessage
     {
@@ -76,7 +77,7 @@ class BlocklistHandler extends Handler
     }
 
     /**
-     * Delete an user blocklist
+     * Delete a user blocklist
      *
      * @param array $args Arguments array expecting user uploaded file hash
      * @param PKPRequest $request Request object.
@@ -95,7 +96,26 @@ class BlocklistHandler extends Handler
         unset($blocklists[$hash]);
         $this->_setBlocklists($blocklists);
         Blocklist::clearCache();
-        return new JSONMessage(true);
+
+        $settingsForm = new BetterPasswordSettingsForm($this->_plugin);
+        $blocklistFiles = $settingsForm->listBlocklists($request);
+
+        // Get the template manager
+        $templateMgr = TemplateManager::getManager($request);
+
+        // Assign blocklists list to the template variable expected by the template
+        $templateMgr->assign('betterPasswordBlocklistFiles', $blocklistFiles);
+
+        // Get path to the template for the blocklist files section
+        $templatePath = $this->_plugin->getTemplateResource('blocklistFilesList.tpl');
+
+        // Render the template (blocklistFilesList.tpl)
+        $html = $templateMgr->fetch($templatePath);
+
+        // Return the HTML as the JSON response
+        $json =  new JSONMessage(true, $html);
+        return $json;
+
     }
 
     /**

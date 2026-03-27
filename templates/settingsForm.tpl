@@ -8,19 +8,36 @@
  *
  *}
 <script>
-	$(function() {ldelim}
-		// Attach the upload form handler.
-		$('#betterPasswordSettingsForm').pkpHandler(
-			'$.pkp.controllers.form.FileUploadFormHandler',
-			{ldelim}
-				$uploader: $('#plupload'),
-				uploaderOptions: {ldelim}
-					uploadUrl: {url|json_encode router=$smarty.const.ROUTE_COMPONENT component="plugins.generic.betterpassword.handler.BlocklistHandler" op="uploadBlocklist" category="generic" plugin=$pluginName escape=false},
-					baseUrl: {$baseUrl|json_encode}
-				{rdelim}
-			{rdelim});
-	{rdelim});
+    $(function() {ldelim}
+        // Attach the upload form handler.
+        $('#betterPasswordSettingsForm').pkpHandler(
+            '$.pkp.controllers.form.FileUploadFormHandler',
+            {ldelim}
+                $uploader: $('#plupload'),
+                uploaderOptions: {ldelim}
+                    uploadUrl: {url|json_encode router=$smarty.const.ROUTE_COMPONENT component="plugins.generic.betterpassword.handler.BlocklistHandler" op="uploadBlocklist" category="generic" plugin=$pluginName escape=false},
+                    baseUrl: {$baseUrl|json_encode}
+                {rdelim}
+            {rdelim});
+       {rdelim});
+
+    {literal}
+        //redefine modal handler function to update html with fresh list of blocklists from plugin delete handler
+        $(function() {
+            $.pkp.controllers.modal.RemoteActionConfirmationModalHandler.prototype.remoteResponse= function(ajaxOptions, jsonData) {
+                var processedJsonData = this.parent('remoteResponse', ajaxOptions, jsonData);
+                if (jsonData.content){
+                    $('#blocklistFilesSection').html(jsonData.content);
+                }
+                if (processedJsonData !==false){
+                    this.modalClose(ajaxOptions);
+                }
+                return false;
+            };
+        });
+    {/literal}
 </script>
+
 <form class="pkp_form" id="betterPasswordSettingsForm" method="post" action="{url router=$smarty.const.ROUTE_COMPONENT op="manage" category="generic" plugin=$pluginName verb="settings" save=true}">
 	{csrf}
 	{include file="controllers/notification/inPlaceNotification.tpl" notificationId="betterPasswordSettingsFormNotification"}
@@ -31,11 +48,12 @@
 		{fbvFormSection for="minPasswordLength"}
 			{fbvElement type="text" id="minPasswordLength" label="admin.settings.minPasswordLength" value="$minPasswordLength"}
 		{/fbvFormSection}
+
 		{if $betterPasswordBlocklistFiles}
+
 		{fbvFormSection title="plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"}
-			{foreach from=$betterPasswordBlocklistFiles key="betterPasswordFile" item="betterPasswordSettingValue"}
-				<p>{$betterPasswordFile} {include file="linkAction/linkAction.tpl" action=$betterPasswordSettingValue}</p>
-			{/foreach}
+                    {assign var=templatePath value=$plugin->getTemplateResource('blocklistFilesList.tpl')}
+                    {include file="$templatePath"}
 		{/fbvFormSection}
 		{/if}
 		{fbvFormSection title="plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"}
