@@ -83,4 +83,31 @@ class BadpwFailedLoginsDAO extends DAO {
 	public function resetCount(BadpwFailedLogins $badpwObj) : bool {
 		return $this->update('DELETE FROM badpw_failedlogins WHERE username = ?', [$badpwObj->getUsername()]);
 	}
+
+	/**
+	 * Cleanup stale failed login attempts.
+	 *
+	 * Rules:
+	 * - If the account is locked (count > $maxRetries), then `failed_login_time` must be old enough
+	 *   to satisfy both `$lockExpiresSeconds` and `$lockSeconds`.
+	 * - Otherwise, only `$lockExpiresSeconds` must be respected.
+	 *
+	 * @param int $maxRetries Maximum amount of retries before an account is considered locked
+	 * @param int $lockSeconds Lock duration (seconds)
+	 * @param int $lockExpiresSeconds How long we keep bad-password attempts (seconds)
+	 */
+	public function cleanup(int $maxRetries, int $lockSeconds, int $attemptExpiresSeconds): void {
+		$now = time();
+		$type = 'date';
+		$attemptsExpiresAt = $this->convertToDB($now + $attemptExpiresSeconds, $type);
+		$lockExpiresAt = $this->convertToDB($now + max($attemptExpiresSeconds, $lockSeconds), $type);
+		$this->update(
+			'DELETE FROM badpw_failedlogins WHERE failed_login_time >= CASE WHEN count >= ? THEN ? ELSE ? END',
+			[
+				$maxRetries,
+				$lockExpiresAt,
+				$attemptsExpiresAt
+			]
+		);
+	}
 }
