@@ -55,25 +55,11 @@ class LimitRetry {
 			}
 			/** @var BadpwFailedLoginsDAO */
 			$badpwFailedLoginsDao = DAORegistry::getDAO('BadpwFailedLoginsDAO');
+			$badpwFailedLoginsDao->cleanup($this->_maxRetries, $this->_lockSeconds, $this->_lockExpiresSeconds);
 			$user = $badpwFailedLoginsDao->getByUsername($username);
-			if (!$user) {
-				return;
-			}
-			$count = $user->getCount();
-			$time = $user->getFailedTime();
-
-			// Discard old bad password attempts
-			// When the memory has expired
-			if ($count && $time < time() - $this->_lockExpiresSeconds) {
-				// And the user is not currently locked
-				if ($user->getCount() < $this->_maxRetries || $user->getFailedTime() <= time() - $this->_lockSeconds) {
-					$badpwFailedLoginsDao->resetCount($user);
-				}
-			}
-
 			// Update the count to represent this failed attempt
 			$badpwFailedLoginsDao->incCount($user);
-
+			$count = $user->getCount() + 1;
 			// Warn the user if the attempts have been exhausted
 			if ($count >= $this->_maxRetries) {
 				$templateManager->assign('error', 'plugins.generic.betterPassword.validation.betterPasswordLocked');
