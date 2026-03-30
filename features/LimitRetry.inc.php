@@ -12,6 +12,8 @@
  * @brief Implements the feature to limit retries and lock the account
  */
 
+use Carbon\CarbonInterval;
+
 class LimitRetry {
 	/** @var int Max amount of retries */
 	private $_maxRetries;
@@ -76,7 +78,26 @@ class LimitRetry {
 
 			// Warn the user if the attempts have been exhausted
 			if ($count >= $this->_maxRetries) {
-				$templateManager->assign('error', 'plugins.generic.betterPassword.validation.betterPasswordLocked');
+				$localeKey = 'plugins.generic.betterPassword.validation.betterPasswordLocked';
+				$enhancedLocaleKey = "{$localeKey}.enhancedByHook";
+				HookRegistry::register('PKPLocale::translate', function ($hook, $args) use ($localeKey, $enhancedLocaleKey) {
+					$key = $args[0];
+					$value = &$args[4];
+					if ($key === $enhancedLocaleKey) {
+						$label = CarbonInterval::seconds(max($this->_lockExpiresSeconds, $this->_lockSeconds))
+							->cascade()
+							->locale(AppLocale::getLocale())
+							->forHumans([
+								'parts' => 2,
+								'short' => false,
+							]);
+						$value = AppLocale::translate($localeKey, ['remainingTime' => $label]);
+						return true;
+					}
+
+					return false;
+				});
+				$templateManager->assign('error', $enhancedLocaleKey);
 			}
 		});
 	}
