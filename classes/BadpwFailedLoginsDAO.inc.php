@@ -81,10 +81,6 @@ class BadpwFailedLoginsDAO extends DAO {
 	 * @return boolean True if reset is successful
 	 */
 	public function resetCount(BadpwFailedLogins $badpwObj) : bool {
-		return $this->update('
-			UPDATE badpw_failedlogins
-			SET count = 0
-			WHERE username = ?
-		', [$badpwObj->getUsername()]);
+		return $this->update('DELETE FROM badpw_failedlogins WHERE username = ?', [$badpwObj->getUsername()]);
 	}
 }
