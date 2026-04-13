@@ -70,12 +70,15 @@ class LimitRetry {
 				// And the user is not currently locked
 				if ($user->getCount() < $this->_maxRetries || $user->getFailedTime() <= time() - $this->_lockSeconds) {
 					$badpwFailedLoginsDao->resetCount($user);
+                                        // Update the local counter
+                                        $count = 0;
 				}
 			}
 
 			// Update the count to represent this failed attempt
 			$badpwFailedLoginsDao->incCount($user);
-
+			// Update the local counter
+                        $count ++;
 			// Warn the user if the attempts have been exhausted
 			if ($count >= $this->_maxRetries) {
 				$localeKey = 'plugins.generic.betterPassword.validation.betterPasswordLocked';
