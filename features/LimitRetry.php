@@ -22,8 +22,10 @@ use APP\plugins\generic\betterPassword\classes\BadpwFailedLoginsDAO;
 use APP\plugins\generic\betterPassword\handlers\DisabledLoginHandler;
 use PKP\core\PKPApplication;
 use PKP\db\DAORegistry;
+use PKP\facades\Locale;
 use PKP\plugins\Hook;
 use PKP\security\Validation;
+use Carbon\CarbonInterval;
 
 class LimitRetry
 {
@@ -83,15 +85,24 @@ class LimitRetry
                 // And the user is not currently locked
                 if ($user->getCount() < $this->_maxRetries || $user->getFailedTime() <= time() - $this->_lockSeconds) {
                     $badpwFailedLoginsDao->resetCount($user);
+                    // Update the local counter
+                    $count = 0;
                 }
             }
 
             // Update the count to represent this failed attempt
             $badpwFailedLoginsDao->incCount($user);
+            // Update the local counter
+            $count ++;
 
             // Warn the user if the attempts have been exhausted
             if ($count >= $this->_maxRetries) {
+                $label = CarbonInterval::seconds(max($this->_lockExpiresSeconds, $this->_lockSeconds))
+                    ->cascade()
+                    ->locale(Locale::getLocale())
+                    ->forHumans(['parts' => 2, 'short' => false]);
                 $templateManager->assign('error', 'plugins.generic.betterPassword.validation.betterPasswordLocked');
+                $templateManager->assign('reason', $label);
             }
         });
     }
