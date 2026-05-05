@@ -1,0 +1,189 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Plugin mật khẩu tốt hơn"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr ""
+"Kích hoạt các yêu cầu mật khẩu bổ sung trong phần mềm PKP.  Cho phép thực "
+"hiện các khuyến nghị của NIST."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Mật khẩu của bạn yêu cầu một ký tự chữ cái."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Mật khẩu của bạn yêu cầu ký tự viết hoa."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Mật khẩu của bạn yêu cầu ký tự chữ thường."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Mật khẩu của bạn yêu cầu ký tự số."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Mật khẩu của bạn yêu cầu ký tự không phải chữ và số."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr ""
+"Mật khẩu của bạn đã được tìm thấy trong danh sách chặn các mật khẩu xấu đã "
+"biết."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "Tài khoản của bạn đã bị khóa tạm thời do nhập sai mật khẩu."
+
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr ""
+"Mật khẩu của bạn không thể thay đổi vào lúc này.  Vui lòng thử lại sau."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "Bạn không thể sử dụng lại mật khẩu này, vui lòng chọn mật khẩu khác."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Cài đặt"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Không thể tải tập tin lên"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Không thể xóa tập tin"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Cài đặt mật khẩu tốt hơn"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>Khi bật plugin này, mật khẩu người dùng sẽ được kiểm tra theo các tiêu "
+"chí bổ sung để đảm bảo lựa chọn mật khẩu tốt hơn.  NIST khuyên bạn nên kiểm "
+"tra mật khẩu theo danh sách chặn và sử dụng khóa tài khoản tạm thời sau "
+"nhiều lần nhập sai mật khẩu.  Có sẵn các yêu cầu về độ phức tạp bao gồm các "
+"loại ký tự chữ và số cụ thể nhưng không được khuyến nghị vì lý do trải "
+"nghiệm người dùng.</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Yêu cầu về mật khẩu"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Tải lên tệp danh sách chặn"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Danh sách chặn đã tải lên"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Yêu cầu một ký tự chữ cái."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Yêu cầu ký tự viết hoa."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Yêu cầu một ký tự chữ thường."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Yêu cầu ký tự số."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Yêu cầu ký tự không phải chữ và số."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"Kiểm tra mọi mật khẩu do người dùng yêu cầu dựa trên danh sách chặn các mật "
+"khẩu xấu đã biết."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Khóa tài khoản tạm thời"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Số lần đăng nhập sai và sau đó sẽ khóa tài khoản."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Số giây trước khi quên những lần đăng nhập sai."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr "Số giây để khóa tài khoản sau nhiều lần đăng nhập sai."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"Nếu bất kỳ cài đặt khóa tài khoản tạm thời nào được nhập thì tất cả cài đặt "
+"khóa tài khoản tạm thời đều được yêu cầu."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr "Số lần đăng nhập sai để khóa tài khoản phải là số."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr "Số giây trước khi quên những lần đăng nhập sai phải là số."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"Số giây để khóa tài khoản sau nhiều lần đăng nhập sai quá mức phải là số."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Vô hiệu hóa mật khẩu"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Số ngày trước khi mật khẩu hết hạn."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"Số ngày, trước khi hết hạn, bắt đầu cảnh báo người dùng hàng ngày về việc "
+"hết hạn mật khẩu."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr "Số lượng mật khẩu cuối cùng cần bị chặn để sử dụng lại."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Số ngày trước khi mật khẩu hết hạn phải là số."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr "Số lượng mật khẩu cuối cùng cần chặn để sử dụng lại phải là số."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"Số ngày trước khi hết hạn để bắt đầu cảnh báo người dùng hàng ngày về việc "
+"hết hạn mật khẩu phải là số."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Mật khẩu của bạn sẽ hết hạn sau {$days} ngày nữa."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Xóa danh sách chặn hiện có"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Bạn có chắc chắn muốn xóa không?"

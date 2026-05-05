@@ -1,0 +1,199 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Lepsza wtyczka hasła"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr ""
+"Włącz dodatkowe wymagania dotyczące hasła w oprogramowaniu PKP. Umożliwia "
+"wdrożenie rekomendacji NIST."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Twoje hasło wymaga znaku alfabetycznego."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Twoje hasło wymaga znaku wielkich liter."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Twoje hasło wymaga znaku małych liter."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Twoje hasło wymaga znaku numerycznego."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Twoje hasło wymaga znaku niealfanumerycznego."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr "Twoje hasło zostało znalezione na liście znanych złych haseł."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr ""
+"Twoje konto zostało tymczasowo zablokowane z powodu nieudanych prób hasła."
+
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr ""
+"Twoje hasło nie mogło być zmienione w tym momencie. Spróbuj ponownie "
+"później."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "Nie możesz ponownie użyć tego hasła, wybierz inne."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Ustawienia"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Nie udało się przesłać pliku"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Nie udało się usunąć pliku"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Ustawienia lepszego hasła"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>Gdy ta wtyczka jest włączona, hasła użytkowników będą sprawdzane pod "
+"względem dodatkowych kryteriów, aby zapewnić lepszy wybór hasła. NIST zaleca"
+" sprawdzanie haseł względem listy blokady i używanie tymczasowej blokady "
+"konta po powtarzających się błędach hasła. Wymagania dotyczące złożoności, w"
+" tym określone typy znaków alfanumerycznych, są dostępne, ale nie są "
+"zalecane ze względów UX.</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Wymagania dotyczące hasła"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Prześlij plik listy blokady"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Przesłane listy blokady"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Wymaga znaku alfabetycznego."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Wymaga znaku wielkich liter."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Wymaga znaku małych liter."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Wymaga znaku numerycznego."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Wymaga znaku niealfanumerycznego."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"Sprawdzaj wszystkie hasła żądane przez użytkownika na liście blokady znanych"
+" złych haseł."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Tymczasowa blokada konta"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Liczba nieudanych prób logowania, po których zablokować konto."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Liczba sekund przed zapomnieniem nieudanych prób logowania."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr ""
+"Liczba sekund do zablokowania konta po nadmiernej liczbie nieudanych prób "
+"logowania."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"Jeśli zostanie wprowadzone dowolne ustawienie tymczasowej blokady konta, "
+"wszystkie ustawienia tymczasowej blokady konta są wymagane."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr ""
+"Liczba nieudanych prób logowania, po których zablokować konto, musi być "
+"numeryczna."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr ""
+"Liczba sekund przed zapomnieniem nieudanych prób logowania musi być "
+"numeryczna."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"Liczba sekund do zablokowania konta po nadmiernej liczbie nieudanych prób "
+"logowania musi być numeryczna."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Unieważnienie hasła"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Liczba dni, zanim hasła wygasną."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"Liczba dni, zanim wygaśnięcie, aby rozpocząć codzienne ostrzeganie "
+"użytkownika o wygaśnięciu hasła."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr ""
+"Liczba ostatnich haseł, które powinny być zablokowane do ponownego użytku."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Liczba dni, zanim hasła wygasną, musi być numeryczna."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr ""
+"Liczba ostatnich haseł, które powinny być zablokowane do ponownego użytku, "
+"musi być numeryczna."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"Liczba dni, zanim wygaśnięcie, aby codziennie ostrzegać użytkownika o "
+"wygaśnięciu hasła, musi być numeryczna."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Twoje hasło wygaśnie w {$days} dzień/dni."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Usuń istniejącą listę blokady"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Czy na pewno chcesz usunąć?"

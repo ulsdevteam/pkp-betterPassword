@@ -1,0 +1,201 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Жақсырақ құпия сөз плагині"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr ""
+"PKP бағдарламалық құралында қосымша құпия сөз талаптарын қосыңыз.  NIST "
+"ұсыныстарын орындауға мүмкіндік береді."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Құпия сөзіңіз әліпбилік таңбаны қажет етеді."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Құпия сөзіңіз бас әріпті қажет етеді."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Құпия сөзіңіз кіші әріпті қажет етеді."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Құпия сөзіңіз сандық таңбаны қажет етеді."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Құпия сөзіңіз әріптік-сандық емес таңбаны қажет етеді."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr ""
+"Құпия сөзіңіз белгілі нашар құпия сөздердің блоктау тізімінен табылды."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr ""
+"Құпия сөзді дұрыс енгізу әрекеттеріне байланысты есептік жазбаңыз уақытша "
+"құлыпталды."
+
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr ""
+"Құпия сөзіңізді қазір өзгерту мүмкін емес.  Тағы жасауды сәл кейінірек "
+"көріңізді өтінеміз."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "Бұл құпия сөзді қайта пайдалана алмайсыз, басқасын таңдаңыз."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Параметрлер"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Файлды жүктеп салу орындалмады"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Файл жойылмады"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Жақсырақ құпиясөз параметрлері"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>Бұл плагин қосылғанда, құпия сөзді таңдауды жақсарту үшін пайдаланушы "
+"құпия сөздері қосымша критерийлерге сәйкес тексеріледі.  NIST құпия сөздерді"
+" блоктау тізіміне қарсы тексеруді және құпия сөз қайталанатын "
+"сәтсіздіктерден кейін уақытша тіркелгіні құлыптауды пайдалануды ұсынады.  "
+"Күрделілік талаптары, соның ішінде әріптік-цифрлық таңбалардың арнайы "
+"түрлері бар, бірақ UX себептеріне байланысты ұсынылмайды.</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Құпия сөзге қойылатын талаптар"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Блоктау тізімі файлын жүктеп салыңыз"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Жүктеп салынған блоктар тізімдері"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Алфавиттік таңбаны талап ету."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Бас әріпті талап ету."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Кіші әріпті талап етіңіз."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Сандық таңбаны талап ету."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Әріптік-сандық емес таңбаны талап ету."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"Пайдаланушы сұраған құпия сөздерді белгілі нашар құпия сөздердің блоктау "
+"тізіміне қарсы тексеріңіз."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Есептік жазбаны уақытша құлыптау"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Есептік жазбаны құлыптауға болатын қате кіру әрекеттерінің саны."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Нашар кіру әрекеттерін ұмыту алдындағы секундтар саны."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr ""
+"Шамадан тыс қате кіру әрекеттерінен кейін есептік жазбаны құлыптау үшін "
+"секунд саны."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"Кез келген уақытша есептік жазбаны құлыптау параметрі енгізілсе, барлық "
+"уақытша есептік жазбаны құлыптау параметрлері қажет."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr ""
+"Есептік жазбаны құлыптауға болатын қате кіру әрекеттерінің саны сандық болуы"
+" керек."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr ""
+"Нашар кіру әрекеттерін ұмыту алдындағы секундтар саны сандық болуы керек."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"Шамадан тыс қате кіру әрекеттерінен кейін есептік жазбаны құлыптау үшін "
+"секунд саны сандық болуы керек."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Құпия сөзді жарамсыз ету"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Құпия сөздердің мерзімі аяқталуға дейінгі күндер саны."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"Пайдаланушыға құпия сөздің қолданылу мерзімінің аяқталуы туралы күнделікті "
+"ескертуді бастау үшін жарамдылық мерзімі өткен күндер саны."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr "Қайта пайдалану үшін блокталатын соңғы құпия сөздердің саны."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr ""
+"Құпия сөздердің мерзімі аяқталуға дейінгі күндер саны сандық болуы керек."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr ""
+"Қайта пайдалану үшін блокталатын соңғы құпия сөздердің саны сандық болуы "
+"керек."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"Пайдаланушыға құпия сөздің жарамдылық мерзімі туралы күнделікті ескертуді "
+"бастау үшін жарамдылық мерзімі аяқталғанға дейінгі күндер саны сандық болуы "
+"керек."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Құпия сөзіңіздің мерзімі {$days} күннен кейін бітеді."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Бар блоктар тізімін жою"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Жойғыңыз келетініне сенімдісіз бе?"

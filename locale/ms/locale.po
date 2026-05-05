@@ -1,0 +1,204 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Pemalam Kata Laluan yang Lebih Baik"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr ""
+"Dayakan keperluan kata laluan tambahan dalam perisian PKP.  Membenarkan "
+"pelaksanaan pengesyoran NIST."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Kata laluan anda memerlukan aksara abjad."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Kata laluan anda memerlukan aksara besar."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Kata laluan anda memerlukan aksara kecil."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Kata laluan anda memerlukan aksara angka."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Kata laluan anda memerlukan aksara bukan abjad angka."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr ""
+"Kata laluan anda ditemui dalam senarai sekat kata laluan buruk yang "
+"diketahui."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr ""
+"Akaun anda telah dikunci buat sementara waktu kerana percubaan kata laluan "
+"yang buruk."
+
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr ""
+"Kata laluan anda tidak dapat ditukar pada masa ini.  Sila cuba lagi "
+"kemudian."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr ""
+"Anda tidak boleh menggunakan semula kata laluan ini, sila pilih yang lain."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "tetapan"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Gagal memuat naik fail"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Gagal memadam fail"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Tetapan Kata Laluan yang Lebih Baik"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>Dengan pemalam ini didayakan, kata laluan pengguna akan disemak "
+"berdasarkan kriteria tambahan untuk memastikan pemilihan kata laluan yang "
+"lebih baik.  NIST mengesyorkan menyemak kata laluan terhadap senarai sekat "
+"dan menggunakan penguncian akaun sementara selepas kegagalan kata laluan "
+"berulang.  Keperluan kerumitan termasuk jenis aksara alfanumerik khusus "
+"tersedia tetapi tidak disyorkan atas sebab UX.</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Keperluan kata laluan"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Muat naik fail senarai sekatan"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Senarai Sekat yang dimuat naik"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Memerlukan aksara abjad."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Memerlukan aksara besar."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Memerlukan aksara huruf kecil."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Memerlukan aksara angka."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Memerlukan aksara bukan abjad angka."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"Semak mana-mana kata laluan yang diminta pengguna terhadap senarai sekatan "
+"kata laluan buruk yang diketahui."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Penguncian akaun sementara"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr ""
+"Bilangan percubaan log masuk yang buruk selepas itu untuk mengunci akaun."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Bilangan saat sebelum melupakan percubaan log masuk yang buruk."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr ""
+"Bilangan saat untuk mengunci akaun selepas percubaan log masuk buruk yang "
+"berlebihan."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"Jika sebarang tetapan penguncian akaun sementara dimasukkan, semua tetapan "
+"penguncian akaun sementara diperlukan."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr ""
+"Bilangan percubaan log masuk yang buruk selepas itu untuk mengunci akaun "
+"mestilah angka."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr ""
+"Bilangan saat sebelum melupakan percubaan log masuk yang buruk mestilah "
+"angka."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"Bilangan saat untuk mengunci akaun selepas percubaan log masuk buruk yang "
+"berlebihan mestilah angka."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Kata laluan tidak sah"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Bilangan hari sebelum kata laluan tamat tempoh."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"Bilangan hari, sebelum tamat tempoh, untuk mula memberi amaran kepada "
+"pengguna setiap hari tentang tamat tempoh kata laluan."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr ""
+"Bilangan kata laluan terakhir yang harus disekat untuk digunakan semula."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Bilangan hari sebelum kata laluan tamat tempoh mestilah angka."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr ""
+"Bilangan kata laluan terakhir yang harus disekat untuk digunakan semula "
+"mestilah angka."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"Bilangan hari, sebelum tamat tempoh, untuk mula memberi amaran kepada "
+"pengguna setiap hari tentang tamat tempoh kata laluan mestilah angka."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Kata laluan anda akan tamat tempoh dalam {$days} hari."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Padamkan Senarai Sekat Sedia Ada"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Adakah anda pasti mahu memadamkan?"

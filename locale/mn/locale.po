@@ -1,0 +1,195 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Илүү сайн нууц үг залгаас"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr ""
+"PKP програм хангамжийн нэмэлт нууц үгийн шаардлагыг идэвхжүүлнэ.  NIST-ийн "
+"зөвлөмжийг хэрэгжүүлэх боломжийг олгодог."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Таны нууц үгэнд цагаан толгойн үсгийн тэмдэг шаардлагатай."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Таны нууц үг том үсгээр бичих шаардлагатай."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Таны нууц үгэнд жижиг үсэг шаардлагатай."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Таны нууц үгэнд тоон тэмдэгт шаардлагатай."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Таны нууц үг үсэг, тоон бус тэмдэгт шаарддаг."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr ""
+"Таны нууц үг мэдэгдэж байгаа муу нууц үгнүүдийн блоклосон жагсаалтаас "
+"олдлоо."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "Нууц үг буруу оролдсоны улмаас таны бүртгэл түр түгжигдсэн байна."
+
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr ""
+"Одоогоор таны нууц үгийг өөрчлөх боломжгүй байна.  Дараа дахин оролдоно уу."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "Та энэ нууц үгийг дахин ашиглах боломжгүй, өөр нууц үгийг сонгоно уу."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Тохиргоо"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Файлыг байршуулж чадсангүй"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Файлыг устгаж чадсангүй"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Нууц үгийн тохиргоог сайжруулах"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>Энэ залгаасыг идэвхжүүлсэн үед хэрэглэгчийн нууц үгийг илүү сайн сонгохын"
+" тулд нэмэлт шалгуураар шалгах болно.  NIST нь нууц үгээ хаасан жагсаалтын "
+"эсрэг шалгаж, нууц үг удаа дараа алдаа гарсны дараа бүртгэлийг түр түгжихийг"
+" зөвлөж байна.  Тодорхой төрлийн үсэг тоон тэмдэгтүүдийг багтаасан нарийн "
+"төвөгтэй байдлын шаардлагуудыг ашиглах боломжтой боловч UX шалтгаанаар "
+"хэрэглэхийг зөвлөдөггүй.</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Нууц үгийн шаардлага"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Блоклох жагсаалтын файлыг байршуулна уу"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Байршуулсан блоклох жагсаалт"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Цагаан толгойн үсгийн тэмдэг шаардлагатай."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Том үсгээр бичих шаардлагатай."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Жижиг үсгээр бичих шаардлагатай."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Тоон тэмдэгт шаардана."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Үсэг, тоон бус тэмдэгт шаардана."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"Хэрэглэгчийн хүссэн нууц үгийг мэдэгдэж байгаа муу нууц үгнүүдийн "
+"жагсаалтаас шалгана уу."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Бүртгэлийг түр хугацаагаар хаах"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Бүртгэлийг түгжихийн тулд буруу нэвтэрсэн оролдлогын тоо."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Муу нэвтрэх оролдлогыг мартахаас өмнөх секундын тоо."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr "Хэт их буруу нэвтрэх оролдлогын дараа бүртгэлийг түгжих секундын тоо."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"Бүртгэлийг түр зуур түгжих тохиргоог оруулсан бол бүх түр зуурын бүртгэл "
+"түгжих тохиргоог хийх шаардлагатай."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr ""
+"Бүртгэлийг түгжихийн тулд нэвтэрсэн буруу оролдлогын тоо тоон утгатай байх "
+"ёстой."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr ""
+"Муу нэвтрэх оролдлогыг мартахаас өмнөх секундын тоо тоон үзүүлэлттэй байх "
+"ёстой."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"Хэт их буруу нэвтрэх оролдлогын дараа бүртгэлийг түгжих секундын тоо нь тоон"
+" утгатай байх ёстой."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Нууц үг хүчингүй болсон"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Нууц үг дуусахаас өмнөх өдрийн тоо."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"Хугацаа дуусахаас өмнөх хэдэн өдрийн тоо, нууц үгийн хугацаа дуусах талаар "
+"хэрэглэгчдэд өдөр бүр анхааруулж эхлэх."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr "Дахин ашиглахыг хориглох ёстой сүүлийн нууц үгийн тоо."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Нууц үг дуусахаас өмнөх өдрийн тоо тоогоор бичигдсэн байх ёстой."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr ""
+"Дахин ашиглахыг хориглох сүүлчийн нууц үгийн тоо тоон утгатай байх ёстой."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"Хугацаа дуусахаас өмнөх өдрийн тоо нь хэрэглэгчдэд нууц үг дуусах тухай өдөр"
+" бүр анхааруулж эхлэхийн тулд тоон үзүүлэлттэй байх ёстой."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Таны нууц үг {$days} өдрийн дараа дуусна."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Одоо байгаа блок жагсаалтыг устгах"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Та устгахдаа итгэлтэй байна уу?"

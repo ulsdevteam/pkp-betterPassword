@@ -1,0 +1,207 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Mejor complemento de contraseña"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr ""
+"Habilitar requisitos de contraseña adicionales en el software PKP. Permite "
+"la implementación de recomendaciones NIST."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Su contraseña requiere un carácter alfabético."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Su contraseña requiere un carácter en mayúscula."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Su contraseña requiere un carácter en minúscula."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Su contraseña requiere un carácter numérico."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Su contraseña requiere un carácter no alfanumérico."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr ""
+"Su contraseña se encontró en una lista de contraseñas conocidas como malas."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr ""
+"Su cuenta ha sido bloqueada temporalmente debido a intentos de contraseña "
+"incorrectos."
+
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr ""
+"Su contraseña no se pudo cambiar en este momento. Por favor, intente más "
+"tarde."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "No puede reutilizar esta contraseña, por favor elija otra."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Configuración"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Error al cargar el archivo"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Error al eliminar el archivo"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Configuración de Contraseña Mejorada"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>Con este complemento habilitado, las contraseñas de los usuarios se "
+"verificarán contra criterios adicionales para garantizar una mejor selección"
+" de contraseñas. NIST recomienda verificar las contraseñas contra una lista "
+"de bloqueo y usar el bloqueo temporal de cuenta después de fallos de "
+"contraseña repetidos. Los requisitos de complejidad, incluidos tipos "
+"específicos de caracteres alfanuméricos, están disponibles pero no se "
+"recomiendan por razones de UX.</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Requisitos de contraseña"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Cargar el archivo de lista de bloqueo"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Listas de bloqueo cargadas"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Requiere un carácter alfabético."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Requiere un carácter en mayúscula."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Requiere un carácter en minúscula."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Requiere un carácter numérico."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Requiere un carácter no alfanumérico."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"Verifique cualquier contraseña solicitada por el usuario contra una lista de"
+" bloqueo de contraseñas conocidas como malas."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Bloqueo temporal de cuenta"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr ""
+"Número de intentos de inicio de sesión fallidos después de los cuales "
+"bloquear una cuenta."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr ""
+"Número de segundos antes de olvidar los intentos de inicio de sesión "
+"fallidos."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr ""
+"Número de segundos para bloquear una cuenta después de excesivos intentos de"
+" inicio de sesión fallidos."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"Si se ingresa alguna configuración de bloqueo temporal de cuenta, se "
+"requieren todas las configuraciones de bloqueo temporal de cuenta."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr ""
+"El número de intentos de inicio de sesión fallidos después de los cuales "
+"bloquear una cuenta debe ser numérico."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr ""
+"El número de segundos antes de olvidar los intentos de inicio de sesión "
+"fallidos debe ser numérico."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"El número de segundos para bloquear una cuenta después de excesivos intentos"
+" de inicio de sesión fallidos debe ser numérico."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Invalidación de contraseña"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Número de días antes de que caduquen las contraseñas."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"Número de días, antes de la caducidad, para comenzar a advertir al usuario "
+"diariamente sobre la caducidad de la contraseña."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr ""
+"Número de últimas contraseñas que deben bloquearse para su reutilización."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr ""
+"El número de días antes de que caduquen las contraseñas debe ser numérico."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr ""
+"El número de últimas contraseñas que deben bloquearse para su reutilización "
+"debe ser numérico."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"El número de días, antes de la caducidad, para comenzar a advertir al "
+"usuario diariamente sobre la caducidad de la contraseña debe ser numérico."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Su contraseña caducará en {$days} día(s)."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Eliminar lista de bloqueo existente"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "¿Está seguro de que desea eliminar?"
