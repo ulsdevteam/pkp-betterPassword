@@ -1,0 +1,199 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Betra lykilorðaviðbót"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr ""
+"Virkjaðu viðbótarkröfur um lykilorð í PKP hugbúnaði.  Leyfir innleiðingu "
+"NIST ráðlegginga."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Lykilorðið þitt krefst stafrófsstafs."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Lykilorðið þitt krefst hástafs."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Lykilorðið þitt krefst lágstafs."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Lykilorðið þitt krefst tölustafs."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Lykilorðið þitt krefst stafs án tölustafs."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr "Lykilorðið þitt fannst á bannlista yfir þekkt slæm lykilorð."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr ""
+"Reikningnum þínum hefur verið lokað tímabundið vegna slæmra tilrauna með "
+"lykilorð."
+
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr ""
+"Ekki var hægt að breyta lykilorðinu þínu eins og er.  Vinsamlegast reyndu "
+"aftur síðar."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "Þú getur ekki endurnýtt þetta lykilorð, vinsamlega veldu annað."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Stillingar"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Mistókst að hlaða upp skrá"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Mistókst að eyða skrá"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Betri lykilorðsstillingar"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>Þegar þetta viðbót er virkt verða lykilorð notenda athugað með hliðsjón "
+"af viðbótarskilyrðum til að tryggja betra val á lykilorði.  NIST mælir með "
+"því að athuga lykilorð á móti lokunarlista og nota tímabundna læsingu á "
+"reikningi eftir endurteknar mistök í lykilorði.  Kröfur um flókið efni, þar "
+"á meðal sérstakar gerðir af tölustöfum, eru tiltækar en ekki er mælt með því"
+" af UX ástæðum.</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Kröfur um lykilorð"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Hladdu upp bannlistaskránni"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Upphlaðnir blokkalistar"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Krefjast stafrófsstafs."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Krefjast hástafs."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Krefjast lágstafs."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Krefjast tölustafs."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Krefjast stafs án tölustafs."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"Athugaðu öll lykilorð sem notandi hefur beðið um á móti bannlista yfir þekkt"
+" slæm lykilorð."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Tímabundin læsing á reikningi"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Fjöldi slæmra innskráningartilrauna eftir að læsa reikningi."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Fjöldi sekúndna áður en þú gleymir slæmum innskráningartilraunum."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr ""
+"Fjöldi sekúndna til að læsa reikningi eftir óhóflegar slæmar "
+"innskráningartilraunir."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"Ef einhver tímabundin reikningslásstilling er færð inn, þarf allar "
+"tímabundnar reikningslæsingarstillingar."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr ""
+"Fjöldi slæmra innskráningartilrauna eftir að læsa reikningi verður að vera "
+"tölulegur."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr ""
+"Fjöldi sekúndna áður en þú gleymir slæmum innskráningartilraunum verður að "
+"vera tölulegur."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"Fjöldi sekúndna til að læsa reikningi eftir óhóflegar slæmar "
+"innskráningartilraunir verður að vera tölulegur."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Ógilding lykilorðs"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Fjöldi daga áður en lykilorð renna út."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"Fjöldi daga, áður en það rennur út, til að byrja að vara notandann daglega "
+"við því að lykilorðið rennur út."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr "Fjöldi síðustu lykilorða sem ætti að loka fyrir endurnotkun."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Fjöldi daga áður en lykilorð renna út verður að vera tölulegur."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr ""
+"Fjöldi síðustu lykilorða sem ætti að loka fyrir endurnotkun verður að vera "
+"tölulegur."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"Fjöldi daga, áður en það rennur út, til að byrja að vara notandann daglega "
+"við því að lykilorðið rennur út verður að vera tölulegur."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Lykilorðið þitt mun renna út eftir {$days} dag(a)."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Eyða núverandi blokkunarlista"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Ertu viss um að þú viljir eyða?"

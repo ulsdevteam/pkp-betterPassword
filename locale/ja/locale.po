@@ -1,0 +1,170 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "より良いパスワードプラグイン"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr "PKPソフトウェア内で追加のパスワード要件を有効にします。 NIST推奨事項の実装を可能にします。"
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "パスワードには英字が必要です。"
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "パスワードには大文字が必要です。"
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "パスワードには小文字が必要です。"
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "パスワードには数字が必要です。"
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "パスワードには英数字以外の文字が必要です。"
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr "パスワードは既知の不正なパスワードのブロックリストで見つかりました。"
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "パスワードの入力失敗により、アカウントが一時的にロックされています。"
+
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr "パスワードを現在変更できません。後でもう一度お試しください。"
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "このパスワードを再利用することはできません。別のものを選択してください。"
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "設定"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "ファイルのアップロードに失敗しました"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "ファイルの削除に失敗しました"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "より良いパスワード設定"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>このプラグインを有効にすると、ユーザーのパスワードが追加の基準に対してチェックされ、より良いパスワード選択が保証されます。NISTは、ブロックリストに対してパスワードをチェックし、パスワードが繰り返し失敗した後に一時的なアカウントロックを使用することを推奨しています。英数字の特定のタイプを含む複雑さの要件は利用可能ですが、UXの理由から推奨されません。</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "パスワード要件"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "ブロックリストファイルをアップロード"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "アップロード済みのブロックリスト"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "英字が必要です。"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "大文字が必要です。"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "小文字が必要です。"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "数字が必要です。"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "英数字以外の文字が必要です。"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr "ユーザーが要求したすべてのパスワードを、既知の不正なパスワードのブロックリストと照合してください。"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "一時的なアカウントロック"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "アカウントをロックするまでの不正なログイン試行回数。"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "不正なログイン試行を忘れるまでの秒数。"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr "不正なログイン試行が多すぎた後、アカウントをロックするまでの秒数。"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr "一時的なアカウントロック設定が入力された場合、すべての一時的なアカウントロック設定が必要です。"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr "アカウントをロックするまでの不正なログイン試行回数は数値である必要があります。"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr "不正なログイン試行を忘れるまでの秒数は数値である必要があります。"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr "不正なログイン試行が多すぎた後、アカウントをロックするまでの秒数は数値である必要があります。"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "パスワード無効化"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "パスワードが有効期限切れになるまでの日数。"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr "有効期限の前の日数。ユーザーにパスワードの有効期限切れについて毎日警告を開始します。"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr "再利用のためにブロックすべき最後のパスワードの数。"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "パスワードが有効期限切れになるまでの日数は数値である必要があります。"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr "再利用のためにブロックすべき最後のパスワードの数は数値である必要があります。"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr "有効期限の前の日数。ユーザーにパスワードの有効期限切れについて毎日警告する必要があります。数値である必要があります。"
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "パスワードは{$days}日で期限切れになります。"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "既存のブロックリストを削除"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "削除してもよろしいですか?"

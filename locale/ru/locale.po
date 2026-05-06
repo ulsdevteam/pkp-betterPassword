@@ -1,0 +1,204 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Улучшенный плагин пароля"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr ""
+"Включите дополнительные требования к паролю в программном обеспечении PKP. "
+"Позволяет реализовать рекомендации NIST."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Ваш пароль требует буквенного символа."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Ваш пароль требует символа в верхнем регистре."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Ваш пароль требует символ нижнего регистра."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Ваш пароль требует цифровой символ."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Ваш пароль требует неалфавитный символ."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr "Ваш пароль найден в списке известных плохих паролей."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr ""
+"Ваша учетная запись была временно заблокирована из-за неправильных попыток "
+"ввода пароля."
+
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr ""
+"Ваш пароль не может быть изменен в этот момент. Пожалуйста, повторите позже."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr ""
+"Вы не можете повторно использовать этот пароль, пожалуйста, выберите другой."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Настройки"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Ошибка загрузки файла"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Ошибка удаления файла"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Параметры лучшего пароля"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>С включенным этим плагином пароли пользователей будут проверяться с "
+"использованием дополнительных критериев для обеспечения лучшего выбора "
+"пароля. NIST рекомендует проверять пароли по списку блокировки и "
+"использовать временную блокировку учетной записи после повторных ошибок "
+"пароля. Требования к сложности, включая конкретные типы буквенно-цифровых "
+"символов, доступны, но не рекомендуются по причинам UX.</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Требования к пароли"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Загрузить файл черного списка"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Загруженные списки блокировки"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Требует буквенного символа."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Требует символа в верхнем регистре."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Требует символ нижнего регистра."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Требует цифровой символ."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Требует неалфавитный символ."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"Проверьте все пароли, запрашиваемые пользователем, по списку блокировки "
+"известных плохих паролей."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Временная блокировка учетной записи"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr ""
+"Количество неудачных попыток входа, после которых блокировать учетную "
+"запись."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Количество секунд перед забыванием неудачных попыток входа."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr ""
+"Количество секунд для блокировки учетной записи после чрезмерного количества"
+" неудачных попыток входа."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"Если введен какой-либо параметр временной блокировки учетной записи, "
+"требуются все параметры временной блокировки учетной записи."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr ""
+"Количество неудачных попыток входа, после которых блокировать учетную "
+"запись, должно быть числовым."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr ""
+"Количество секунд перед забыванием неудачных попыток входа должно быть "
+"числовым."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"Количество секунд для блокировки учетной записи после чрезмерного количества"
+" неудачных попыток входа должно быть числовым."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Аннулирование пароля"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Количество дней перед истечением срока действия пароля."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"Количество дней перед истечением срока, чтобы начать ежедневно предупреждать"
+" пользователя об истечении срока действия пароля."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr ""
+"Количество последних паролей, которые должны быть заблокированы для "
+"повторного использования."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr ""
+"Количество дней перед истечением срока действия пароля должно быть числовым."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr ""
+"Количество последних паролей, которые должны быть заблокированы для "
+"повторного использования, должно быть числовым."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"Количество дней перед истечением срока для ежедневного предупреждения "
+"пользователя об истечении срока действия пароля должно быть числовым."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Срок действия пароля истечет через {$days} день/дней."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Удалить существующий список блокировки"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Вы уверены что хотите удалить?"
