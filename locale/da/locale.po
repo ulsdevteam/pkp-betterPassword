@@ -1,0 +1,141 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Language: \n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Bedre Adgangskode Plugin"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr "Aktiver yderligere krav til adgangskode i PKP Software. Muliggør implementering af NIST anbefalinger."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Din adgangskode mangler et bogstav."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Din adgangskode mangler et stort bogstav."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Din adgangskode mangler et lille bogstav."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Din adgangskode mangler et tal."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Din adgangskode mangler et ikke-alfanumerisk tegn."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr "Din adgangskode blev fundet i en liste over kendte, blokerede dårlige adgangskoder. Prøv med en anden."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "Din konto er midlertidigt blevet låst pga. for mange forsøg med dårlige adgangskoder."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr "Din adgangskode kan ikke skiftes lige nu. Prøv venligst igen senere."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "Du kan ikke genbruge din adgangskode, vælg venligst en anden."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Indstillinger"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Kunne ikke uploade fil"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Kunne ikke slette fil"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Bedre adgangskode indstillinger"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr "<p>Når dette plugin er aktiveret, vil brugeres adgangskode blive tjekket for forskellige krav for at sikre, at der vælges bedre adgangskoder. NIST anbefaler at tjekke adgangskoder ift. en liste over blokerede adgangskoder og anvende midlertidig lås af kontoen efter gentagne fejlslagne forsøg med adgangskoden. Krav til kompleksiteten af adgangskoden, inklusive specifikke typer af alfanummeriske tegn, er muligt men anbefales ikke af UX hensyn.</p>"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Krav til adgangskode"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Upload filen med liste over blokerede adgangskoder"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Uploadede lister over blokerede adgangskoder"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Kræv et bogstav."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Kræv et stort bogstav."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Kræv et lille bogstav."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Kræv et tal."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Kræv et ikke-alfanumerisk tegn."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr "Tjek en bruger-ønsket adgangskode på en liste af kendte, blokerede dårlige adgangskoder."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Midlertidig kontolåsning"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Antal fejlslagne login-forsøg hvorefter kontoen låses."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Antal sekunder hvorefter fejlslagne login-forsøg glemmes."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr "Antal sekunder hvor konto er låst efter fejlslagne login-forsøg."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr "Hvis der indtastes nogle midlertidige kontolåsningsindstillinger, vil alle midlertidige kontolåsningsindstillinger være påkrævede."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr "Antal fejlslagne login-forsøg hvorefter kontoen låses skal være et tal."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr "Antal sekunder hvorefter fejlslagne login-forsøg glemmes skal være et tal."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr "Antal sekunder hvor konto er låst efter fejlslagne login-forsøg skal være et tal."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Ugyldig adgangskode"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Antal dage før adgangskoden udløber."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr "Antal dage inden udløbet af adgangskoden, hvor brugeren vil begynde at modtage daglige advarsler om udløbet af adgangskoden."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr "Antal seneste tidligere adgangskoder, der blokeres for genbrug."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Antal dage før adgangskoden udløber skal være et tal."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr "Antal seneste tidligere adgangskoder, der blokeres for genbrug, skal være et tal."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr "Antal dage inden udløbet af adgangskoden, hvor brugeren vil begynde at modtage daglige advarsler om udløbet af adgangskoden, skal være et tal."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Din adgangskode udløber om {$days} dag(e)."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Slet eksisterende liste over blokerede adgangskoder"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Er du sikker på, at du vil slette?"
