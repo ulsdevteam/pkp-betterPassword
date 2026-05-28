@@ -44,6 +44,36 @@ msgstr "Your password could not be changed at this time.  Please try again later
 msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
 msgstr "You cannot reuse this password, please choose another one."
 
+msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
+msgstr "Your password does not meet the following requirements: {$requirements}."
+
+msgid "plugins.generic.betterPassword.description.requirementsHeading"
+msgstr "Password requirements:"
+
+msgid "plugins.generic.betterPassword.requirement.length"
+msgstr "be at least {$length} characters long"
+
+msgid "plugins.generic.betterPassword.requirement.alpha"
+msgstr "contain an alphabetic character"
+
+msgid "plugins.generic.betterPassword.requirement.uppercase"
+msgstr "contain an uppercase character"
+
+msgid "plugins.generic.betterPassword.requirement.lowercase"
+msgstr "contain a lowercase character"
+
+msgid "plugins.generic.betterPassword.requirement.number"
+msgstr "contain a numeric character"
+
+msgid "plugins.generic.betterPassword.requirement.special"
+msgstr "contain a non-alphanumeric character"
+
+msgid "plugins.generic.betterPassword.requirement.blocklist"
+msgstr "not be a commonly used or known compromised password"
+
+msgid "plugins.generic.betterPassword.requirement.noReuse"
+msgstr "not match any of your last {$count} passwords"
+
 msgid "plugins.generic.betterPassword.manager.settings"
 msgstr "Settings"
 
