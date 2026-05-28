@@ -134,7 +134,7 @@ class SecurityRules
                 $form->addError(
                     'password',
                     __('plugins.generic.betterPassword.validation.requirementsNotMet', [
-                        'requirements' => implode('; ', $failedLabels),
+                        'requirements' => implode("\n", $failedLabels),
                     ])
                 );
                 // addError() only populates _errors; the inline red message

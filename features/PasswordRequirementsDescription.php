@@ -91,31 +91,37 @@ class PasswordRequirementsDescription
             'UTF-8'
         );
 
-        // Two simple rules:
-        //   1. hide the FBV sub-label's default "must be at least N" text,
-        //      since the requirements block above already covers it. Scoped
-        //      with the marker class as a sibling so only the password
-        //      field's sub-label is touched, never the confirm field's.
-        //      `:not(.error)` keeps actual validation errors visible.
-        //   2. give the repeat-password input a hard 24px top margin so
-        //      there is always a visible gap between it and the password
-        //      input above, regardless of whether the sub-label is empty,
-        //      collapsed by OJS JS, or holding an error message.
+        // Scoped via input-name selectors so the rules apply regardless of
+        // where the requirements block sits relative to the password input
+        // (inside its wrapper, or as a sibling above it):
+        //   1. hide the FBV default sub-label text on the new-password
+        //      input, since the requirements list above already covers it.
+        //      `:not(.error)` keeps validation errors visible.
+        //   2. give the repeat-password input a 24px top margin in stacked
+        //      layouts (Change Password tab) so it doesn't touch the field
+        //      above it. `:not(.inline)` skips Add User's side-by-side
+        //      layout where the two inputs sit on the same row.
+        // SecurityRules joins the per-requirement labels with `\n` so they can
+        // render on separate lines. The PKP form-error injection HTML-escapes
+        // the message before putting it in the DOM, so `<br>` would render
+        // literally. `white-space:pre-line` on the error containers preserves
+        // the `\n` characters as actual line breaks instead.
         $marker = self::MARKER_CLASS;
-        $css = ".{$marker} ~ span > label.sub_label:not(.error){display:none}"
-            . 'input[name="password2"]{margin-top:24px}';
+        $css = 'input[name="password"] + span > label.sub_label:not(.error){display:none}'
+            . '.pkp_helpers_half:not(.inline) input[name="password2"]{margin-top:24px}'
+            . 'label.sub_label.error,.notifyFormError .description{white-space:pre-line}';
         $block = '<div class="' . $marker . '">'
             . '<style>' . $css . '</style>'
             . '<p>' . $heading . '</p>'
             . '<ul>' . $listItems . '</ul>'
             . '</div>';
 
-        return preg_replace(
-            '/(<input\b[^>]*\bname="password"[^>]*>)/',
-            $block . '$1',
-            $output,
-            1
-        );
+        // Prepend the block to the whole textInput fragment so it sits as a
+        // sibling above the password input's wrapping div, not inside it.
+        // Lets the requirements span the full row above side-by-side
+        // password/confirm inputs (Add User), and renders identically in
+        // the stacked layout (Change Password).
+        return $block . $output;
     }
 
     /**

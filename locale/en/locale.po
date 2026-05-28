@@ -45,7 +45,7 @@ msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
 msgstr "You cannot reuse this password, please choose another one."
 
 msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
-msgstr "Your password does not meet the following requirements: {$requirements}."
+msgstr "Your password does not meet the following requirements:\n{$requirements}"
 
 msgid "plugins.generic.betterPassword.description.requirementsHeading"
 msgstr "Password requirements:"
