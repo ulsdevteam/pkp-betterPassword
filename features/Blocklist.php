@@ -63,14 +63,23 @@ class Blocklist
     private function _addPasswordValidation(): void
     {
         // Register callback to validate new passwords
-        foreach (['registrationform::validate', 'changepasswordform::validate', 'loginchangepasswordform::validate', 'resetpasswordform::validate'] as $hook) {
+        $hooks = [
+            'registrationform::validate',
+            'changepasswordform::validate',
+            'loginchangepasswordform::validate',
+            'resetpasswordform::validate',
+            'userdetailsform::validate',
+        ];
+        foreach ($hooks as $hook) {
             Hook::add($hook, function ($hook, $args) {
                 /** @var \PKP\form\Form $form */
                 [$form] = $args;
                 $passwordField = 'password';
                 $password = $form->getData($passwordField);
-                // Let the form itself handle the core required function
-                if (!$password) {
+                // Let the form itself handle the core required function. Also
+                // skip when an admin is editing a user without setting a new
+                // password, or when the form will auto-generate one.
+                if (!$password || $form->getData('generatePassword')) {
                     return;
                 }
 

@@ -23,6 +23,7 @@ use APP\plugins\generic\betterPassword\features\Blocklist as Blocklist;
 use APP\plugins\generic\betterPassword\features\ForceExpiration as ForceExpiration;
 use APP\plugins\generic\betterPassword\features\LimitRetry as LimitRetry;
 use APP\plugins\generic\betterPassword\features\LimitReuse as LimitReuse;
+use APP\plugins\generic\betterPassword\features\PasswordRequirementsDescription as PasswordRequirementsDescription;
 use APP\plugins\generic\betterPassword\features\SecurityRules as SecurityRules;
 use APP\template\TemplateManager;
 use Exception;
@@ -101,6 +102,8 @@ class BetterPasswordPlugin extends GenericPlugin
             new SecurityRules($this);
 
             new ForceExpiration($this);
+
+            new PasswordRequirementsDescription($this);
         }
         return $success;
     }
