@@ -1,0 +1,171 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Language: bg\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Приставка Better Password"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr "Активира допълнителни изисквания към паролите в софтуера на PKP. Позволява прилагане на препоръките на NIST."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Паролата ви трябва да съдържа буквен знак."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Паролата ви трябва да съдържа главна буква."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Паролата ви трябва да съдържа малка буква."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Паролата ви трябва да съдържа цифров знак."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Паролата ви трябва да съдържа небуквено-цифров знак."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr "Вашата парола беше открита в списък с известни компрометирани пароли."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "Акаунтът ви е временно блокиран поради неуспешни опити за въвеждане на парола."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr "В момента паролата ви не може да бъде променена. Моля, опитайте отново по-късно."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "Не можете да използвате повторно тази парола, моля, изберете друга."
+
+msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
+msgstr "Вашата парола не отговаря на следните изисквания:\n{$requirements}"
+
+msgid "plugins.generic.betterPassword.description.requirementsHeading"
+msgstr "Изисквания към паролата:"
+
+msgid "plugins.generic.betterPassword.requirement.length"
+msgstr "да бъде с дължина поне {$length} знака"
+
+msgid "plugins.generic.betterPassword.requirement.alpha"
+msgstr "да съдържа буквен знак"
+
+msgid "plugins.generic.betterPassword.requirement.uppercase"
+msgstr "да съдържа главна буква"
+
+msgid "plugins.generic.betterPassword.requirement.lowercase"
+msgstr "да съдържа малка буква"
+
+msgid "plugins.generic.betterPassword.requirement.number"
+msgstr "да съдържа цифров знак"
+
+msgid "plugins.generic.betterPassword.requirement.special"
+msgstr "да съдържа небуквено-цифров знак"
+
+msgid "plugins.generic.betterPassword.requirement.blocklist"
+msgstr "да не бъде често използвана или известна компрометирана парола"
+
+msgid "plugins.generic.betterPassword.requirement.noReuse"
+msgstr "да не съвпада с никоя от последните ви {$count} пароли"
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Настройки"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Неуспешно качване на файл"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Неуспешно изтриване на файл"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Настройки на Better Password"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr "<p>С активирана приставка потребителските пароли ще бъдат проверявани спрямо допълнителни критерии, за да се гарантира по-добър избор на пароли. NIST препоръчва проверка на паролите спрямо списък с блокирани пароли и използване на временно заключване на акаунта след повтарящи се неуспешни опити с парола. Изискванията за сложност, включително специфични видове буквено-цифрови знаци, са налични, но не се препоръчват по причини, свързани с потребителското изживяване.</p>"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Изисквания към паролата"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Качете файл със списък с блокирани пароли"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Качени списъци с блокирани пароли"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Изисквай буквен знак."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Изисквай главна буква."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Изисквай малка буква."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Изисквай цифров знак."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Изисквай небуквено-цифров знак."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr "Проверявай всички заявени от потребителите пароли спрямо списък с известни компрометирани пароли."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Временно заключване на акаунт"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Брой неуспешни опити за вход, след които акаунтът се заключва."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Брой секунди преди забравяне на неуспешните опити за вход."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr "Брой секунди за заключване на акаунт след прекомерни неуспешни опити за вход."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr "Ако е въведена някоя настройка за временно заключване на акаунт, са необходими всички настройки за временно заключване на акаунт."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr "Броят на неуспешните опити за вход за заключване на акаунт трябва да е числов."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr "Броят на секундите преди забравяне на неуспешните опити за вход трябва да е числов."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr "Броят на секундите за заключване на акаунт след прекомерни неуспешни опити за вход трябва да е числов."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Невалидиране на парола"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Брой дни преди изтичането на паролите."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr "Брой дни преди изтичането, от които да започнат ежедневните предупреждения за потребителя относно изтичането на паролата."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr "Брой последни пароли, които да бъдат блокирани за повторно използване."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Броят на дните преди изтичането на паролите трябва да е числов."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr "Броят на последните пароли, които да бъдат блокирани за повторно използване, трябва да е числов."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr "Броят на дните преди изтичането, от които да започнат ежедневните предупреждения за потребителя относно изтичането на паролата, трябва да е числов."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Вашата парола ще изтече след {$days} ден(а)."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Изтриване на съществуващ списък с блокирани пароли"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Сигурни ли сте, че искате да изтриете?"

@@ -1,0 +1,171 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Language: fi\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Better Password Plugin"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr "Ottaa käyttöön salasanoja koskevia lisävaatimuksia PKP-ohjelmistossa. Mahdollistaa NIST:n suositusten toteuttamisen."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Salasanan on sisällettävä kirjain."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Salasanan on sisällettävä iso kirjain."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Salasanan on sisällettävä pieni kirjain."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Salasanan on sisällettävä numero."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Salasanan on sisällettävä muu kuin kirjain tai numero."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr "Salasanasi löytyi tunnettujen heikkojen salasanojen estolistalta."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "Tilisi on lukittu väliaikaisesti virheellisten salasanayritysten vuoksi."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr "Salasanaasi ei voitu vaihtaa juuri nyt. Yritä myöhemmin uudelleen."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "Et voi käyttää tätä salasanaa uudelleen, valitse jokin toinen."
+
+msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
+msgstr "Salasanasi ei täytä seuraavia vaatimuksia:\n{$requirements}"
+
+msgid "plugins.generic.betterPassword.description.requirementsHeading"
+msgstr "Salasanan vaatimukset:"
+
+msgid "plugins.generic.betterPassword.requirement.length"
+msgstr "olla vähintään {$length} merkkiä pitkä"
+
+msgid "plugins.generic.betterPassword.requirement.alpha"
+msgstr "sisältää kirjain"
+
+msgid "plugins.generic.betterPassword.requirement.uppercase"
+msgstr "sisältää iso kirjain"
+
+msgid "plugins.generic.betterPassword.requirement.lowercase"
+msgstr "sisältää pieni kirjain"
+
+msgid "plugins.generic.betterPassword.requirement.number"
+msgstr "sisältää numero"
+
+msgid "plugins.generic.betterPassword.requirement.special"
+msgstr "sisältää muu kuin kirjain tai numero"
+
+msgid "plugins.generic.betterPassword.requirement.blocklist"
+msgstr "ei saa olla yleisesti käytetty tai tunnetusti vaarantunut salasana"
+
+msgid "plugins.generic.betterPassword.requirement.noReuse"
+msgstr "ei saa vastata mitään {$count} viimeisintä salasanaasi"
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Asetukset"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Tiedoston lataaminen epäonnistui"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Tiedoston poistaminen epäonnistui"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Better Password -asetukset"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr "<p>Kun tämä lisäosa on käytössä, käyttäjien salasanat tarkistetaan lisäkriteerien perusteella, jotta salasanat olisivat parempia. NIST suosittelee salasanojen tarkistamista estolistaa vasten ja tilin väliaikaista lukitsemista toistuvien virheellisten salasanayritysten jälkeen. Monimutkaisuusvaatimukset, mukaan lukien tietyt aakkosnumeeriset merkkityypit, ovat saatavilla, mutta niitä ei suositella käyttökokemuksen vuoksi.</p>"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Salasanan vaatimukset"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Lataa estolistatiedosto"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Ladatut estolistat"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Vaadi kirjain."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Vaadi iso kirjain."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Vaadi pieni kirjain."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Vaadi numero."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Vaadi muu kuin kirjain tai numero."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr "Tarkista kaikki käyttäjien pyytämät salasanat tunnettujen heikkojen salasanojen estolistaa vasten."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Tilin väliaikainen lukitus"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Virheellisten kirjautumisyritysten määrä, jonka jälkeen tili lukitaan."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Sekuntien määrä, jonka jälkeen virheelliset kirjautumisyritykset unohdetaan."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr "Sekuntien määrä, jonka tili pysyy lukittuna liiallisten virheellisten kirjautumisyritysten jälkeen."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr "Jos mikä tahansa tilin väliaikaisen lukituksen asetus annetaan, kaikki tilin väliaikaisen lukituksen asetukset ovat pakollisia."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr "Virheellisten kirjautumisyritysten määrän, jonka jälkeen tili lukitaan, on oltava numeerinen."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr "Sekuntien määrän, jonka jälkeen virheelliset kirjautumisyritykset unohdetaan, on oltava numeerinen."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr "Sekuntien määrän, jonka tili pysyy lukittuna liiallisten virheellisten kirjautumisyritysten jälkeen, on oltava numeerinen."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Salasanan vanheneminen"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Päivien määrä, jonka jälkeen salasanat vanhenevat."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr "Päivien määrä ennen vanhenemista, jolloin käyttäjää aletaan päivittäin muistuttaa salasanan vanhenemisesta."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr "Niiden viimeisten salasanojen määrä, joiden uudelleenkäyttö tulee estää."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Päivien määrän, jonka jälkeen salasanat vanhenevat, on oltava numeerinen."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr "Niiden viimeisten salasanojen määrän, joiden uudelleenkäyttö tulee estää, on oltava numeerinen."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr "Päivien määrän ennen vanhenemista, jolloin käyttäjää aletaan päivittäin muistuttaa salasanan vanhenemisesta, on oltava numeerinen."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Salasanasi vanhenee {$days} päivän kuluttua."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Poista olemassa oleva estolista"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Haluatko varmasti poistaa?"

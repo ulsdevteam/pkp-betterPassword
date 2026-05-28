@@ -145,3 +145,33 @@ msgstr "Mevcut Engellenenler Listesini Sil"
 
 msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
 msgstr "Silmek istediğinden emin misin?"
+
+msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
+msgstr "Parolanız aşağıdaki gereksinimleri karşılamıyor:\n{$requirements}"
+
+msgid "plugins.generic.betterPassword.description.requirementsHeading"
+msgstr "Parola gereksinimleri:"
+
+msgid "plugins.generic.betterPassword.requirement.length"
+msgstr "en az {$length} karakter uzunluğunda olmalıdır"
+
+msgid "plugins.generic.betterPassword.requirement.alpha"
+msgstr "bir alfabetik karakter içermelidir"
+
+msgid "plugins.generic.betterPassword.requirement.uppercase"
+msgstr "bir büyük harf içermelidir"
+
+msgid "plugins.generic.betterPassword.requirement.lowercase"
+msgstr "bir küçük harf içermelidir"
+
+msgid "plugins.generic.betterPassword.requirement.number"
+msgstr "bir sayısal karakter içermelidir"
+
+msgid "plugins.generic.betterPassword.requirement.special"
+msgstr "alfasayısal olmayan bir karakter içermelidir"
+
+msgid "plugins.generic.betterPassword.requirement.blocklist"
+msgstr "yaygın olarak kullanılan veya bilinen ele geçirilmiş bir parola olmamalıdır"
+
+msgid "plugins.generic.betterPassword.requirement.noReuse"
+msgstr "son {$count} parolanızın hiçbiriyle eşleşmemelidir"
