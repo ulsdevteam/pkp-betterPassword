@@ -1,0 +1,171 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Language: ro\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Plugin Better Password"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr "Activează cerințe suplimentare pentru parole în software-ul PKP. Permite implementarea recomandărilor NIST."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Parola dvs. trebuie să conțină un caracter alfabetic."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Parola dvs. trebuie să conțină o literă mare."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Parola dvs. trebuie să conțină o literă mică."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Parola dvs. trebuie să conțină un caracter numeric."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Parola dvs. trebuie să conțină un caracter non-alfanumeric."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr "Parola dvs. a fost găsită într-o listă de parole compromise cunoscute."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "Contul dvs. a fost blocat temporar din cauza încercărilor eșuate de introducere a parolei."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr "Parola dvs. nu poate fi modificată în acest moment. Vă rugăm să încercați din nou mai târziu."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "Nu puteți reutiliza această parolă, vă rugăm să alegeți alta."
+
+msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
+msgstr "Parola dvs. nu îndeplinește următoarele cerințe:\n{$requirements}"
+
+msgid "plugins.generic.betterPassword.description.requirementsHeading"
+msgstr "Cerințe pentru parolă:"
+
+msgid "plugins.generic.betterPassword.requirement.length"
+msgstr "să aibă cel puțin {$length} caractere"
+
+msgid "plugins.generic.betterPassword.requirement.alpha"
+msgstr "să conțină un caracter alfabetic"
+
+msgid "plugins.generic.betterPassword.requirement.uppercase"
+msgstr "să conțină o literă mare"
+
+msgid "plugins.generic.betterPassword.requirement.lowercase"
+msgstr "să conțină o literă mică"
+
+msgid "plugins.generic.betterPassword.requirement.number"
+msgstr "să conțină un caracter numeric"
+
+msgid "plugins.generic.betterPassword.requirement.special"
+msgstr "să conțină un caracter non-alfanumeric"
+
+msgid "plugins.generic.betterPassword.requirement.blocklist"
+msgstr "să nu fie o parolă utilizată frecvent sau compromisă cunoscută"
+
+msgid "plugins.generic.betterPassword.requirement.noReuse"
+msgstr "să nu coincidă cu niciuna dintre ultimele dvs. {$count} parole"
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Setări"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Încărcarea fișierului a eșuat"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Ștergerea fișierului a eșuat"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Setări Better Password"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr "<p>Cu acest plugin activat, parolele utilizatorilor vor fi verificate conform unor criterii suplimentare pentru a asigura o selecție mai bună a parolelor. NIST recomandă verificarea parolelor față de o listă de blocare și utilizarea blocării temporare a contului după eșecuri repetate de parolă. Cerințele de complexitate, inclusiv tipurile specifice de caractere alfanumerice, sunt disponibile, dar nu sunt recomandate din motive de experiență a utilizatorului.</p>"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Cerințe pentru parolă"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Încărcați fișierul listei de blocare"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Liste de blocare încărcate"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Solicitați un caracter alfabetic."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Solicitați o literă mare."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Solicitați o literă mică."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Solicitați un caracter numeric."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Solicitați un caracter non-alfanumeric."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr "Verificați toate parolele solicitate de utilizatori față de o listă de parole compromise cunoscute."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Blocare temporară a contului"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Numărul de încercări eșuate de autentificare după care un cont se blochează."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Numărul de secunde după care încercările eșuate de autentificare sunt uitate."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr "Numărul de secunde pentru a bloca un cont după prea multe încercări eșuate de autentificare."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr "Dacă se introduce orice setare de blocare temporară a contului, toate setările de blocare temporară a contului sunt obligatorii."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr "Numărul de încercări eșuate de autentificare pentru blocarea unui cont trebuie să fie numeric."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr "Numărul de secunde după care încercările eșuate de autentificare sunt uitate trebuie să fie numeric."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr "Numărul de secunde pentru a bloca un cont după prea multe încercări eșuate de autentificare trebuie să fie numeric."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Invalidarea parolei"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Numărul de zile înainte de expirarea parolelor."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr "Numărul de zile înainte de expirare, de la care să înceapă avertizarea zilnică a utilizatorului despre expirarea parolei."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr "Numărul ultimelor parole care ar trebui blocate pentru reutilizare."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Numărul de zile înainte de expirarea parolelor trebuie să fie numeric."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr "Numărul ultimelor parole care ar trebui blocate pentru reutilizare trebuie să fie numeric."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr "Numărul de zile înainte de expirare, de la care să înceapă avertizarea zilnică a utilizatorului despre expirarea parolei, trebuie să fie numeric."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Parola dvs. va expira în {$days} zi(le)."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Ștergeți lista de blocare existentă"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Sigur doriți să ștergeți?"

@@ -1,0 +1,171 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Language: nb\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Better Password Plugin"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr "Aktiverer ytterligere passordkrav i PKP-programvaren. Gjør det mulig å implementere NIST-anbefalingene."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Passordet ditt må inneholde en bokstav."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Passordet ditt må inneholde en stor bokstav."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Passordet ditt må inneholde en liten bokstav."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Passordet ditt må inneholde et tall."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Passordet ditt må inneholde et ikke-alfanumerisk tegn."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr "Passordet ditt ble funnet på en sperreliste over kjente usikre passord."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "Kontoen din er midlertidig låst på grunn av feilaktige passordforsøk."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr "Passordet ditt kunne ikke endres akkurat nå. Prøv igjen senere."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "Du kan ikke gjenbruke dette passordet, vennligst velg et annet."
+
+msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
+msgstr "Passordet ditt oppfyller ikke følgende krav:\n{$requirements}"
+
+msgid "plugins.generic.betterPassword.description.requirementsHeading"
+msgstr "Passordkrav:"
+
+msgid "plugins.generic.betterPassword.requirement.length"
+msgstr "være minst {$length} tegn langt"
+
+msgid "plugins.generic.betterPassword.requirement.alpha"
+msgstr "inneholde en bokstav"
+
+msgid "plugins.generic.betterPassword.requirement.uppercase"
+msgstr "inneholde en stor bokstav"
+
+msgid "plugins.generic.betterPassword.requirement.lowercase"
+msgstr "inneholde en liten bokstav"
+
+msgid "plugins.generic.betterPassword.requirement.number"
+msgstr "inneholde et tall"
+
+msgid "plugins.generic.betterPassword.requirement.special"
+msgstr "inneholde et ikke-alfanumerisk tegn"
+
+msgid "plugins.generic.betterPassword.requirement.blocklist"
+msgstr "ikke være et vanlig brukt eller kjent kompromittert passord"
+
+msgid "plugins.generic.betterPassword.requirement.noReuse"
+msgstr "ikke samsvare med noen av dine siste {$count} passord"
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Innstillinger"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Kunne ikke laste opp filen"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Kunne ikke slette filen"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Better Password-innstillinger"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr "<p>Når dette programtillegget er aktivert, kontrolleres brukernes passord mot flere kriterier for å sikre bedre passordvalg. NIST anbefaler å kontrollere passord mot en sperreliste og bruke midlertidig kontolåsing etter gjentatte mislykkede passordforsøk. Kompleksitetskrav, inkludert bestemte typer alfanumeriske tegn, er tilgjengelige, men anbefales ikke av brukervennlighetshensyn.</p>"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Passordkrav"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Last opp sperrelistefil"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Opplastede sperrelister"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Krev en bokstav."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Krev en stor bokstav."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Krev en liten bokstav."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Krev et tall."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Krev et ikke-alfanumerisk tegn."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr "Kontroller alle brukerforespurte passord mot en sperreliste over kjente usikre passord."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Midlertidig kontolåsing"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Antall mislykkede påloggingsforsøk før en konto låses."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Antall sekunder før mislykkede påloggingsforsøk glemmes."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr "Antall sekunder en konto er låst etter for mange mislykkede påloggingsforsøk."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr "Hvis én innstilling for midlertidig kontolåsing oppgis, kreves alle innstillingene for midlertidig kontolåsing."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr "Antall mislykkede påloggingsforsøk før en konto låses, må være numerisk."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr "Antall sekunder før mislykkede påloggingsforsøk glemmes, må være numerisk."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr "Antall sekunder en konto er låst etter for mange mislykkede påloggingsforsøk, må være numerisk."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Utløp av passord"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Antall dager før passord utløper."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr "Antall dager før utløp da brukeren begynner å bli varslet daglig om at passordet snart utløper."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr "Antall siste passord som skal blokkeres for gjenbruk."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Antall dager før passord utløper, må være numerisk."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr "Antall siste passord som skal blokkeres for gjenbruk, må være numerisk."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr "Antall dager før utløp da brukeren begynner å bli varslet daglig om at passordet snart utløper, må være numerisk."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Passordet ditt utløper om {$days} dag(er)."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Slett eksisterende sperreliste"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Er du sikker på at du vil slette?"

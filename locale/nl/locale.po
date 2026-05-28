@@ -1,0 +1,171 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Language: nl\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Better Password Plugin"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr "Schakelt aanvullende wachtwoordvereisten in binnen PKP-software. Maakt het mogelijk om NIST-aanbevelingen toe te passen."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Uw wachtwoord moet een alfabetisch teken bevatten."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Uw wachtwoord moet een hoofdletter bevatten."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Uw wachtwoord moet een kleine letter bevatten."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Uw wachtwoord moet een cijfer bevatten."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Uw wachtwoord moet een niet-alfanumeriek teken bevatten."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr "Uw wachtwoord is gevonden op een blokkeerlijst van bekende onveilige wachtwoorden."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "Uw account is tijdelijk geblokkeerd vanwege onjuiste wachtwoordpogingen."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr "Uw wachtwoord kon op dit moment niet worden gewijzigd. Probeer het later opnieuw."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "U kunt dit wachtwoord niet opnieuw gebruiken, kies een ander wachtwoord."
+
+msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
+msgstr "Uw wachtwoord voldoet niet aan de volgende vereisten:\n{$requirements}"
+
+msgid "plugins.generic.betterPassword.description.requirementsHeading"
+msgstr "Wachtwoordvereisten:"
+
+msgid "plugins.generic.betterPassword.requirement.length"
+msgstr "ten minste {$length} tekens lang zijn"
+
+msgid "plugins.generic.betterPassword.requirement.alpha"
+msgstr "een alfabetisch teken bevatten"
+
+msgid "plugins.generic.betterPassword.requirement.uppercase"
+msgstr "een hoofdletter bevatten"
+
+msgid "plugins.generic.betterPassword.requirement.lowercase"
+msgstr "een kleine letter bevatten"
+
+msgid "plugins.generic.betterPassword.requirement.number"
+msgstr "een cijfer bevatten"
+
+msgid "plugins.generic.betterPassword.requirement.special"
+msgstr "een niet-alfanumeriek teken bevatten"
+
+msgid "plugins.generic.betterPassword.requirement.blocklist"
+msgstr "geen veelgebruikt of bekend gecompromitteerd wachtwoord zijn"
+
+msgid "plugins.generic.betterPassword.requirement.noReuse"
+msgstr "niet overeenkomen met een van uw laatste {$count} wachtwoorden"
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Instellingen"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Uploaden van bestand is mislukt"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Verwijderen van bestand is mislukt"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Better Password-instellingen"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr "<p>Als deze plugin is ingeschakeld, worden gebruikerswachtwoorden gecontroleerd aan de hand van extra criteria om een betere wachtwoordkeuze te waarborgen. NIST raadt aan wachtwoorden te controleren tegen een blokkeerlijst en accounts tijdelijk te vergrendelen na herhaalde wachtwoordfouten. Complexiteitsvereisten met specifieke soorten alfanumerieke tekens zijn beschikbaar, maar worden om UX-redenen niet aanbevolen.</p>"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Wachtwoordvereisten"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Blokkeerlijstbestand uploaden"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Geüploade blokkeerlijsten"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Een alfabetisch teken vereisen."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Een hoofdletter vereisen."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Een kleine letter vereisen."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Een cijfer vereisen."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Een niet-alfanumeriek teken vereisen."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr "Controleer alle door de gebruiker aangevraagde wachtwoorden tegen een blokkeerlijst van bekende onveilige wachtwoorden."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Tijdelijke accountvergrendeling"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Aantal onjuiste inlogpogingen waarna een account wordt vergrendeld."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Aantal seconden voordat onjuiste inlogpogingen worden vergeten."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr "Aantal seconden dat een account wordt vergrendeld na te veel onjuiste inlogpogingen."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr "Als een van de instellingen voor tijdelijke accountvergrendeling is ingevuld, zijn alle instellingen voor tijdelijke accountvergrendeling vereist."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr "Het aantal onjuiste inlogpogingen waarna een account wordt vergrendeld, moet numeriek zijn."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr "Het aantal seconden voordat onjuiste inlogpogingen worden vergeten, moet numeriek zijn."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr "Het aantal seconden dat een account wordt vergrendeld na te veel onjuiste inlogpogingen, moet numeriek zijn."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Wachtwoordverloop"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Aantal dagen voordat wachtwoorden verlopen."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr "Aantal dagen vóór het verlopen waarop de gebruiker dagelijks wordt gewaarschuwd voor het verlopen van het wachtwoord."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr "Aantal laatste wachtwoorden dat moet worden geblokkeerd voor hergebruik."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Het aantal dagen voordat wachtwoorden verlopen, moet numeriek zijn."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr "Het aantal laatste wachtwoorden dat moet worden geblokkeerd voor hergebruik, moet numeriek zijn."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr "Het aantal dagen vóór het verlopen waarop de gebruiker dagelijks wordt gewaarschuwd voor het verlopen van het wachtwoord, moet numeriek zijn."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Uw wachtwoord verloopt over {$days} dag(en)."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Bestaande blokkeerlijst verwijderen"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Weet u zeker dat u wilt verwijderen?"

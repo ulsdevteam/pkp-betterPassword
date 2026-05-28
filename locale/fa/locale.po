@@ -1,0 +1,171 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Language: fa\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "افزونه رمز عبور بهتر"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr "فعال‌سازی الزامات تکمیلی رمز عبور در نرم‌افزار PKP. امکان پیاده‌سازی توصیه‌های NIST را فراهم می‌کند."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "رمز عبور شما باید شامل یک نویسه الفبایی باشد."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "رمز عبور شما باید شامل یک حرف بزرگ باشد."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "رمز عبور شما باید شامل یک حرف کوچک باشد."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "رمز عبور شما باید شامل یک نویسه عددی باشد."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "رمز عبور شما باید شامل یک نویسه غیر الفبایی-عددی باشد."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr "رمز عبور شما در فهرست مسدودیت رمزهای عبور ضعیف شناخته شده یافت شد."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "حساب کاربری شما به دلیل تلاش‌های ناموفق برای ورود رمز عبور به‌طور موقت قفل شده است."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr "در حال حاضر امکان تغییر رمز عبور وجود ندارد. لطفاً بعداً دوباره تلاش کنید."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "نمی‌توانید از این رمز عبور دوباره استفاده کنید، لطفاً رمز دیگری انتخاب کنید."
+
+msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
+msgstr "رمز عبور شما الزامات زیر را برآورده نمی‌کند:\n{$requirements}"
+
+msgid "plugins.generic.betterPassword.description.requirementsHeading"
+msgstr "الزامات رمز عبور:"
+
+msgid "plugins.generic.betterPassword.requirement.length"
+msgstr "حداقل {$length} نویسه طول داشته باشد"
+
+msgid "plugins.generic.betterPassword.requirement.alpha"
+msgstr "شامل یک نویسه الفبایی باشد"
+
+msgid "plugins.generic.betterPassword.requirement.uppercase"
+msgstr "شامل یک حرف بزرگ باشد"
+
+msgid "plugins.generic.betterPassword.requirement.lowercase"
+msgstr "شامل یک حرف کوچک باشد"
+
+msgid "plugins.generic.betterPassword.requirement.number"
+msgstr "شامل یک نویسه عددی باشد"
+
+msgid "plugins.generic.betterPassword.requirement.special"
+msgstr "شامل یک نویسه غیر الفبایی-عددی باشد"
+
+msgid "plugins.generic.betterPassword.requirement.blocklist"
+msgstr "یک رمز عبور رایج یا افشاشده شناخته‌شده نباشد"
+
+msgid "plugins.generic.betterPassword.requirement.noReuse"
+msgstr "با هیچ‌یک از {$count} رمز عبور اخیر شما مطابقت نداشته باشد"
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "تنظیمات"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "بارگذاری پرونده ناموفق بود"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "حذف پرونده ناموفق بود"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "تنظیمات رمز عبور بهتر"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr "<p>با فعال‌سازی این افزونه، رمز عبور کاربران در برابر معیارهای تکمیلی بررسی می‌شود تا انتخاب رمز عبور بهتری تضمین شود. NIST توصیه می‌کند رمزهای عبور در برابر یک فهرست مسدودیت بررسی شده و پس از تلاش‌های مکرر و ناموفق، قفل موقت حساب اعمال شود. الزامات پیچیدگی شامل انواع خاصی از نویسه‌های الفبایی-عددی در دسترس است اما به دلایل تجربه کاربری توصیه نمی‌شود.</p>"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "الزامات رمز عبور"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "بارگذاری پرونده فهرست مسدودیت"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "فهرست‌های مسدودیت بارگذاری‌شده"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "الزام به استفاده از یک نویسه الفبایی."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "الزام به استفاده از یک حرف بزرگ."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "الزام به استفاده از یک حرف کوچک."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "الزام به استفاده از یک نویسه عددی."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "الزام به استفاده از یک نویسه غیر الفبایی-عددی."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr "بررسی هرگونه رمز عبور درخواست‌شده توسط کاربر در برابر فهرست مسدودیت رمزهای عبور ضعیف شناخته شده."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "قفل موقت حساب"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "تعداد تلاش‌های ناموفق ورود که پس از آن حساب کاربری قفل می‌شود."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "تعداد ثانیه قبل از فراموش‌شدن تلاش‌های ناموفق ورود."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr "تعداد ثانیه‌ای که حساب پس از تلاش‌های ناموفق بیش‌ازحد ورود قفل می‌ماند."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr "در صورت وارد کردن هر یک از تنظیمات قفل موقت حساب، تمام تنظیمات قفل موقت حساب الزامی هستند."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr "تعداد تلاش‌های ناموفق ورود که پس از آن حساب قفل می‌شود باید عددی باشد."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr "تعداد ثانیه قبل از فراموش‌شدن تلاش‌های ناموفق ورود باید عددی باشد."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr "تعداد ثانیه برای قفل حساب پس از تلاش‌های ناموفق بیش‌ازحد ورود باید عددی باشد."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "ابطال رمز عبور"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "تعداد روزها تا انقضای رمز عبور."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr "تعداد روزها، پیش از انقضا، برای آغاز هشدار روزانه به کاربر درباره انقضای رمز عبور."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr "تعداد رمزهای عبور اخیر که باید برای استفاده مجدد مسدود شوند."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "تعداد روزها تا انقضای رمز عبور باید عددی باشد."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr "تعداد رمزهای عبور اخیر که باید برای استفاده مجدد مسدود شوند باید عددی باشد."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr "تعداد روزها، پیش از انقضا، برای آغاز هشدار روزانه به کاربر درباره انقضای رمز عبور باید عددی باشد."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "رمز عبور شما تا {$days} روز دیگر منقضی می‌شود."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "حذف فهرست مسدودیت موجود"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "آیا از حذف اطمینان دارید؟"
