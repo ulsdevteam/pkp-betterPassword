@@ -1,48 +1,201 @@
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
-"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
-"Language: mk\n"
 
 msgid "plugins.generic.betterPassword.displayName"
-msgstr "Додаток Better Password"
+msgstr "Подобар приклучок за лозинка"
 
 msgid "plugins.generic.betterPassword.description"
-msgstr "Овозможува дополнителни барања за лозинките во софтверот на PKP. Овозможува имплементација на препораките од NIST."
+msgstr ""
+"Овозможете дополнителни барања за лозинка во софтверот PKP.  Овозможува "
+"имплементација на препораките на NIST."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
-msgstr "Вашата лозинка мора да содржи буква."
+msgstr "Вашата лозинка бара азбучен знак."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
-msgstr "Вашата лозинка мора да содржи голема буква."
+msgstr "Вашата лозинка бара големи букви."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
-msgstr "Вашата лозинка мора да содржи мала буква."
+msgstr "Вашата лозинка бара мали букви."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
-msgstr "Вашата лозинка мора да содржи бројка."
+msgstr "Вашата лозинка бара нумерички знак."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
-msgstr "Вашата лозинка мора да содржи неалфанумерички знак."
+msgstr "Вашата лозинка бара неалфанумерички знак."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
-msgstr "Вашата лозинка е пронајдена во список на познати компромитирани лозинки."
+msgstr "Вашата лозинка е пронајдена во блок листа на познати лоши лозинки."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
-msgstr "Вашата сметка е привремено заклучена поради неуспешни обиди со лозинка."
+msgstr "Вашата сметка е привремено заклучена поради лоши обиди за лозинка."
 
-msgid "plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
-msgstr "Во моментов вашата лозинка не може да биде променета. Ве молиме обидете се повторно подоцна."
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr ""
+"Вашата лозинка не може да се смени во моментов.  Обидете се повторно "
+"подоцна."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
-msgstr "Не можете повторно да ја користите оваа лозинка, ве молиме изберете друга."
+msgstr "Не можете повторно да ја користите оваа лозинка, изберете друга."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Поставки"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Не успеа да се постави датотеката"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Не успеа да се избрише датотеката"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Подобри поставки за лозинка"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>Со овозможен овој приклучок, лозинките на корисниците ќе се проверуваат "
+"според дополнителни критериуми за да се обезбеди подобар избор на лозинка.  "
+"NIST препорачува проверка на лозинките во однос на блок-листата и користење "
+"на привремено заклучување на сметката по повторени неуспеси на лозинката.  "
+"Барањата за сложеност, вклучувајќи специфични типови на алфанумерички знаци "
+"се достапни, но не се препорачуваат поради UX причини.</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Барања за лозинка"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Поставете ја датотеката со блок листа"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Поставени блок листи"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Потребен е азбучен знак."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Потребен е голем знак."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Потребен е мал знак."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Потребен е нумерички знак."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Потребен е неалфанумерички знак."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"Проверете ги сите лозинки што ги бара корисникот во однос на блок-листата на"
+" познати лоши лозинки."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Привремено заклучување на сметката"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Број на лоши обиди за најавување по што да се заклучи сметката."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Број на секунди пред да заборавите лоши обиди за најавување."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr ""
+"Број на секунди за заклучување сметка по прекумерни лоши обиди за "
+"најавување."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"Ако се внесе некоја привремена поставка за заклучување сметка, потребни се "
+"сите привремени поставки за заклучување сметка."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr ""
+"Бројот на лоши обиди за најавување после кои за заклучување сметка мора да "
+"биде нумерички."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr ""
+"Бројот на секунди пред заборавањето на лошите обиди за најавување мора да "
+"биде нумерички."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"Бројот на секунди за заклучување сметка по прекумерни лоши обиди за "
+"најавување мора да биде нумерички."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Поништување на лозинката"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Број на денови пред истекот на лозинките."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"Број на денови, пред истекот, да започне секојдневно да го предупредува "
+"корисникот за истекување на лозинката."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr ""
+"Број на последни лозинки што треба да се блокираат за повторна употреба."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Бројот на денови пред истекот на лозинките мора да биде нумерички."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr ""
+"Бројот на последните лозинки што треба да се блокираат за повторна употреба "
+"мора да биде нумерички."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"Бројот на денови, пред истекот, за да започне секојдневно да го предупредува"
+" корисникот за истекувањето на лозинката мора да биде нумерички."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Вашата лозинка ќе истече за {$days} ден(и)."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Избришете ја постоечката блок листа"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Дали сте сигурни дека сакате да избришете?"
 
 msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
 msgstr "Вашата лозинка не ги исполнува следните барања:\n{$requirements}"
@@ -73,99 +226,3 @@ msgstr "да не биде често користена или позната �
 
 msgid "plugins.generic.betterPassword.requirement.noReuse"
 msgstr "да не се совпаѓа со ниту една од вашите последни {$count} лозинки"
-
-msgid "plugins.generic.betterPassword.manager.settings"
-msgstr "Поставки"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
-msgstr "Неуспешно прикачување на датотеката"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
-msgstr "Неуспешно бришење на датотеката"
-
-msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
-msgstr "Поставки за Better Password"
-
-msgid "plugins.generic.betterPassword.manager.settings.description"
-msgstr "<p>Со овозможен овој додаток, лозинките на корисниците ќе бидат проверувани според дополнителни критериуми за да се обезбеди подобар избор на лозинки. NIST препорачува проверка на лозинките според список на блокирани лозинки и користење на привремено заклучување на сметката по повеќекратни неуспешни обиди со лозинка. Барањата за сложеност, вклучително специфични типови алфанумерички знаци, се достапни, но не се препорачуваат поради причини поврзани со корисничкото искуство.</p>"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
-msgstr "Барања за лозинката"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
-msgstr "Прикачи ја датотеката со список на блокирани лозинки"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
-msgstr "Прикачени списоци на блокирани лозинки"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
-msgstr "Барај буква."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
-msgstr "Барај голема буква."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
-msgstr "Барај мала буква."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
-msgstr "Барај бројка."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
-msgstr "Барај неалфанумерички знак."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
-msgstr "Провери ги сите лозинки побарани од корисниците според список на познати компромитирани лозинки."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
-msgstr "Привремено заклучување на сметка"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
-msgstr "Број на неуспешни обиди за најава по кои сметката се заклучува."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
-msgstr "Број на секунди пред да се заборават неуспешните обиди за најава."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
-msgstr "Број на секунди за заклучување на сметката по преголем број неуспешни обиди за најава."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
-msgstr "Ако е внесена која било поставка за привремено заклучување на сметка, потребни се сите поставки за привремено заклучување на сметка."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
-msgstr "Бројот на неуспешни обиди за најава за заклучување на сметка мора да биде нумеричка вредност."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
-msgstr "Бројот на секунди пред да се заборават неуспешните обиди за најава мора да биде нумеричка вредност."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
-msgstr "Бројот на секунди за заклучување на сметката по преголем број неуспешни обиди за најава мора да биде нумеричка вредност."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
-msgstr "Поништување на лозинка"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
-msgstr "Број на денови пред истекувањето на лозинките."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
-msgstr "Број на денови пред истекувањето од кои да започне дневно предупредување на корисникот за истекувањето на лозинката."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
-msgstr "Број на последни лозинки кои треба да се блокираат за повторна употреба."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
-msgstr "Бројот на денови пред истекувањето на лозинките мора да биде нумеричка вредност."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
-msgstr "Бројот на последни лозинки кои треба да се блокираат за повторна употреба мора да биде нумеричка вредност."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
-msgstr "Бројот на денови пред истекувањето од кои да започне дневно предупредување на корисникот за истекувањето на лозинката мора да биде нумеричка вредност."
-
-msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
-msgstr "Вашата лозинка ќе истече за {$days} ден(ови)."
-
-msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
-msgstr "Избриши го постоечкиот список на блокирани лозинки"
-
-msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
-msgstr "Дали сте сигурни дека сакате да избришете?"

@@ -1,0 +1,171 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Language: zh_CN\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Better Password Plugin"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr "在 PKP 软件中启用额外的密码要求。允许实施 NIST 的相关建议。"
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "您的密码需要包含一个字母字符。"
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "您的密码需要包含一个大写字符。"
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "您的密码需要包含一个小写字符。"
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "您的密码需要包含一个数字字符。"
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "您的密码需要包含一个非字母数字字符。"
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr "您的密码出现在已知不良密码的阻止列表中。"
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "由于密码尝试失败,您的帐户已被暂时锁定。"
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr "当前无法更改您的密码。请稍后再试。"
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "您不能重复使用此密码,请选择其他密码。"
+
+msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
+msgstr "您的密码不符合以下要求:\n{$requirements}"
+
+msgid "plugins.generic.betterPassword.description.requirementsHeading"
+msgstr "密码要求:"
+
+msgid "plugins.generic.betterPassword.requirement.length"
+msgstr "长度至少为 {$length} 个字符"
+
+msgid "plugins.generic.betterPassword.requirement.alpha"
+msgstr "包含一个字母字符"
+
+msgid "plugins.generic.betterPassword.requirement.uppercase"
+msgstr "包含一个大写字符"
+
+msgid "plugins.generic.betterPassword.requirement.lowercase"
+msgstr "包含一个小写字符"
+
+msgid "plugins.generic.betterPassword.requirement.number"
+msgstr "包含一个数字字符"
+
+msgid "plugins.generic.betterPassword.requirement.special"
+msgstr "包含一个非字母数字字符"
+
+msgid "plugins.generic.betterPassword.requirement.blocklist"
+msgstr "不是常用密码或已知被泄露的密码"
+
+msgid "plugins.generic.betterPassword.requirement.noReuse"
+msgstr "不与您最近的 {$count} 个密码中的任何一个相同"
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "设置"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "上传文件失败"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "删除文件失败"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Better Password 设置"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr "<p>启用此插件后,将根据其他标准检查用户密码,以确保更好的密码选择。NIST 建议根据阻止列表检查密码,并在多次密码输入失败后临时锁定帐户。包含特定类型字母数字字符的复杂性要求虽然可用,但出于用户体验考虑不予推荐。</p>"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "密码要求"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "上传阻止列表文件"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "已上传的阻止列表"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "要求包含一个字母字符。"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "要求包含一个大写字符。"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "要求包含一个小写字符。"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "要求包含一个数字字符。"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "要求包含一个非字母数字字符。"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr "对照已知不良密码的阻止列表,检查用户提交的任何密码。"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "临时帐户锁定"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "锁定帐户前允许的登录失败次数。"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "清除登录失败记录前等待的秒数。"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr "在登录失败次数过多后锁定帐户的秒数。"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr "如果填写了任一临时帐户锁定设置项,则所有临时帐户锁定设置项均为必填。"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr "锁定帐户前允许的登录失败次数必须为数字。"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr "清除登录失败记录前等待的秒数必须为数字。"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr "在登录失败次数过多后锁定帐户的秒数必须为数字。"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "密码失效"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "密码过期前的天数。"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr "在密码过期前的若干天数开始,每天向用户提醒密码即将过期。"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr "应禁止重复使用的最近密码的数量。"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "密码过期前的天数必须为数字。"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr "应禁止重复使用的最近密码的数量必须为数字。"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr "在密码过期前的若干天数开始每天向用户提醒密码即将过期,该天数必须为数字。"
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "您的密码将在 {$days} 天后过期。"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "删除现有的阻止列表"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "您确定要删除吗?"

@@ -1,48 +1,215 @@
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
-"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
-"Language: el\n"
 
 msgid "plugins.generic.betterPassword.displayName"
-msgstr "Πρόσθετο Better Password"
+msgstr "Καλύτερο πρόσθετο κωδικού πρόσβασης"
 
 msgid "plugins.generic.betterPassword.description"
-msgstr "Ενεργοποιεί πρόσθετες απαιτήσεις κωδικών πρόσβασης στο λογισμικό του PKP. Επιτρέπει την εφαρμογή των συστάσεων του NIST."
+msgstr ""
+"Ενεργοποιήστε πρόσθετες απαιτήσεις κωδικού πρόσβασης στο λογισμικό PKP. "
+"Επιτρέπει την εφαρμογή των συστάσεων NIST."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
-msgstr "Ο κωδικός πρόσβασής σας πρέπει να περιέχει έναν αλφαβητικό χαρακτήρα."
+msgstr "Ο κωδικός πρόσβασης σας απαιτεί έναν αλφαβητικό χαρακτήρα."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
-msgstr "Ο κωδικός πρόσβασής σας πρέπει να περιέχει έναν κεφαλαίο χαρακτήρα."
+msgstr "Ο κωδικός πρόσβασης σας απαιτεί έναν κεφαλαίο χαρακτήρα."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
-msgstr "Ο κωδικός πρόσβασής σας πρέπει να περιέχει έναν πεζό χαρακτήρα."
+msgstr "Ο κωδικός πρόσβασης σας απαιτεί έναν πεζό χαρακτήρα."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
-msgstr "Ο κωδικός πρόσβασής σας πρέπει να περιέχει έναν αριθμητικό χαρακτήρα."
+msgstr "Ο κωδικός πρόσβασης σας απαιτεί έναν αριθμητικό χαρακτήρα."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
-msgstr "Ο κωδικός πρόσβασής σας πρέπει να περιέχει έναν μη αλφαριθμητικό χαρακτήρα."
+msgstr "Ο κωδικός πρόσβασης σας απαιτεί έναν μη αλφαριθμητικό χαρακτήρα."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
-msgstr "Ο κωδικός πρόσβασής σας βρέθηκε σε λίστα γνωστών παραβιασμένων κωδικών πρόσβασης."
+msgstr ""
+"Ο κωδικός πρόσβασης σας βρέθηκε σε μια λίστα αποκλεισμού γνωστών κακών "
+"κωδικών πρόσβασης."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
-msgstr "Ο λογαριασμός σας έχει κλειδωθεί προσωρινά λόγω εσφαλμένων προσπαθειών κωδικού πρόσβασης."
+msgstr ""
+"Ο λογαριασμός σας έχει κλειδωθεί προσωρινά λόγω αποτυχημένων προσπαθειών "
+"κωδικού πρόσβασης."
 
-msgid "plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
-msgstr "Ο κωδικός πρόσβασής σας δεν μπόρεσε να αλλάξει αυτή τη στιγμή. Παρακαλώ δοκιμάστε ξανά αργότερα."
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr ""
+"Δεν ήταν δυνατή η αλλαγή του κωδικού πρόσβασης σας αυτή τη στιγμή. "
+"Προspathήστε ξανά αργότερα."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
-msgstr "Δεν μπορείτε να επαναχρησιμοποιήσετε αυτόν τον κωδικό πρόσβασης, παρακαλώ επιλέξτε άλλον."
+msgstr ""
+"Δεν μπορείς να χρησιμοποιήσεις ξανά αυτόν τον κωδικό πρόσβασης, παρακαλώ "
+"επίλεξε άλλον."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Ρυθμίσεις"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Αποτυχία μεταφόρτωσης αρχείου"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Αποτυχία διαγραφής αρχείου"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Ρυθμίσεις καλύτερου κωδικού πρόσβασης"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>Με αυτό το πρόσθετο ενεργοποιημένο, οι κωδικοί πρόσβασης των χρηστών θα "
+"ελέγχονται σε σχέση με πρόσθετα κριτήρια για την εξασφάλιση καλύτερης "
+"επιλογής κωδικού πρόσβασης. Το NIST συνιστά τον έλεγχο κωδικών πρόσβασης σε "
+"σχέση με μια λίστα αποκλεισμού και τη χρήση προσωρινής κλειδώματος "
+"λογαριασμού μετά από επαναλαμβανόμενες αποτυχίες κωδικού πρόσβασης. Οι "
+"απαιτήσεις πολυπλοκότητας, συμπεριλαμβανομένων συγκεκριμένων τύπων "
+"αλφαριθμητικών χαρακτήρων, είναι διαθέσιμες αλλά δεν συνιστώνται για λόγους "
+"UX.</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Απαιτήσεις κωδικού πρόσβασης"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Μεταφόρτωση αρχείου λίστας αποκλεισμού"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Μεταφορτωμένες λίστες αποκλεισμού"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Απαιτεί έναν αλφαβητικό χαρακτήρα."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Απαιτεί έναν κεφαλαίο χαρακτήρα."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Απαιτεί έναν πεζό χαρακτήρα."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Απαιτεί έναν αριθμητικό χαρακτήρα."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Απαιτεί έναν μη αλφαριθμητικό χαρακτήρα."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"Ελέγξτε όλους τους κωδικούς πρόσβασης που ζητούνται από τον χρήστη σε σχέση "
+"με μια λίστα αποκλεισμού γνωστών κακών κωδικών πρόσβασης."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Προσωρινό κλείδωμα λογαριασμού"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr ""
+"Αριθμός αποτυχημένων προσπαθειών σύνδεσης μετά τον οποίο θα κλειδώσει ένας "
+"λογαριασμός."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr ""
+"Αριθμός δευτερολέπτων πριν ξεχάσει τις αποτυχημένες προσπάθειες σύνδεσης."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr ""
+"Αριθμός δευτερολέπτων για κλείδωμα λογαριασμού μετά από υπερβολικές "
+"αποτυχημένες προσπάθειες σύνδεσης."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"Εάν εισαχθεί κάποια ρύθμιση προσωρινού κλειδώματος λογαριασμού, όλες οι "
+"ρυθμίσεις προσωρινού κλειδώματος λογαριασμού είναι υποχρεωτικές."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr ""
+"Ο αριθμός αποτυχημένων προσπαθειών σύνδεσης μετά τον οποίο θα κλειδώσει ένας"
+" λογαριασμός πρέπει να είναι αριθμητικός."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr ""
+"Ο αριθμός δευτερολέπτων πριν ξεχάσει τις αποτυχημένες προσπάθειες σύνδεσης "
+"πρέπει να είναι αριθμητικός."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"Ο αριθμός δευτερολέπτων για κλείδωμα λογαριασμού μετά από υπερβολικές "
+"αποτυχημένες προσπάθειες σύνδεσης πρέπει να είναι αριθμητικός."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Ακύρωση κωδικού πρόσβασης"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Αριθμός ημερών πριν λήξουν οι κωδικοί πρόσβασης."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"Αριθμός ημερών, πριν τη λήξη, για να ξεκινήσει η προειδοποίηση του χρήστη "
+"καθημερινά σχετικά με τη λήξη του κωδικού πρόσβασης."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr ""
+"Αριθμός τελευταίων κωδικών πρόσβασης που πρέπει να αποκλειστούν για "
+"επαναχρησιμοποίηση."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr ""
+"Ο αριθμός ημερών πριν λήξουν οι κωδικοί πρόσβασης πρέπει να είναι "
+"αριθμητικός."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr ""
+"Ο αριθμός τελευταίων κωδικών πρόσβασης που πρέπει να αποκλειστούν για "
+"επαναχρησιμοποίηση πρέπει να είναι αριθμητικός."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"Ο αριθμός ημερών πριν τη λήξη για προειδοποίηση του χρήστη καθημερινά "
+"σχετικά με τη λήξη του κωδικού πρόσβασης πρέπει να είναι αριθμητικός."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Ο κωδικός πρόσβασης σας θα λήξει σε {$days} ημέρες."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Διαγραφή υπάρχουσας λίστας αποκλεισμού"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Είστε σίγουρος ότι θέλετε να διαγράψετε;"
 
 msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
 msgstr "Ο κωδικός πρόσβασής σας δεν πληροί τις ακόλουθες απαιτήσεις:\n{$requirements}"
@@ -73,99 +240,3 @@ msgstr "να μην είναι ένας συνηθισμένος ή γνωστό
 
 msgid "plugins.generic.betterPassword.requirement.noReuse"
 msgstr "να μην ταιριάζει με κανέναν από τους τελευταίους {$count} κωδικούς πρόσβασής σας"
-
-msgid "plugins.generic.betterPassword.manager.settings"
-msgstr "Ρυθμίσεις"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
-msgstr "Αποτυχία μεταφόρτωσης αρχείου"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
-msgstr "Αποτυχία διαγραφής αρχείου"
-
-msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
-msgstr "Ρυθμίσεις Better Password"
-
-msgid "plugins.generic.betterPassword.manager.settings.description"
-msgstr "<p>Με αυτό το πρόσθετο ενεργοποιημένο, οι κωδικοί πρόσβασης των χρηστών θα ελέγχονται σύμφωνα με πρόσθετα κριτήρια ώστε να εξασφαλίζεται καλύτερη επιλογή κωδικών. Το NIST συνιστά τον έλεγχο των κωδικών πρόσβασης έναντι μιας λίστας αποκλεισμού και τη χρήση προσωρινού κλειδώματος λογαριασμού μετά από επαναλαμβανόμενες αποτυχημένες προσπάθειες κωδικού. Οι απαιτήσεις πολυπλοκότητας, συμπεριλαμβανομένων συγκεκριμένων τύπων αλφαριθμητικών χαρακτήρων, είναι διαθέσιμες αλλά δεν συνιστώνται για λόγους εμπειρίας χρήστη.</p>"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
-msgstr "Απαιτήσεις κωδικού πρόσβασης"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
-msgstr "Μεταφορτώστε το αρχείο λίστας αποκλεισμού"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
-msgstr "Μεταφορτωμένες λίστες αποκλεισμού"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
-msgstr "Απαίτηση αλφαβητικού χαρακτήρα."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
-msgstr "Απαίτηση κεφαλαίου χαρακτήρα."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
-msgstr "Απαίτηση πεζού χαρακτήρα."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
-msgstr "Απαίτηση αριθμητικού χαρακτήρα."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
-msgstr "Απαίτηση μη αλφαριθμητικού χαρακτήρα."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
-msgstr "Έλεγχος όλων των κωδικών πρόσβασης που ζητούν οι χρήστες έναντι μιας λίστας γνωστών παραβιασμένων κωδικών πρόσβασης."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
-msgstr "Προσωρινό κλείδωμα λογαριασμού"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
-msgstr "Αριθμός εσφαλμένων προσπαθειών σύνδεσης μετά τις οποίες κλειδώνεται ένας λογαριασμός."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
-msgstr "Αριθμός δευτερολέπτων πριν τη λήθη των εσφαλμένων προσπαθειών σύνδεσης."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
-msgstr "Αριθμός δευτερολέπτων για το κλείδωμα ενός λογαριασμού μετά από υπερβολικές εσφαλμένες προσπάθειες σύνδεσης."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
-msgstr "Εάν εισαχθεί οποιαδήποτε ρύθμιση προσωρινού κλειδώματος λογαριασμού, απαιτούνται όλες οι ρυθμίσεις προσωρινού κλειδώματος λογαριασμού."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
-msgstr "Ο αριθμός εσφαλμένων προσπαθειών σύνδεσης για το κλείδωμα ενός λογαριασμού πρέπει να είναι αριθμητική τιμή."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
-msgstr "Ο αριθμός δευτερολέπτων πριν τη λήθη των εσφαλμένων προσπαθειών σύνδεσης πρέπει να είναι αριθμητική τιμή."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
-msgstr "Ο αριθμός δευτερολέπτων για το κλείδωμα ενός λογαριασμού μετά από υπερβολικές εσφαλμένες προσπάθειες σύνδεσης πρέπει να είναι αριθμητική τιμή."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
-msgstr "Ακύρωση κωδικού πρόσβασης"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
-msgstr "Αριθμός ημερών πριν τη λήξη των κωδικών πρόσβασης."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
-msgstr "Αριθμός ημερών πριν τη λήξη, από τις οποίες θα ξεκινήσει η καθημερινή ειδοποίηση του χρήστη σχετικά με τη λήξη του κωδικού πρόσβασης."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
-msgstr "Αριθμός των τελευταίων κωδικών πρόσβασης που πρέπει να αποκλειστούν από επαναχρησιμοποίηση."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
-msgstr "Ο αριθμός ημερών πριν τη λήξη των κωδικών πρόσβασης πρέπει να είναι αριθμητική τιμή."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
-msgstr "Ο αριθμός των τελευταίων κωδικών πρόσβασης που πρέπει να αποκλειστούν από επαναχρησιμοποίηση πρέπει να είναι αριθμητική τιμή."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
-msgstr "Ο αριθμός ημερών πριν τη λήξη, από τις οποίες θα ξεκινήσει η καθημερινή ειδοποίηση του χρήστη σχετικά με τη λήξη του κωδικού πρόσβασης, πρέπει να είναι αριθμητική τιμή."
-
-msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
-msgstr "Ο κωδικός πρόσβασής σας θα λήξει σε {$days} ημέρα(ες)."
-
-msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
-msgstr "Διαγραφή υπάρχουσας λίστας αποκλεισμού"
-
-msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
-msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε;"

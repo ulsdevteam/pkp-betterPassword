@@ -1,0 +1,171 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Language: az\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Better Password Plugin"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr "PKP proqram təminatında əlavə parol tələblərini aktivləşdirir. NIST tövsiyələrinin tətbiqinə imkan verir."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Parolunuz əlifba simvolu tələb edir."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Parolunuz böyük hərf simvolu tələb edir."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Parolunuz kiçik hərf simvolu tələb edir."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Parolunuz rəqəm simvolu tələb edir."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Parolunuz əlifba-rəqəm olmayan simvol tələb edir."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr "Parolunuz məlum zəif parolların qadağan siyahısında tapıldı."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "Hesabınız səhv parol cəhdləri səbəbindən müvəqqəti olaraq bloklanıb."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr "Parolunuz hazırda dəyişdirilə bilmədi. Zəhmət olmasa, daha sonra yenidən cəhd edin."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "Bu parolu yenidən istifadə edə bilməzsiniz, zəhmət olmasa başqasını seçin."
+
+msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
+msgstr "Parolunuz aşağıdakı tələblərə cavab vermir:\n{$requirements}"
+
+msgid "plugins.generic.betterPassword.description.requirementsHeading"
+msgstr "Parol tələbləri:"
+
+msgid "plugins.generic.betterPassword.requirement.length"
+msgstr "ən azı {$length} simvol uzunluğunda olmalıdır"
+
+msgid "plugins.generic.betterPassword.requirement.alpha"
+msgstr "əlifba simvolu ehtiva etməlidir"
+
+msgid "plugins.generic.betterPassword.requirement.uppercase"
+msgstr "böyük hərf simvolu ehtiva etməlidir"
+
+msgid "plugins.generic.betterPassword.requirement.lowercase"
+msgstr "kiçik hərf simvolu ehtiva etməlidir"
+
+msgid "plugins.generic.betterPassword.requirement.number"
+msgstr "rəqəm simvolu ehtiva etməlidir"
+
+msgid "plugins.generic.betterPassword.requirement.special"
+msgstr "əlifba-rəqəm olmayan simvol ehtiva etməlidir"
+
+msgid "plugins.generic.betterPassword.requirement.blocklist"
+msgstr "tez-tez istifadə olunan və ya məlum şəkildə kompromis olunmuş parol olmamalıdır"
+
+msgid "plugins.generic.betterPassword.requirement.noReuse"
+msgstr "son {$count} parolunuzdan heç biri ilə üst-üstə düşməməlidir"
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Parametrlər"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Fayl yüklənə bilmədi"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Fayl silinə bilmədi"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Better Password Parametrləri"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr "<p>Bu plagin aktivləşdirildikdə, istifadəçi parolları daha yaxşı parol seçimini təmin etmək üçün əlavə meyarlara qarşı yoxlanılacaq. NIST parolların qadağan siyahısına qarşı yoxlanılmasını və təkrar parol uğursuzluqlarından sonra hesabın müvəqqəti bloklanmasını tövsiyə edir. Müəyyən əlifba-rəqəm simvol növləri daxil olmaqla mürəkkəblik tələbləri mövcuddur, lakin UX səbəbi ilə tövsiyə olunmur.</p>"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Parol tələbləri"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Qadağan siyahısı faylını yükləyin"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Yüklənmiş Qadağan Siyahıları"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Əlifba simvolu tələb edin."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Böyük hərf simvolu tələb edin."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Kiçik hərf simvolu tələb edin."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Rəqəm simvolu tələb edin."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Əlifba-rəqəm olmayan simvol tələb edin."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr "İstifadəçilər tərəfindən təklif olunan bütün parolları məlum zəif parolların qadağan siyahısına qarşı yoxlayın."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Müvəqqəti hesab bloklanması"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Hesabın bloklanmasına səbəb olan səhv giriş cəhdlərinin sayı."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Səhv giriş cəhdlərinin unudulmasına qədər saniyələrin sayı."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr "Həddindən artıq səhv giriş cəhdlərindən sonra hesabın bloklanacağı saniyələrin sayı."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr "Müvəqqəti hesab bloklanması parametrlərindən hər hansı biri daxil edilərsə, müvəqqəti hesab bloklanması parametrlərinin hamısı tələb olunur."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr "Hesabın bloklanmasına səbəb olan səhv giriş cəhdlərinin sayı rəqəm olmalıdır."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr "Səhv giriş cəhdlərinin unudulmasına qədər saniyələrin sayı rəqəm olmalıdır."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr "Həddindən artıq səhv giriş cəhdlərindən sonra hesabın bloklanacağı saniyələrin sayı rəqəm olmalıdır."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Parolun etibarsızlaşdırılması"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Parolların müddətinin bitməsinə qədər günlərin sayı."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr "Müddətin bitməsindən əvvəl istifadəçini parolun müddətinin bitməsi barədə gündəlik xəbərdar etməyə başlamaq üçün günlərin sayı."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr "Təkrar istifadə üçün bloklanmalı olan son parolların sayı."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Parolların müddətinin bitməsinə qədər günlərin sayı rəqəm olmalıdır."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr "Təkrar istifadə üçün bloklanmalı olan son parolların sayı rəqəm olmalıdır."
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr "Müddətin bitməsindən əvvəl istifadəçini parolun müddətinin bitməsi barədə gündəlik xəbərdar etməyə başlamaq üçün günlərin sayı rəqəm olmalıdır."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Parolunuzun müddəti {$days} gün ərzində bitəcək."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Mövcud Qadağan Siyahısını Sil"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Silmək istədiyinizə əminsiniz?"

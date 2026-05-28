@@ -13,214 +13,188 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "plugins.generic.betterPassword.displayName"
-msgstr "Lepší modul hesla"
+msgstr "より良いパスワードプラグイン"
 
 msgid "plugins.generic.betterPassword.description"
-msgstr ""
-"Povolte další požadavky na heslo v softwaru PKP. Umožňuje implementaci "
-"doporučení NIST."
+msgstr "PKPソフトウェア内で追加のパスワード要件を有効にします。 NIST推奨事項の実装を可能にします。"
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
-msgstr "Vaše heslo vyžaduje abecední znak."
+msgstr "パスワードには英字が必要です。"
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
-msgstr "Vaše heslo vyžaduje velký písmeno."
+msgstr "パスワードには大文字が必要です。"
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
-msgstr "Vaše heslo vyžaduje malé písmeno."
+msgstr "パスワードには小文字が必要です。"
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
-msgstr "Vaše heslo vyžaduje číselný znak."
+msgstr "パスワードには数字が必要です。"
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
-msgstr "Vaše heslo vyžaduje ne-alfanumerický znak."
+msgstr "パスワードには英数字以外の文字が必要です。"
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
-msgstr ""
-"Vaše heslo bylo nalezeno v seznamu blokovaných známých špatných hesel."
+msgstr "パスワードは既知の不正なパスワードのブロックリストで見つかりました。"
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
-msgstr "Váš účet byl dočasně zablokován z důvodu neúspěšných pokusů o heslo."
+msgstr "パスワードの入力失敗により、アカウントが一時的にロックされています。"
 
 msgid ""
 "plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
-msgstr "Vaše heslo nemohlo být v tuto chvíli změněno. Zkuste prosím později."
+msgstr "パスワードを現在変更できません。後でもう一度お試しください。"
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
-msgstr "Nemůžete znovu použít toto heslo, vyberte si prosím jiné."
+msgstr "このパスワードを再利用することはできません。別のものを選択してください。"
 
 msgid "plugins.generic.betterPassword.manager.settings"
-msgstr "Nastavení"
+msgstr "設定"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
-msgstr "Chyba při nahrávání souboru"
+msgstr "ファイルのアップロードに失敗しました"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
-msgstr "Chyba při mazání souboru"
+msgstr "ファイルの削除に失敗しました"
 
 msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
-msgstr "Nastavení lepšího hesla"
+msgstr "より良いパスワード設定"
 
 msgid "plugins.generic.betterPassword.manager.settings.description"
 msgstr ""
-"<p>Když je tento zásuvný modul povolen, budou hesla uživatelů kontrolována "
-"podle dalších kritérií, aby bylo zajištěno lepší výběr hesla. NIST "
-"doporučuje kontrolu hesel na základě seznamu blokovaných a používání "
-"dočasného zablokování účtu po opakovaných selháních hesla. Požadavky na "
-"složitost, včetně specifických typů alfanumerických znaků, jsou dostupné, "
-"ale nejsou doporučovány z důvodů UX.</p>"
+"<p>このプラグインを有効にすると、ユーザーのパスワードが追加の基準に対してチェックされ、より良いパスワード選択が保証されます。NISTは、ブロックリストに対してパスワードをチェックし、パスワードが繰り返し失敗した後に一時的なアカウントロックを使用することを推奨しています。英数字の特定のタイプを含む複雑さの要件は利用可能ですが、UXの理由から推奨されません。</p>"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
-msgstr "Požadavky na heslo"
+msgstr "パスワード要件"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
-msgstr "Nahrajte soubor seznamu blokovaných"
+msgstr "ブロックリストファイルをアップロード"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
-msgstr "Nahrané seznamy blokovaných"
+msgstr "アップロード済みのブロックリスト"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
-msgstr "Vyžaduje abecední znak."
+msgstr "英字が必要です。"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
-msgstr "Vyžaduje velké písmeno."
+msgstr "大文字が必要です。"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
-msgstr "Vyžaduje malé písmeno."
+msgstr "小文字が必要です。"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
-msgstr "Vyžaduje číselný znak."
+msgstr "数字が必要です。"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
-msgstr "Vyžaduje ne-alfanumerický znak."
+msgstr "英数字以外の文字が必要です。"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
-msgstr ""
-"Kontrolujte všechna hesla požadovaná uživatelem vůči seznamu blokovaných "
-"známých špatných hesel."
+msgstr "ユーザーが要求したすべてのパスワードを、既知の不正なパスワードのブロックリストと照合してください。"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
-msgstr "Dočasné zablokování účtu"
+msgstr "一時的なアカウントロック"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
-msgstr "Počet neúspěšných pokusů o přihlášení, po kterých uzamknout účet."
+msgstr "アカウントをロックするまでの不正なログイン試行回数。"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
-msgstr "Počet sekund, než zapomenout na neúspěšné pokusy o přihlášení."
+msgstr "不正なログイン試行を忘れるまでの秒数。"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
-msgstr ""
-"Počet sekund na uzamčení účtu po nadměrných neúspěšných pokusech o "
-"přihlášení."
+msgstr "不正なログイン試行が多すぎた後、アカウントをロックするまでの秒数。"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
-msgstr ""
-"Pokud je zadáno jakékoli nastavení dočasného zablokování účtu, jsou všechna "
-"nastavení dočasného zablokování účtu povinná."
+msgstr "一時的なアカウントロック設定が入力された場合、すべての一時的なアカウントロック設定が必要です。"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
-msgstr ""
-"Počet neúspěšných pokusů o přihlášení, po kterých uzamknout účet, musí být "
-"číselný."
+msgstr "アカウントをロックするまでの不正なログイン試行回数は数値である必要があります。"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
-msgstr ""
-"Počet sekund, než zapomenout na neúspěšné pokusy o přihlášení, musí být "
-"číselný."
+msgstr "不正なログイン試行を忘れるまでの秒数は数値である必要があります。"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
-msgstr ""
-"Počet sekund na uzamčení účtu po nadměrných neúspěšných pokusech o "
-"přihlášení musí být číselný."
+msgstr "不正なログイン試行が多すぎた後、アカウントをロックするまでの秒数は数値である必要があります。"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
-msgstr "Zneplatnění hesla"
+msgstr "パスワード無効化"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
-msgstr "Počet dní, než hesla vyprší."
+msgstr "パスワードが有効期限切れになるまでの日数。"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
-msgstr ""
-"Počet dní, než vypršení, kdy začít denně varovat uživatele o vypršení hesla."
+msgstr "有効期限の前の日数。ユーザーにパスワードの有効期限切れについて毎日警告を開始します。"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
-msgstr ""
-"Počet posledních hesel, která by měla být zablokována pro opětovné použití."
+msgstr "再利用のためにブロックすべき最後のパスワードの数。"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
-msgstr "Počet dní, než hesla vyprší, musí být číselný."
+msgstr "パスワードが有効期限切れになるまでの日数は数値である必要があります。"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
-msgstr ""
-"Počet posledních hesel, která by měla být zablokována pro opětovné použití, "
-"musí být číselný."
+msgstr "再利用のためにブロックすべき最後のパスワードの数は数値である必要があります。"
 
 msgid ""
 "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
-msgstr ""
-"Počet dní, než vypršení, kdy denně varovat uživatele o vypršení hesla, musí "
-"být číselný."
+msgstr "有効期限の前の日数。ユーザーにパスワードの有効期限切れについて毎日警告する必要があります。数値である必要があります。"
 
 msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
-msgstr "Vaše heslo vyprší za {$days} den/ů."
+msgstr "パスワードは{$days}日で期限切れになります。"
 
 msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
-msgstr "Odstranit existující seznam blokovaných"
+msgstr "既存のブロックリストを削除"
 
 msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
-msgstr "Jste si jisti, že chcete smazat?"
+msgstr "削除してもよろしいですか?"
 
 msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
-msgstr "Vaše heslo nesplňuje následující požadavky:\n{$requirements}"
+msgstr "お使いのパスワードは次の要件を満たしていません:\n{$requirements}"
 
 msgid "plugins.generic.betterPassword.description.requirementsHeading"
-msgstr "Požadavky na heslo:"
+msgstr "パスワード要件:"
 
 msgid "plugins.generic.betterPassword.requirement.length"
-msgstr "mít alespoň {$length} znaků"
+msgstr "{$length}文字以上の長さであること"
 
 msgid "plugins.generic.betterPassword.requirement.alpha"
-msgstr "obsahovat písmeno"
+msgstr "アルファベット文字を含むこと"
 
 msgid "plugins.generic.betterPassword.requirement.uppercase"
-msgstr "obsahovat velké písmeno"
+msgstr "大文字を含むこと"
 
 msgid "plugins.generic.betterPassword.requirement.lowercase"
-msgstr "obsahovat malé písmeno"
+msgstr "小文字を含むこと"
 
 msgid "plugins.generic.betterPassword.requirement.number"
-msgstr "obsahovat číslici"
+msgstr "数字を含むこと"
 
 msgid "plugins.generic.betterPassword.requirement.special"
-msgstr "obsahovat nealfanumerický znak"
+msgstr "英数字以外の文字を含むこと"
 
 msgid "plugins.generic.betterPassword.requirement.blocklist"
-msgstr "nebýt běžně používaným nebo známým kompromitovaným heslem"
+msgstr "一般的に使用されているパスワードまたは既知の漏洩パスワードでないこと"
 
 msgid "plugins.generic.betterPassword.requirement.noReuse"
-msgstr "neshodovat se s žádným z vašich posledních {$count} hesel"
+msgstr "直近の{$count}件のパスワードのいずれとも一致しないこと"
