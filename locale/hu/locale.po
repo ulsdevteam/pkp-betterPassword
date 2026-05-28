@@ -1,48 +1,203 @@
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
-"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
-"Language: hu\n"
 
 msgid "plugins.generic.betterPassword.displayName"
-msgstr "Better Password bővítmény"
+msgstr "Jobb jelszó beépülő modul"
 
 msgid "plugins.generic.betterPassword.description"
-msgstr "Engedélyezi a kiegészítő jelszókövetelményeket a PKP szoftverben. Lehetővé teszi a NIST ajánlásainak megvalósítását."
+msgstr ""
+"További jelszókövetelmények engedélyezése a PKP szoftverben.  Lehetővé teszi"
+" a NIST ajánlások végrehajtását."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
-msgstr "A jelszónak tartalmaznia kell egy betű karaktert."
+msgstr "A jelszóhoz alfabetikus karakter szükséges."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
-msgstr "A jelszónak tartalmaznia kell egy nagybetűt."
+msgstr "A jelszóhoz nagybetű szükséges."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
-msgstr "A jelszónak tartalmaznia kell egy kisbetűt."
+msgstr "A jelszó kisbetűt igényel."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
-msgstr "A jelszónak tartalmaznia kell egy számjegyet."
+msgstr "A jelszóhoz numerikus karakter szükséges."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
-msgstr "A jelszónak tartalmaznia kell egy nem alfanumerikus karaktert."
+msgstr "A jelszóhoz nem alfanumerikus karakter szükséges."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
-msgstr "A jelszava szerepel az ismert kompromittált jelszavak listáján."
+msgstr "Jelszava az ismert rossz jelszavak tiltólistáján található."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
-msgstr "A fiókja átmenetileg zárolva van a sikertelen jelszókísérletek miatt."
+msgstr "Fiókját ideiglenesen zároltuk, mert rossz jelszóval próbálkoztak."
 
-msgid "plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
-msgstr "A jelszava jelenleg nem módosítható. Kérjük, próbálja meg később."
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr "Jelszava jelenleg nem módosítható.  Kérjük, próbálja újra később."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
-msgstr "Ezt a jelszót nem használhatja újra, kérjük, válasszon másikat."
+msgstr "Ezt a jelszót nem használhatja újra, válasszon másikat."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Beállítások elemre"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Nem sikerült feltölteni a fájlt"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Nem sikerült törölni a fájlt"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Jobb jelszóbeállítások"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>Ha ez a beépülő modul engedélyezve van, a felhasználói jelszavakat "
+"további kritériumok alapján ellenőrizzük a jobb jelszóválasztás érdekében.  "
+"A NIST azt javasolja, hogy ellenőrizze a jelszavakat egy tiltólistával, és "
+"használja az ideiglenes fiókzárolást ismételt jelszóhiba esetén.  A "
+"bonyolultsági követelmények, beleértve az alfanumerikus karakterek "
+"meghatározott típusait, rendelkezésre állnak, de UX okokból nem "
+"ajánlottak.</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Jelszó követelmények"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Töltse fel a tiltólista fájlt"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Feltöltött tiltólisták"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Alfabetikus karakter szükséges."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Nagybetű szükséges."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Kisbetű szükséges."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Számjegyet kell megadni."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Nem alfanumerikus karakter szükséges."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"Ellenőrizze a felhasználó által kért jelszavakat az ismert rossz jelszavak "
+"tiltólistáján."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Ideiglenes számlazárolás"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr ""
+"A rossz bejelentkezési kísérletek száma, amelyek után a fiók zárolható."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr ""
+"A rossz bejelentkezési kísérletek elfelejtése előtti másodpercek száma."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr ""
+"Másodpercek száma a fiók zárolásához túl sok rossz bejelentkezési kísérlet "
+"után."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"Ha bármilyen ideiglenes fiókzárolási beállítást megad, akkor az összes "
+"ideiglenes fiókzárolási beállítást meg kell adni."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr ""
+"A fiók zárolásához szükséges hibás bejelentkezési kísérletek számának "
+"numerikusnak kell lennie."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr ""
+"A rossz bejelentkezési kísérletek elfelejtése előtti másodpercek számának "
+"numerikusnak kell lennie."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"A túl sok rossz bejelentkezési kísérlet után a fiók zárolásához szükséges "
+"másodpercek számának numerikusnak kell lennie."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Jelszó érvénytelenítése"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "A jelszavak lejárta előtt eltelt napok száma."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"A napok száma a lejárat előtt, amíg naponta figyelmeztetni kell a "
+"felhasználót a jelszó lejártáról."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr ""
+"Azok az utolsó jelszavak száma, amelyeket le kell tiltani az "
+"újrafelhasználáshoz."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "A jelszavak lejárata előtti napok számának numerikusnak kell lennie."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr ""
+"Az újbóli felhasználás céljából letiltandó utolsó jelszavak számának "
+"numerikusnak kell lennie."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"A lejárat előtti napok számának numerikusnak kell lennie ahhoz, hogy naponta"
+" elkezdje figyelmeztetni a felhasználót a jelszó lejártára."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Jelszava {$days} napon belül lejár."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Meglévő tiltólista törlése"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Biztosan törölni akarod?"
 
 msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
 msgstr "A jelszava nem felel meg a következő követelményeknek:\n{$requirements}"
@@ -73,99 +228,3 @@ msgstr "ne legyen gyakran használt vagy ismert kompromittált jelszó"
 
 msgid "plugins.generic.betterPassword.requirement.noReuse"
 msgstr "ne egyezzen az utolsó {$count} jelszavának egyikével sem"
-
-msgid "plugins.generic.betterPassword.manager.settings"
-msgstr "Beállítások"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
-msgstr "A fájl feltöltése sikertelen"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
-msgstr "A fájl törlése sikertelen"
-
-msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
-msgstr "Better Password beállítások"
-
-msgid "plugins.generic.betterPassword.manager.settings.description"
-msgstr "<p>A bővítmény bekapcsolásával a felhasználói jelszavakat további szempontok alapján ellenőrzi a rendszer, hogy biztosítsa a jelszavak jobb kiválasztását. A NIST javasolja a jelszavak ellenőrzését egy blokkolási lista alapján, valamint a fiók ismételt sikertelen jelszókísérlet utáni átmeneti zárolását. A komplexitási követelmények, beleértve a meghatározott típusú alfanumerikus karaktereket, elérhetők, de felhasználói élmény szempontjából nem ajánlottak.</p>"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
-msgstr "Jelszókövetelmények"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
-msgstr "Töltse fel a blokkolási lista fájlját"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
-msgstr "Feltöltött blokkolási listák"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
-msgstr "Betű karakter megkövetelése."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
-msgstr "Nagybetű megkövetelése."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
-msgstr "Kisbetű megkövetelése."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
-msgstr "Számjegy megkövetelése."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
-msgstr "Nem alfanumerikus karakter megkövetelése."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
-msgstr "A felhasználók által kért jelszavak ellenőrzése az ismert kompromittált jelszavak blokkolási listája alapján."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
-msgstr "Fiók átmeneti zárolása"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
-msgstr "A sikertelen bejelentkezési kísérletek száma, amely után a fiók zárolódik."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
-msgstr "A másodpercek száma, amely után a sikertelen bejelentkezési kísérletek elfelejtődnek."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
-msgstr "A másodpercek száma, amíg a fiók zárolva marad túlzott számú sikertelen bejelentkezési kísérletet követően."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
-msgstr "Ha bármely átmeneti fiókzárolási beállítás megadásra kerül, az összes átmeneti fiókzárolási beállítás kötelező."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
-msgstr "A fiók zárolásához szükséges sikertelen bejelentkezési kísérletek számának számértéknek kell lennie."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
-msgstr "A sikertelen bejelentkezési kísérletek elfelejtéséhez szükséges másodpercek számának számértéknek kell lennie."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
-msgstr "A túlzott számú sikertelen bejelentkezési kísérletet követő fiókzárolás másodperceinek számértéknek kell lennie."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
-msgstr "Jelszó érvénytelenítése"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
-msgstr "A jelszavak lejáratáig hátralévő napok száma."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
-msgstr "A lejárat előtti napok száma, amelytől kezdve a rendszer naponta figyelmezteti a felhasználót a jelszó lejáratáról."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
-msgstr "Az utoljára használt jelszavak száma, amelyeket le kell tiltani az újrahasználat ellen."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
-msgstr "A jelszavak lejáratáig hátralévő napok számának számértéknek kell lennie."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
-msgstr "Az újrahasználatból letiltandó utolsó jelszavak számának számértéknek kell lennie."
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
-msgstr "A lejárat előtti napok számának, amelytől kezdve a rendszer naponta figyelmezteti a felhasználót a jelszó lejáratáról, számértéknek kell lennie."
-
-msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
-msgstr "Jelszava {$days} nap múlva lejár."
-
-msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
-msgstr "Meglévő blokkolási lista törlése"
-
-msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
-msgstr "Biztosan törölni szeretné?"

@@ -1,48 +1,205 @@
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
-"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
-"Language: hy\n"
 
 msgid "plugins.generic.betterPassword.displayName"
-msgstr "Ավելի լավ գաղտնաբառի հավելում"
+msgstr "Ավելի լավ գաղտնաբառի հավելված"
 
 msgid "plugins.generic.betterPassword.description"
-msgstr "Միացնել գաղտնաբառերի լրացուցիչ պահանջները PKP ծրագրաշարում։ Թույլ է տալիս կիրառել NIST-ի առաջարկությունները։"
+msgstr ""
+"Միացնել գաղտնաբառի լրացուցիչ պահանջները PKP ծրագրաշարում:  Թույլ է տալիս "
+"իրականացնել NIST առաջարկությունները:"
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
-msgstr "Ձեր գաղտնաբառը պետք է պարունակի այբբենական նիշ։"
+msgstr "Ձեր գաղտնաբառը պահանջում է այբբենական նիշ:"
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
-msgstr "Ձեր գաղտնաբառը պետք է պարունակի մեծատառ նիշ։"
+msgstr "Ձեր գաղտնաբառը պահանջում է մեծատառ գրանշան:"
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
-msgstr "Ձեր գաղտնաբառը պետք է պարունակի փոքրատառ նիշ։"
+msgstr "Ձեր գաղտնաբառը պահանջում է փոքրատառ գրանշան:"
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
-msgstr "Ձեր գաղտնաբառը պետք է պարունակի թվային նիշ։"
+msgstr "Ձեր գաղտնաբառը պահանջում է թվային նիշ:"
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
-msgstr "Ձեր գաղտնաբառը պետք է պարունակի ոչ այբբենա-թվային նիշ։"
+msgstr "Ձեր գաղտնաբառը պահանջում է ոչ այբբենական նիշ:"
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
-msgstr "Ձեր գաղտնաբառը հայտնաբերվել է հայտնի վատ գաղտնաբառերի արգելացուցակում։"
+msgstr ""
+"Ձեր գաղտնաբառը հայտնաբերվել է հայտնի վատ գաղտնաբառերի արգելափակման ցանկում:"
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
-msgstr "Ձեր հաշիվը ժամանակավորապես արգելափակվել է գաղտնաբառի սխալ փորձերի պատճառով։"
+msgstr ""
+"Ձեր հաշիվը ժամանակավորապես արգելափակվել է գաղտնաբառի սխալ փորձերի պատճառով:"
 
-msgid "plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
-msgstr "Այս պահին հնարավոր չէ փոխել ձեր գաղտնաբառը։ Խնդրում ենք փորձել ավելի ուշ։"
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr ""
+"Ձեր գաղտնաբառը այս պահին հնարավոր չէ փոխել:  Խնդրում ենք փորձել ավելի ուշ:"
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
-msgstr "Չեք կարող կրկին օգտագործել այս գաղտնաբառը, խնդրում ենք ընտրել մեկ այլը։"
+msgstr ""
+"Դուք չեք կարող կրկին օգտագործել այս գաղտնաբառը, խնդրում ենք ընտրել մեկ այլ "
+"գաղտնաբառը:"
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Կարգավորումներ"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Չհաջողվեց վերբեռնել ֆայլը"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Չհաջողվեց ջնջել ֆայլը"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Գաղտնաբառի ավելի լավ կարգավորումներ"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>Եթե այս հավելվածը միացված է, օգտատերերի գաղտնաբառերը կստուգվեն լրացուցիչ "
+"չափանիշներով` գաղտնաբառի ավելի լավ ընտրություն ապահովելու համար:  NIST-ը "
+"խորհուրդ է տալիս ստուգել գաղտնաբառերը արգելափակման ցուցակի համեմատ և "
+"օգտագործել հաշվի ժամանակավոր կողպումը գաղտնաբառի կրկնվող ձախողումներից հետո:"
+"  Բարդության պահանջները, ներառյալ այբբենական թվային նիշերի հատուկ տեսակները,"
+" հասանելի են, բայց խորհուրդ չեն տրվում UX-ի պատճառով:</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Գաղտնաբառի պահանջներ"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Վերբեռնեք արգելափակման ցուցակի ֆայլը"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Վերբեռնված արգելափակումների ցուցակները"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Պահանջվում է այբբենական նիշ:"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Պահանջել մեծատառ նիշ:"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Պահանջել փոքրատառ նիշ:"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Պահանջվում է թվային նիշ:"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Պահանջել ոչ այբբենական նիշ:"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"Ստուգեք օգտատիրոջ կողմից պահանջված ցանկացած գաղտնաբառ՝ հայտնի վատ "
+"գաղտնաբառերի արգելափակման ցուցակի համեմատ:"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Հաշվի ժամանակավոր արգելափակում"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Մուտքի սխալ փորձերի քանակը, որից հետո հաշիվը կողպելու համար:"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Վայրկյանների քանակը՝ նախքան սխալ մուտքի փորձերը մոռանալը:"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr ""
+"Վայրկյանների քանակը՝ հաշիվը կողպելու համար՝ մուտքի չափազանց վատ փորձերից "
+"հետո:"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"Եթե ​​մուտքագրված է հաշվի կողպման ժամանակավոր կարգավորումներ, ապա անհրաժեշտ "
+"են հաշվի կողպման բոլոր ժամանակավոր կարգավորումները:"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr ""
+"Մուտքի սխալ փորձերի քանակը, որոնցից հետո հաշիվը կողպելու համար պետք է լինի "
+"թվային:"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr ""
+"Մուտքի սխալ փորձերը մոռանալուց առաջ ընկած վայրկյանների քանակը պետք է թվային "
+"լինի:"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"Վայրկյանների քանակը՝ հաշիվը կողպելու համար՝ մուտքի չափազանց վատ փորձերից "
+"հետո, պետք է թվային լինի:"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Գաղտնաբառի անվավերացում"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Գաղտնաբառերի ժամկետի ավարտից առաջ օրերի քանակը:"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"Օրերի քանակը, մինչև ժամկետի ավարտը, սկսելու օգտատիրոջը ամեն օր զգուշացնել "
+"գաղտնաբառի ժամկետի ավարտի մասին:"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr ""
+"Վերջին գաղտնաբառերի քանակը, որոնք պետք է արգելափակվեն կրկնակի օգտագործման "
+"համար:"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Գաղտնաբառերի ժամկետի ավարտից առաջ օրերի թիվը պետք է լինի թվային:"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr ""
+"Վերջին գաղտնաբառերի թիվը, որոնք պետք է արգելափակվեն կրկնակի օգտագործման "
+"համար, պետք է թվային լինեն:"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"Օրերի քանակը, մինչև ժամկետի ավարտը, գաղտնաբառի ժամկետի լրանալու մասին "
+"օգտվողին ամեն օր նախազգուշացնելու համար պետք է լինի թվային:"
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Ձեր գաղտնաբառը սպառվելու է {$days} օրից:"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Ջնջել առկա արգելափակման ցուցակը"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Իսկապե՞ս ուզում եք ջնջել:"
 
 msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
 msgstr "Ձեր գաղտնաբառը չի բավարարում հետևյալ պահանջները՝\n{$requirements}"
@@ -73,99 +230,3 @@ msgstr "չլինի հաճախ օգտագործվող կամ հայտնի կոմ�
 
 msgid "plugins.generic.betterPassword.requirement.noReuse"
 msgstr "չհամընկնի ձեր վերջին {$count} գաղտնաբառերից որևէ մեկի հետ"
-
-msgid "plugins.generic.betterPassword.manager.settings"
-msgstr "Կարգավորումներ"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
-msgstr "Ֆայլի վերբեռնումը ձախողվեց"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
-msgstr "Ֆայլի ջնջումը ձախողվեց"
-
-msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
-msgstr "Ավելի լավ գաղտնաբառի կարգավորումներ"
-
-msgid "plugins.generic.betterPassword.manager.settings.description"
-msgstr "<p>Այս հավելումը միացնելու դեպքում օգտատերերի գաղտնաբառերը կստուգվեն լրացուցիչ չափանիշների համեմատ՝ ապահովելու ավելի լավ գաղտնաբառի ընտրությունը։ NIST-ը խորհուրդ է տալիս ստուգել գաղտնաբառերը արգելացուցակի համեմատ և կիրառել հաշվի ժամանակավոր արգելափակում՝ գաղտնաբառի կրկնվող սխալներից հետո։ Բարդության պահանջները, ներառյալ այբբենա-թվային նիշերի կոնկրետ տեսակները, հասանելի են, բայց UX-ի պատճառներով խորհուրդ չեն տրվում։</p>"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
-msgstr "Գաղտնաբառի պահանջներ"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
-msgstr "Վերբեռնեք արգելացուցակի ֆայլը"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
-msgstr "Վերբեռնված արգելացուցակներ"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
-msgstr "Պահանջել այբբենական նիշ։"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
-msgstr "Պահանջել մեծատառ նիշ։"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
-msgstr "Պահանջել փոքրատառ նիշ։"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
-msgstr "Պահանջել թվային նիշ։"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
-msgstr "Պահանջել ոչ այբբենա-թվային նիշ։"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
-msgstr "Ստուգել օգտատերերի կողմից խնդրվող ցանկացած գաղտնաբառ հայտնի վատ գաղտնաբառերի արգելացուցակի համեմատ։"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
-msgstr "Հաշվի ժամանակավոր արգելափակում"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
-msgstr "Մուտքի սխալ փորձերի քանակ, որից հետո հաշիվը արգելափակվում է։"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
-msgstr "Մուտքի սխալ փորձերը մոռանալուց առաջ վայրկյանների քանակ։"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
-msgstr "Չափից շատ սխալ մուտքի փորձերից հետո հաշվի արգելափակման վայրկյանների քանակ։"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
-msgstr "Եթե մուտքագրված է հաշվի ժամանակավոր արգելափակման որևէ կարգավորում, ապա պահանջվում են բոլոր ժամանակավոր արգելափակման կարգավորումները։"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
-msgstr "Մուտքի սխալ փորձերի քանակը, որից հետո հաշիվը արգելափակվում է, պետք է լինի թվային։"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
-msgstr "Մուտքի սխալ փորձերը մոռանալուց առաջ վայրկյանների քանակը պետք է լինի թվային։"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
-msgstr "Չափից շատ սխալ մուտքի փորձերից հետո հաշվի արգելափակման վայրկյանների քանակը պետք է լինի թվային։"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
-msgstr "Գաղտնաբառի անվավերացում"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
-msgstr "Գաղտնաբառի ժամկետի ավարտից առաջ օրերի քանակ։"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
-msgstr "Ժամկետի ավարտից առաջ օրերի քանակ, որոնց ընթացքում օգտատերին ամեն օր նախազգուշացվում է գաղտնաբառի ժամկետի ավարտի մասին։"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
-msgstr "Վերջին գաղտնաբառերի քանակ, որոնք պետք է արգելափակվեն կրկնակի օգտագործումից։"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
-msgstr "Գաղտնաբառի ժամկետի ավարտից առաջ օրերի քանակը պետք է լինի թվային։"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
-msgstr "Վերջին գաղտնաբառերի քանակը, որոնք պետք է արգելափակվեն կրկնակի օգտագործումից, պետք է լինի թվային։"
-
-msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
-msgstr "Ժամկետի ավարտից առաջ օրերի քանակը, որոնց ընթացքում օգտատերին ամեն օր նախազգուշացվում է գաղտնաբառի ժամկետի ավարտի մասին, պետք է լինի թվային։"
-
-msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
-msgstr "Ձեր գաղտնաբառի ժամկետը կլրանա {$days} օրից։"
-
-msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
-msgstr "Ջնջել գոյություն ունեցող արգելացուցակը"
-
-msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
-msgstr "Համոզվա՞ծ եք, որ ցանկանում եք ջնջել։"
