@@ -64,9 +64,21 @@ class PasswordRequirementsDescription
     }
 
     /**
-     * Smarty output filter: prepend the requirements block to the first
-     * `name="password"` input it finds. Idempotent within a render via the
-     * marker class.
+     * Smarty output filter: insert the requirements block above the first
+     * `name="password"` input. Idempotent within a render via the marker
+     * class.
+     *
+     * Two render contexts to handle:
+     *   - Full-page renders (the public `Register` page): the filter sees
+     *     the whole document, so a naive prepend would land the block
+     *     before `<!doctype>` / `<head>`. We locate the input's nearest
+     *     enclosing `<div>` and insert just before it.
+     *   - Form-fragment renders (Add User, Change Password, Reset
+     *     Password, Login-Change-Password): the filter sees only the form
+     *     HTML, and the FBV layouts use side-by-side `pkp_helpers_half`
+     *     columns. Splicing in front of the wrapping `<div>` would land
+     *     the block inside one of those columns; prepend to the fragment
+     *     instead so it spans the full row above the inputs.
      */
     public function inject(string $output, $smarty): string
     {
@@ -109,7 +121,18 @@ class PasswordRequirementsDescription
         $marker = self::MARKER_CLASS;
         $css = 'input[name="password"] + span > label.sub_label:not(.error){display:none}'
             . '.pkp_helpers_half:not(.inline) input[name="password2"]{margin-top:24px}'
-            . 'label.sub_label.error,.notifyFormError .description{white-space:pre-line}';
+            . 'label.sub_label.error,.notifyFormError .description{white-space:pre-line}'
+            // Tighten the gap above the password field on the public Register
+            // page: the block sits as a sibling inside `<div class="fields">`,
+            // which applies `padding-bottom:2.143rem` to each direct child
+            // via `.cmp_form .fields > div`, and its `<ul>` carries the
+            // browser-default bottom margin. Both selectors are scoped so
+            // the surrounding form layout (e.g. the Add User modal, where
+            // the block isn't inside .fields) is unaffected. The padding
+            // selector mirrors the OJS rule's class count so it wins
+            // specificity.
+            . '.cmp_form .fields > .' . $marker . '{padding-bottom:0}'
+            . '.' . $marker . ' ul{margin-bottom:10px}';
         $block = '<div class="' . $marker . '">'
             . '<style>' . $css . '</style>'
             . '<p>' . $heading . '</p>'
@@ -121,12 +144,44 @@ class PasswordRequirementsDescription
         // that template formatting into a visual gap at the top of the red border.
         $output = preg_replace('/(<label[^>]*class="[^"]*\bsub_label error\b[^"]*"[^>]*>)\s+/', '$1', $output);
 
-        // Prepend the block to the whole textInput fragment so it sits as a
-        // sibling above the password input's wrapping div, not inside it.
-        // Lets the requirements span the full row above side-by-side
-        // password/confirm inputs (Add User), and renders identically in
-        // the stacked layout (Change Password).
-        return $block . $output;
+        // Form-fragment render (Add User et al.): fall back to the
+        // original prepend so the existing layout is unchanged.
+        if (!preg_match('/^\s*<(?:!doctype\b|html\b)/i', $output)) {
+            return $block . $output;
+        }
+
+        // Full-page render (public Register page): insert in front of
+        // the password input's nearest enclosing <div>.
+        if (!preg_match('/<input\b[^>]*\bname="password"/', $output, $m, PREG_OFFSET_CAPTURE)) {
+            return $output;
+        }
+        $insertPos = $this->_findWrappingDivStart($output, $m[0][1]) ?? $m[0][1];
+
+        return substr($output, 0, $insertPos) . $block . substr($output, $insertPos);
+    }
+
+    /**
+     * Walk back from $inputPos to find the start offset of the nearest
+     * unclosed `<div>` — i.e. the innermost wrapper containing the password
+     * input. Returns null if there is no enclosing `<div>` in $output.
+     */
+    private function _findWrappingDivStart(string $output, int $inputPos): ?int
+    {
+        $before = substr($output, 0, $inputPos);
+        if (!preg_match_all('/<(\/?)div\b[^>]*>/', $before, $matches, PREG_OFFSET_CAPTURE)) {
+            return null;
+        }
+        $depth = 0;
+        for ($i = count($matches[0]) - 1; $i >= 0; $i--) {
+            if ($matches[1][$i][0] === '/') {
+                $depth++;
+            } elseif ($depth === 0) {
+                return $matches[0][$i][1];
+            } else {
+                $depth--;
+            }
+        }
+        return null;
     }
 
     /**
