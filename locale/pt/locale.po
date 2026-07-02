@@ -9,163 +9,163 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
 "PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
-"Language: \n"
+"Language: pt\n"
 
 msgid "plugins.generic.betterPassword.displayName"
-msgstr "Better Password Plugin"
+msgstr "Plugin Better Password"
 
 msgid "plugins.generic.betterPassword.description"
-msgstr "Enable additional password requirements within PKP software.  Allows for implementation of NIST recommendations."
+msgstr "Ativa requisitos adicionais de palavra-passe no software da PKP. Permite implementar as recomendações do NIST."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
-msgstr "Your password requires an alphabetic character."
+msgstr "A sua palavra-passe tem de conter um carácter alfabético."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
-msgstr "Your password requires an uppercase character."
+msgstr "A sua palavra-passe tem de conter um carácter maiúsculo."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
-msgstr "Your password requires an lowercase character."
+msgstr "A sua palavra-passe tem de conter um carácter minúsculo."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
-msgstr "Your password requires an numeric character."
+msgstr "A sua palavra-passe tem de conter um carácter numérico."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
-msgstr "Your password requires an non-alphanumeric character."
+msgstr "A sua palavra-passe tem de conter um carácter não alfanumérico."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
-msgstr "Your password was found in a blocklist of known bad passwords."
+msgstr "A sua palavra-passe foi encontrada numa lista de palavras-passe comprometidas conhecidas."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
-msgstr "Your account has been temporarily locked due to bad password attempts."
+msgstr "A sua conta foi bloqueada temporariamente devido a tentativas de início de sessão incorretas."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
-msgstr "Your password could not be changed at this time.  Please try again later."
+msgstr "Não foi possível alterar a sua palavra-passe neste momento. Por favor, tente novamente mais tarde."
 
 msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
-msgstr "You cannot reuse this password, please choose another one."
+msgstr "Não pode reutilizar esta palavra-passe; por favor, escolha outra."
 
 msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
-msgstr "Your password does not meet the following requirements:\n{$requirements}"
+msgstr "A sua palavra-passe não cumpre os seguintes requisitos:\n{$requirements}"
 
 msgid "plugins.generic.betterPassword.description.requirementsHeading"
-msgstr "Password requirements:"
+msgstr "Requisitos da palavra-passe:"
 
 msgid "plugins.generic.betterPassword.requirement.length"
-msgstr "be at least {$length} characters long"
+msgstr "ter pelo menos {$length} caracteres"
 
 msgid "plugins.generic.betterPassword.requirement.alpha"
-msgstr "contain an alphabetic character"
+msgstr "conter um carácter alfabético"
 
 msgid "plugins.generic.betterPassword.requirement.uppercase"
-msgstr "contain an uppercase character"
+msgstr "conter um carácter maiúsculo"
 
 msgid "plugins.generic.betterPassword.requirement.lowercase"
-msgstr "contain a lowercase character"
+msgstr "conter um carácter minúsculo"
 
 msgid "plugins.generic.betterPassword.requirement.number"
-msgstr "contain a numeric character"
+msgstr "conter um carácter numérico"
 
 msgid "plugins.generic.betterPassword.requirement.special"
-msgstr "contain a non-alphanumeric character"
+msgstr "conter um carácter não alfanumérico"
 
 msgid "plugins.generic.betterPassword.requirement.blocklist"
-msgstr "not be a commonly used or known compromised password"
+msgstr "não ser uma palavra-passe de uso comum ou conhecida como comprometida"
 
 msgid "plugins.generic.betterPassword.requirement.noReuse"
-msgstr "not match any of your last {$count} passwords"
+msgstr "não coincidir com nenhuma das suas últimas {$count} palavras-passe"
 
 msgid "plugins.generic.betterPassword.manager.settings"
-msgstr "Settings"
+msgstr "Configurações"
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
-msgstr "Failed to upload file"
+msgstr "Falha ao carregar o ficheiro"
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
-msgstr "Failed to delete file"
+msgstr "Falha ao eliminar o ficheiro"
 
 msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
-msgstr "Better Password Settings"
+msgstr "Configurações do Better Password"
 
 msgid "plugins.generic.betterPassword.manager.settings.description"
-msgstr "<p>With this plugin enabled, user passwords will be checked against additional criteria to ensure better password selection.  NIST recommends checking passwords against a blocklist and using temporary account locking after repeated password failures.  Complexity requirements including specific types of alphanumeric characters are available but not recommended for UX reasons.</p>"
+msgstr "<p>Com este plugin ativado, as palavras-passe dos utilizadores serão verificadas com base em critérios adicionais para garantir uma melhor seleção de palavras-passe. O NIST recomenda verificar as palavras-passe contra uma lista de bloqueio e utilizar o bloqueio temporário de conta após falhas repetidas. Estão disponíveis requisitos de complexidade, incluindo tipos específicos de caracteres alfanuméricos, mas não são recomendados por motivos de experiência de utilizador.</p>"
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
-msgstr "Password requirements"
+msgstr "Requisitos da palavra-passe"
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
-msgstr "Upload the blocklist file"
+msgstr "Carregar o ficheiro da lista de bloqueio"
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
-msgstr "Uploaded Blocklists"
+msgstr "Listas de bloqueio carregadas"
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
-msgstr "Require an alphabetic character."
+msgstr "Exigir um carácter alfabético."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
-msgstr "Require an uppercase character."
+msgstr "Exigir um carácter maiúsculo."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
-msgstr "Require a lowercase character."
+msgstr "Exigir um carácter minúsculo."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
-msgstr "Require a numeric character."
+msgstr "Exigir um carácter numérico."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
-msgstr "Require a non-alphanumeric character."
+msgstr "Exigir um carácter não alfanumérico."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
-msgstr "Check any user-requested passwords against a blocklist of known bad passwords."
+msgstr "Verificar todas as palavras-passe pedidas pelos utilizadores contra uma lista de palavras-passe comprometidas conhecidas."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
-msgstr "Temporary account locking"
+msgstr "Bloqueio temporário de conta"
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
-msgstr "Number of bad login attempts after which to lock an account."
+msgstr "Número de tentativas de início de sessão incorretas após o qual a conta é bloqueada."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
-msgstr "Number of seconds before forgetting bad login attempts."
+msgstr "Número de segundos antes de esquecer as tentativas de início de sessão incorretas."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
-msgstr "Number of seconds to lock an account after excessive bad login attempts."
+msgstr "Número de segundos durante os quais a conta fica bloqueada após tentativas de início de sessão incorretas excessivas."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
-msgstr "If any temporary account locking setting is entered, all temporary account locking settings are required."
+msgstr "Se for introduzida qualquer definição de bloqueio temporário de conta, todas as definições de bloqueio temporário são obrigatórias."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
-msgstr "Number of bad login attempts after which to lock an account must be numeric."
+msgstr "O número de tentativas de início de sessão incorretas após o qual a conta é bloqueada tem de ser numérico."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
-msgstr "Number of seconds before forgetting bad login attempts must be numeric."
+msgstr "O número de segundos antes de esquecer as tentativas de início de sessão incorretas tem de ser numérico."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
-msgstr "Number of seconds to lock an account after excessive bad login attempts must be numeric."
+msgstr "O número de segundos durante os quais a conta fica bloqueada após tentativas de início de sessão incorretas excessivas tem de ser numérico."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
-msgstr "Password invalidation"
+msgstr "Invalidação da palavra-passe"
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
-msgstr "Number of days before passwords expire."
+msgstr "Número de dias antes de as palavras-passe expirarem."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
-msgstr "Number of days, before the expiration, to start warning the user daily about the password expiration."
+msgstr "Número de dias, antes da expiração, a partir do qual começar a avisar diariamente o utilizador sobre a expiração da palavra-passe."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
-msgstr "Number of last passwords that should be blocked for reuse."
+msgstr "Número de últimas palavras-passe a bloquear para impedir a reutilização."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
-msgstr "Number of days before passwords expire must be numeric."
+msgstr "O número de dias antes de as palavras-passe expirarem tem de ser numérico."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
-msgstr "Number of last passwords that should be blocked for reuse must be numeric."
+msgstr "O número de últimas palavras-passe a bloquear para impedir a reutilização tem de ser numérico."
 
 msgid "plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
-msgstr "Number of days, before the expiration, to start warning the user daily about the password expiration must be numeric."
+msgstr "O número de dias, antes da expiração, a partir do qual começar a avisar diariamente o utilizador sobre a expiração da palavra-passe tem de ser numérico."
 
 msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
-msgstr "Your password is going to expire in {$days} day(s)."
+msgstr "A sua palavra-passe vai expirar dentro de {$days} dia(s)."
 
 msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
-msgstr "Delete Existing Blocklist"
+msgstr "Eliminar lista de bloqueio existente"
 
 msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
-msgstr "Are you sure you want to delete?"
+msgstr "Tem a certeza de que pretende eliminar?"

@@ -1,0 +1,228 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Bolji dodatak za lozinku"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr ""
+"Omogućite dodatne zahtjeve za lozinku u PKP softveru. Omogućava "
+"implementaciju NIST preporuka."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Lozinka zahtijeva abecedni karakter."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Lozinka zahtijeva veliki karakter."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Lozinka zahtijeva mali karakter."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Lozinka zahtijeva numerički karakter."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Lozinka zahtijeva nealfanumerički karakter."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr "Vaša lozinka je pronađena na listi poznatih loših lozinki."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "Vaš račun je privremeno zaključan zbog neuspješnih pokušaja lozinke."
+
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr ""
+"Vaša lozinka se trenutno nije mogla promijeniti. Molimo pokušajte ponovo "
+"kasnije."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "Nema ponovnog korištenja ove lozinke, molimo odaberite drugu."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Postavke"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Neuspješno učitavanje datoteke"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Neuspješno brisanje datoteke"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Postavke za bolju lozinku"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>Kada je ovaj dodatak omogućen, lozinke korisnika će biti provjeravane u "
+"odnosu na dodatne kriterije kako bi se osigurala bolja izbor lozinke. NIST "
+"preporučuje provjeru lozinki na listi zabrane i privremeno zaključavanje "
+"računa nakon ponovljenih neuspjeha lozinke. Zahtjevi za kompleksnost, "
+"uključujući specifične vrste alfanumeričkih znakova, dostupni su, ali se ne "
+"preporučuju iz UX razloga.</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Zahtjevi za lozinku"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Učitaj datoteku liste zabrane"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Učitane liste zabrane"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Zahtijeva abecedni karakter."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Zahtijeva veliki karakter."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Zahtijeva mali karakter."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Zahtijeva numerički karakter."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Zahtijeva nealfanumerički karakter."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"Provjerite sve korisnički tražene lozinke na listi zabrane poznatih loših "
+"lozinki."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Privremeno zaključavanje računa"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Broj neuspješnih pokušaja prijave nakon kojih zaključati račun."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Broj sekundi prije zaboravljanja neuspješnih pokušaja prijave."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr ""
+"Broj sekundi za zaključavanje računa nakon prekomjernih neuspješnih pokušaja"
+" prijave."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"Ako se unese bilo koja postavka privremenog zaključavanja računa, sve "
+"postavke privremenog zaključavanja računa su obavezne."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr ""
+"Broj neuspješnih pokušaja prijave nakon kojih zaključati račun mora biti "
+"numerički."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr ""
+"Broj sekundi prije zaboravljanja neuspješnih pokušaja prijave mora biti "
+"numerički."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"Broj sekundi za zaključavanje računa nakon prekomjernih neuspješnih pokušaja"
+" prijave mora biti numerički."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Nevažnost lozinke"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Broj dana prije isteka lozinki."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"Broj dana, prije isteka, da bi se korisnik počeo upozoriti dnevno o isteku "
+"lozinke."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr ""
+"Broj posljednjih lozinki koje trebaju biti zabranjene za ponovnu upotrebu."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Broj dana prije isteka lozinki mora biti numerički."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr ""
+"Broj posljednjih lozinki koje trebaju biti zabranjene za ponovnu upotrebu "
+"mora biti numerički."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"Broj dana, prije isteka, da bi se korisnik upozoravao dnevno o isteku "
+"lozinke mora biti numerički."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Vaša lozinka će isteći za {$days} dan/e."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Brisanje postojeće liste zabrane"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Jeste li sigurni da želite obrisati?"
+
+msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
+msgstr "Vaša lozinka ne ispunjava sljedeće zahtjeve:\n{$requirements}"
+
+msgid "plugins.generic.betterPassword.description.requirementsHeading"
+msgstr "Zahtjevi za lozinku:"
+
+msgid "plugins.generic.betterPassword.requirement.length"
+msgstr "da bude duga najmanje {$length} znakova"
+
+msgid "plugins.generic.betterPassword.requirement.alpha"
+msgstr "da sadrži slovni znak"
+
+msgid "plugins.generic.betterPassword.requirement.uppercase"
+msgstr "da sadrži veliko slovo"
+
+msgid "plugins.generic.betterPassword.requirement.lowercase"
+msgstr "da sadrži malo slovo"
+
+msgid "plugins.generic.betterPassword.requirement.number"
+msgstr "da sadrži brojčani znak"
+
+msgid "plugins.generic.betterPassword.requirement.special"
+msgstr "da sadrži znak koji nije slovo ni broj"
+
+msgid "plugins.generic.betterPassword.requirement.blocklist"
+msgstr "da nije često korištena ili poznata kompromitovana lozinka"
+
+msgid "plugins.generic.betterPassword.requirement.noReuse"
+msgstr "da se ne podudara ni s jednom od vaših posljednjih {$count} lozinki"

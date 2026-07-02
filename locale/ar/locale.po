@@ -1,0 +1,222 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "البرنامج المساعد لكلمة المرور أفضل"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr ""
+"تمكين متطلبات كلمة مرور إضافية في برنامج PKP. يسمح بتنفيذ توصيات NIST."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "تتطلب كلمة المرور الخاصة بك حرفًا أبجديًا."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "تتطلب كلمة المرور الخاصة بك حرفًا كبيرًا."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "تتطلب كلمة المرور الخاصة بك حرفًا صغيرًا."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "تتطلب كلمة المرور الخاصة بك حرفًا رقميًا."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "تتطلب كلمة المرور الخاصة بك حرفًا غير أبجدي رقمي."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr ""
+"تم العثور على كلمة المرور الخاصة بك في قائمة حظر كلمات المرور المعروفة."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "تم قفل حسابك مؤقتًا بسبب محاولات كلمة مرور خاطئة."
+
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr ""
+"لم يتمكن من تغيير كلمة المرور الخاصة بك في الوقت الحالي. يرجى المحاولة مرة "
+"أخرى لاحقًا."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "لا يمكنك إعادة استخدام كلمة المرور هذه، يرجى اختيار أخرى."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "الإعدادات"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "فشل تحميل الملف"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "فشل حذف الملف"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "إعدادات كلمة المرور الأفضل"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>مع تفعيل هذا المكون، سيتم فحص كلمات مرور المستخدمين مقابل معايير إضافية "
+"لضمان اختيار كلمة مرور أفضل. توصي NIST بفحص كلمات المرور مقابل قائمة حظر "
+"واستخدام قفل الحساب المؤقت بعد فشل كلمة المرور المتكرر. متطلبات التعقيد، بما"
+" في ذلك أنواع معينة من الأحرف الأبجدية الرقمية، متاحة ولكن لا يُنصح بها "
+"لأسباب UX.</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "متطلبات كلمة المرور"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "تحميل ملف قائمة الحظر"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "قوائم الحظر المحملة"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "يتطلب حرفًا أبجديًا."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "يتطلب حرفًا كبيرًا."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "يتطلب حرفًا صغيرًا."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "يتطلب حرفًا رقميًا."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "يتطلب حرفًا غير أبجدي رقمي."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"تحقق من جميع كلمات المرور التي يطلبها المستخدم مقابل قائمة حظر كلمات المرور "
+"المعروفة."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "قفل الحساب المؤقت"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "عدد محاولات تسجيل الدخول الفاشلة التي سيتم بعدها قفل الحساب."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "عدد الثواني قبل نسيان محاولات تسجيل الدخول الفاشلة."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr "عدد الثواني لقفل الحساب بعد محاولات تسجيل دخول فاشلة بشكل مفرط."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"إذا تم إدخال أي إعداد قفل حساب مؤقت، فإن جميع إعدادات قفل الحساب المؤقتة "
+"مطلوبة."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr ""
+"يجب أن يكون عدد محاولات تسجيل الدخول الفاشلة التي سيتم بعدها قفل الحساب "
+"رقميًا."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr ""
+"يجب أن يكون عدد الثواني قبل نسيان محاولات تسجيل الدخول الفاشلة رقميًا."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"يجب أن يكون عدد الثواني لقفل الحساب بعد محاولات تسجيل دخول فاشلة بشكل مفرط "
+"رقميًا."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "إلغاء صلاحية كلمة المرور"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "عدد الأيام قبل انتهاء صلاحية كلمات المرور."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"عدد الأيام، قبل انتهاء الصلاحية، لبدء تحذير المستخدم يوميًا بشأن انتهاء "
+"صلاحية كلمة المرور."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr "عدد كلمات المرور الأخيرة التي يجب حظرها لإعادة الاستخدام."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "يجب أن يكون عدد الأيام قبل انتهاء صلاحية كلمات المرور رقميًا."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr ""
+"يجب أن يكون عدد كلمات المرور الأخيرة التي يجب حظرها لإعادة الاستخدام رقميًا."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"يجب أن يكون عدد الأيام قبل انتهاء الصلاحية لتحذير المستخدم يوميًا بشأن "
+"انتهاء صلاحية كلمة المرور رقميًا."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "ستنتهي صلاحية كلمة المرور الخاصة بك خلال {$days} يوم."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "حذف قائمة الحظر الموجودة"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "هل أنت متأكد من أنك تريد الحذف?"
+
+msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
+msgstr "كلمة المرور الخاصة بك لا تستوفي المتطلبات التالية:\n{$requirements}"
+
+msgid "plugins.generic.betterPassword.description.requirementsHeading"
+msgstr "متطلبات كلمة المرور:"
+
+msgid "plugins.generic.betterPassword.requirement.length"
+msgstr "أن تتكون من {$length} حرفاً على الأقل"
+
+msgid "plugins.generic.betterPassword.requirement.alpha"
+msgstr "أن تحتوي على حرف أبجدي"
+
+msgid "plugins.generic.betterPassword.requirement.uppercase"
+msgstr "أن تحتوي على حرف كبير"
+
+msgid "plugins.generic.betterPassword.requirement.lowercase"
+msgstr "أن تحتوي على حرف صغير"
+
+msgid "plugins.generic.betterPassword.requirement.number"
+msgstr "أن تحتوي على حرف رقمي"
+
+msgid "plugins.generic.betterPassword.requirement.special"
+msgstr "أن تحتوي على حرف غير أبجدي رقمي"
+
+msgid "plugins.generic.betterPassword.requirement.blocklist"
+msgstr "ألا تكون كلمة مرور شائعة الاستخدام أو معروفة بأنها مخترقة"
+
+msgid "plugins.generic.betterPassword.requirement.noReuse"
+msgstr "ألا تطابق أياً من آخر {$count} كلمات مرور استخدمتها"

@@ -1,0 +1,225 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Pasahitz Plugin hobea"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr ""
+"Gaitu pasahitz-eskakizun gehigarriak PKP softwarean.  NIST gomendioak "
+"ezartzeko aukera ematen du."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Zure pasahitzak karaktere alfabetikoa behar du."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Zure pasahitzak letra larria behar du."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Zure pasahitzak letra xehea behar du."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Zure pasahitzak zenbakizko karaktere bat behar du."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Zure pasahitzak karaktere ez-alfanumeriko bat behar du."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr ""
+"Zure pasahitza pasahitz txar ezagunen bloke-zerrenda batean aurkitu da."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "Zure kontua behin-behinean blokeatu da pasahitz saiakera txarragatik."
+
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr ""
+"Ezin izan da pasahitza aldatu momentu honetan.  Saiatu berriro geroago."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "Ezin duzu pasahitz hau berrerabili, mesedez aukeratu beste bat."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Ezarpenak"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Ezin izan da fitxategia kargatu"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Ezin izan da fitxategia ezabatu"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Pasahitz ezarpen hobeak"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>Plugin hau gaituta, erabiltzaileen pasahitzak irizpide gehigarriekin "
+"egiaztatuko dira pasahitzak aukeraketa hobea ziurtatzeko.  NISTek pasahitzak"
+" blokeo-zerrenda batekin egiaztatzea eta behin-behineko kontua blokeatzea "
+"gomendatzen du pasahitzak behin eta berriz huts egin ondoren.  "
+"Konplexutasun-eskakizunak alfanumeriko karaktere mota zehatzak barne daude "
+"eskuragarri baina ez dira gomendatzen UX arrazoiengatik.</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Pasahitzaren eskakizunak"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Kargatu bloke-zerrendaren fitxategia"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Kargatu diren blokeo zerrendak"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Karaktere alfabetikoa behar da."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Karaktere larri bat eskatzen du."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Karaktere minuskula bat eskatzen du."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Zenbakizko karaktere bat behar da."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Karaktere ez alfanumerikoa behar da."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"Egiaztatu erabiltzaileek eskatutako pasahitzak pasahitz txar ezagunen bloke-"
+"zerrenda batekin."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Kontua aldi baterako blokeatzea"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Saio-saio okerren kopurua kontu bat blokeatzeko ondoren."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Saioa hasteko saiakera txarrak ahaztu baino segundo kopurua."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr ""
+"Kontua blokeatzeko segundo-kopurua saio-saio oker saiakeraren ondoren."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"Aldi baterako kontua blokeatzeko ezarpen bat sartzen bada, aldi baterako "
+"kontua blokeatzeko ezarpen guztiak beharrezkoak dira."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr ""
+"Kontu bat blokeatzeko saio-saio okerren kopurua zenbakizkoa izan behar da."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr ""
+"Saioa hasteko saiakera txarrak ahaztu baino segundo kopurua zenbakizkoa izan"
+" behar da."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"Gehiegizko saioa hasteko saiakera txarren ondoren kontu bat blokeatzeko "
+"segundo kopurua zenbakizkoa izan behar da."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Pasahitza baliogabetzea"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Pasahitzak iraungi baino egun kopurua."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"Egun kopurua, iraungi baino lehen, erabiltzaileari pasahitza iraungitzeari "
+"buruz egunero ohartarazten hasteko."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr "Berrerabiltzeko blokeatu beharreko azken pasahitzen kopurua."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Pasahitzak iraungi baino egun kopurua zenbakizkoa izan behar du."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr ""
+"Berrerabiltzeko blokeatu behar diren azken pasahitzen kopurua zenbakizkoa "
+"izan behar da."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"Iraungitze aurreko egun kopurua erabiltzaileari pasahitza iraungitzeari "
+"buruz egunero abisatzen hasteko zenbakizkoak izan behar dira."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Pasahitza {$days} egun barru iraungiko da."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Ezabatu lehendik dagoen blokeo zerrenda"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Ziur ezabatu nahi duzula?"
+
+msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
+msgstr "Zure pasahitzak ez ditu betetzen ondorengo eskakizunak:\n{$requirements}"
+
+msgid "plugins.generic.betterPassword.description.requirementsHeading"
+msgstr "Pasahitzaren eskakizunak:"
+
+msgid "plugins.generic.betterPassword.requirement.length"
+msgstr "gutxienez {$length} karaktere izan"
+
+msgid "plugins.generic.betterPassword.requirement.alpha"
+msgstr "karaktere alfabetiko bat eduki"
+
+msgid "plugins.generic.betterPassword.requirement.uppercase"
+msgstr "letra larri bat eduki"
+
+msgid "plugins.generic.betterPassword.requirement.lowercase"
+msgstr "letra xehe bat eduki"
+
+msgid "plugins.generic.betterPassword.requirement.number"
+msgstr "zenbakizko karaktere bat eduki"
+
+msgid "plugins.generic.betterPassword.requirement.special"
+msgstr "karaktere ez alfanumeriko bat eduki"
+
+msgid "plugins.generic.betterPassword.requirement.blocklist"
+msgstr "ohiko edo arriskutsutzat ezagututako pasahitza ez izan"
+
+msgid "plugins.generic.betterPassword.requirement.noReuse"
+msgstr "azken {$count} pasahitzetako batekin bat ez etorri"

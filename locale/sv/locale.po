@@ -1,0 +1,226 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Bättre lösenordsplugin"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr ""
+"Aktivera ytterligare lösenordskrav i PKP-programvara. Möjliggör "
+"implementering av NIST-rekommendationer."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Ditt lösenord kräver ett alfabetiskt tecken."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Ditt lösenord kräver ett versal tecken."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Ditt lösenord kräver ett gemener tecken."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Ditt lösenord kräver ett numeriskt tecken."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Ditt lösenord kräver ett icke-alfanumeriskt tecken."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr "Ditt lösenord hittades i en blocklist med kända dåliga lösenord."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr ""
+"Ditt konto har låsts temporärt på grund av misslyckade lösenordsförsök."
+
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr "Ditt lösenord kunde inte ändras för tillfället. Försök igen senare."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "Du kan inte återanvända det här lösenordet, välj ett annat."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Inställningar"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Misslyckades att ladda upp fil"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Misslyckades att ta bort fil"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Inställningar för bättre lösenord"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>Med detta plugin aktiverat kommer användarlösenord att kontrolleras mot "
+"ytterligare kriterier för att säkerställa bättre lösenordsval. NIST "
+"rekommenderar att kontrollera lösenord mot en blocklist och använda "
+"tillfällig kontolåsning efter upprepad lösenordsfel. Komplexitetskrav, "
+"inklusive specifika typer av alfanumeriska tecken, är tillgängliga men "
+"rekommenderas inte av UX-skäl.</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Lösenordskrav"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Ladda upp blocklistfilen"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Uppladdade blocklistor"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Kräver ett alfabetiskt tecken."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Kräver ett versal tecken."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Kräver ett gemener tecken."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Kräver ett numeriskt tecken."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Kräver ett icke-alfanumeriskt tecken."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"Kontrollera alla användarförfrågade lösenord mot en blocklist med kända "
+"dåliga lösenord."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Tillfällig kontolåsning"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Antal misslyckade inloggningsförsök efter vilket ett konto låses."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Antal sekunder innan misslyckade inloggningsförsök glöms."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr ""
+"Antal sekunder för att låsa ett konto efter alltför många misslyckade "
+"inloggningsförsök."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"Om någon inställning för tillfällig kontolåsning anges måste alla "
+"inställningar för tillfällig kontolåsning anges."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr ""
+"Antal misslyckade inloggningsförsök efter vilket ett konto ska låsas måste "
+"vara numeriskt."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr ""
+"Antal sekunder innan misslyckade inloggningsförsök glöms måste vara "
+"numeriskt."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"Antal sekunder för att låsa ett konto efter alltför många misslyckade "
+"inloggningsförsök måste vara numeriskt."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Lösenordsinvalidering"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Antal dagar innan lösenord upphör att gälla."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"Antal dagar före utgången, för att börja varna användaren dagligen om "
+"lösenordets förfallodatum."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr "Antal senaste lösenord som bör blockeras för återanvändning."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Antal dagar innan lösenord upphör att gälla måste vara numeriskt."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr ""
+"Antal senaste lösenord som bör blockeras för återanvändning måste vara "
+"numeriskt."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"Antal dagar före utgången för att dagligen varna användaren om lösenordets "
+"förfallodatum måste vara numeriskt."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Ditt lösenord upphör att gälla om {$days} dag/dagar."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Ta bort befintlig blocklist"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Är du säker på att du vill ta bort?"
+
+msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
+msgstr "Ditt lösenord uppfyller inte följande krav:\n{$requirements}"
+
+msgid "plugins.generic.betterPassword.description.requirementsHeading"
+msgstr "Lösenordskrav:"
+
+msgid "plugins.generic.betterPassword.requirement.length"
+msgstr "vara minst {$length} tecken långt"
+
+msgid "plugins.generic.betterPassword.requirement.alpha"
+msgstr "innehålla ett alfabetiskt tecken"
+
+msgid "plugins.generic.betterPassword.requirement.uppercase"
+msgstr "innehålla en versal"
+
+msgid "plugins.generic.betterPassword.requirement.lowercase"
+msgstr "innehålla en gemen"
+
+msgid "plugins.generic.betterPassword.requirement.number"
+msgstr "innehålla en siffra"
+
+msgid "plugins.generic.betterPassword.requirement.special"
+msgstr "innehålla ett icke-alfanumeriskt tecken"
+
+msgid "plugins.generic.betterPassword.requirement.blocklist"
+msgstr "inte vara ett vanligt eller känt komprometterat lösenord"
+
+msgid "plugins.generic.betterPassword.requirement.noReuse"
+msgstr "inte stämma överens med något av dina senaste {$count} lösenord"

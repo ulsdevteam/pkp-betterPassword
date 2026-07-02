@@ -1,0 +1,229 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Plugin Kata Sandi yang Lebih Baik"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr ""
+"Aktifkan persyaratan kata sandi tambahan dalam perangkat lunak PKP.  "
+"Memungkinkan penerapan rekomendasi NIST."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Kata sandi Anda memerlukan karakter alfabet."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Kata sandi Anda memerlukan karakter huruf besar."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Kata sandi Anda memerlukan karakter huruf kecil."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Kata sandi Anda memerlukan karakter numerik."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Kata sandi Anda memerlukan karakter non-alfanumerik."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr ""
+"Kata sandi Anda ditemukan dalam daftar blokir kata sandi buruk yang "
+"diketahui."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "Akun Anda telah dikunci sementara karena upaya kata sandi yang buruk."
+
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr ""
+"Kata sandi Anda tidak dapat diubah saat ini.  Silakan coba lagi nanti."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr ""
+"Anda tidak dapat menggunakan kembali kata sandi ini, silakan pilih kata "
+"sandi lain."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Pengaturan"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Gagal mengunggah file"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Gagal menghapus file"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Pengaturan Kata Sandi yang Lebih Baik"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>Dengan mengaktifkan plugin ini, kata sandi pengguna akan diperiksa "
+"berdasarkan kriteria tambahan untuk memastikan pemilihan kata sandi yang "
+"lebih baik.  NIST merekomendasikan untuk memeriksa kata sandi terhadap "
+"daftar blokir dan menggunakan penguncian akun sementara setelah kegagalan "
+"kata sandi berulang kali.  Persyaratan kompleksitas termasuk jenis karakter "
+"alfanumerik tertentu tersedia tetapi tidak disarankan karena alasan UX.</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Persyaratan kata sandi"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Unggah file daftar blokir"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Daftar Blokir yang Diunggah"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Membutuhkan karakter alfabet."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Membutuhkan karakter huruf besar."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Memerlukan karakter huruf kecil."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Membutuhkan karakter numerik."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Membutuhkan karakter non-alfanumerik."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"Periksa kata sandi yang diminta pengguna terhadap daftar blokir kata sandi "
+"buruk yang diketahui."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Penguncian akun sementara"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Jumlah upaya login yang buruk setelah mengunci akun."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Jumlah detik sebelum melupakan upaya login yang buruk."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr ""
+"Jumlah detik untuk mengunci akun setelah upaya login yang buruk dan "
+"berlebihan."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"Jika ada pengaturan penguncian akun sementara yang dimasukkan, semua "
+"pengaturan penguncian akun sementara diperlukan."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr ""
+"Jumlah upaya login yang buruk setelah mengunci akun harus berupa angka."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr ""
+"Jumlah detik sebelum melupakan upaya login yang buruk harus berupa angka."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"Jumlah detik untuk mengunci akun setelah upaya login yang buruk harus berupa"
+" angka."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Pembatalan kata sandi"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Jumlah hari sebelum kata sandi kedaluwarsa."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"Jumlah hari, sebelum masa berlaku habis, untuk mulai memperingatkan pengguna"
+" setiap hari tentang masa berlaku kata sandi."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr ""
+"Jumlah kata sandi terakhir yang harus diblokir untuk digunakan kembali."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Jumlah hari sebelum masa berlaku kata sandi harus berupa angka."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr ""
+"Jumlah kata sandi terakhir yang harus diblokir untuk digunakan kembali harus"
+" berupa angka."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"Jumlah hari, sebelum masa berlaku habis, untuk mulai memperingatkan pengguna"
+" setiap hari tentang masa berlaku kata sandi harus berupa angka."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Kata sandi Anda akan habis masa berlakunya dalam {$days} hari."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Hapus Daftar Blokir yang Ada"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Apakah Anda yakin ingin menghapus?"
+
+msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
+msgstr "Kata sandi Anda tidak memenuhi persyaratan berikut:\n{$requirements}"
+
+msgid "plugins.generic.betterPassword.description.requirementsHeading"
+msgstr "Persyaratan kata sandi:"
+
+msgid "plugins.generic.betterPassword.requirement.length"
+msgstr "memiliki panjang minimal {$length} karakter"
+
+msgid "plugins.generic.betterPassword.requirement.alpha"
+msgstr "mengandung karakter alfabet"
+
+msgid "plugins.generic.betterPassword.requirement.uppercase"
+msgstr "mengandung karakter huruf besar"
+
+msgid "plugins.generic.betterPassword.requirement.lowercase"
+msgstr "mengandung karakter huruf kecil"
+
+msgid "plugins.generic.betterPassword.requirement.number"
+msgstr "mengandung karakter numerik"
+
+msgid "plugins.generic.betterPassword.requirement.special"
+msgstr "mengandung karakter non-alfanumerik"
+
+msgid "plugins.generic.betterPassword.requirement.blocklist"
+msgstr "bukan merupakan kata sandi yang umum digunakan atau yang diketahui telah disusupi"
+
+msgid "plugins.generic.betterPassword.requirement.noReuse"
+msgstr "tidak sama dengan {$count} kata sandi terakhir Anda"
