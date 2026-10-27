@@ -1,0 +1,233 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Yaxshiroq parol plagini"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr ""
+"PKP dasturida qo'shimcha parol talablarini yoqing.  NIST tavsiyalarini "
+"amalga oshirishga imkon beradi."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Parolingiz alifbo belgisini talab qiladi."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Parolingiz katta harfni talab qiladi."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Parolingiz kichik harfni talab qiladi."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Parolingiz raqamli belgini talab qiladi."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Parolingiz alfanumerik bo'lmagan belgini talab qiladi."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr ""
+"Sizning parolingiz ma'lum bo'lgan yomon parollar bloklangan ro'yxatidan "
+"topildi."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "Noto'g'ri parolga urinishlar tufayli hisobingiz vaqtincha bloklangan."
+
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr ""
+"Ayni paytda parolingizni o‘zgartirib bo‘lmadi.  Keyinroq qayta urinib "
+"ko‘ring."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "Siz bu parolni qayta ishlata olmaysiz, boshqasini tanlang."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Sozlamalar"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Fayl yuklanmadi"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Faylni oʻchirib boʻlmadi"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Yaxshiroq parol sozlamalari"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>Ushbu plagin yoqilgan boʻlsa, parolni yaxshiroq tanlash uchun "
+"foydalanuvchi parollari qoʻshimcha mezonlarga muvofiq tekshiriladi.  NIST "
+"parollarni bloklangan roʻyxatga qarshi tekshirishni va parolni qayta-qayta "
+"oʻzgartirishdan keyin hisob qaydnomasini vaqtincha blokirovka qilishni "
+"tavsiya qiladi.  Murakkablik talablari, jumladan, alfanumerik belgilarning "
+"alohida turlari mavjud, ammo UX sabablarga koʻra tavsiya etilmaydi.</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Parol talablari"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Bloklangan ro'yxat faylini yuklang"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Yuklangan blok roʻyxatlar"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Alfavit belgisini talab qiling."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Katta harfni talab qiling."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Kichik harf talab qiling."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Raqamli belgi kerak."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Alfanumerik bo'lmagan belgini talab qiling."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"Foydalanuvchi tomonidan soʻralgan parollarni maʼlum boʻlgan yomon parollar "
+"bloklangan roʻyxati bilan tekshiring."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Hisobni vaqtincha blokirovka qilish"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Hisobni bloklash uchun noto'g'ri kirish urinishlari soni."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Yomon kirish urinishlarini unutishdan oldingi soniyalar soni."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr ""
+"Haddan tashqari noto'g'ri kirish urinishlaridan keyin hisobni bloklash uchun"
+" soniyalar soni."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"Har qanday vaqtinchalik hisobni blokirovka qilish sozlamalari kiritilgan "
+"bo'lsa, barcha vaqtinchalik hisobni blokirovka qilish sozlamalari talab "
+"qilinadi."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr ""
+"Hisobni bloklash uchun noto'g'ri kirish urinishlari soni raqamli bo'lishi "
+"kerak."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr ""
+"Yomon kirish urinishlarini unutishdan oldingi soniyalar soni raqamli "
+"bo'lishi kerak."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"Haddan tashqari noto'g'ri kirish urinishlaridan keyin hisobni bloklash uchun"
+" soniyalar soni raqamli bo'lishi kerak."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Parolni bekor qilish"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Parollar muddati tugashidan oldingi kunlar soni."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"Parolning amal qilish muddati tugashi haqida har kuni foydalanuvchini "
+"ogohlantirishni boshlash uchun kunlar soni."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr ""
+"Qayta foydalanish uchun bloklanishi kerak bo'lgan oxirgi parollar soni."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr ""
+"Parollar muddati tugashidan oldingi kunlar soni raqamli bo'lishi kerak."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr ""
+"Qayta foydalanish uchun bloklanishi kerak bo'lgan oxirgi parollar soni "
+"raqamli bo'lishi kerak."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"Parolning amal qilish muddati tugashi haqida foydalanuvchini har kuni "
+"ogohlantirishni boshlash uchun amal qilish muddati tugashidan oldin kunlar "
+"soni raqamli bo'lishi kerak."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Parolingiz muddati {$days} kundan keyin tugaydi."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Mavjud bloklar ro'yxatini o'chirish"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Haqiqatan ham oʻchirib tashlamoqchimisiz?"
+
+msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
+msgstr "Parolingiz quyidagi talablarga javob bermaydi:\n{$requirements}"
+
+msgid "plugins.generic.betterPassword.description.requirementsHeading"
+msgstr "Parol talablari:"
+
+msgid "plugins.generic.betterPassword.requirement.length"
+msgstr "kamida {$length} ta belgidan iborat boʻlishi"
+
+msgid "plugins.generic.betterPassword.requirement.alpha"
+msgstr "alifbo belgisini oʻz ichiga olishi"
+
+msgid "plugins.generic.betterPassword.requirement.uppercase"
+msgstr "katta harfni oʻz ichiga olishi"
+
+msgid "plugins.generic.betterPassword.requirement.lowercase"
+msgstr "kichik harfni oʻz ichiga olishi"
+
+msgid "plugins.generic.betterPassword.requirement.number"
+msgstr "raqamli belgini oʻz ichiga olishi"
+
+msgid "plugins.generic.betterPassword.requirement.special"
+msgstr "harf yoki raqam boʻlmagan belgini oʻz ichiga olishi"
+
+msgid "plugins.generic.betterPassword.requirement.blocklist"
+msgstr "keng tarqalgan yoki maʼlum boʻlgan buzilgan parol boʻlmasligi"
+
+msgid "plugins.generic.betterPassword.requirement.noReuse"
+msgstr "oxirgi {$count} ta parolingizning hech biriga toʻgʻri kelmasligi"

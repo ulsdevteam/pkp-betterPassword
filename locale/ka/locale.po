@@ -1,0 +1,228 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "უკეთესი პაროლის მოდული"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr ""
+"პაროლის დამატებითი მოთხოვნების ჩართვა PKP პროგრამული უზრუნველყოფის "
+"ფარგლებში.  იძლევა NIST რეკომენდაციების განხორციელების საშუალებას."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "თქვენი პაროლი მოითხოვს ანბანურ სიმბოლოს."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "თქვენი პაროლი მოითხოვს დიდ ასოებს."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "თქვენი პაროლი მოითხოვს მცირე ასოს."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "თქვენი პაროლი მოითხოვს ციფრულ სიმბოლოს."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "თქვენი პაროლი მოითხოვს არაალფანუმერულ სიმბოლოს."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr "თქვენი პაროლი ნაპოვნი იქნა ცნობილი ცუდი პაროლების ბლოკ სიაში."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "თქვენი ანგარიში დროებით დაიბლოკა პაროლის არასწორი მცდელობის გამო."
+
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr "თქვენი პაროლი ამჯერად ვერ შეიცვლება.  გთხოვთ, სცადოთ მოგვიანებით."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr ""
+"თქვენ არ შეგიძლიათ ამ პაროლის ხელახლა გამოყენება, გთხოვთ, აირჩიოთ სხვა."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "პარამეტრები"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "ფაილის ატვირთვა ვერ მოხერხდა"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "ფაილის წაშლა ვერ მოხერხდა"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "პაროლის უკეთესი პარამეტრები"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>ამ მოდულის ჩართვის შემთხვევაში, მომხმარებლის პაროლები შემოწმდება "
+"დამატებითი კრიტერიუმების შესაბამისად, რათა უზრუნველყოფილ იქნას პაროლის "
+"უკეთესი შერჩევა.  NIST რეკომენდაციას უწევს პაროლების შემოწმებას დაბლოკვის "
+"სიის მიხედვით და გამოიყენეთ ანგარიშის დროებითი ჩაკეტვა პაროლის განმეორებითი "
+"წარუმატებლობის შემდეგ.  სირთულის მოთხოვნები, მათ შორის ალფანუმერული "
+"სიმბოლოების კონკრეტული ტიპები, ხელმისაწვდომია, მაგრამ არ არის რეკომენდებული "
+"UX მიზეზების გამო.</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "პაროლის მოთხოვნები"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "ატვირთეთ ბლოკის ფაილი"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "ატვირთული ბლოკისტები"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "მოითხოვეთ ანბანური სიმბოლო."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "მოითხოვეთ დიდი ასო."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "მოითხოვეთ მცირე ასო."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "მოითხოვეთ რიცხვითი სიმბოლო."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "მოითხოვეთ არაალფანუმერული სიმბოლო."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"შეამოწმეთ მომხმარებლის მიერ მოთხოვნილი ნებისმიერი პაროლი ცნობილი ცუდი "
+"პაროლების ბლოკის სიაში."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "ანგარიშის დროებითი ჩაკეტვა"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr ""
+"არასწორი შესვლის მცდელობების რაოდენობა, რის შემდეგაც დაიბლოკება ანგარიში."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "ცუდი შესვლის მცდელობების დავიწყებამდე წამების რაოდენობა."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr ""
+"ანგარიშის ჩაკეტვის წამების რაოდენობა შესვლის ზედმეტი ცუდი მცდელობის შემდეგ."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"თუ რაიმე დროებითი ანგარიშის დაბლოკვის პარამეტრია შეყვანილი, საჭიროა "
+"ანგარიშის დაბლოკვის ყველა დროებითი პარამეტრი."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr ""
+"არასწორი შესვლის მცდელობების რაოდენობა, რის შემდეგაც ანგარიში დაიბლოკება, "
+"უნდა იყოს რიცხვითი."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr ""
+"არასწორი შესვლის მცდელობების დავიწყებამდე წამების რაოდენობა უნდა იყოს "
+"რიცხვითი."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"ანგარიშის ჩაკეტვის წამების რაოდენობა სისტემაში შესვლის ზედმეტი ცუდი "
+"მცდელობის შემდეგ უნდა იყოს რიცხვითი."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "პაროლის გაუქმება"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "პაროლების ვადის გასვლამდე დღეების რაოდენობა."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"დღეების რაოდენობა, ვადის გასვლამდე, რათა დაიწყოს მომხმარებლის ყოველდღიური "
+"გაფრთხილება პაროლის ვადის გასვლის შესახებ."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr ""
+"ბოლო პაროლების რაოდენობა, რომლებიც უნდა დაიბლოკოს ხელახლა გამოყენებისთვის."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "პაროლების ვადის გასვლამდე დღეების რაოდენობა უნდა იყოს რიცხვითი."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr ""
+"ბოლო პაროლების რაოდენობა, რომლებიც უნდა დაიბლოკოს ხელახლა გამოყენებისთვის, "
+"უნდა იყოს რიცხვითი."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"დღეების რაოდენობა, ვადის გასვლამდე, მომხმარებლის ყოველდღიური გაფრთხილების "
+"დასაწყებად პაროლის ვადის გასვლის შესახებ უნდა იყოს რიცხვითი."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "თქვენს პაროლს ვადა ამოიწურება {$days} დღეში."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "წაშალეთ არსებული ბლოკის სია"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "დარწმუნებული ხართ, რომ გსურთ წაშლა?"
+
+msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
+msgstr "თქვენი პაროლი არ აკმაყოფილებს შემდეგ მოთხოვნებს:\n{$requirements}"
+
+msgid "plugins.generic.betterPassword.description.requirementsHeading"
+msgstr "პაროლის მოთხოვნები:"
+
+msgid "plugins.generic.betterPassword.requirement.length"
+msgstr "შეადგენდეს მინიმუმ {$length} სიმბოლოს"
+
+msgid "plugins.generic.betterPassword.requirement.alpha"
+msgstr "შეიცავდეს ანბანურ სიმბოლოს"
+
+msgid "plugins.generic.betterPassword.requirement.uppercase"
+msgstr "შეიცავდეს მაღალ რეგისტრის სიმბოლოს"
+
+msgid "plugins.generic.betterPassword.requirement.lowercase"
+msgstr "შეიცავდეს დაბალი რეგისტრის სიმბოლოს"
+
+msgid "plugins.generic.betterPassword.requirement.number"
+msgstr "შეიცავდეს ციფრულ სიმბოლოს"
+
+msgid "plugins.generic.betterPassword.requirement.special"
+msgstr "შეიცავდეს არა-ალფანუმერულ სიმბოლოს"
+
+msgid "plugins.generic.betterPassword.requirement.blocklist"
+msgstr "არ იყოს ფართოდ გავრცელებული ან ცნობილი კომპრომეტირებული პაროლი"
+
+msgid "plugins.generic.betterPassword.requirement.noReuse"
+msgstr "არ ემთხვეოდეს თქვენი ბოლო {$count} პაროლიდან არცერთს"

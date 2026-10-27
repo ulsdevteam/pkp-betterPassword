@@ -53,6 +53,12 @@ class LimitReuse
         Hook::add('loginchangepasswordform::Constructor', [$this, 'passwordChangeValidation']);
         Hook::add('changepasswordform::Constructor', [$this, 'passwordChangeValidation']);
         Hook::add('resetpasswordform::Constructor', [$this, 'passwordChangeValidation']);
+        // Admin add/edit user (UserDetailsForm): we attach the reuse check so
+        // an admin can't set a password the user has previously used. We do
+        // NOT remember the admin-set password into history here — by the time
+        // userdetailsform::execute fires (during parent::execute), the form
+        // hasn't yet encrypted/persisted the new password on the user object.
+        Hook::add('userdetailsform::Constructor', [$this, 'passwordChangeValidation']);
     }
 
     /**
@@ -105,16 +111,30 @@ class LimitReuse
      */
     public function passwordCompare($password, $form)
     {
+        // Editing a user without changing their password leaves the field
+        // empty; nothing to compare against and core validation handles the
+        // "required" case where appropriate.
+        if (!$password) {
+            return true;
+        }
+
+        $user = null;
         $formClassName = get_class($form);
         switch ($formClassName) {
-            case $formClassName === 'PKP\user\form\ResetPasswordForm':
+            case 'PKP\user\form\ResetPasswordForm':
+            case 'PKP\user\form\ChangePasswordForm':
                 $user = $form->getUser();
                 break;
-            case $formClassName === 'PKP\user\form\LoginChangePasswordForm':
+            case 'PKP\user\form\LoginChangePasswordForm':
                 $user = Repo::user()->getByUsername($form->getData('username'));
                 break;
-            case $formClassName === 'PKP\user\form\ChangePasswordForm':
-                $user = $form->getUser();
+            case 'PKP\controllers\grid\settings\user\form\UserDetailsForm':
+                // Admin edit: $form->user is the user being edited. Admin
+                // create: no user yet, nothing to compare against.
+                $user = $form->user ?? null;
+                if (!$user) {
+                    return true;
+                }
                 break;
         }
 

@@ -139,3 +139,32 @@ msgstr "Excluir lista de bloqueio de senhas"
 
 msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
 msgstr "Tem certeza de que deseja excluir?"
+msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
+msgstr "Sua senha não atende aos seguintes requisitos:\n{$requirements}"
+
+msgid "plugins.generic.betterPassword.description.requirementsHeading"
+msgstr "Requisitos da senha:"
+
+msgid "plugins.generic.betterPassword.requirement.length"
+msgstr "ter pelo menos {$length} caracteres"
+
+msgid "plugins.generic.betterPassword.requirement.alpha"
+msgstr "conter um caractere alfabético"
+
+msgid "plugins.generic.betterPassword.requirement.uppercase"
+msgstr "conter um caractere maiúsculo"
+
+msgid "plugins.generic.betterPassword.requirement.lowercase"
+msgstr "conter um caractere minúsculo"
+
+msgid "plugins.generic.betterPassword.requirement.number"
+msgstr "conter um caractere numérico"
+
+msgid "plugins.generic.betterPassword.requirement.special"
+msgstr "conter um caractere não alfanumérico"
+
+msgid "plugins.generic.betterPassword.requirement.blocklist"
+msgstr "não ser uma senha de uso comum ou conhecida como comprometida"
+
+msgid "plugins.generic.betterPassword.requirement.noReuse"
+msgstr "não coincidir com nenhuma das suas últimas {$count} senhas"

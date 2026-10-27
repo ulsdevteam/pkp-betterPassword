@@ -145,3 +145,33 @@ msgstr "Mevcut Engellenenler Listesini Sil"
 
 msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
 msgstr "Silmek istediğinden emin misin?"
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr "Şifreniz şu anda değiştirilemedi. Lütfen daha sonra tekrar deneyiniz."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr "Bu şifreyi tekrar kullanamazsınız, lütfen başka bir şifre belirleyin."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Ayarlar"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Dosya yüklenemedi"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Dosya silinemedi"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Daha İyi Şifre Ayarları"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr "<p>Bu eklenti etkinleştirildiğinde, daha iyi şifre seçimi sağlamak için kullanıcı şifreleri ek kriterlere göre kontrol edilecektir. NIST, şifreleri bir engellenenler listesine göre kontrol etmenizi ve tekrarlanan şifre hatalarından sonra geçici hesap kilitlemeyi kullanmanızı önerir. Belirli alfasayısal karakter türleri de dahil olmak üzere karmaşıklık gereksinimleri mevcuttur ancak UX nedenleriyle önerilmez.</p>"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Parola gereksinimleri"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Engellenenler listesi dosyasını yükleyin"
+
+msgid "plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Yüklenen Engellenenler Listesi"

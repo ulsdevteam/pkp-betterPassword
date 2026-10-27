@@ -1,0 +1,230 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01T22:56:38-07:00\n"
+"PO-Revision-Date: 2021-01-01T22:56:38-07:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.generic.betterPassword.displayName"
+msgstr "Pêveka Şîfreya Baştir"
+
+msgid "plugins.generic.betterPassword.description"
+msgstr ""
+"Pêdiviyên şîfreya zêde di nav nermalava PKP de çalak bikin.  Destûrê dide "
+"pêkanîna pêşniyarên NIST."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckAlpha"
+msgstr "Şîfreya te karaktereke alfabetîk dixwaze."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckUppercase"
+msgstr "Şîfreya te tîpeke mezin hewce dike."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckLowercase"
+msgstr "Şîfreya te tîpeke biçûk hewce dike."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckNumber"
+msgstr "Şîfreya te karaktereke jimarî dixwaze."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckSpecial"
+msgstr "Şîfreya te karaktereke ne-alfabeyî hewce dike."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordCheckBlocklist"
+msgstr ""
+"Şîfreya we di navnîşek blokê ya şîfreyên xirab ên naskirî de hate dîtin."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordLocked"
+msgstr "Hesabê we ji ber hewildanên şîfreya xirab bi demkî hate girtin."
+
+msgid ""
+"plugins.generic.betterPassword.validation.betterPasswordUnexpectedError"
+msgstr "Şîfreya te niha nehate guhertin.  Ji kerema xwe paşê dîsa biceribîne."
+
+msgid "plugins.generic.betterPassword.validation.betterPasswordPasswordReused"
+msgstr ""
+"Hûn nikarin vê şîfreyê ji nû ve bikar bînin, ji kerema xwe şîfreyek din "
+"hilbijêrin."
+
+msgid "plugins.generic.betterPassword.manager.settings"
+msgstr "Settings"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordUploadFail"
+msgstr "Barkirina pelê bi ser neket"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordDeleteFail"
+msgstr "Jêbirina pelê bi ser neket"
+
+msgid "plugins.generic.betterPassword.manager.betterPasswordSettings"
+msgstr "Mîhengên Şîfreya Baştir"
+
+msgid "plugins.generic.betterPassword.manager.settings.description"
+msgstr ""
+"<p>Digel vê pêvekê çalakkirî, şîfreyên bikarhêner dê li gorî pîvanên zêde "
+"werin kontrol kirin da ku bijartina şîfreya çêtir were piştrast kirin.  NIST"
+" pêşniyar dike ku şîfreyan li hember navnîşek blokê kontrol bikin û piştî "
+"têkçûna şîfreya dubare bikar bînin girtina hesabê demkî.  Pêdiviyên "
+"tevliheviyê tevî cûreyên taybetî yên tîpên alfanumerîk hene lê ji ber "
+"sedemên UX nayê pêşniyar kirin.</p>"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckTitle"
+msgstr "Pêdiviyên şîfreyê"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordBlocklist"
+msgstr "Pelê blokê barkirin"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordExistingBlocklist"
+msgstr "Blocklists barkirî"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckAlpha"
+msgstr "Karaktera alfabetîk hewce dike."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckUppercase"
+msgstr "Karaktera mezin hewce dike."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckLowercase"
+msgstr "Karaktera piçûk hewce dike."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckNumber"
+msgstr "Karaktera jimareyî hewce dike."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckSpecial"
+msgstr "Karaktera ne-alfan-hejmarî hewce dike."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordCheckBlacklist"
+msgstr ""
+"Li hember navnîşek blokê ya şîfreyên xirab ên naskirî, şîfreyên ku ji "
+"bikarhêner daxwaz kirine kontrol bikin."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTitle"
+msgstr "Girtina hesabê demkî"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTries"
+msgstr "Hejmara hewildanên têketinê yên xirab ên ku piştî girtina hesabek."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpires"
+msgstr "Hejmara saniyeyan berî jibîrkirina hewildanên têketinê yên xirab."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSeconds"
+msgstr ""
+"Hejmara saniyeyan ji bo girtina hesabek piştî hewildanên têketinê yên xirab "
+"ên zêde."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockRequired"
+msgstr ""
+"Ger mîhengek girtina hesabê ya demkî têkeve, hemî mîhengên girtina hesabê "
+"demkî hewce ne."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockTriesNumberRequired"
+msgstr ""
+"Hejmara hewildanên têketinê yên xirab ên ku piştî girtina hesabek divê "
+"hejmarî be."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockExpiresNumberRequired"
+msgstr ""
+"Hejmara saniyeyan berî jibîrkirina hewildanên têketinê yên xirab divê jimarî"
+" bin."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordLockSecondsNumberRequired"
+msgstr ""
+"Hejmara saniyeyan ji bo girtina hesabek piştî hewildanên têketinê yên xirab "
+"ên zêde divê jimar be."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationTitle"
+msgstr "Betalkirina şîfreyê"
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDays"
+msgstr "Hejmara rojên beriya şîfreyan biqede."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDays"
+msgstr ""
+"Hejmara rojan, berî qedandinê, ji bo ku bikarhêner rojane li ser bidawîbûna "
+"şîfreyê hişyar bikin."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswords"
+msgstr ""
+"Hejmara şîfreyên paşîn ên ku divê ji bo ji nû ve karanînê werin asteng "
+"kirin."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationDaysNumberRequired"
+msgstr "Hejmara rojên beriya ku şîfre biqede divê jimar be."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationPasswordsNumberRequired"
+msgstr ""
+"Hejmara şîfreyên paşîn ên ku divê ji bo ji nû ve karanînê werin asteng kirin"
+" divê hejmarî bin."
+
+msgid ""
+"plugins.generic.betterPassword.manager.settings.betterPasswordInvalidationMininumWarningDaysNumberRequired"
+msgstr ""
+"Hejmara rojan, beriya bidawîbûnê, ji bo ku bikarhêner rojane li ser "
+"bidawîbûna şîfreyê hişyar bikin, divê hejmar be."
+
+msgid "plugins.generic.betterPassword.message.yourPasswordWillExpire"
+msgstr "Şîfreya te dê di {$days} rojan de biqede."
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklist"
+msgstr "Blocklista heyî jêbirin"
+
+msgid "plugins.generic.betterPassword.actions.deleteBlocklistCheck"
+msgstr "Ma tu bi rastî dixwazî ​​jê bibî?"
+
+msgid "plugins.generic.betterPassword.validation.requirementsNotMet"
+msgstr "وشەی نهێنیت ئەم مەرجانە جێبەجێ ناکات:\n{$requirements}"
+
+msgid "plugins.generic.betterPassword.description.requirementsHeading"
+msgstr "پێداویستییەکانی وشەی نهێنی:"
+
+msgid "plugins.generic.betterPassword.requirement.length"
+msgstr "لانیکەم {$length} پیت بێت"
+
+msgid "plugins.generic.betterPassword.requirement.alpha"
+msgstr "پیتێکی ئەلفابێ لەخۆبگرێت"
+
+msgid "plugins.generic.betterPassword.requirement.uppercase"
+msgstr "پیتێکی گەورە لەخۆبگرێت"
+
+msgid "plugins.generic.betterPassword.requirement.lowercase"
+msgstr "پیتێکی بچووک لەخۆبگرێت"
+
+msgid "plugins.generic.betterPassword.requirement.number"
+msgstr "ژمارەیەک لەخۆبگرێت"
+
+msgid "plugins.generic.betterPassword.requirement.special"
+msgstr "پیتێکی ناوزە ئەلفابێ-ژمارەیی لەخۆبگرێت"
+
+msgid "plugins.generic.betterPassword.requirement.blocklist"
+msgstr "وشەیەکی نهێنی باو یان زانراوی دزراو نەبێت"
+
+msgid "plugins.generic.betterPassword.requirement.noReuse"
+msgstr "لەگەڵ هیچ کام لە {$count} وشە نهێنییە کۆنەکانت یەکسان نەبێت"
